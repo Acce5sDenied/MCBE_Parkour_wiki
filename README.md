@@ -3,8 +3,14 @@ A wiki for documenting minecraft bedrock movement mechanics.
 
 uhmm
 
-## TODO
+#### TODO
 + block hitboxes
 + numbers
 + bedrock jank
 + more
+
+## Hitbixes
+|block           |dimension |comment   |
+|----------------|----------|----------|
+|full block      |1×1×1     |          |
+|                |          |          |
