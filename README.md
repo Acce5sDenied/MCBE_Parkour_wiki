@@ -1,5 +1,6 @@
 # MCBE_Parkour_wiki
 A wiki for documenting minecraft bedrock movement mechanics.
+
 pre-pre-alpha stage
 
 uhmm
@@ -11,13 +12,16 @@ uhmm
 + bedrock mechanics
 + more
 
+# Essentials
+tick
+
 # Player control
 There are 2 major ways the player can move.
 #### Button controls
 WASD
 #### Joystick controls
 360
-#### Mouse movement
+### Mouse movement
 ok
 
 # Hitboxes
@@ -27,10 +31,12 @@ List of collision and effect box for all blocks.
 |full block      |1×1×1            |                      |
 |ok              |                 |                      |
 
+# Movement mechanics
+
 # Bedrock exclusive mechanics
 Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 
-# Blocks
+# Block effects
 #### Normal block
 #### Soulsand
 #### Honey block
@@ -39,3 +45,5 @@ Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 #### Catch type blocks
 #### Water
 #### Lava
+
+# Potion effects
