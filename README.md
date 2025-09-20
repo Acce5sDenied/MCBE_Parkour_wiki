@@ -9,8 +9,8 @@ uhmm
 + bedrock jank
 + more
 
-## Hitbixes
+## Hitboxes
 |block           |dimension |comment   |
 |----------------|----------|----------|
 |full block      |1×1×1     |          |
-|                |          |          |
+|ok              |          |          |
