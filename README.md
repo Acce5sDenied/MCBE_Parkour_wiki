@@ -12,10 +12,10 @@ uhmm
 + bedrock mechanics
 + more
 
-# Essentials
+## Essentials
 tick
 
-# Player control
+## Player control
 There are 2 major ways the player can move.
 #### Button controls
 WASD
@@ -24,20 +24,34 @@ WASD
 ### Mouse movement
 ok
 
-# Hitboxes
+## Hitboxes
 List of collision and effect box for all blocks.
-|block           |dimension        |comment               |
-|----------------|-----------------|----------------------|
-|full block      |1×1×1            |                      |
-|ok              |                 |                      |
+|block                                  |dimension(xyz)      |comment                                        |
+|---------------------------------------|--------------------|-----------------------------------------------|
+|full block                             |1×1×1               |                                               |
+|cobweb                                 |0.998×0.998×0.998   |-0.001 on each side.                           |
+|chests                                 |0.95×0.95×0.95      |-0.25 on each side, base touch the ground.     |
+|decorated pot & cactus & honey block   |0.875×1×0.875       |like egg on java.                              |
+|
 
-# Movement mechanics
 
-# Bedrock exclusive mechanics
+
+## Movement mechanics
+xz collision order
+no inertia i think
+no bursting, shift glitch
+use floats not double
+
+## Bedrock exclusive mechanics
 Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 
-# Block effects
+## Block effects
+#### Airborne
 #### Normal block
++ horizontal drag
++ walk acceleration
++ sprint acceleration
++ jump vertical acceleration
 #### Soulsand
 #### Honey block
 #### Slime block
@@ -46,4 +60,4 @@ Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 #### Water
 #### Lava
 
-# Potion effects
+## Potion effects
