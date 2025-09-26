@@ -37,20 +37,28 @@ List of collision and effect box for all blocks.
 
 
 ## Movement mechanics
-xz collision order
-no inertia i think
-no bursting, shift glitch
-use floats not double
++ xz collision order
++ no inertia i think
++ no bursting, shift glitch
++ use floats not double(i believe)
 
 ## Bedrock exclusive mechanics
 Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 
-## Block effects
+## Numbers
+I did not look at the codes, I got these by testing.
 #### Airborne
++ horizontal drag: 0.91
++ walk acceleration: 0.0196
++ sprint acceleration:
++ gravity acceleration:
+#### Flying
 #### Normal block
-+ horizontal drag
-+ walk acceleration
++ horizontal drag: 0.546
++ shifted acceleration: 0.0294
++ walk acceleration: 0.098
 + sprint acceleration
++ sprint jump acceleration
 + jump vertical acceleration
 #### Soulsand
 #### Honey block
