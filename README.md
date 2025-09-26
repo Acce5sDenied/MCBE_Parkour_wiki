@@ -26,15 +26,21 @@ ok
 
 ## Hitboxes
 List of collision and effect box for all blocks.
-|block                                  |dimension(xyz)      |comment                                        |
-|---------------------------------------|--------------------|-----------------------------------------------|
-|full block                             |1×1×1               |                                               |
-|cobweb                                 |0.998×0.998×0.998   |-0.001 on each side.                           |
-|chests                                 |0.95×0.95×0.95      |-0.25 on each side, base touch the ground.     |
-|decorated pot & cactus & honey block   |0.875×1×0.875       |like egg on java.                              |
-|
+### Simple collision boxes
+|block                                  |widths              |heights    |comment                                                  |
+|---------------------------------------|--------------------|-----------|---------------------------------------------------------|
+|full block                             |1×1                 |1          |                                                         |
+|slab                                   |1×1                 |0.5        |inversible.                                              |
+|cobweb & powdered snow                 |0.998×0.998         |0.998      |-0.001 on each side.                                     |
+|chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.     |
+|decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                              |
+|cake                                   |0.875×0.875         |0.5        |centered, base touch the ground.                         |
+|anvil                                  |0.75×1              |1          |orientable on horizontal.(2 varients)                    |
+|sniffer egg                            |0.75×0.875          |1          |longer side always extend on X axis.                     |
+|grindstone                             |0.75×0.75           |1          |centered.                                                |
+|chorus stem                            |0.75×0.75           |0.875      |centered.                                                |
 
-
+### Composite collision boxes
 
 ## Movement mechanics
 + xz collision order
