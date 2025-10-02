@@ -27,37 +27,41 @@ ok
 ## Hitboxes
 List of collision and effect box for all blocks.
 ### Simple collision boxes
-|block                                  |widths              |heights    |comment                                                  |
-|---------------------------------------|--------------------|-----------|---------------------------------------------------------|
-|full block                             |1×1                 |1          |                                                         |
-|slab                                   |1×1                 |0.5        |inversible.                                              |
-|cobweb & powdered snow                 |0.998×0.998         |0.998      |-0.001 on each side.                                     |
-|chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.     |
-|decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                              |
-|cake                                   |0.875×0.875         |0.5        |centered.                                                |
-|anvil                                  |0.75×1              |1          |orientable on horizontal.(2 varients)                    |
-|sniffer egg                            |0.75×0.875          |1          |longer side always extend on X axis.                     |
-|grindstone                             |0.75×0.75           |1          |centered.                                                |
-|chorus stem                            |0.75×0.75           |0.875      |centered.                                                |
-|dried ghast                            |0.625×0.625         |0.625      |centered.                                                |
-|amethyst cluster                       |0.625×0.625         |0.4375     |centered. Can be placed on all sides.                    |
-|large amethyst bud                     |0.625×0.625         |0.3125     |centered. Can be placed on all sides.                    |
-|medium amethyst bud                    |0.625×0.625         |0.25       |centered. Can be placed on all sides.                    |
-|bell(on ground)                        |0.5×1               |1          |orientable on horizontal.(2 varients)                    |
-|wall                                   |0.5×0.5             |1.5        |centered.                                                |
-|conduit & heavy core & heads(on ground)|0.5×0.5             |0.5        |centered.                                                |
-|heads(on wall)                         |0.5×0.5             |0.5        |centered. Orientable.
+|block                                  |widths              |heights    |comment                                                           |
+|---------------------------------------|--------------------|-----------|------------------------------------------------------------------|
+|full block                             |1×1                 |1          |                                                                  |
+|slab                                   |1×1                 |0.5        |inversible.                                                       |
+|cobweb & powdered snow                 |0.998×0.998         |0.998      |-0.001 on each side.                                              |
+|chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
+|decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                                       |
+|cake                                   |0.875×0.875         |0.5        |centered.                                                         |
+|anvil                                  |0.75×1              |1          |orientable on horizontal.(2 varients)                             |
+|sniffer egg                            |0.75×0.875          |1          |longer side always extend on X axis.                              |
+|grindstone                             |0.75×0.75           |1          |centered.                                                         |
+|chorus stem                            |0.75×0.75           |0.875      |centered.                                                         |
+|dried ghast                            |0.625×0.625         |0.625      |centered.                                                         |
+|amethyst cluster                       |0.625×0.625         |0.4375     |centered. Can be placed on all sides.                             |
+|large amethyst bud                     |0.625×0.625         |0.3125     |centered. Can be placed on all sides.                             |
+|medium amethyst bud                    |0.625×0.625         |0.25       |centered. Can be placed on all sides.                             |
+|bell(ground)                           |0.5×1               |0.8125     |orientable on horizontal.(2 varients)                             |
+|wall                                   |0.5×0.5             |1.5        |centered.                                                         |
+|conduit & heavy core & heads(ground)   |0.5×0.5             |0.5        |centered.                                                         |
+|heads(wall)                            |0.5×0.5             |0.5        |centered. orientable.(4 varients)                                 |
+|big cocoa                              |0.5×0.5             |0.5625     |orientable.(4 varients) 1px away from wall. top:.75 bottom:.1875  |
+|thin wall(2 opposite)                  |0.375×1             |1.5        |orientable on horizontal.(2 varients)
 
 ### Composite collision boxes
 
 ## Movement mechanics
-+ xz collision order
-+ no inertia i think
-+ no bursting, shift glitch
-+ use floats not double(i believe)
++ yxz collision order
+player collision block
++ normally is 0.6×0.6 horizontally and 1.8 vertically.
++ while shifted is 0.6×0.6 horizontally and 1.49 vertically.
 
 ## Bedrock exclusive mechanics
 Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
++ no inertia i think
++ no bursting, shift glitch
 
 ## Numbers
 I did not look at the codes, I got these by testing.
