@@ -1,5 +1,5 @@
 # MCBE_Parkour_wiki
-A wiki for documenting minecraft bedrock movement mechanics. As of game version 1.21.100
+A wiki for documenting minecraft bedrock movement mechanics. As of game version 1.21.11x
 
 pre-pre-alpha stage
 
@@ -54,7 +54,7 @@ List of collision and effect box for all blocks.
 
 ## Movement mechanics
 + yxz collision order
-player collision block
+#### player collision block
 + normally is 0.6×0.6 horizontally and 1.8 vertically.
 + while shifted is 0.6×0.6 horizontally and 1.49 vertically.
 
@@ -62,6 +62,7 @@ player collision block
 Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 + no inertia i think
 + no bursting, shift glitch
++ shifting would only goes to 0.025 off edge.
 
 ## Numbers
 I did not look at the codes, I got these by testing.
