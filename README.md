@@ -1,7 +1,7 @@
 # MCBE_Parkour_wiki
 A wiki for documenting minecraft bedrock movement mechanics. As of game version 1.21.11x
 
-pre-pre-alpha stage
+pre-pre-alpha stage, I don't want the language to be TOO formal.
 
 uhmm
 
@@ -88,3 +88,17 @@ I did not look at the codes, I got these by testing.
 #### Lava
 
 ## Potion effects
+
+## Taps setups
+did not test ingame. I mothballed these, so don't take them as 100%.
+|name                      |distance given        |
+|--------------------------|----------------------|
+|walk tap                  |0.21585904            |
+|sneak tap                 |0.06475772            |
+|sprint tap                |0.28061674            |
+|walk + blocking           |0.04317181            |
+|sneak + blocking          |0.01295154            |
+|sprint + blocking         |0.05612335            |
+
++ note: blocking includes shielding, eating or drinking, charging weapon and spyglassing.
++ another note: air taps are not included and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in different air tick would not give the same result.
