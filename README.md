@@ -21,6 +21,7 @@ There are 2 major ways the player can move.
 WASD
 #### Joystick controls
 360
+-----
 ### Mouse movement
 ok
 
@@ -50,6 +51,7 @@ List of collision and effect box for all blocks.
 |big cocoa                              |0.5×0.5             |0.5625     |orientable.(4 varients) 1px away from wall. top:.75 bottom:.1875  |
 |thin wall(2 opposite)                  |0.375×1             |1.5        |orientable on horizontal.(2 varients)
 
+-----
 ### Composite collision boxes
 
 ## Movement mechanics
@@ -91,14 +93,30 @@ I did not look at the codes, I got these by testing.
 
 ## Taps setups
 did not test ingame. I mothballed these, so don't take them as 100%.
-|name                      |distance given        |
+|tap names                 |distance given        |
 |--------------------------|----------------------|
-|walk tap                  |0.21585904            |
-|sneak tap                 |0.06475772            |
-|sprint tap                |0.28061674            |
+|walk                      |0.21585904            |
+|shifted                   |0.06475772            |
+|sprint                    |0.28061674            |
 |walk + blocking           |0.04317181            |
-|sneak + blocking          |0.01295154            |
+|shifted + blocking        |0.01295154            |
 |sprint + blocking         |0.05612335            |
 
 + note: blocking includes shielding, eating or drinking, charging weapon and spyglassing.
-+ another note: air taps are not included and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in different air tick would not give the same result.
+-----
+Air taps are not included as well as jam taps and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in a different air tick or different airtime would not give the same result.
+But don't be fooled. I've invented new a bedrock-friendly way of air tapping—A7 taps. It is tapping on air but on the last tick before hitting ground. This way it would now give the same distance regardless of airtime. Downside is.. it is hard to do and requires a bit of muscle memory to tap on the correct tick.
+
+again, i mothballed these, so don't take them as 100%
+|tap names                 |distance given        |
+|--------------------------|----------------------|
+|A7 walk                   |
+|A7 shifted                |
+|A7 sprint                 |
+|A7 walk + blocking        |
+|A7 shifted + blocking     |
+|A7 sprint + blocking      |
+
+
+
+
