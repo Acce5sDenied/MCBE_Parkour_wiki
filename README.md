@@ -1,5 +1,5 @@
 # MCBE_Parkour_wiki
-A wiki for documenting minecraft bedrock movement mechanics. As of game version 1.21.11x
+A wiki for documenting minecraft bedrock movement mechanics. As of game version `1.21.12x`
 
 pre-pre-alpha stage, I don't want the language to be TOO formal.
 
@@ -21,6 +21,7 @@ There are 2 major ways the player can move.
 WASD
 #### Joystick controls
 360
+
 -----
 ### Mouse movement
 ok
@@ -60,9 +61,11 @@ List of collision and effect box for all blocks.
 + normally is 0.6×0.6 horizontally and 1.8 vertically.
 + while shifted is 0.6×0.6 horizontally and 1.49 vertically.
 
-## Bedrock exclusive mechanics
+## Bedrock differences
 Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
++ strafing don't give the 2% boost (ofc)
 + no inertia i think
++ position is stored in floats
 + no bursting, shift glitch
 + shifting would only goes to 0.025 off edge.
 
@@ -110,12 +113,12 @@ But don't be fooled. I've invented new a bedrock-friendly way of air tapping—A
 again, i mothballed these, so don't take them as 100%
 |tap names                 |distance given        |
 |--------------------------|----------------------|
-|A7 walk                   |
-|A7 shifted                |
-|A7 sprint                 |
-|A7 walk + blocking        |
-|A7 shifted + blocking     |
-|A7 sprint + blocking      |
+|A7 walk                   |0.05888635            |
+|A7 shifted                |0.01766591            |
+|A7 sprint                 |0.07655225            |
+|A7 walk + blocking        |0.01177727            |
+|A7 shifted + blocking     |0.00353318            |
+|A7 sprint + blocking      |0.01531045            |
 
 
 
