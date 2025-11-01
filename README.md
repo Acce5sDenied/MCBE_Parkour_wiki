@@ -39,6 +39,7 @@ List of collision and effect box for all blocks.
 |enchanting table                       |1×1                 |0.75       |                                                                  |
 |stonecutter & beds                     |1×1                 |0.5625     |                                                                  |
 |slabs                                  |1×1                 |0.5        |inversible.                                                       |
+|campfires                              |1×1                 |0.4375     |                                                                  |
 |daylight detector                      |1×1                 |0.375      |                                                                  |
 |trapdoors                              |1×1                 |0.1825     |orientable on all sides. inversible.                              |
 |redstone repeater & comparator         |1×1                 |0.125      |                                                                  |
