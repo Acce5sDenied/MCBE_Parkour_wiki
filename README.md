@@ -37,6 +37,7 @@ List of collision and effect box for all blocks.
 |chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
 |decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                                       |
 |cake                                   |0.875×0.875         |0.5        |centered.                                                         |
+|lilypad                                |0.875×0.875         |0.9375     |centered.
 |anvil                                  |0.75×1              |1          |orientable on horizontal.(2 varients)                             |
 |sniffer egg                            |0.75×0.875          |1          |longer side always extend on X axis.                              |
 |grindstone                             |0.75×0.75           |1          |centered.                                                         |
@@ -46,11 +47,20 @@ List of collision and effect box for all blocks.
 |large amethyst bud                     |0.625×0.625         |0.3125     |centered. Can be placed on all sides.                             |
 |medium amethyst bud                    |0.625×0.625         |0.25       |centered. Can be placed on all sides.                             |
 |bell(ground)                           |0.5×1               |0.8125     |orientable on horizontal.(2 varients)                             |
-|wall                                   |0.5×0.5             |1.5        |centered.                                                         |
+|walls                                  |0.5×0.5             |1.5        |centered.                                                         |
 |conduit & heavy core & heads(ground)   |0.5×0.5             |0.5        |centered.                                                         |
 |heads(wall)                            |0.5×0.5             |0.5        |centered. orientable.(4 varients)                                 |
 |big cocoa                              |0.5×0.5             |0.5625     |orientable.(4 varients) 1px away from wall. top:.75 bottom:.1875  |
-|thin wall(2 opposite)                  |0.375×1             |1.5        |orientable on horizontal.(2 varients)
+|small amethyst bud                     |0.5×0.5             |0.1875     |centered. Can be placed on all sides.                             |
+|thin wall(2 opposite)                  |0.375×1             |1.5        |orientable on horizontal.(2 varients)                             |
+|lanterns(ground)                       |0.375×0.375         |0.5        |centered.                                                         |
+|lanterns(hanging)                      |0.375×0.375         |0.5        |top:.625 bottom:.125                                              |
+|flower pot & 4 candles                 |0.375×0.375         |0.375      |centered.                                                         |
+|fence gate                             |0.25×1              |1.5        |orientable on horizontal.(2 varients)                             |
+|hanging signs                          |0.25×1              |0.125      |only the handle(?) part has collision. orientable.                |
+|fences                                 |0.25×0.25           |1.5        |centered.                                                         |
+|end rod & lightning rods               |0.25×0.25           |1          |centered.                                                         |
+|chains                                 |0.1875×0.1875       |1          |centered.                                                         |
 
 -----
 ### Composite collision boxes
