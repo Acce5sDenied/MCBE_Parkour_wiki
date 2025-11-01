@@ -40,7 +40,7 @@ List of collision and effect box for all blocks.
 |stonecutter & beds                     |1×1                 |0.5625     |                                                                  |
 |slabs                                  |1×1                 |0.5        |inversible.                                                       |
 |daylight detector                      |1×1                 |0.375      |                                                                  |
-|trapdoors                              |1×1                 |0.1875     |orientable on all sides. inversible.                              |
+|trapdoors                              |1×1                 |0.1825     |orientable on all sides. inversible.                              |
 |redstone repeater & comparator         |1×1                 |0.125      |                                                                  |
 |carpets                                |1×1                 |0.0625     |                                                                  |
 |cobweb & powdered snow                 |0.998×0.998         |0.998      |-0.001 on each side.                                              |
