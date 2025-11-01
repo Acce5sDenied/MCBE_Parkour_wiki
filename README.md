@@ -31,17 +31,28 @@ List of collision and effect box for all blocks.
 ### Simple collision boxes
 |block                                  |widths              |heights    |comment                                                           |
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|
-|full block                             |1×1                 |1          |                                                                  |
-|slab                                   |1×1                 |0.5        |inversible.                                                       |
+|full blocks                            |1×1                 |1          |                                                                  |
+|farmland & dirt path                   |1×1                 |0.9375     |                                                                  |
+|lectern                                |1×1                 |0.9        |                                                                  |
+|soulsand & mud                         |1×1                 |0.875      |                                                                  |
+|end portal frame                       |1×1                 |0.8125     |                                                                  |
+|enchanting table                       |1×1                 |0.75       |                                                                  |
+|stonecutter & beds                     |1×1                 |0.5625     |                                                                  |
+|slabs                                  |1×1                 |0.5        |inversible.                                                       |
+|daylight detector                      |1×1                 |0.375      |                                                                  |
+|trapdoors                              |1×1                 |0.1875     |orientable on all sides. inversible.                              |
+|redstone repeater & comparator         |1×1                 |0.125      |                                                                  |
+|carpets                                |1×1                 |0.0625     |                                                                  |
 |cobweb & powdered snow                 |0.998×0.998         |0.998      |-0.001 on each side.                                              |
 |chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
 |decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                                       |
 |cake                                   |0.875×0.875         |0.5        |centered.                                                         |
-|lilypad                                |0.875×0.875         |0.9375     |centered.
+|lilypad                                |0.875×0.875         |0.09375    |centered.                                                         |
 |anvil                                  |0.75×1              |1          |orientable on horizontal.(2 varients)                             |
 |sniffer egg                            |0.75×0.875          |1          |longer side always extend on X axis.                              |
 |grindstone                             |0.75×0.75           |1          |centered.                                                         |
 |chorus stem                            |0.75×0.75           |0.875      |centered.                                                         |
+|copper golem statues                   |0.625×0.625         |0.875      |centered.                                                         |
 |dried ghast                            |0.625×0.625         |0.625      |centered.                                                         |
 |amethyst cluster                       |0.625×0.625         |0.4375     |centered. Can be placed on all sides.                             |
 |large amethyst bud                     |0.625×0.625         |0.3125     |centered. Can be placed on all sides.                             |
