@@ -27,7 +27,7 @@ WASD
 ok
 
 ## Hitboxes
-List of collision and effect box for all blocks.
+List of collision box for all blocks.
 ### Simple collision boxes
 |block                                  |widths              |heights    |comment                                                           |
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|
@@ -44,7 +44,6 @@ List of collision and effect box for all blocks.
 |trapdoors                              |1×1                 |0.1825     |orientable on all sides. inversible.                              |
 |redstone repeater & comparator         |1×1                 |0.125      |                                                                  |
 |carpets                                |1×1                 |0.0625     |                                                                  |
-|cobweb & powdered snow                 |0.998×0.998         |0.998      |-0.001 on each side.                                              |
 |chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
 |decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                                       |
 |cake                                   |0.875×0.875         |0.5        |centered.                                                         |
@@ -82,6 +81,7 @@ List of collision and effect box for all blocks.
 #### player collision block
 + normally is 0.6×0.6 horizontally and 1.8 vertically.
 + while shifted is 0.6×0.6 horizontally and 1.49 vertically.
++ while crouched
 
 ## Bedrock differences
 Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
@@ -92,7 +92,7 @@ Features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 + shifting would only goes to 0.025 off edge.
 
 ## Numbers
-I did not look at the codes, I got these by testing.
+I did not look at the code, I got these by testing.
 #### Airborne
 + horizontal drag: 0.91
 + walk acceleration: 0.0196
@@ -106,6 +106,8 @@ I did not look at the codes, I got these by testing.
 + sprint acceleration
 + sprint jump acceleration
 + jump vertical acceleration
+
+## Blocks
 #### Soulsand
 #### Honey block
 #### Slime block
@@ -113,8 +115,15 @@ I did not look at the codes, I got these by testing.
 #### Catch type blocks
 #### Water
 #### Lava
+#### Cobweb
 
-## Potion effects
+## Status effects
+Status that directly effect movement.
+#### Speed
+#### Slowness
+#### Jump boost
+#### Slow falling
+#### Levitation
 
 ## Taps setups
 did not test ingame. I mothballed these, so don't take them as 100%.
