@@ -72,7 +72,25 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |fences                                 |0.25×0.25           |1.5        |centered.                                                         |
 |end rod & lightning rods               |0.25×0.25           |1          |centered.                                                         |
 |chains                                 |0.1875×0.1875       |1          |centered.                                                         |
-//todo
+
+|to-add        |
+|--------------|
+|dripstones    |
+|bamboo        |
+|panes         |
+|123candles    |
+|ALL THE FENCES WALLS PANES VARIENTS😭|
+|stairs        |
+|brewing stand |
+|candled cake  |
+|cake slices   |
+|snow layers   |
+|caudron composter|
+|hopper        |
+|turtle eggs   |
+|shelf         |
+|ladder        |
+|cocoas        |
 
 -----
 ### Composite collision boxes
@@ -123,6 +141,8 @@ I did not look at the code, I got these by testing.//todo
 #### Water
 #### Lava
 #### Cobweb
+#### Powdered Snow
+#### Sweet Berry Bush
 
 ## Status effects
 Status that directly effect movement.//todo
