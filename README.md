@@ -16,11 +16,11 @@ uhmm
 tick system (Basically same as java) //todo
 
 ## Player control
-There are 2 major ways the player can move.
+There are 2 major ways the player can move.//todo
 #### Button controls
-WASD
+WASD button controls. Double tap sprint//todo, Hold space//todo
 #### Joystick controls
-360
+All direction movement controls.//todo, 11 strafe documentation(patched in 1.21.20)//todo
 
 -----
 ### Mouse movement
@@ -50,7 +50,7 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |lilypad                                |0.875×0.875         |0.09375    |centered.                                                         |
 |anvil                                  |0.75×1              |1          |orientable on horizontal.(2 varients)                             |
 |sniffer egg                            |0.75×0.875          |1          |longer side always extend on X axis.                              |
-|grindstone                             |0.75×0.75           |1          |centered.                                                         |
+|grindstone                             |0.75×0.75           |1          |centered. Orientable on all sides.                                |
 |chorus stem                            |0.75×0.75           |0.875      |centered.                                                         |
 |copper golem statues                   |0.625×0.625         |0.875      |centered.                                                         |
 |dried ghast                            |0.625×0.625         |0.625      |centered.                                                         |
@@ -81,10 +81,11 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 ## Movement mechanics
 //todo
 + Y then X then Z collision order
-#### player's collision block 
+#### player's collision block
+note that some inaccuracy can happen due to floating point imprecision.
 + normally is 0.6×0.6 horizontally and 1.8 vertically.
 + while shifted is 0.6×0.6 horizontally and 1.49 vertically.
-+ while crouched
++ while crouched or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
 
 ## Bedrock differences
 Features or missing features exclusive to Bedrock edition of Minecraft that does not appear in Java.
@@ -110,6 +111,7 @@ I did not look at the code, I got these by testing.//todo
 + gravity acceleration:
 #### Flying
 #### Blocking
+#### Damage Boost
 
 ## Block Mechanics
 //todo
