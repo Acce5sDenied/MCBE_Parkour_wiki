@@ -15,6 +15,10 @@ uhmm
 ## Essentials
 tick system (Basically same as java) //todo
 
+## Resources
++ Visit [MCPK wiki](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
++ Visit [ZPK 2](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like mpk.
+
 ## Player control
 There are 2 major ways the player can move.//todo
 #### Button controls
@@ -35,7 +39,7 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |farmland & dirt path                   |1×1                 |0.9375     |                                                                  |
 |lectern                                |1×1                 |0.9        |                                                                  |
 |soulsand & mud                         |1×1                 |0.875      |                                                                  |
-|end portal frame                       |1×1                 |0.8125     |                                                                  |
+|end portal frame                       |1×1                 |0.8125     |adding eye does not change anything.                              |
 |enchanting table                       |1×1                 |0.75       |                                                                  |
 |stonecutter & beds                     |1×1                 |0.5625     |                                                                  |
 |slabs                                  |1×1                 |0.5        |inversible.                                                       |
@@ -91,6 +95,7 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |shelf         |
 |ladder        |
 |cocoas        |
+|dripleaf      |
 
 -----
 ### Composite collision boxes
@@ -115,20 +120,24 @@ Features or missing features exclusive to Bedrock edition of Minecraft that does
 
 ## Numbers
 I did not look at the code, I got these by testing.//todo
+#### Base values
 #### Grounded
 + horizontal drag: 0.546
 + shifted acceleration: 0.0294
 + walk acceleration: 0.098
-+ sprint acceleration
-+ sprint jump acceleration
-+ jump vertical acceleration
++ sprint acceleration:
++ jump vertical acceleration:
 #### Airborne
 + horizontal drag: 0.91
++ shifted accerelation:
 + walk acceleration: 0.0196
 + sprint acceleration:
 + gravity acceleration:
 #### Flying
 #### Blocking
+This includes eating or drinking, charging weapons, using goat horn or spyglass.
+#### Shield Blocking
+different behavior to normal blocking
 #### Damage Boost
 
 ## Block Mechanics
@@ -163,10 +172,10 @@ did not test ingame. I mothballed these, so don't take them as 100%.
 |shifted + blocking        |0.01295154            |
 |sprint + blocking         |0.05612335            |
 
-+ note: blocking includes shielding, eating or drinking, charging weapon and spyglassing.
++ note: blocking is NOT blocking with shield. See numbers section.
 -----
 Air taps are not included as well as jam taps and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in a different air tick or different airtime would not give the same result.
-But don't be fooled. I've invented new a bedrock-friendly way of air tapping—A7 taps. It is tapping on air but on the last tick before hitting ground. This way it would now give the same distance regardless of airtime. Downside is.. it is hard to do and requires a bit of muscle memory to tap on the correct tick.
+But don't be fooled. I've invented new a bedrock-friendly way of air tapping — A7 taps. It is tapping on air but on the last tick before hitting ground. This way it would now give the same distance regardless of airtime. Downside is.. it is hard to do and requires a bit of muscle memory to tap on the correct tick.
 
 again, i mothballed these, so don't take them as 100%
 |tap names                 |distance given        |
