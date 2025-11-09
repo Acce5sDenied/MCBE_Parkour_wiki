@@ -112,11 +112,14 @@ note that some inaccuracy can happen due to floating point imprecision.
 
 ## Bedrock differences
 Features or missing features exclusive to Bedrock edition of Minecraft that does not appear in Java.
-+ strafing don't give the 2% boost (ofc)
-+ no inertia i think
-+ position is stored in floats
-+ no bursting, shift glitch
-+ shifting would only goes to 0.025 off edge.
++ strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
++ no inertia AKA momentum threshold.
++ position is stored in floats.
++ no bursting or shift glitch.
++ shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
++ no air sprint delay. (= java 1.19.4 and +)
++ sprint would cancel after touching a wall BUT only if `velocity > a certain number` this number is yet to be defined through my testing.
++ have joystick controls.
 
 ## Numbers
 I did not look at the code, I got these by testing.//todo
