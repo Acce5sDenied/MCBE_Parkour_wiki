@@ -1,5 +1,5 @@
 # MCBE_Parkour_wiki
-A wiki for documenting minecraft bedrock movement mechanics. As of game version `1.21.12x`
+A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.21.12x`
 
 pre-pre-alpha stage, I don't want the language to be TOO formal.
 
