@@ -12,15 +12,12 @@ uhmm
 + bedrock mechanics
 + more
 
-## Essentials
-tick system (Basically same as java) //todo
-
 ## Resources
 + Visit [MCPK wiki](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
 + Visit [ZPK 2](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK.
 
 ## Player control
-There are 2 major ways the player can move.//todo
+There are 2 major ways the player can move.
 #### Button controls
 WASD button controls. Double tap sprint//todo, Hold space//todo
 #### Joystick controls
@@ -113,17 +110,18 @@ note that some inaccuracy can happen due to floating point imprecision.
 ## Bedrock differences
 Features or missing features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 + strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
-+ no inertia AKA momentum threshold.
++ no presence of inertia AKA momentum threshold.
 + position is stored in floats.
-+ no bursting or shift glitch.
++ no presence of bursting or shift glitch.
 + shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
 + no air sprint delay. (= java 1.19.4 and +)
-+ sprint would cancel after touching a wall BUT only if `velocity > a certain number` this number is yet to be defined through my testing.
-+ have joystick controls.
++ sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` this number is yet to be defined through my testing.
++ sprint is partially determined server-side.
++ have all-direction joystick controls.
 
 ## Numbers
 I did not look at the code, I got these by testing.//todo
-#### Base values
+### Base values
 #### Grounded
 + horizontal drag: 0.546
 + shifted acceleration: 0.0294
@@ -157,7 +155,7 @@ different behavior to normal blocking
 #### Sweet Berry Bush
 
 ## Status effects
-Status that directly effect movement.//todo
+Status effects that directly effect movement.//todo
 #### Speed
 #### Slowness
 #### Jump boost
