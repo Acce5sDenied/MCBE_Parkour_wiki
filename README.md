@@ -27,8 +27,10 @@ All direction movement controls.//todo, 11 strafe documentation(patched in 1.21.
 ### Mouse movement
 //todo
 
-## Hitboxes
+## Blocks
 List of collision box for all blocks. For effect box for blocks like cobweb, please see the blocks section. //havent added anything there
+
+Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox is accurately described by the ingame block selection system, it can also accurately describe the block's collision box. But not for all the blocks. Example: caudron.
 ### Simple collision boxes
 |block                                  |widths              |heights    |comment                                                           |
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|
@@ -69,10 +71,10 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |lanterns(hanging)                      |0.375×0.375         |0.5        |top:.625 bottom:.125                                              |
 |flower pot & 4 candles                 |0.375×0.375         |0.375      |centered.                                                         |
 |fence gate                             |0.25×1              |1.5        |orientable on horizontal.(2 varients)                             |
-|hanging signs                          |0.25×1              |0.125      |only the handle(?) part has collision. orientable.                |
+|hanging signs                          |0.25×1              |0.125      |only the handle(?) part has collision. orientable.(2 varients)    |
 |fences                                 |0.25×0.25           |1.5        |centered.                                                         |
-|end rod & lightning rods               |0.25×0.25           |1          |centered.                                                         |
-|chains                                 |0.1875×0.1875       |1          |centered.                                                         |
+|end rod & lightning rods               |0.25×0.25           |1          |centered. orientable on all sides. inversible.                    |
+|chains                                 |0.1875×0.1875       |1          |centered. orientable on all sides. inversible.                    |
 
 |to-add        |
 |--------------|
@@ -94,9 +96,12 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |cocoas        |
 |dripleaf      |
 
------
+
 ### Composite collision boxes
 //todo
+
+### Other collision boxes
+boat, shulker as mob and block//todo
 
 ## Movement mechanics
 //todo
