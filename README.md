@@ -47,6 +47,9 @@ Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox 
 |trapdoors                              |1×1                 |0.1825     |orientable on all sides. inversible.                              |
 |redstone repeater & comparator         |1×1                 |0.125      |                                                                  |
 |carpets                                |1×1                 |0.0625     |                                                                  |
+|shelves                                |1×0.3125            |1          |orientable. (4 varients)                                          |
+|ladder                                 |1×0.1875            |1          |orientable. (4 varients)                                          |
+|doors                                  |1×0.1825            |1          |orientable. (4 varients) flippable.                               |
 |chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
 |decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                                       |
 |cake                                   |0.875×0.875         |0.5        |centered.                                                         |
@@ -66,6 +69,7 @@ Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox 
 |conduit & heavy core & heads(ground)   |0.5×0.5             |0.5        |centered.                                                         |
 |heads(wall)                            |0.5×0.5             |0.5        |centered. orientable.(4 varients)                                 |
 |small amethyst bud                     |0.5×0.5             |0.1875     |centered. Can be placed on all sides.                             |
+|pane(1-sided)                          |0.5×0.125           |1          |orientable.(4 varients)                                           |
 |thin wall(2 opposite)                  |0.375×1             |1.5        |orientable on horizontal.(2 varients)                             |
 |lanterns(ground)                       |0.375×0.375         |0.5        |centered.                                                         |
 |lanterns(hanging)                      |0.375×0.375         |0.5        |top:.625 bottom:.125                                              |
@@ -75,13 +79,14 @@ Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox 
 |fences                                 |0.25×0.25           |1.5        |centered.                                                         |
 |end rod & lightning rods               |0.25×0.25           |1          |centered. orientable on all sides. inversible.                    |
 |chains                                 |0.1875×0.1875       |1          |centered. orientable on all sides. inversible.                    |
+|panes & bars                           |0.125×0.125         |1          |centered.                                                         |
+|bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |
+|singular candle                        |0.125×0.125         |0.375      |centered.                                                         |
 
 |to-add        |
 |--------------|
 |dripstones    |
-|bamboo        |
-|panes         |
-|123candles    |
+|23candles     |
 |ALL THE FENCES WALLS PANES VARIENTS😭|
 |stairs        |
 |brewing stand |
@@ -91,10 +96,9 @@ Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox 
 |caudron composter|
 |hopper        |
 |turtle eggs   |
-|shelf         |
-|ladder        |
 |cocoas        |
 |dripleaf      |
+|piston arm    |
 
 
 ### Composite collision boxes
