@@ -1,4 +1,7 @@
 # MCBE_Parkour_wiki
+
+![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/MCBEPK_wiki_banner.png)
+
 A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.21.12x`
 
 pre-pre-alpha stage, I don't want the language to be TOO formal.
@@ -127,7 +130,16 @@ Features or missing features exclusive to Bedrock edition of Minecraft that does
 + sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` this number is yet to be defined through my testing.
 + sprint activation/deactivation is partially determined server-side.
 + have all-direction joystick controls.
-+ you have 16 b/t speed cap on all axis.
++ you have 16 b/t speed cap on all axis.(it's the case on +Y but im certain it's for all axis)
+``` js
+//so what i mean is
+if (speed > 16) {
+  position += 16
+}
+else {
+  position += speed
+}
+```
 
 ## Numbers
 I did not look at the code, I got these by testing.//todo
