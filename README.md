@@ -125,8 +125,9 @@ Features or missing features exclusive to Bedrock edition of Minecraft that does
 + shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
 + no air sprint delay. (= java 1.19.4 and +)
 + sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` this number is yet to be defined through my testing.
-+ sprint is partially determined server-side.
++ sprint activation/deactivation is partially determined server-side.
 + have all-direction joystick controls.
++ you have 16 b/t speed cap on all axis.
 
 ## Numbers
 I did not look at the code, I got these by testing.//todo
