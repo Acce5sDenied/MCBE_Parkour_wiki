@@ -131,6 +131,9 @@ Features or missing features exclusive to Bedrock edition of Minecraft that does
 ## Numbers
 I did not look at the code, I got these by testing.//todo
 ### Base values
+the formulas should be the same as java's
++ ground slipperiness: 0.6
++ airborne slipperiness: 0.0
 #### Grounded
 + horizontal drag: 0.546
 + shifted acceleration: 0.0294
@@ -148,7 +151,6 @@ I did not look at the code, I got these by testing.//todo
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
 #### Shield Blocking
 different behavior to normal blocking
-#### Damage Boost
 
 ## Block Mechanics
 //todo
@@ -156,12 +158,14 @@ different behavior to normal blocking
 #### Honey block
 #### Slime block
 #### Ices
-#### Catch type blocks
+#### Catch/Climb type blocks
 #### Water
 #### Lava
 #### Cobweb
 #### Powdered Snow
 #### Sweet Berry Bush
+#### Scaffolding
+different behavior to normal climb blocks
 
 ## Status effects
 Status effects that directly effect movement.//todo
