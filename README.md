@@ -145,22 +145,28 @@ else {
 I did not look at the code, I got these by testing.//todo
 ### Base values
 the formulas should be the same as java's
++ shifted acceleration: 0.0294
++ walk acceleration: 0.098
++ sprint acceleration: 0.1274
++ sprint jump acceleration towards facing: ?
 + ground slipperiness: 0.6
 + airborne slipperiness: 0.0
-+ jump vertical acceleration:
-+ gravity acceleration: 
++ motion conserved to next tick: 0.91
++ jump vertical acceleration: 0.42
++ vertical drag: 0.98
++ gravity acceleration: 0.08
 ### Pre-calculated values
 #### Grounded
 + horizontal drag: 0.546
 + shifted acceleration: 0.0294
 + walk acceleration: 0.098
-+ sprint acceleration:
++ sprint acceleration: 0.1274
 #### Airborne
 0.2x acceleration
 + horizontal drag: 0.91
-+ shifted accerelation:
++ shifted accerelation: 0.00588
 + walk acceleration: 0.0196
-+ sprint acceleration:
++ sprint acceleration: 0.02548
 #### Flying
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
