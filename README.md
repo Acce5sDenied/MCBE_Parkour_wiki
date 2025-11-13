@@ -30,8 +30,8 @@ All direction movement controls.//todo, 11 strafe documentation(patched in 1.21.
 ### Mouse movement
 //todo
 
-## Blocks
-List of collision box for all blocks. For effect box for blocks like cobweb, please see the blocks section. //havent added anything there
+## Collision Boxes
+List of collision box for all blocks. For effect box for blocks like cobweb, please see the block mechanics section. //havent added anything there
 
 Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox is accurately described by the ingame block selection system, it can also accurately describe the block's collision box. But not for all the blocks. Example: caudron.
 ### Simple collision boxes
@@ -130,7 +130,7 @@ Features or missing features exclusive to Bedrock edition of Minecraft that does
 + sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` this number is yet to be defined through my testing.
 + sprint activation/deactivation is partially determined server-side.
 + have all-direction joystick controls.
-+ you have 16 b/t speed cap on all axis.(it's the case on +Y but im certain it's for all axis)
++ you have 16 b/t speed cap on all axis.(it's the case on +Y but im 95% certain it's for all axis)
 ``` js
 //so what i mean is
 if (speed > 16) {
@@ -147,18 +147,20 @@ I did not look at the code, I got these by testing.//todo
 the formulas should be the same as java's
 + ground slipperiness: 0.6
 + airborne slipperiness: 0.0
++ jump vertical acceleration:
++ gravity acceleration: 
+### Pre-calculated values
 #### Grounded
 + horizontal drag: 0.546
 + shifted acceleration: 0.0294
 + walk acceleration: 0.098
 + sprint acceleration:
-+ jump vertical acceleration:
 #### Airborne
+0.2x acceleration
 + horizontal drag: 0.91
 + shifted accerelation:
 + walk acceleration: 0.0196
 + sprint acceleration:
-+ gravity acceleration:
 #### Flying
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
