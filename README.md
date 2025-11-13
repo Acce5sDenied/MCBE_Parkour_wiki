@@ -16,8 +16,8 @@ uhmm
 + more
 
 ## Resources
-+ Visit [MCPK wiki](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
-+ Visit [ZPK 2](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK.
++ Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
++ Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK.
 
 ## Player control
 There are 2 major ways the player can move.
@@ -113,11 +113,17 @@ boat, shulker as mob and block//todo
 ## Movement mechanics
 //todo
 + Y then X then Z collision order
++ stepping stuff
 #### player's collision block
 note that some inaccuracy can happen due to floating point imprecision.
 + normally is 0.6×0.6 horizontally and 1.8 vertically.
 + while shifted is 0.6×0.6 horizontally and 1.49 vertically.
 + while crouched or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
+
+## Glitches
++ Player never stopping in place, coords flickering.(i'll add vid soon dw)
++ More flickering stuff.
++ Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats)
 
 ## Bedrock differences
 Features or missing features exclusive to Bedrock edition of Minecraft that does not appear in Java.
@@ -145,42 +151,42 @@ else {
 I did not look at the code, I got these by testing.//todo
 ### Base values
 the formulas should be the same as java's
-+ shifted acceleration: 0.294
-+ walk acceleration: 0.98
-+ sprint acceleration: 1.274
-+ sprint jump acceleration towards facing: 0.2?
-+ ground slipperiness: 0.6
-+ airborne slipperiness: 0.0
-+ motion conserved to next tick: 0.91
-+ jump vertical acceleration: 0.42
-+ vertical drag: 0.98
-+ gravity acceleration: 0.08
++ shifted acceleration: `0.294`
++ walk acceleration: `0.98`
++ sprint acceleration: `1.274`
++ sprint jump acceleration towards facing: `0.2`?
++ ground slipperiness: `0.6`
++ airborne slipperiness: `0.0`
++ motion conserved to next tick: `0.91`
++ jump vertical acceleration: `0.42`
++ vertical drag: `0.98`
++ gravity acceleration: `0.08`
 ### Pre-calculated values
 #### Grounded
-0.1x acceleration.
-+ horizontal drag: 0.546
-+ shifted acceleration: 0.0294
-+ walk acceleration: 0.098
-+ sprint acceleration: 0.1274
+`0.1x` acceleration.
++ horizontal drag: `0.546`
++ shifted acceleration: `0.0294`
++ walk acceleration: `0.098`
++ sprint acceleration: `0.1274`
 #### Airborne
-0.02x acceleration.
-+ horizontal drag: 0.91
-+ shifted accerelation: 0.00588
-+ walk acceleration: 0.0196
-+ sprint acceleration: 0.02548
+`0.02x` acceleration.
++ horizontal drag: `0.91`
++ shifted accerelation: `0.00588`
++ walk acceleration: `0.0196`
++ sprint acceleration: `0.02548`
 #### Flying
-0.05x acceleration.//todo
-+ horizontal drag while accelerating: 0.91
+`0.05x` acceleration.//todo
++ horizontal drag while accelerating: `0.91`
 + horizontal drag while not accelerating: ?
-+ shifted accerelation: [incompatible]
-+ walk acceleration: 0.049
-+ sprint acceleration: 
++ shifted accerelation: `[incompatible]`
++ walk acceleration: `0.049`
++ sprint acceleration: ?
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
-81+(2/3) less acceleration or ~0.0122449x acceleration.
-+ shifted accerelation: 0.0036
-+ walk acceleration: 0.012
-+ sprint acceleration: 0.0156
+`81+(2/3)` less acceleration or `~0.0122449x` acceleration.
++ shifted accerelation: `0.0036`
++ walk acceleration: `0.012`
++ sprint acceleration: `0.0156`
 #### Shield Blocking
 Different behavior to normal blocking, No effect on movement
 
