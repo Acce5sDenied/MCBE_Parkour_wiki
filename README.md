@@ -123,14 +123,14 @@ note that some inaccuracy can happen due to floating point imprecision.
 Features or missing features exclusive to Bedrock edition of Minecraft that does not appear in Java.
 + strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
 + no presence of inertia AKA momentum threshold.
-+ position is stored in floats.
++ position is stored in floats. This explains many goofy glitches on bedrock.
 + no presence of bursting or shift glitch.
 + shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
 + no air sprint delay. (= java 1.19.4 and +)
 + sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` this number is yet to be defined through my testing.
-+ sprint activation/deactivation is partially determined server-side.
++ sprint deactivation is partially determined server-side.
 + have all-direction joystick controls.
-+ you have 16 b/t speed cap on all axis.(it's the case on +Y but im 95% certain it's for all axis)
++ you have 16 b/t speed cap on all axis.(i did use a tnt cannon to test)
 ``` js
 //so what i mean is
 if (speed > 16) {
@@ -145,10 +145,10 @@ else {
 I did not look at the code, I got these by testing.//todo
 ### Base values
 the formulas should be the same as java's
-+ shifted acceleration: 0.0294
-+ walk acceleration: 0.098
-+ sprint acceleration: 0.1274
-+ sprint jump acceleration towards facing: ?
++ shifted acceleration: 0.294
++ walk acceleration: 0.98
++ sprint acceleration: 1.274
++ sprint jump acceleration towards facing: 0.2?
 + ground slipperiness: 0.6
 + airborne slipperiness: 0.0
 + motion conserved to next tick: 0.91
@@ -157,21 +157,32 @@ the formulas should be the same as java's
 + gravity acceleration: 0.08
 ### Pre-calculated values
 #### Grounded
+0.1x acceleration.
 + horizontal drag: 0.546
 + shifted acceleration: 0.0294
 + walk acceleration: 0.098
 + sprint acceleration: 0.1274
 #### Airborne
-0.2x acceleration
+0.02x acceleration.
 + horizontal drag: 0.91
 + shifted accerelation: 0.00588
 + walk acceleration: 0.0196
 + sprint acceleration: 0.02548
 #### Flying
+0.05x acceleration.//todo
++ horizontal drag while accelerating: 0.91
++ horizontal drag while not accelerating: ?
++ shifted accerelation: [incompatible]
++ walk acceleration: 0.049
++ sprint acceleration: 
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
+81+(2/3) less acceleration or ~0.0122449x acceleration.
++ shifted accerelation: 0.0036
++ walk acceleration: 0.012
++ sprint acceleration: 0.0156
 #### Shield Blocking
-different behavior to normal blocking
+Different behavior to normal blocking, No effect on movement
 
 ## Block Mechanics
 //todo
@@ -195,6 +206,7 @@ Status effects that directly effect movement.//todo
 #### Jump boost
 #### Slow falling
 #### Levitation
+### Swift Sneak Enchant
 
 ## Taps setups
 did not test ingame. I mothballed these, so don't take them as 100%.
@@ -203,9 +215,9 @@ did not test ingame. I mothballed these, so don't take them as 100%.
 |walk                      |0.21585904            |
 |shifted                   |0.06475772            |
 |sprint                    |0.28061674            |
-|walk + blocking           |0.04317181            |
-|shifted + blocking        |0.01295154            |
-|sprint + blocking         |0.05612335            |
+|walk + blocking           |            |
+|shifted + blocking        |            |
+|sprint + blocking         |            |
 
 + note: blocking is NOT blocking with shield. See numbers section.
 -----
@@ -219,9 +231,9 @@ again, i mothballed these, so don't take them as 100%
 |A7 walk                   |0.05888635            |
 |A7 shifted                |0.01766591            |
 |A7 sprint                 |0.07655225            |
-|A7 walk + blocking        |0.01177727            |
-|A7 shifted + blocking     |0.00353318            |
-|A7 sprint + blocking      |0.01531045            |
+|A7 walk + blocking        |            |
+|A7 shifted + blocking     |            |
+|A7 sprint + blocking      |            |
 
 
 
