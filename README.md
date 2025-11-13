@@ -1,6 +1,6 @@
 # MCBE_Parkour_wiki
 
-![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/MCBEPK_wiki_banner.png)
+![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/Images/MCBEPK_wiki_banner.png)
 
 A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.21.12x`
 
