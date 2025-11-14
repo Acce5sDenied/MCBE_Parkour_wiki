@@ -4,7 +4,7 @@
 
 A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.21.12x`
 
-pre-pre-alpha stage, I don't want the language to be TOO formal.
+Pre-pre-alpha stage, I don't want the language to be TOO formal.
 
 uhmm
 
@@ -33,58 +33,58 @@ All direction movement controls.//todo, 11 strafe documentation(patched in 1.21.
 ## Collision Boxes
 List of collision box for all blocks. For effect box for blocks like cobweb, please see the block mechanics section. //havent added anything there
 
-Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox is accurately described by the ingame block selection system, it can also accurately describe the block's collision box. But not for all the blocks. Example: caudron.
+Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox is accurately described by the ingame block selection system, it can also accurately describe the block's collision box. But not for all the blocks. For example: caudron.
 ### Simple collision boxes
-|block                                  |widths              |heights    |comment                                                           |
+|Blocks                                 |Widths              |Heights    |Comments                                                          |
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|
-|full blocks                            |1×1                 |1          |                                                                  |
-|farmland & dirt path                   |1×1                 |0.9375     |                                                                  |
-|lectern                                |1×1                 |0.9        |                                                                  |
-|soulsand & mud                         |1×1                 |0.875      |                                                                  |
-|end portal frame                       |1×1                 |0.8125     |adding eye does not change anything.                              |
-|enchanting table                       |1×1                 |0.75       |                                                                  |
-|stonecutter & beds                     |1×1                 |0.5625     |                                                                  |
-|slabs                                  |1×1                 |0.5        |inversible.                                                       |
-|campfires                              |1×1                 |0.4375     |                                                                  |
-|daylight detector                      |1×1                 |0.375      |                                                                  |
-|trapdoors                              |1×1                 |0.1825     |orientable on all sides. inversible.                              |
-|redstone repeater & comparator         |1×1                 |0.125      |                                                                  |
-|carpets                                |1×1                 |0.0625     |                                                                  |
-|shelves                                |1×0.3125            |1          |orientable. (4 varients)                                          |
-|ladder                                 |1×0.1875            |1          |orientable. (4 varients)                                          |
-|doors                                  |1×0.1825            |1          |orientable. (4 varients) flippable.                               |
-|chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
-|decorated pot & cactus & honey block   |0.875×0.875         |1          |like egg on java, centered.                                       |
-|cake                                   |0.875×0.875         |0.5        |centered.                                                         |
-|lilypad                                |0.875×0.875         |0.09375    |centered.                                                         |
-|anvil                                  |0.75×1              |1          |orientable on horizontal.(2 varients)                             |
-|sniffer egg                            |0.75×0.875          |1          |longer side always extend on X axis.                              |
-|grindstone                             |0.75×0.75           |1          |centered. Orientable on all sides.                                |
-|chorus stem                            |0.75×0.75           |0.875      |centered.                                                         |
-|copper golem statues                   |0.625×0.625         |0.875      |centered.                                                         |
-|dried ghast                            |0.625×0.625         |0.625      |centered.                                                         |
-|amethyst cluster                       |0.625×0.625         |0.4375     |centered. Can be placed on all sides.                             |
-|large amethyst bud                     |0.625×0.625         |0.3125     |centered. Can be placed on all sides.                             |
-|medium amethyst bud                    |0.625×0.625         |0.25       |centered. Can be placed on all sides.                             |
-|bell(ground)                           |0.5×1               |0.8125     |orientable on horizontal.(2 varients)                             |
-|walls                                  |0.5×0.5             |1.5        |centered.                                                         |
-|big cocoa                              |0.5×0.5             |0.5625     |orientable.(4 varients) 1px away from wall. top:.75 bottom:.1875  |
-|conduit & heavy core & heads(ground)   |0.5×0.5             |0.5        |centered.                                                         |
-|heads(wall)                            |0.5×0.5             |0.5        |centered. orientable.(4 varients)                                 |
-|small amethyst bud                     |0.5×0.5             |0.1875     |centered. Can be placed on all sides.                             |
-|pane(1-sided)                          |0.5×0.125           |1          |orientable.(4 varients)                                           |
-|thin wall(2 opposite)                  |0.375×1             |1.5        |orientable on horizontal.(2 varients)                             |
-|lanterns(ground)                       |0.375×0.375         |0.5        |centered.                                                         |
-|lanterns(hanging)                      |0.375×0.375         |0.5        |top:.625 bottom:.125                                              |
-|flower pot & 4 candles                 |0.375×0.375         |0.375      |centered.                                                         |
-|fence gate                             |0.25×1              |1.5        |orientable on horizontal.(2 varients)                             |
-|hanging signs                          |0.25×1              |0.125      |only the handle(?) part has collision. orientable.(2 varients)    |
-|fences                                 |0.25×0.25           |1.5        |centered.                                                         |
-|end rod & lightning rods               |0.25×0.25           |1          |centered. orientable on all sides. inversible.                    |
-|chains                                 |0.1875×0.1875       |1          |centered. orientable on all sides. inversible.                    |
-|panes & bars                           |0.125×0.125         |1          |centered.                                                         |
-|bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |
-|singular candle                        |0.125×0.125         |0.375      |centered.                                                         |
+|Full Blocks                            |1×1                 |1          |                                                                  |
+|Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |
+|Lectern                                |1×1                 |0.9        |                                                                  |
+|Soulsand & Mud                         |1×1                 |0.875      |                                                                  |
+|End Portal Frame                       |1×1                 |0.8125     |Adding eye does not change anything.                              |
+|Enchanting Table                       |1×1                 |0.75       |                                                                  |
+|Stonecutter & Beds                     |1×1                 |0.5625     |                                                                  |
+|Slabs                                  |1×1                 |0.5        |Inversible.                                                       |
+|Campfires                              |1×1                 |0.4375     |                                                                  |
+|Daylight Detector                      |1×1                 |0.375      |                                                                  |
+|Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |
+|Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |
+|Carpets                                |1×1                 |0.0625     |                                                                  |
+|Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |
+|Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |
+|Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |
+|Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
+|Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |
+|Cake                                   |0.875×0.875         |0.5        |Centered.                                                         |
+|Lilypad                                |0.875×0.875         |0.09375    |Centered.                                                         |
+|Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |
+|Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis.                              |
+|Grindstone                             |0.75×0.75           |1          |Centered. Orientable on all sides.                                |
+|Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |
+|Copper Golem Statues                   |0.625×0.625         |0.875      |Centered.                                                         |
+|Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |
+|Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |
+|Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |
+|Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |
+|Bell(ground)                           |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |
+|Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |
+|Big Cocoa Bean                         |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |
+|Conduit & Heavy Core & Heads(ground)   |0.5×0.5             |0.5        |Centered.                                                         |
+|Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |
+|Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |
+|Pane(1-sided)                          |0.5×0.125           |1          |Orientable.(4 varients)                                           |
+|Thin wall(2-sided)                     |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |
+|Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |
+|Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |
+|Flower Pot & 4 Candles                 |0.375×0.375         |0.375      |Centered.                                                         |
+|Fence Gate                             |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |
+|Hanging Signs                          |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |
+|Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |
+|End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |
+|Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |
+|Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |
+|Bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |
+|Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |
 
 |to-add        |
 |--------------|
@@ -113,12 +113,12 @@ boat, shulker as mob and block//todo
 ## Movement mechanics
 //todo
 + Y then X then Z collision order
-+ stepping stuff
++ Stepping stuff
 #### player's collision block
-note that some inaccuracy can happen due to floating point imprecision.
-+ normally is 0.6×0.6 horizontally and 1.8 vertically.
-+ while shifted is 0.6×0.6 horizontally and 1.49 vertically.
-+ while crouched or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
+Note that some inaccuracy can happen due to floating point imprecision.
++ Normally is 0.6×0.6 horizontally and 1.8 vertically.
++ While crouched is 0.6×0.6 horizontally and 1.49 vertically.
++ While crawling or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
 
 ## Glitches
 + Player never stopping in place, coords flickering.(i'll add vid soon dw)
@@ -126,17 +126,16 @@ note that some inaccuracy can happen due to floating point imprecision.
 + Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats)
 
 ## Bedrock differences
-Features or missing features exclusive to Bedrock edition of Minecraft that does not appear in Java.
-+ strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
-+ no presence of inertia AKA momentum threshold.
-+ position is stored in floats. This explains many goofy glitches on bedrock.
-+ no presence of bursting or shift glitch.
-+ shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
-+ no air sprint delay. (= java 1.19.4 and +)
-+ sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` this number is yet to be defined through my testing.
-+ sprint deactivation is partially determined server-side.
-+ have all-direction joystick controls.
-+ you have 16 b/t speed cap on all axis.(i did use a tnt cannon to test)
++ Strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
++ No presence of inertia AKA momentum threshold.
++ Position is stored in floats. This explains many goofy glitches on bedrock.
++ No presence of bursting or shift glitch.
++ Shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
++ No air sprint delay. (= java 1.19.4 and +)
++ Sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` This number is yet to be defined through my testing.
++ Sprint deactivation is partially determined server-side.
++ Have all-direction joystick controls.
++ You have 16 b/t speed cap on all axis.(Yes, I did use a tnt cannon to test)
 ``` js
 //so what i mean is
 if (speed > 16) {
@@ -215,7 +214,7 @@ Status effects that directly effect movement.//todo
 ### Swift Sneak Enchant
 
 ## Taps setups
-did not test ingame. I mothballed these, so don't take them as 100%.
+Did not test ingame. I mothballed these, so don't take them as 100%.
 |tap names                 |distance given        |
 |--------------------------|----------------------|
 |walk                      |0.21585904            |
@@ -225,13 +224,13 @@ did not test ingame. I mothballed these, so don't take them as 100%.
 |shifted + blocking        |            |
 |sprint + blocking         |            |
 
-+ note: blocking is NOT blocking with shield. See numbers section.
++ Note: blocking is NOT blocking with shield. See numbers section.
 -----
 Air taps are not included as well as jam taps and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in a different air tick or different airtime would not give the same result.
 
 But don't be fooled. I've invented new a bedrock-friendly way of air tapping — A7 taps. It is tapping on air but on the last tick before hitting ground. This way it would now give the same distance regardless of airtime. Downside is.. it is hard to do and requires a bit of muscle memory to tap on the correct tick.
 
-again, i mothballed these, so don't take them as 100%
+Again, I mothballed these, so don't take them as 100%
 |tap names                 |distance given        |
 |--------------------------|----------------------|
 |A7 walk                   |0.05888635            |
