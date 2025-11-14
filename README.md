@@ -220,9 +220,9 @@ Did not test ingame. I mothballed these, so don't take them as 100%.
 |walk                      |0.21585904            |
 |shifted                   |0.06475772            |
 |sprint                    |0.28061674            |
-|walk + blocking           |            |
-|shifted + blocking        |            |
-|sprint + blocking         |            |
+|walk + blocking           |0.04317181            |
+|shifted + blocking        |0.01295154            |
+|sprint + blocking         |0.05612335            |
 
 + Note: blocking is NOT blocking with shield. See numbers section.
 -----
@@ -236,9 +236,9 @@ Again, I mothballed these, so don't take them as 100%
 |A7 walk                   |0.05888635            |
 |A7 shifted                |0.01766591            |
 |A7 sprint                 |0.07655225            |
-|A7 walk + blocking        |            |
-|A7 shifted + blocking     |            |
-|A7 sprint + blocking      |            |
+|A7 walk + blocking        |0.01177727            |
+|A7 shifted + blocking     |0.00353318            |
+|A7 sprint + blocking      |0.01531045            |
 
 
 
