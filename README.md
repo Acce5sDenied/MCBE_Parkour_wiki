@@ -121,9 +121,11 @@ Note that some inaccuracy can happen due to floating point imprecision.
 + While crawling or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
 
 ## Glitches
++ Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats)
+### Non-Advantagious Glitches
 + Player never stopping in place, coords flickering.(i'll add vid soon dw)
 + More flickering stuff.
-+ Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats)
++ Mega rubberbanding.
 
 ## Bedrock differences
 + Strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
