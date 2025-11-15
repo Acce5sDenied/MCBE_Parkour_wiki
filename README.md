@@ -137,7 +137,7 @@ Note that some inaccuracy can happen due to floating point imprecision.
 + Sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` This number is yet to be defined through my testing.
 + Sprint deactivation is partially determined server-side.
 + Have all-direction joystick controls.
-+ You have 16 b/t speed cap on all axis combined.(Yes, I did use a tnt cannon to test)
++ You have 16 b/t absolute speed cap.(Yes, I did use a tnt cannon to test)
 
 ## Numbers
 I did not look at the code, I got these by testing.//todo
