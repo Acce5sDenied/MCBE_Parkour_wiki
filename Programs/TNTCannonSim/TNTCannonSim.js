@@ -1,3 +1,6 @@
+/*
+Program for finding total distance traveled with a variable initial velocity.
+*/
 let airtime, dist = [], pos, vel;
 for (let i = 0; i <= 1000; i++) {
   pos = { x:0, y:0, z:0 };
