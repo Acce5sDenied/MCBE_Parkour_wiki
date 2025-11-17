@@ -1,12 +1,13 @@
 /*
 Program for finding total distance traveled with a variable initial velocity.
 */
+
 let airtime, dist = [], pos, vel;
-for (let i = 0; i <= 1000; i++) {
+for (let init = 0; init <= 1000; init++) {
   pos = { x:0, y:0, z:0 };
-  vel = { x:i, y:0, z:0 };
+  vel = { x:init, y:0, z:0 };
   airtime = 0;
-  while (vel.x > 0.0001) {
+  while (vel.x + vel.z > 0.0001) {
     airtime += 1;
     absvel = Math.sqrt(vel.y ** 2 + Math.sqrt(vel.x ** 2 + vel.z ** 2) ** 2);
     if (absvel > 16) {
@@ -24,7 +25,7 @@ for (let i = 0; i <= 1000; i++) {
     vel.y *= 0.98;
     vel.z *= 0.91;
   }
-  //console.log("InitVel:", i, "\nDist:", pos.x, "\nTicks:", airtime);
-  dist.push({ ticks:airtime, x:pos.x });
+  //console.log("InitVel:", init, "\nDist:", pos.x, "\nTicks:", airtime);
+  dist.push({ ticks:airtime, x:pos.x, y:pos.y, z:pos.z });
 }
 console.table(dist);
