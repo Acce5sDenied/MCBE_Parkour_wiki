@@ -112,8 +112,9 @@ boat, shulker as mob and block//todo
 
 ## Movement mechanics
 //todo
-+ Y then X then Z collision order
-+ Stepping stuff
++ Y -> X -> Z collision order
++ Stepping stuff, same as Java?
++ 16 b/t absolute speed cap(pythagoras of 3 axes) if over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 #### player's collision block
 Note that some inaccuracy can happen due to floating point imprecision.
 + Normally is 0.6×0.6 horizontally and 1.8 vertically.
