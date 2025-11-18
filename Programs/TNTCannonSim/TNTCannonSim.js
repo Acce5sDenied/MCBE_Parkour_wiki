@@ -1,8 +1,8 @@
 /*
-Program for finding total distance traveled with a variable initial velocity.
+Simulation for finding total distance traveled with a variable initial velocity.
 */
 
-let airtime, dist = [], pos, vel;
+let airtime, dist = [], pos, vel, absvel;
 for (let init = 0; init <= 1000; init++) {
   pos = { x:0, y:0, z:0 };
   vel = { x:init, y:0, z:0 };
@@ -25,7 +25,6 @@ for (let init = 0; init <= 1000; init++) {
     vel.y *= 0.98;
     vel.z *= 0.91;
   }
-  //console.log("InitVel:", init, "\nDist:", pos.x, "\nTicks:", airtime);
-  dist.push({ ticks:airtime, x:pos.x, y:pos.y, z:pos.z });
+  dist.push({ Init:init, x:pos.x, y:pos.y, z:pos.z, ticks:airtime });
 }
 console.table(dist);
