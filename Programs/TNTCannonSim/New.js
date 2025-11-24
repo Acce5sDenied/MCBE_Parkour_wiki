@@ -4,7 +4,7 @@ Data ranges from 1 to 2^31.
 */
 
 let dist = [], pos, vel, absvel, init = 0;
-while (init < 2 ** 15) {
+while (init < 2 ** 31) {
   if (init < 16) {
     init++;
   } else {
