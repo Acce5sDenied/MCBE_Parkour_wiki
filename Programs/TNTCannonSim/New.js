@@ -4,15 +4,24 @@ Data ranges from 1 to 2^31.
 */
 
 let dist = [], pos, vel, absvel, init = 0;
-while (init < 2 ** 31) {
+while (init < 2 ** 15) {
   if (init < 16) {
     init++;
   } else {
     init += 0.015625 * 2 ** Math.floor(Math.log2(init));
   }
+  calc(init);
+  dist.push({ init:init, x:pos.x });
+}
+console.table(dist);
+
+function calc(init) {
+  if (!isFinite(init)) {
+    return 'failed';
+  }
   pos = { x:0, y:0, z:0 };
   vel = { x:init, y:0, z:0 };
-  while (vel.x + vel.z > 0.0001) {
+  while (vel.x + vel.z > 0.000001) {
     absvel = Math.sqrt(vel.y ** 2 + Math.sqrt(vel.x ** 2 + vel.z ** 2) ** 2);
     if (absvel > 16) {
       pos.x += (vel.x / absvel * 16);
@@ -29,6 +38,5 @@ while (init < 2 ** 31) {
     vel.y *= 0.98;
     vel.z *= 0.91;
   }
-  dist.push({ init:init, x:pos.x });
+  return pos.x;
 }
-console.table(dist);
