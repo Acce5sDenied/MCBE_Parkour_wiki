@@ -41,54 +41,54 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 ### Simple collision boxes
 |Blocks                                 |Widths              |Heights    |Comments                                                          |Selection box accurate//todo|
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|----------------------|
-|Full Blocks                            |1×1                 |1          |                                                                  |
-|Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |
-|Lectern                                |1×1                 |0.9        |                                                                  |
-|Soulsand & Mud                         |1×1                 |0.875      |                                                                  |
-|End Portal Frame                       |1×1                 |0.8125     |Adding eye does not change anything.                              |
-|Enchanting Table                       |1×1                 |0.75       |                                                                  |
-|Stonecutter & Beds                     |1×1                 |0.5625     |                                                                  |
-|Slabs                                  |1×1                 |0.5        |Inversible.                                                       |
-|Campfires                              |1×1                 |0.4375     |                                                                  |
-|Daylight Detector                      |1×1                 |0.375      |                                                                  |
-|Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |
-|Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |
-|Carpets                                |1×1                 |0.0625     |                                                                  |
-|Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |
-|Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |
-|Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |
-|Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |
-|Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |
-|Cake                                   |0.875×0.875         |0.5        |Centered.                                                         |
-|Lilypad                                |0.875×0.875         |0.09375    |Centered.                                                         |
-|Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |
-|Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis.                              |
-|Grindstone                             |0.75×0.75           |1          |Centered. Orientable on all sides.                                |
-|Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |
-|Copper Golem Statues                   |0.625×0.625         |0.875      |Centered.                                                         |
-|Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |
-|Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |
-|Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |
-|Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |
-|Bell(ground)                           |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |
-|Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |
-|Big Cocoa Bean                         |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |
-|Conduit & Heavy Core & Heads(ground)   |0.5×0.5             |0.5        |Centered.                                                         |
-|Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |
-|Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |
-|Pane(1-sided)                          |0.5×0.125           |1          |Orientable.(4 varients)                                           |
-|Thin wall(2-sided)                     |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |
-|Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |
-|Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |
-|Flower Pot & 4 Candles                 |0.375×0.375         |0.375      |Centered.                                                         |
-|Fence Gate                             |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |
-|Hanging Signs                          |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |
-|Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |
-|End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |
-|Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |
-|Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |
-|Bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |
-|Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |
+|Full Blocks                            |1×1                 |1          |                                                                  |Yes
+|Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |Yes
+|Lectern                                |1×1                 |0.9        |                                                                  |Yes
+|Soulsand & Mud                         |1×1                 |0.875      |                                                                  |No
+|End Portal Frame                       |1×1                 |0.8125     |Adding eye does not change anything.                              |Yes
+|Enchanting Table                       |1×1                 |0.75       |                                                                  |Yes
+|Stonecutter & Beds                     |1×1                 |0.5625     |                                                                  |Yes
+|Slabs                                  |1×1                 |0.5        |Inversible.                                                       |Yes
+|Campfires                              |1×1                 |0.4375     |                                                                  |Yes
+|Daylight Detector                      |1×1                 |0.375      |                                                                  |Yes
+|Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |Yes
+|Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |Yes
+|Carpets                                |1×1                 |0.0625     |                                                                  |Yes
+|Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
+|Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
+|Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
+|Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |Yes
+|Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |Yes
+|Cake                                   |0.875×0.875         |0.5        |Centered.                                                         |Yes
+|Lilypad                                |0.875×0.875         |0.09375    |Centered.                                                         |Yes
+|Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |Yes
+|Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis.                              |Yes
+|Grindstone                             |0.75×0.75           |1          |Centered. Orientable on all sides.                                |Yes
+|Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
+|Copper Golem Statues                   |0.625×0.625         |0.875      |Centered.                                                         |Yes
+|Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
+|Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
+|Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |Yes
+|Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |Yes
+|Bell(ground)                           |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
+|Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |No
+|Big Cocoa Bean                         |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
+|Conduit & Heavy Core & Heads(ground)   |0.5×0.5             |0.5        |Centered.                                                         |Yes
+|Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |Yes
+|Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
+|Pane(1-sided)                          |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
+|Thin wall(2-sided)                     |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |No
+|Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
+|Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |Yes
+|Flower Pot & 4 Candles                 |0.375×0.375         |0.375      |Centered.                                                         |idk
+|Fence Gate                             |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes
+|Hanging Signs                          |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |No
+|Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |No
+|End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |Yes
+|Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
+|Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
+|Bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |Yes
+|Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |Yes
 
 |to-add        |
 |--------------|
