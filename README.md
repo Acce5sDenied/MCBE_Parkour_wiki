@@ -28,15 +28,19 @@ All direction movement controls.//todo, 11 strafe documentation(patched in 1.21.
 
 -----
 ### Mouse movement
-//todo
+pitch is locked in range [`-89.9` to `89.9`] //todo
 
-## Collision Boxes
+## Block Collisions
 List of collision box for all blocks. For effect box for blocks like cobweb, please see the block mechanics section. //havent added anything there
 
-Not to be confused with **hitboxes**. This is **collision boxes**. While hitbox is accurately described by the ingame block selection system, it can also accurately describe the block's collision box. But not for all the blocks. For example: caudron.
+#### Clarification
++ **Model** is a how a block looks. It is purely visual.
++ **Hitbox** is an interaction volume of a block.
++ **Selection box** shows up when you hover over a block. This can describe the collision box of some blocks. (it is in selection box accurate column)
++ Finally, **Collision box** is a solid volume of space that is not meant to pass through.
 ### Simple collision boxes
-|Blocks                                 |Widths              |Heights    |Comments                                                          |
-|---------------------------------------|--------------------|-----------|------------------------------------------------------------------|
+|Blocks                                 |Widths              |Heights    |Comments                                                          |Selection box accurate//todo|
+|---------------------------------------|--------------------|-----------|------------------------------------------------------------------|----------------------|
 |Full Blocks                            |1×1                 |1          |                                                                  |
 |Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |
 |Lectern                                |1×1                 |0.9        |                                                                  |
@@ -115,7 +119,7 @@ boat, shulker as mob and block//todo
 + Y -> X -> Z collision order
 + Stepping stuff, same as Java?
 + 16 b/t absolute speed cap(pythagoras of 3 axes) if over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
-#### player's collision block
+#### player's collision box
 Note that some inaccuracy can happen due to floating point imprecision.
 + Normally is 0.6×0.6 horizontally and 1.8 vertically.
 + While crouched is 0.6×0.6 horizontally and 1.49 vertically.
@@ -127,6 +131,7 @@ Note that some inaccuracy can happen due to floating point imprecision.
 + Player never stopping in place, coords flickering.(i'll add vid soon dw)
 + More flickering stuff.
 + Mega rubberbanding.
++ Server-Client player collision box desync
 
 ## Bedrock differences
 + Strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
