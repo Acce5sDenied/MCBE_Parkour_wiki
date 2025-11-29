@@ -198,8 +198,17 @@ Different behavior to normal blocking, No effect on movement
 #### Water
 #### Lava
 #### Cobweb
+Effect box: 0.998×0.998×0.998 (0.001 retracted on each side.)
+Entity will receive effect when their collision box intersects this region.
+Effect on movement: Horizontal acceleration is divided by `4` and is reset on every tick. Vertical acceleration is divided by `20` and is reset on every tick.
 #### Powdered Snow
+Effect box: 0.998×0.998×0.998 (0.001 retracted on each side.)
+Entity will receive effect when their collision box intersects this region.
+Effect on movement: todo
 #### Sweet Berry Bush
+Effect box: 0.998×0.998×0.998 (0.001 retracted on each side.)
+Entity will receive effect when their collision box intersects this region.
+Effect on movement: todo
 #### Scaffolding
 different behavior to normal climb blocks
 
@@ -210,7 +219,6 @@ Status effects that directly effect movement.//todo
 #### Jump boost
 #### Slow falling
 #### Levitation
-### Swift Sneak Enchant
 
 ## Taps setups
 Did not test ingame. I mothballed these, so don't take them as 100%.
