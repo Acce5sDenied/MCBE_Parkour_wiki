@@ -198,17 +198,17 @@ Different behavior to normal blocking, No effect on movement
 #### Water
 #### Lava
 #### Cobweb
-Effect box: 0.998×0.998×0.998 (0.001 retracted on each side.)
+Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)
 Entity will receive effect when their collision box intersects this region.
-Effect on movement: Horizontal acceleration is divided by `4` and is reset on every tick. Vertical acceleration is divided by `20` and is reset on every tick.
+Effect on movement: Horizontal acceleration is divided by `4` and Vertical acceleration is divided by `20`. All velocity is reset on every tick.
 #### Powdered Snow
-Effect box: 0.998×0.998×0.998 (0.001 retracted on each side.)
+Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)
 Entity will receive effect when their collision box intersects this region.
 Effect on movement: todo
 #### Sweet Berry Bush
-Effect box: 0.998×0.998×0.998 (0.001 retracted on each side.)
+Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)
 Entity will receive effect when their collision box intersects this region.
-Effect on movement: todo
+Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
 #### Scaffolding
 different behavior to normal climb blocks
 
