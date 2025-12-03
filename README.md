@@ -24,7 +24,7 @@ There are 2 major ways the player can move.
 #### Button controls
 WASD button controls. Double tap sprint//todo, Hold space//todo
 #### Joystick controls
-All direction movement controls.//todo, 11 strafe documentation(patched in 1.21.20)//todo
+All direction movement controls.//todo
 
 -----
 ### Mouse movement
@@ -126,12 +126,15 @@ Note that some inaccuracy can happen due to floating point imprecision.
 + While crawling or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
 
 ## Glitches
-+ Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats)
++ Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats, around 500 million times better)
+### Patched Glitches
++ 11 strafe or 10 strafe. Patched in v`1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` same as java's 45 strafe. Surprisingly, this works on jump tick `4.51°` is optimal. Given this, 11 strafe is generally better than java's 45 strafe.
++ Backwards sprinting.//todo
 ### Non-Advantagious Glitches
 + Player never stopping in place, coords flickering.(i'll add vid soon dw)
 + More flickering stuff.
 + Mega rubberbanding.
-+ Server-Client player collision box desync
++ Server-Client player collision box desync.
 
 ## Bedrock differences
 + Strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
