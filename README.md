@@ -28,7 +28,7 @@ All direction movement controls.//todo
 
 -----
 ### Mouse movement
-pitch is locked in range [`-89.9` to `89.9`] //todo
+pitch is locked in range [`-89.9°` to `89.9°`] //todo
 
 ## Block Collisions
 List of collision box for all blocks. For effect box for blocks like cobweb, please see the block mechanics section. //havent added anything there
@@ -220,8 +220,11 @@ Status effects that directly effect movement.//todo
 #### Speed
 #### Slowness
 #### Jump boost
+`+0.1` jump acceleration per level of jump boost.
 #### Slow falling
 #### Levitation
+#### Blindness
+Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
 
 ## Taps setups
 Did not test ingame. I mothballed these, so don't take them as 100%.
