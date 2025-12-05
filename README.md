@@ -31,7 +31,7 @@ All direction movement controls.//todo
 pitch is locked in range [`-89.9°` to `89.9°`] //todo
 
 ## Block Collisions
-List of collision box for all blocks. For effect box for blocks like cobweb, please see the block mechanics section. //havent added anything there
+List of collision box for all blocks. For effect box for blocks like cobweb, please see the block mechanics section.
 
 #### Clarification
 + **Model** is a how a block looks. It is purely visual.
@@ -149,7 +149,7 @@ Note that some inaccuracy can happen due to floating point imprecision.
 + You have 16 b/t absolute speed cap.(Yes, I did use a tnt cannon to test)
 
 ## Numbers
-I did not look at the code, I got these by testing.//todo
+I did not look at the code, I got these by testing.
 ### Base values
 the formulas should be the same as java's
 + shifted acceleration: `0.294`
@@ -176,12 +176,12 @@ the formulas should be the same as java's
 + walk acceleration: `0.0196`
 + sprint acceleration: `0.02548`
 #### Flying
-`0.05x` acceleration.//todo
+Flying ignores block mechanics, reaching top speed of 0.544b/t while walk flying, 1.088b/t while sprinting.
 + horizontal drag while accelerating: `0.91`
-+ horizontal drag while not accelerating: ?
++ horizontal drag while not accelerating: somewhere around `0.34125` When movement key is released, drag continues to be 0.91 for 1 more tick.
 + shifted accerelation: `[incompatible]`
 + walk acceleration: `0.049`
-+ sprint acceleration: ?
++ sprint acceleration: `0.098`
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
 `81+(2/3)` less acceleration or `~0.0122449x` acceleration.
@@ -192,12 +192,13 @@ This includes eating or drinking, charging weapons, using goat horn or spyglass.
 Different behavior to normal blocking, No effect on movement
 
 ## Block Mechanics
-//todo
 #### Soulsand
 Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)
 Entity will receive effect when their coordinates is in this region.
-Effect on movement: todo
+Effect on movement: todo(not the same as java)
 #### Honey block
+there are like 5 different effect boxes//todo
+Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 #### Slime block
 #### Ices
 Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)
