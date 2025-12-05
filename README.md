@@ -194,9 +194,18 @@ Different behavior to normal blocking, No effect on movement
 ## Block Mechanics
 //todo
 #### Soulsand
+Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)
+Entity will receive effect when their coordinates is in this region.
+Effect on movement: todo
 #### Honey block
 #### Slime block
 #### Ices
+Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)
+Entity will receive effect when their coordinates is in this region.
++ Blue ice slipperiness factor `0.989`
++ Packed ice slipperiness factor `0.98`
++ Ice slipperiness factor `0.98`
++ Frosted ice slipperiness factor `0.98`
 #### Catch/Climb type blocks
 #### Water
 #### Lava
@@ -218,7 +227,9 @@ different behavior to normal climb blocks
 ## Status effects
 Status effects that directly effect movement.//todo
 #### Speed
+`+20%` acceleration per level of speed.
 #### Slowness
+`-15%` acceleration per level of slowness.
 #### Jump boost
 `+0.1` jump acceleration per level of jump boost.
 #### Slow falling
