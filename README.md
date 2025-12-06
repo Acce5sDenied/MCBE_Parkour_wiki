@@ -56,6 +56,7 @@ Ordered by widths then height.
 |Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |Yes
 |Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |Yes
 |Carpets                                |1×1                 |0.0625     |                                                                  |Yes
+|Snow Layers                            |1×1                 |depends    |1 layer: no collision 2:.125 3:.25 4:.375 5:.5 6:.625 7:.75 8:.875|Yes
 |Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
 |Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
 |Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
@@ -85,11 +86,14 @@ Ordered by widths then height.
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |Yes
 |Medium Cocoa Bean                      |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
 |Flower Pot                             |0.375×0.375         |0.375      |Centered.                                                         |Yes
+|4 Candles                              |0.3125×0.375        |0.375      |+Z side match fence, the rest match a flower pot.                 |Yes
+|3 Candles                              |0.3125×0.3125       |0.375      |+Z and -X side match a flower pot, -Z and -X match a fence.       |Yes
 |Fence Gate                             |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes
 |Hanging Signs                          |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |No
 |Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |No
 |End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |Yes
 |Small Cocoa Bean                       |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
+|2 Candles                              |0.1875×0.375        |0.375      |+Z side match a fence, -Z side match a pane, +X and -X match a flower pot.|Yes
 |Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
 |Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
 |Bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |Yes
@@ -98,10 +102,8 @@ Ordered by widths then height.
 |to-add        |
 |--------------|
 |dripstones    |
-|234candles    |
 |ALL THE FENCES WALLS PANES VARIENTS😭|
 |stairs        |
-|snow layers   |
 |caudron composter|
 |hopper        |
 |turtle eggs   |
@@ -113,7 +115,7 @@ Ordered by widths then height.
 Alphabetical order.
 |Blocks                    |Widths                    |Heights                    |Comment                                        |
 |--------------------------|--------------------------|---------------------------|-----------------------------------------------|
-|Brewing Stand             |Base:1×1 Rod:0.125×0.125  |Base:0.125 Rod:0.875       |
+|Brewing Stand             |Base:1×1 Rod:0.125×0.125  |Base:.125 Rod:.875         |
 
 
 ### Other collision boxes
