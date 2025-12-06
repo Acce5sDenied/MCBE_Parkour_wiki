@@ -56,7 +56,7 @@ Ordered by widths then height.
 |Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |Yes
 |Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |Yes
 |Carpets                                |1×1                 |0.0625     |                                                                  |Yes
-|Snow Layers                            |1×1                 |depends    |1 layer: no collision 2:.125 3:.25 4:.375 5:.5 6:.625 7:.75 8:.875|Yes
+|Snow Layers                            |1×1                 |depends    |1 layer: no collision 2:.125 3:.25 4:.375 5:.5 6:.625 7:.75 8:.875|No
 |Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
 |Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
 |Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
@@ -74,6 +74,7 @@ Ordered by widths then height.
 |Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
 |Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |Yes
 |Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |Yes
+|Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
 |Bell(ground)                           |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
 |Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |No
 |Big Cocoa Bean                         |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
@@ -106,7 +107,6 @@ Ordered by widths then height.
 |stairs        |
 |caudron composter|
 |hopper        |
-|turtle eggs   |
 |dripleaf      |
 |piston arm    |
 
