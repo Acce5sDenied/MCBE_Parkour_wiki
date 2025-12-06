@@ -38,8 +38,10 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 + **Hitbox** is an interaction volume of a block.
 + **Selection box** shows up when you hover over a block. This can describe the collision box of some blocks. (it is in selection box accurate column)
 + Finally, **Collision box** is a solid volume of space that is not meant to pass through.
+
 ### Simple collision boxes
-|Blocks                                 |Widths              |Heights    |Comments                                                          |Selection box accurate//todo|
+Ordered by widths then height.
+|Blocks                                 |Widths              |Height     |Comments                                                          |Selection box accurate//todo|
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|----------------------|
 |Full Blocks                            |1×1                 |1          |                                                                  |Yes
 |Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |Yes
@@ -59,7 +61,8 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
 |Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |Yes
 |Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |Yes
-|Cake                                   |0.875×0.875         |0.5        |Centered.                                                         |Yes
+|Cake                                   |0.875×0.875         |0.5        |Centered. Adding candle on top does not change anything.          |Yes
+|Eaten Cake                             |0.875×0.875         |0.5        |-0.125 on -X direction per 1 eat. Can be eaten 7 times.           |Yes
 |Lilypad                                |0.875×0.875         |0.09375    |Centered.                                                         |Yes
 |Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |Yes
 |Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis.                              |Yes
@@ -80,11 +83,13 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |Thin wall(2-sided)                     |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |No
 |Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |Yes
-|Flower Pot & 4 Candles                 |0.375×0.375         |0.375      |Centered.                                                         |idk
+|Medium Cocoa Bean                      |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
+|Flower Pot                             |0.375×0.375         |0.375      |Centered.                                                         |Yes
 |Fence Gate                             |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes
 |Hanging Signs                          |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |No
 |Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |No
 |End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |Yes
+|Small Cocoa Bean                       |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
 |Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
 |Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
 |Bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |Yes
@@ -93,23 +98,23 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 |to-add        |
 |--------------|
 |dripstones    |
-|23candles     |
+|234candles    |
 |ALL THE FENCES WALLS PANES VARIENTS😭|
 |stairs        |
-|brewing stand |
-|candled cake  |
-|cake slices   |
 |snow layers   |
 |caudron composter|
 |hopper        |
 |turtle eggs   |
-|cocoas        |
 |dripleaf      |
 |piston arm    |
 
 
 ### Composite collision boxes
-//todo
+Alphabetical order.
+|Blocks                    |Widths                    |Heights                    |Comment                                        |
+|--------------------------|--------------------------|---------------------------|-----------------------------------------------|
+|Brewing Stand             |Base:1×1 Rod:0.125×0.125  |Base:0.125 Rod:0.875       |
+
 
 ### Other collision boxes
 boat, shulker as mob and block//todo
