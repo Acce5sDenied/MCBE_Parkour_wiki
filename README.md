@@ -2,18 +2,9 @@
 
 ![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.21.12x`
-
-Pre-pre-alpha stage, I don't want the language to be TOO formal.
+A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.21.13x`
 
 uhmm
-
-#### TODO
-+ block hitboxes
-+ numbers
-+ player control
-+ bedrock mechanics
-+ more
 
 ## Resources
 + Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
@@ -41,8 +32,8 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 
 ### Simple collision boxes
 Ordered by widths then height.
-|Blocks                                 |Widths              |Height     |Comments                                                          |Selection box accurate//todo|
-|---------------------------------------|--------------------|-----------|------------------------------------------------------------------|----------------------|
+|Blocks                                 |Widths              |Height     |Comments                                                          |Selection box accurate?|
+|---------------------------------------|--------------------|-----------|------------------------------------------------------------------|-----------------------|
 |Full Blocks                            |1×1                 |1          |                                                                  |Yes
 |Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |Yes
 |Lectern                                |1×1                 |0.9        |                                                                  |Yes
@@ -104,22 +95,27 @@ Ordered by widths then height.
 |--------------|
 |dripstones    |
 |ALL THE FENCES WALLS PANES VARIENTS😭|
-|stairs        |
 |caudron composter|
 |hopper        |
 |dripleaf      |
 |piston arm    |
+|chorus stem varients|
 
 
 ### Composite collision boxes
 Alphabetical order.
 |Blocks                    |Widths                    |Heights                    |Comment                                        |
 |--------------------------|--------------------------|---------------------------|-----------------------------------------------|
-|Brewing Stand             |Base:1×1 Rod:0.125×0.125  |Base:.125 Rod:.875         |
-
+|Brewing Stand             |Base:1×1 Rod:0.125×0.125  |Base:.125 Rod:.875         |Centered.                                      |
+|Stair(normal)             |Base:1×1 Top:1×0.5        |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
+|Stair(outer)              |Base:1×1 Top:0.5×0.5      |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
+|Stair(inner)              |Base:1×1 Top:1×0.5        |Base:.5 Top:1              |This have exactly the same collision as a normal stair. When an adjacent stair is placed(to convert into this varient), only the model changes. Leaving a 0.5×0.5×0.5 intangible zone.|
 
 ### Other collision boxes
 boat, shulker as mob and block//todo
+|Thing                  |Widths                    |Heights                    |Comment                                    |
+|-----------------------|--------------------------|---------------------------|-------------------------------------------|
+|
 
 ## Movement mechanics
 //todo
