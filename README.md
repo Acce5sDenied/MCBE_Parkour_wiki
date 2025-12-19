@@ -44,10 +44,12 @@ Ordered by widths then height.
 |Slabs                                  |1×1                 |0.5        |Inversible.                                                       |Yes
 |Campfires                              |1×1                 |0.4375     |                                                                  |Yes
 |Daylight Detector                      |1×1                 |0.375      |                                                                  |Yes
+|Big Dripleaf(unstable)                 |1×1                 |0.25       |Top:.9375 Bottom:.6875 Switch to partial tilt when stood on.      |No
 |Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |Yes
 |Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |Yes
+|Big Dripleaf(partial tilt)             |1×1                 |0.125      |Top:.8125 Bottom:.6875 Transition state between unstable and full tilt state which is intangible.|No
 |Carpets                                |1×1                 |0.0625     |                                                                  |Yes
-|Snow Layers                            |1×1                 |depends    |1 layer: no collision 2:.125 3:.25 4:.375 5:.5 6:.625 7:.75 8:.875|No
+|Snow Layers                            |1×1                 |0.125(n-1) |1 layer: no collision 2:.125 3:.25 4:.375 5:.5 6:.625 7:.75 8:.875|No
 |Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
 |Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
 |Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
@@ -59,7 +61,9 @@ Ordered by widths then height.
 |Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |Yes
 |Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis.                              |Yes
 |Grindstone                             |0.75×0.75           |1          |Centered. Orientable on all sides.                                |Yes
+|Pointed Dripstone(base)                |0.75×0.75           |1          |Collision box have random offset from center.                     |Yes
 |Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
+|Pointed Dripstone(medium)              |0.625×0.625         |1          |Collision box have random offset from center.                     |Yes
 |Copper Golem Statues                   |0.625×0.625         |0.875      |Centered.                                                         |Yes
 |Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
 |Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
@@ -68,12 +72,15 @@ Ordered by widths then height.
 |Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
 |Bell(ground)                           |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
 |Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |No
+|Pointed Dripstone(frustum)             |0.5×0.5             |1          |Collision box have random offset from center.                     |Yes
 |Big Cocoa Bean                         |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
 |Conduit & Heavy Core & Heads(ground)   |0.5×0.5             |0.5        |Centered.                                                         |Yes
 |Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |Yes
 |Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
 |Pane(1-sided)                          |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
 |Thin wall(2-sided)                     |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |No
+|Pointed Dripstone(merge)               |0.375×0.375         |1          |Collision box have random offset from center.                     |Yes
+|Pointed Dripstone(tip)                 |0.375×0.375         |0.6875     |Collision box have random offset from center. Inversible.         |Yes
 |Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |Yes
 |Medium Cocoa Bean                      |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
@@ -93,10 +100,8 @@ Ordered by widths then height.
 
 |to-add        |
 |--------------|
-|dripstones    |
 |ALL THE FENCES WALLS PANES VARIENTS😭|
 |hopper        |
-|dripleaf      |
 |piston arm    |
 |chorus stem varients|
 
