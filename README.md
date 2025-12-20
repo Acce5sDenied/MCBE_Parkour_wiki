@@ -34,6 +34,7 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 Ordered by widths then height.
 |Blocks                                 |Widths              |Height     |Comments                                                          |Selection box accurate?|
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|-----------------------|
+|Walls(4-sided)                         |1×1                 |1.5        |                                                                  |No
 |Full Blocks                            |1×1                 |1          |                                                                  |Yes
 |Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |Yes
 |Lectern                                |1×1                 |0.9        |                                                                  |Yes
@@ -53,13 +54,16 @@ Ordered by widths then height.
 |Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
 |Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
 |Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
+|Chests(long)                           |0.95×0.975          |0.95       |-0.25 on sides that is not connected to another chest.            |Yes
 |Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |Yes
 |Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |Yes
 |Cake                                   |0.875×0.875         |0.5        |Centered. Adding candle on top does not change anything.          |Yes
 |Eaten Cake                             |0.875×0.875         |0.5        |-0.125 on -X direction per 1 eat. Can be eaten 7 times.           |Yes
 |Lilypad                                |0.875×0.875         |0.09375    |Centered.                                                         |Yes
+|Walls(3-sided)                         |0.75×1              |1.5        |Orientable.(4 varients)                                           |No
 |Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |Yes
 |Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis.                              |Yes
+|Walls(2-adjacent)                      |0.75×0.75           |1.5        |Orientable.(4 varients)                                           |No
 |Grindstone                             |0.75×0.75           |1          |Centered. Orientable on all sides.                                |Yes
 |Pointed Dripstone(base)                |0.75×0.75           |1          |Collision box have random offset from center.                     |Yes
 |Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
@@ -70,20 +74,22 @@ Ordered by widths then height.
 |Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |Yes
 |Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |Yes
 |Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
-|Bell(ground)                           |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
+|Walls(2-opposite)                      |0.5×1               |1.5        |Orientable.(4 varients) Needs another wall on top.                |No
+|Bell(standing)                         |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
+|Walls(1-sided)                         |0.5×0.75            |1.5        |Orientable.(4 varients)                                           |No
 |Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |No
 |Pointed Dripstone(frustum)             |0.5×0.5             |1          |Collision box have random offset from center.                     |Yes
-|Big Cocoa Bean                         |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
+|Cocoa(big)                             |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
 |Conduit & Heavy Core & Heads(ground)   |0.5×0.5             |0.5        |Centered.                                                         |Yes
 |Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |Yes
 |Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
 |Pane(1-sided)                          |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
-|Thin wall(2-sided)                     |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |No
+|Thin wall(2-opposite)                  |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |No
 |Pointed Dripstone(merge)               |0.375×0.375         |1          |Collision box have random offset from center.                     |Yes
 |Pointed Dripstone(tip)                 |0.375×0.375         |0.6875     |Collision box have random offset from center. Inversible.         |Yes
 |Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |Yes
-|Medium Cocoa Bean                      |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
+|Cocoa(medium)                          |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
 |Flower Pot                             |0.375×0.375         |0.375      |Centered.                                                         |Yes
 |4 Candles                              |0.3125×0.375        |0.375      |+Z side match fence, the rest match a flower pot.                 |Yes
 |3 Candles                              |0.3125×0.3125       |0.375      |+Z and -X side match a flower pot, -Z and -X match a fence.       |Yes
@@ -91,7 +97,7 @@ Ordered by widths then height.
 |Hanging Signs                          |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |No
 |Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |No
 |End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |Yes
-|Small Cocoa Bean                       |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
+|Cocoa(small)                           |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
 |2 Candles                              |0.1875×0.375        |0.375      |+Z side match a fence, -Z side match a pane, +X and -X match a flower pot.|Yes
 |Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
 |Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
@@ -103,6 +109,7 @@ Ordered by widths then height.
 |ALL THE FENCES WALLS PANES VARIENTS😭|
 |hopper        |
 |piston arm    |
+|bell varients |
 |chorus stem varients|
 
 
