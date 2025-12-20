@@ -76,9 +76,12 @@ Ordered by widths then height.
 |Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
 |Walls(2-opposite)                      |0.5×1               |1.5        |Orientable.(4 varients) Needs another wall on top.                |No
 |Bell(standing)                         |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
+|Bell(opposite connection or "multiple")|0.5×1               |0.75       |Orientable on horizontal.(2 varients) Top:1.0 Bottom:.25          |Yes
+|Bell(1-sided or "side")                |0.5×0.8125          |0.6875     |Orientable.(4 varients) Top:.9375 Bottom:.25                      |Yes
 |Walls(1-sided)                         |0.5×0.75            |1.5        |Orientable.(4 varients)                                           |No
 |Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |No
 |Pointed Dripstone(frustum)             |0.5×0.5             |1          |Collision box have random offset from center.                     |Yes
+|Bell(hanging)                          |0.5×0.5             |0.75       |Centered. Top:1.0 Bottom:.0.25                                    |Yes
 |Cocoa(big)                             |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
 |Conduit & Heavy Core & Heads(ground)   |0.5×0.5             |0.5        |Centered.                                                         |Yes
 |Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |Yes
@@ -93,8 +96,10 @@ Ordered by widths then height.
 |Flower Pot                             |0.375×0.375         |0.375      |Centered.                                                         |Yes
 |4 Candles                              |0.3125×0.375        |0.375      |+Z side match fence, the rest match a flower pot.                 |Yes
 |3 Candles                              |0.3125×0.3125       |0.375      |+Z and -X side match a flower pot, -Z and -X match a fence.       |Yes
-|Fence Gate                             |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes
-|Hanging Signs                          |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |No
+|Fence Gates                            |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |No
+|Fences(2-opposite)                     |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |No
+|Hanging Signs(hanging=false)           |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |No
+|Fences(1-sided)                        |0.25×0.625          |1.5        |Orientable.(4 varients)                                           |No
 |Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |No
 |End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |Yes
 |Cocoa(small)                           |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
@@ -109,7 +114,6 @@ Ordered by widths then height.
 |ALL THE FENCES WALLS PANES VARIENTS😭|
 |hopper        |
 |piston arm    |
-|bell varients |
 |chorus stem varients|
 
 
