@@ -71,6 +71,7 @@ Ordered by widths then height.
 |Copper Golem Statues                   |0.625×0.625         |0.875      |Centered.                                                         |Yes
 |Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
 |Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
+|Pitcher Pod(big)                       |0.625×0.625         |0.375      |Top:.3125 Bottom:-.0625 Centered. Have 1px downwards collision extension of the block it is occupying.|No
 |Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |Yes
 |Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |Yes
 |Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
@@ -94,6 +95,7 @@ Ordered by widths then height.
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |Yes
 |Cocoa(medium)                          |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
 |Flower Pot                             |0.375×0.375         |0.375      |Centered.                                                         |Yes
+|Pitcher Pod(small)                     |0.375×0.375         |0.25       |Top:.1875 Bottom:-.0625 Centered. Have 1px downwards collision extension of the block it is occupying.|Yes
 |4 Candles                              |0.3125×0.375        |0.375      |+Z side match fence, the rest match a flower pot.                 |Yes
 |3 Candles                              |0.3125×0.3125       |0.375      |+Z and -X side match a flower pot, -Z and -X match a fence.       |Yes
 |Fence Gates                            |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |No
@@ -105,8 +107,10 @@ Ordered by widths then height.
 |Cocoa(small)                           |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
 |2 Candles                              |0.1875×0.375        |0.375      |+Z side match a fence, -Z side match a pane, +X and -X match a flower pot.|Yes
 |Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
+|Bamboo(thick)                          |0.1875×0.1875       |1          |Collision box have random offset from center.                     |Yes
+|Panes & Bars (2-opposite)              |0.125×1             |1          |Centered. Orientable.(2 varients)                                 |Yes
 |Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
-|Bamboo                                 |0.125×0.125         |1          |NOT centered. Collision box have random offset from center.       |Yes
+|Bamboo(thin)                           |0.125×0.125         |1          |Collision box have random offset from center.                     |Yes
 |Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |Yes
 
 |to-add        |
@@ -115,6 +119,7 @@ Ordered by widths then height.
 |hopper        |
 |piston arm    |
 |chorus stem varients|
+|happy ghasts maybe|
 
 
 ### Composite collision boxes
