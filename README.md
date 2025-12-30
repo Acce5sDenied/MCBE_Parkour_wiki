@@ -84,10 +84,10 @@ Ordered by widths then height.
 |Pointed Dripstone(frustum)             |0.5×0.5             |1          |Collision box have random offset from center.                     |Yes
 |Bell(hanging)                          |0.5×0.5             |0.75       |Centered. Top:1.0 Bottom:.0.25                                    |Yes
 |Cocoa(big)                             |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
-|Conduit & Heavy Core & Heads(ground)   |0.5×0.5             |0.5        |Centered.                                                         |Yes
+|Conduit & Heavy Core & Heads (ground)  |0.5×0.5             |0.5        |Centered.                                                         |Yes
 |Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |Yes
 |Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
-|Pane(1-sided)                          |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
+|Panes & Bars (1-sided)                 |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
 |Thin wall(2-opposite)                  |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |No
 |Pointed Dripstone(merge)               |0.375×0.375         |1          |Collision box have random offset from center.                     |Yes
 |Pointed Dripstone(tip)                 |0.375×0.375         |0.6875     |Collision box have random offset from center. Inversible.         |Yes
@@ -115,23 +115,28 @@ Ordered by widths then height.
 
 |to-add        |
 |--------------|
-|ALL THE FENCES WALLS PANES VARIENTS😭|
 |hopper        |
-|piston arm    |
 |chorus stem varients|
 |happy ghasts maybe|
 
 
 ### Composite collision boxes
 Alphabetical order.
-|Blocks                    |Widths                    |Heights                    |Comment                                        |
-|--------------------------|--------------------------|---------------------------|-----------------------------------------------|
-|Brewing Stand             |Base:1×1 Rod:0.125×0.125  |Base:.125 Rod:.875         |Centered.                                      |
-|Caudron                   |Base:1×1 Walls:0.125 thick|Base:.3125 Walls:1         |                                               |
-|Composter                 |Base:1×1 Walls:0.125 thick|Base:.125 Walls:1          |                                               |
-|Stair(normal)             |Base:1×1 Top:1×0.5        |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
-|Stair(outer)              |Base:1×1 Top:0.5×0.5      |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
-|Stair(inner)              |Base:1×1 Top:1×0.5        |Base:.5 Top:1              |This have exactly the same collision as a normal stair. When an adjacent stair is placed(to convert into this varient), only the model changes. Leaving a 0.5×0.5×0.5 intangible zone.|
+|Blocks                    |Widths                          |Heights                    |Comment                                        |
+|--------------------------|--------------------------------|---------------------------|-----------------------------------------------|
+|Brewing Stand             |Base:1×1 Rod:0.125×0.125        |Base:.125 Rod:.875         |Centered.                                      |
+|Caudron                   |Base:1×1 Walls:0.125 thick      |Base:.3125 Walls:1         |                                               |
+|Composter                 |Base:1×1 Walls:0.125 thick      |Base:.125 Walls:1          |                                               |
+|Fences(4-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |                                               |
+|Fences(3-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
+|Fences(2-adjacent)        |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
+|Panes & Bars(4-sided)     |Sides:0.125×0.5                 |1                          |                                               |
+|Panes & Bars(3-sided)     |Sides:0.125×0.5                 |1                          |Orientable.(4 varients)                        |
+|Panes & Bars(2-adjacent)  |Sided:0.125×0.5                 |1                          |Orientable.(4 varients) Missing 1px in the outer corner.|
+|Piston Head               |Head:1×1 Arm:0.375×0.375        |Head:.25 Arm:1             |Orientable, inversible.(6 varients)            |
+|Stairs(normal)            |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
+|Stairs(outer)             |Base:1×1 Top:0.5×0.5            |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
+|Stairs(inner)             |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |This have exactly the same collision as a normal stair. When an adjacent stair is placed(to convert into this varient), only the model changes. Leaving a 0.5×0.5×0.5 intangible zone.|
 
 ### Other collision boxes
 Stuff that have a collision box that does not quite belong in the 2 above catagories.
