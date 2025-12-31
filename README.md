@@ -6,23 +6,38 @@ A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game 
 
 uhmm
 
+<details>
+  <summary>Todo List</summary>
+
++ [ ] hopper collision
++ [ ] Chorus plant collision
+
+</details>
+
+---
+
 ## Resources
 + Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
 + Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK.
 
+---
+
 ## Player control
 There are 2 major ways the player can move.
+
 #### Button controls
 WASD button controls. Double tap sprint//todo, Hold space//todo
+
 #### Joystick controls
 All direction movement controls.//todo
 
------
 ### Mouse movement
 //todo Fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 
+---
+
 ## Block Collisions
-List of collision box for all blocks. For effect box for blocks like cobweb, please see the block mechanics section.
+List of collision box for all blocks. For effect box for blocks like cobweb, please see the [block mechanics](#block-mechanics) section.
 
 #### Clarification
 + **Model** is a how a block looks. It is purely visual.
@@ -142,27 +157,36 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 |Shulker Box            |1×1                       |1 *or* 1.5                          |1.5 high when opened, Orientable, inversible.(6 varients)|
 |Shulker Mob            |0.9998×0.9998             |0.98                                |Not orientable. Centered. Base touch the ground. When opened, that side extends out `~0.2060919`|
 
+---
+
 ## Movement mechanics
 //todo
 + Y -> X -> Z collision order
 + Stepping stuff, same as Java?
 + 16 b/t absolute speed cap(pythagoras of 3 axes) if over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
+
 #### player's collision box
 Note that some inaccuracy can happen due to floating point imprecision.
 + Normally is 0.6×0.6 horizontally and 1.8 vertically.
 + While crouched is 0.6×0.6 horizontally and 1.49 vertically.
 + While crawling or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
 
+---
+
 ## Glitches
 + Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats, around 500 million times better)
+
 ### Patched Glitches
 + 11 strafe or 10 strafe. Patched in v`1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` same as java's 45 strafe. Surprisingly, this works on jump tick `4.51°` is optimal. Given this, 11 strafe is generally better than java's 45 strafe.
 + Backwards sprinting.//todo
+
 ### Non-Advantagious Glitches
 + Player never stopping in place, coords flickering.(i'll add vid soon dw)
 + More flickering stuff.
 + Mega rubberbanding.
 + Server-Client player collision box desync.
+
+---
 
 ## Bedrock differences
 + Strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
@@ -176,8 +200,11 @@ Note that some inaccuracy can happen due to floating point imprecision.
 + Have all-direction joystick controls.
 + You have 16 b/t absolute speed cap.(Yes, I did use a tnt cannon to test)
 
+---
+
 ## Numbers
 I did not look at the code, I got these by testing.
+
 ### Base values
 the formulas should be the same as java's
 + shifted acceleration: `0.294`
@@ -190,6 +217,7 @@ the formulas should be the same as java's
 + jump vertical acceleration: `0.42`
 + vertical drag: `0.98`
 + gravity acceleration: `0.08`
+
 ### Pre-calculated values
 #### Grounded
 `0.1x` acceleration.
@@ -219,52 +247,74 @@ This includes eating or drinking, charging weapons, using goat horn or spyglass.
 #### Shield Blocking
 Different behavior to normal blocking, No effect on movement
 
+---
+
 ## Block Mechanics
+
 #### Soulsand
-Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)
-Entity will receive effect when their coordinates is in this region.
+Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
+Entity will receive effect when their coordinates is in this region.\
 Effect on movement: todo(not the same as java)
+
 #### Honey block
-there are like 5 different effect boxes//todo
+there are like 5 different effect boxes//todo\
 Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 #### Slime block
+
 #### Ices
-Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)
+Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
 Entity will receive effect when their coordinates is in this region.
 + Blue ice slipperiness factor `0.989`
 + Packed ice slipperiness factor `0.98`
 + Ice slipperiness factor `0.98`
 + Frosted ice slipperiness factor `0.98`
+
 #### Catch/Climb type blocks
+
 #### Water
+
 #### Lava
+
 #### Cobweb
-Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)
-Entity will receive effect when their collision box intersects this region.
+Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
+Entity will receive effect when their collision box intersects this region.\
 Effect on movement: Horizontal acceleration is divided by `4` and Vertical acceleration is divided by `20`. All velocity is reset on every tick.
+
 #### Powdered Snow
-Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)
-Entity will receive effect when their collision box intersects this region.
+Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
+Entity will receive effect when their collision box intersects this region.\
 Effect on movement: todo
+
 #### Sweet Berry Bush
-Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)
-Entity will receive effect when their collision box intersects this region.
+Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
+Entity will receive effect when their collision box intersects this region.\
 Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
+
 #### Scaffolding
 different behavior to normal climb blocks
 
+---
+
 ## Status effects
 Status effects that directly effect movement.//todo
+
 #### Speed
 `+20%` acceleration per level of speed.
+
 #### Slowness
 `-15%` acceleration per level of slowness.
+
 #### Jump boost
 `+0.1` jump acceleration per level of jump boost.
+
 #### Slow falling
+
 #### Levitation
+
 #### Blindness
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
+
+---
 
 ## Taps setups
 Did not test ingame. I mothballed these, so don't take them as 100%.
@@ -277,10 +327,9 @@ Did not test ingame. I mothballed these, so don't take them as 100%.
 |shifted + blocking        |0.01295154            |
 |sprint + blocking         |0.05612335            |
 
-+ Note: blocking is NOT blocking with shield. See numbers section.
------
-Air taps are not included as well as jam taps and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in a different air tick or different airtime would not give the same result.
++ Note: blocking is NOT blocking with shield. See numbers section.\
 
+Air taps are not included as well as jam taps and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in a different air tick or different airtime would not give the same result.\
 But don't be fooled. I've invented new a bedrock-friendly way of air tapping — A7 taps. It is tapping on air but on the last tick before hitting ground. This way it would now give the same distance regardless of airtime. Downside is.. it is hard to do and requires a bit of muscle memory to tap on the correct tick.
 
 Again, I mothballed these, so don't take them as 100%
@@ -293,6 +342,6 @@ Again, I mothballed these, so don't take them as 100%
 |A7 shifted + blocking     |0.00353318            |
 |A7 sprint + blocking      |0.01531045            |
 
-
+---
 
 
