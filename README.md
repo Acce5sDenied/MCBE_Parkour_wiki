@@ -8,9 +8,23 @@ uhmm
 
 <details>
   <summary>Todo List</summary>
-
+    <br>
+  
 + [ ] hopper collision
 + [ ] Chorus plant collision
++ [ ] movement
++ [ ] camera
++ [ ] joystick
++ [ ] soulsand
++ [ ] honey
++ [ ] slime
++ [ ] powdered snow
++ [ ] climb blocks
++ [ ] scaffolding
++ [ ] water/lava (never)
++ [ ] slow falling
++ [ ] levitation
++ [ ] migrate some to wiki page once im done
 
 </details>
 
@@ -46,6 +60,10 @@ List of collision box for all blocks. For effect box for blocks like cobweb, ple
 + Finally, **Collision box** is a solid volume of space that is not meant to pass through.
 
 ### Simple collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
 Ordered by widths then height.
 |Blocks                                 |Widths              |Height     |Comments                                                          |Selection box accurate?|
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|-----------------------|
@@ -128,7 +146,13 @@ Ordered by widths then height.
 |Bamboo(`thin`)                         |0.125×0.125         |1          |Collision box have random offset from center.                     |Yes
 |Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |Yes
 
+</details>
+
 ### Composite collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
 Alphabetical order.
 |Blocks                    |Widths                          |Heights                    |Comment                                        |
 |--------------------------|--------------------------------|---------------------------|-----------------------------------------------|
@@ -147,15 +171,23 @@ Alphabetical order.
 |Stairs(outer)             |Base:1×1 Top:0.5×0.5            |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
 |Stairs(inner)             |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |This have exactly the same collision as a normal stair. When an adjacent stair is placed(to convert into this varient), only the model changes. Leaving a 0.5×0.5×0.5 intangible zone.|
 
+</details>
+
 ### Other collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
 Stuff that have a collision box that does not quite belong in the 2 above catagories.
-|Thing                  |Widths                    |Heights                             |Comment                                    |
-|-----------------------|--------------------------|------------------------------------|-------------------------------------------|
-|Boat                   |1.4×1.4                   |0.455                               |FunFact: you can make a perfect squeeze with boat + block.|
-|Border Block           |1×1                       |1.5 *or* infinitely high up or below|Bedrock exclusive block. [**Minecraft wiki article**](https://minecraft.wiki/w/Border)|
-|Happy Ghasts           |4×4                       |?                                   |Solidifies when a player is close to it. Collision is not aligned to grid.|
-|Shulker Box            |1×1                       |1 *or* 1.5                          |1.5 high when opened, Orientable, inversible.(6 varients)|
-|Shulker Mob            |0.9998×0.9998             |0.98                                |Not orientable. Centered. Base touch the ground. When opened, that side extends out `~0.2060919`|
+|Thing                  |Widths                    |Heights                              |Comment                                    |
+|-----------------------|--------------------------|-------------------------------------|-------------------------------------------|
+|Boat                   |1.4×1.4                   |0.455                                |Fun fact: you can make a perfect squeeze with boat + block.|
+|Border Block           |1×1                       |1.5 *or* infinitely high up and below|Bedrock exclusive block. [**Minecraft wiki article**](https://minecraft.wiki/w/Border)|
+|Happy Ghasts           |4×4                       |?                                    |Solidifies when a player is close to it. Collision is not aligned to grid.|
+|Shulker Box            |1×1                       |1 *or* 1.5                           |1.5 high when opened, Orientable, inversible.(6 varients)|
+|Shulker Mob            |0.9998×0.9998             |0.98                                 |Not orientable. Centered. Base touch the ground. When opened, that side extends out `~0.2060919`|
+
+</details>
 
 ---
 
