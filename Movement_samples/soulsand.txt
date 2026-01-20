@@ -1,6 +1,7 @@
 soulsand behavior (tick by tick)
 
 speed, input
+---
 0, none
 0.0533103942871094, W(no sprint)
 0.0824203491210938, W
