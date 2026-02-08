@@ -33,6 +33,7 @@ uhmm
 ## Resources
 + Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
 + Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK.
++ [**Bedrock Sensitivity graph**](https://www.desmos.com/calculator/avezxwvmde)
 
 ---
 
@@ -359,7 +360,7 @@ Did not test ingame. I mothballed these, so don't take them as 100%.
 |shifted + blocking        |0.01295154            |
 |sprint + blocking         |0.05612335            |
 
-+ Note: blocking is NOT blocking with shield. See numbers section.\
++ Note: blocking is NOT blocking with shield. See numbers section.<br>
 
 Air taps are not included as well as jam taps and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in a different air tick or different airtime would not give the same result.\
 But don't be fooled. I've invented new a bedrock-friendly way of air tapping — A7 taps. It is tapping on air but on the last tick before hitting ground. This way it would now give the same distance regardless of airtime. Downside is.. it is hard to do and requires a bit of muscle memory to tap on the correct tick.
