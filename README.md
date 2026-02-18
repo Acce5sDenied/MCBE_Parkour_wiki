@@ -305,6 +305,9 @@ Entity will receive effect when their coordinates is in this region.
 #### Catch/Climb type blocks
 //todo
 
+#### Scaffolding
+different behavior to normal climb blocks.//todo
+
 #### Water
 //todo
 
@@ -326,13 +329,10 @@ Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
 Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
 
-#### Scaffolding
-different behavior to normal climb blocks.//todo
-
 ---
 
-## Status effects
-Status effects that directly effect movement.//todo
+## Status effects & Enchants
+Status effects and enchants that can directly effect movement.
 
 #### Speed
 `+20%` acceleration per level of speed. In the case where speed is on with slowness, speed always get applied first.
@@ -351,6 +351,15 @@ Status effects that directly effect movement.//todo
 
 #### Blindness
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
+
+#### Soul speed
+//todo
+
+#### Depth strider
+//todo
+
+#### Swift sneak
+//todo
 
 ---
 
@@ -376,5 +385,9 @@ Did not test ingame. I mothballed these, so don't trust them 100%.
 Air taps aren't included because of no inertia, giving different result some of the times. So use A7 taps instead.
 
 ---
+
+
+
+
 
 
