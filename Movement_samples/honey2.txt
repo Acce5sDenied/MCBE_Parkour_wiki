@@ -1,9 +1,8 @@
 movement from the top around the edge of a honey block.
 
 speed, input
----
 0, none
-0.0979995727539062, W(no sprint)
+0.0979995727539062, W
 0.1202430725097656, W
 0.1252899169921875, W
 0.1264343261718750, W
