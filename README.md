@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.21.13x`
+A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.26.0`
 
 uhmm
 
@@ -14,6 +14,7 @@ uhmm
 + [ ] Chorus plant collision
 + [ ] movement
 + [ ] camera
++ [ ] sensitivity
 + [ ] joystick
 + [ ] soulsand
 + [ ] honey
@@ -41,7 +42,7 @@ uhmm
 There are 2 major ways the player can move.
 
 #### Button controls
-WASD button controls. Double tap sprint//todo, Hold space//todo
+WASD button controls.//todo
 
 #### Joystick controls
 All direction movement controls.//todo
@@ -196,28 +197,27 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 //todo
 + Y -> X -> Z collision order
 + Stepping stuff, same as Java?
-+ 16 b/t absolute speed cap(pythagoras of 3 axes) if over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
++ 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 #### player's collision box
-Note that some inaccuracy can happen due to floating point imprecision.
-+ Normally is 0.6×0.6 horizontally and 1.8 vertically.
-+ While crouched is 0.6×0.6 horizontally and 1.49 vertically.
-+ While crawling or swimming or flying with elytra is 0.6×0.6 horizontally and 0.6 vertically.
+Note that it can be a bit off because floating point error.
++ Normally is `0.6×0.6` horizontally and 1.8 vertically.
++ While crouched is `0.6×0.6` horizontally and `1.49` vertically.
++ While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
 ---
 
 ## Glitches
-+ Hitbox manipulation [**Link**](https://youtu.be/WKW3vyy5yH8) (very effective because bedrock use floats, around 500 million times better)
++ Hitbox manipulation (very effective because bedrock use floats, around 500 million times better).
 
 ### Patched Glitches
 + 11 strafe or 10 strafe. Patched in v`1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` same as java's 45 strafe. Surprisingly, this works on jump tick `4.51°` is optimal. Given this, 11 strafe is generally better than java's 45 strafe.
 + Backwards sprinting.//todo
 
 ### Non-Advantagious Glitches
-+ Player never stopping in place, coords flickering.(i'll add vid soon dw)
-+ More flickering stuff.
++ Player actually never stopping in place, coords flickering while standing still.
 + Mega rubberbanding.
-+ Server-Client player collision box desync.
++ Many desync issues.
 
 ---
 
@@ -228,25 +228,23 @@ Note that some inaccuracy can happen due to floating point imprecision.
 + No presence of bursting or shift glitch.
 + Shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
 + No air sprint delay. (= java 1.19.4 and +)
-+ Sprint would cancel after touching a wall BUT only if `inward velocity > a certain number` This number is yet to be defined through my testing.
-+ Sprint deactivation is partially determined server-side.
++ Sprint would cancel after touching a wall BUT only if you're acceleration into the wall is past a certain value.
 + Have all-direction joystick controls.
-+ You have 16 b/t absolute speed cap.(Yes, I did use a tnt cannon to test)
++ You have 16 b/t absolute speed cap.
 
 ---
 
 ## Numbers
-I did not look at the code, I got these by testing.
-
+got these through experimenting.
 ### Base values
 the formulas should be the same as java's
 + shifted acceleration: `0.294`
 + walk acceleration: `0.98`
 + sprint acceleration: `1.274`
-+ sprint jump acceleration towards facing: `0.2`?
++ sprint jump acceleration towards facing: `0.2`
 + ground slipperiness: `0.6`
 + airborne slipperiness: `0.0`
-+ motion conserved to next tick: `0.91`
++ velocity conserved to next tick: `0.91`
 + jump vertical acceleration: `0.42`
 + vertical drag: `0.98`
 + gravity acceleration: `0.08`
@@ -265,9 +263,9 @@ the formulas should be the same as java's
 + walk acceleration: `0.0196`
 + sprint acceleration: `0.02548`
 #### Flying
-Flying ignores block mechanics, reaching top speed of 0.544b/t while walk flying, 1.088b/t while sprinting.
+Flying ignores most block mechanics, reaching top speed of 0.544b/t while walk flying, 1.088b/t while sprinting.
 + horizontal drag while accelerating: `0.91`
-+ horizontal drag while not accelerating: somewhere around `0.34125` When movement key is released, drag continues to be 0.91 for 1 more tick.
++ horizontal drag while not accelerating: somewhere around `0.34125`.
 + shifted accerelation: `[incompatible]`
 + walk acceleration: `0.049`
 + sprint acceleration: `0.098`
@@ -287,12 +285,14 @@ Different behavior to normal blocking, No effect on movement
 #### Soulsand
 Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
 Entity will receive effect when their coordinates is in this region.\
-Effect on movement: todo(not the same as java)
+Effect on movement: todo(def not the same as java)
 
 #### Honey block
 there are like 5 different effect boxes//todo\
 Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
+
 #### Slime block
+//todo
 
 #### Ices
 Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
@@ -303,10 +303,13 @@ Entity will receive effect when their coordinates is in this region.
 + Frosted ice slipperiness factor `0.98`
 
 #### Catch/Climb type blocks
+//todo
 
 #### Water
+//todo
 
 #### Lava
+//todo
 
 #### Cobweb
 Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
@@ -324,7 +327,7 @@ Entity will receive effect when their collision box intersects this region.\
 Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
 
 #### Scaffolding
-different behavior to normal climb blocks
+different behavior to normal climb blocks.//todo
 
 ---
 
@@ -332,7 +335,7 @@ different behavior to normal climb blocks
 Status effects that directly effect movement.//todo
 
 #### Speed
-`+20%` acceleration per level of speed.
+`+20%` acceleration per level of speed. In the case where speed is on with slowness, speed always get applied first.
 
 #### Slowness
 `-15%` acceleration per level of slowness.
@@ -341,8 +344,10 @@ Status effects that directly effect movement.//todo
 `+0.1` jump acceleration per level of jump boost.
 
 #### Slow falling
+//todo
 
 #### Levitation
+//todo
 
 #### Blindness
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
@@ -350,7 +355,7 @@ Activating sprint is not possible while effect is active. You can still keep spr
 ---
 
 ## Taps setups
-Did not test ingame. I mothballed these, so don't take them as 100%.
+Did not test ingame. I mothballed these, so don't trust them 100%.
 |tap names                 |distance given        |
 |--------------------------|----------------------|
 |walk                      |0.21585904            |
@@ -359,21 +364,16 @@ Did not test ingame. I mothballed these, so don't take them as 100%.
 |walk + blocking           |0.04317181            |
 |shifted + blocking        |0.01295154            |
 |sprint + blocking         |0.05612335            |
-
-+ Note: blocking is NOT blocking with shield. See numbers section.<br>
-
-Air taps are not included as well as jam taps and I highly discourage the use of it. As Bedrock have no inertia. This means tapping in a different air tick or different airtime would not give the same result.\
-But don't be fooled. I've invented new a bedrock-friendly way of air tapping — A7 taps. It is tapping on air but on the last tick before hitting ground. This way it would now give the same distance regardless of airtime. Downside is.. it is hard to do and requires a bit of muscle memory to tap on the correct tick.
-
-Again, I mothballed these, so don't take them as 100%
-|tap names                 |distance given        |
-|--------------------------|----------------------|
 |A7 walk                   |0.05888635            |
 |A7 shifted                |0.01766591            |
 |A7 sprint                 |0.07655225            |
 |A7 walk + blocking        |0.01177727            |
 |A7 shifted + blocking     |0.00353318            |
 |A7 sprint + blocking      |0.01531045            |
+
++ Note: blocking is NOT blocking with shield. See numbers section.<br>
+
+Air taps aren't included because of no inertia, giving different result some of the times. So use A7 taps instead.
 
 ---
 
