@@ -1,0 +1,12 @@
+honey side behavior, standing on plain ground, effect seems to be additive (multiple nearby honey blocks can effect)
+
+speed, input
+0, none
+0.0979995727539062, W
+0.1194038391113281, W
+0.1240768432617188, W
+0.1250991821289062, W
+0.1253204345703125, W
+0.1253814697265625, W
+0.1253852844238281, W
+...
