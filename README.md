@@ -23,8 +23,10 @@ uhmm
 + [ ] climb blocks
 + [ ] scaffolding
 + [ ] water/lava (never)
-+ [ ] slow falling
 + [ ] levitation
++ [ ] soul speed
++ [ ] depth strider
++ [ ] swift sneak
 + [ ] migrate some to wiki page once im done
 
 </details>
@@ -201,7 +203,7 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 
 #### player's collision box
 Note that it can be a bit off because floating point error.
-+ Normally is `0.6×0.6` horizontally and 1.8 vertically.
++ Normally is `0.6×0.6` horizontally and `1.8` vertically.
 + While crouched is `0.6×0.6` horizontally and `1.49` vertically.
 + While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
@@ -335,16 +337,17 @@ Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical ac
 Status effects and enchants that can directly effect movement.
 
 #### Speed
-`+20%` acceleration per level of speed. In the case where speed is on with slowness, speed always get applied first.
+`+20%` acceleration per level of speed. Does not apply when airborne. In the case where speed is on with slowness, speed always get applied first.
 
 #### Slowness
-`-15%` acceleration per level of slowness.
+`-15%` acceleration per level of slowness. Does not apply when airborne.
 
 #### Jump boost
 `+0.1` jump acceleration per level of jump boost.
 
 #### Slow falling
-//todo
+`0.01` Gravity acceleration for all levels of slow falling. Reaching terminal velocity of `0.49`.\
+(i think it only applies 1 tick after exiting ground)
 
 #### Levitation
 //todo
