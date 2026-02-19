@@ -24,9 +24,7 @@ uhmm
 + [ ] scaffolding
 + [ ] water/lava (never)
 + [ ] levitation
-+ [ ] soul speed
 + [ ] depth strider
-+ [ ] swift sneak
 + [ ] migrate some to wiki page once im done
 
 </details>
@@ -356,13 +354,13 @@ Status effects and enchants that can directly effect movement.
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
 
 #### Soul speed
-//todo
+`1.3 + ( Level * 0.105 )`times acceleration. Only works on soul sand and soul soil as ground.
 
 #### Depth strider
 //todo
 
 #### Swift sneak
-//todo
+`+50%` acceleration per level of swift sneak. Only works while crouching or crawling.
 
 ---
 
