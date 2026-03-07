@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.26.0`
+A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.26.3`
 
 uhmm
 
@@ -34,7 +34,6 @@ uhmm
 ## Resources
 + Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
 + Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK.
-+ [**Bedrock Sensitivity graph**](https://www.desmos.com/calculator/avezxwvmde)
 
 ---
 
@@ -357,7 +356,7 @@ Activating sprint is not possible while effect is active. You can still keep spr
 `1.3 + ( Level * 0.105 )`times acceleration. Only works on soul sand and soul soil as ground.
 
 #### Depth strider
-//todo
+`+133.33%` acceleration per level of depth strider.(for walking)
 
 #### Swift sneak
 `+50%` acceleration per level of swift sneak. Only works while crouching or crawling.
