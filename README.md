@@ -49,12 +49,15 @@ All direction movement controls.\
 //todo
 
 ### Mouse movement
-//todo
+//todo\
 Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 
 #### Sensitivity formula
-+ Mouse: `DeltaYaw = PixelTurned * (0.25 + 0.051149105 * Sens ^ 0.6125) ^ 3 * 1920 / WindowWidth` /!\ NEEDS VERIFICATION /!\
-+ Touch: `DeltaYaw = 32/93275 * (1.6 + 712/2175 * Sens ^ 0.6125) ^ 3.6` /!\ WIP, Approximation, for my device type (2340 * 1080) /!\
+Recent update changed something but im haven't looked into it yet.
++ Mouse: `DeltaYaw = PixelTurned * (0.25 + 0.051149105 * Sens ^ 0.6125) ^ 3 * 1920 / WindowWidth`<br>
+/!\ NEEDS VERIFICATION /!\
++ Touch: `DeltaYaw = 32/93275 * (1.6 + 712/2175 * Sens ^ 0.6125) ^ 3.6`<br>
+/!\ WIP, Approximation, for my device type (2340 * 1080) /!\
 + Joystick: //todo
 + Button press: //todo
 
