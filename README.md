@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `1.26.3`
+A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `26.10`
 
 uhmm
 
@@ -41,18 +41,28 @@ uhmm
 There are 2 major ways the player can move.
 
 #### Button controls
-WASD button controls.//todo
+WASD button controls.\
+//todo
 
 #### Joystick controls
-All direction movement controls.//todo
+All direction movement controls.\
+//todo
 
 ### Mouse movement
-//todo Fact: Pitch is locked in range [`-89.9°` to `89.9°`]
+//todo
+Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
+
+#### Sensitivity formula
++ Mouse: `DeltaYaw = PixelTurned * (0.25 + 0.051149105 * Sens ^ 0.6125) ^ 3 * 1920 / WindowWidth` /!\ NEEDS VERIFICATION /!\
++ Touch: `DeltaYaw = 32/93275 * (1.6 + 712/2175 * Sens ^ 0.6125) ^ 3.6` /!\ WIP, Approximation, for my device type (2340 * 1080) /!\
++ Joystick: //todo
++ Button press: //todo
 
 ---
 
 ## Block Collisions
-List of collision box for all blocks. For effect box for blocks like cobweb, please see the [block mechanics](#block-mechanics) section.
+List of collision box for all blocks. For effect box for blocks like cobweb, please see the [block mechanics](#block-mechanics) section.\
+/!\ OUTDATED, SOMETHING MAY HAVE CHANGED /!\
 
 #### Clarification
 + **Model** is a how a block looks. It is purely visual.
@@ -195,7 +205,7 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 ## Movement mechanics
 //todo
 + Y -> X -> Z collision order
-+ Stepping stuff, same as Java?
++ Stepping stuff, same as Java 1.8. /!\ NEEDS VERIFICATION /!\
 + 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 #### player's collision box
@@ -210,7 +220,7 @@ Note that it can be a bit off because floating point error.
 + Hitbox manipulation (very effective because bedrock use floats, around 500 million times better).
 
 ### Patched Glitches
-+ 11 strafe or 10 strafe. Patched in v`1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` same as java's 45 strafe. Surprisingly, this works on jump tick `4.51°` is optimal. Given this, 11 strafe is generally better than java's 45 strafe.
++ 11 strafe or 10 strafe. Patched in v`1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than java's 45 strafe.
 + Backwards sprinting.//todo
 
 ### Non-Advantagious Glitches
@@ -223,7 +233,7 @@ Note that it can be a bit off because floating point error.
 ## Bedrock differences
 + Strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
 + No presence of inertia AKA momentum threshold.
-+ Position is stored in floats. This explains many goofy glitches on bedrock.
++ Position and many more values is stored in floats (32-bit). This explains many goofy glitches on bedrock.
 + No presence of bursting or shift glitch.
 + Shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
 + No air sprint delay. (= java 1.19.4 and +)
@@ -234,9 +244,10 @@ Note that it can be a bit off because floating point error.
 ---
 
 ## Numbers
-got these through experimenting.
+got these through experimenting/reverse engineering.
+
 ### Base values
-the formulas should be the same as java's
+the formulas should be the same as Java's
 + shifted acceleration: `0.294`
 + walk acceleration: `0.98`
 + sprint acceleration: `1.274`
@@ -249,31 +260,36 @@ the formulas should be the same as java's
 + gravity acceleration: `0.08`
 
 ### Pre-calculated values
+
 #### Grounded
 `0.1x` acceleration.
 + horizontal drag: `0.546`
 + shifted acceleration: `0.0294`
 + walk acceleration: `0.098`
 + sprint acceleration: `0.1274`
+
 #### Airborne
 `0.02x` acceleration.
 + horizontal drag: `0.91`
 + shifted accerelation: `0.00588`
 + walk acceleration: `0.0196`
 + sprint acceleration: `0.02548`
+
 #### Flying
 Flying ignores most block mechanics, reaching top speed of 0.544b/t while walk flying, 1.088b/t while sprinting.
 + horizontal drag while accelerating: `0.91`
-+ horizontal drag while not accelerating: somewhere around `0.34125`.
++ horizontal drag while not accelerating: `~0.34125`.
 + shifted accerelation: `[incompatible]`
 + walk acceleration: `0.049`
 + sprint acceleration: `0.098`
+
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
-`81+(2/3)` less acceleration or `~0.0122449x` acceleration.
+`81 + 2/3` less acceleration or `~0.0122449x` acceleration.
 + shifted accerelation: `0.0036`
 + walk acceleration: `0.012`
 + sprint acceleration: `0.0156`
+
 #### Shield Blocking
 Different behavior to normal blocking, No effect on movement
 
@@ -331,7 +347,8 @@ Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical ac
 ---
 
 ## Status effects & Enchants
-Status effects and enchants that can directly effect movement.
+Status effects and enchants that can directly effect movement.\
+Enchants that have a level beyond normally possible may have mistakes.
 
 #### Speed
 `+20%` acceleration per level of speed. Does not apply when airborne. In the case where speed is on with slowness, speed always get applied first.
@@ -353,10 +370,10 @@ Status effects and enchants that can directly effect movement.
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
 
 #### Soul speed
-`1.3 + ( Level * 0.105 )`times acceleration. Only works on soul sand and soul soil as ground.
+`1.3 + Level * 0.105`times acceleration. Only works on soul sand and soul soil as ground.
 
 #### Depth strider
-`+133.33%` acceleration per level of depth strider.(for walking)
+`+133.33%` acceleration per level of depth strider.(for walking, for sprinting it is complicated //todo)
 
 #### Swift sneak
 `+50%` acceleration per level of swift sneak. Only works while crouching or crawling.
