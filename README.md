@@ -1,6 +1,6 @@
 # MCBE_Parkour_wiki
 
-![MCBEPK_wiki_banner](https://github.com/Acce5sDenied/MCBE_Parkour_wiki/blob/main/Images/MCBEPK_wiki_banner.png)
+![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
 A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `26.10`
 
@@ -208,7 +208,8 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 ## Movement mechanics
 //todo
 + Y -> X -> Z collision order
-+ Stepping stuff, same as Java 1.8. /!\ NEEDS VERIFICATION /!\
++ Stepping stuff, same as Java 1.8.\
+/!\ NEEDS VERIFICATION /!\
 + 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 #### player's collision box
