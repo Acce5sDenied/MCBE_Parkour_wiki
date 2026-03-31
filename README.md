@@ -56,10 +56,10 @@ Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 Recent update changed something but im haven't looked into it yet.
 + Mouse:\
 $$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \left(0.25 + 0.051149105 \cdot \text{Sensitivity} ^ {0.6125}\right) ^ 3 \cdot \frac{1920}{\text{WindowWidth}}$$\
-/!\ NEEDS VERIFICATION /!\
+`/!\ NEEDS VERIFICATION /!\`
 + Touch:\
 $$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \cdot \left(1.6 + \frac{712}{2175} \cdot \text{Sensitivity} ^ {0.6125} \right) ^ {3.6}$$\
-/!\ WIP, Approximation, for my device type (2340 * 1080) /!\
+`/!\ WIP, Approximation, for my device type (2340 * 1080) /!\`
 + Joystick: //todo
 + Button press: //todo
 
@@ -67,7 +67,7 @@ $$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \
 
 ## Block Collisions
 List of collision box for all blocks. For effect box for blocks like cobweb, please see the [block mechanics](#block-mechanics) section.\
-/!\ OUTDATED, SOMETHING MAY HAVE CHANGED /!\
+`/!\ OUTDATED, SOMETHING MAY HAVE CHANGED /!\`
 
 #### Clarification
 + **Model** is a how a block looks. It is purely visual.
@@ -211,7 +211,7 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 //todo
 + Y -> X -> Z collision order
 + Stepping stuff, same as Java 1.8.\
-/!\ NEEDS VERIFICATION /!\
+`/!\ NEEDS VERIFICATION /!\`
 + 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 #### player's collision box
@@ -304,7 +304,7 @@ Different behavior to normal blocking, No effect on movement
 ## Block Mechanics
 
 #### Soulsand
-Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
+Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
 Entity will receive effect when their coordinates is in this region.\
 Effect on movement: todo(def not the same as java)
 
@@ -316,7 +316,7 @@ Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 
 //todo
 
 #### Ices
-Effect box: 1×1×1 lifted up by 0.1. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
+Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
 Entity will receive effect when their coordinates is in this region.
 + Blue ice slipperiness factor `0.989`
 + Packed ice slipperiness factor `0.98`
@@ -336,17 +336,17 @@ different behavior to normal climb blocks.//todo
 //todo
 
 #### Cobweb
-Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
+Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
 Effect on movement: Horizontal acceleration is divided by `4` and Vertical acceleration is divided by `20`. All velocity is reset on every tick.
 
 #### Powdered Snow
-Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
+Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
 Effect on movement: todo
 
 #### Sweet Berry Bush
-Effect box: 0.998×0.998×0.998 (1×1×1 retracted 0.001 inwards on each side.)\
+Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
 Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
 
@@ -403,7 +403,7 @@ Did not test ingame. I mothballed these, so don't trust them 100%.
 |A7 shifted + blocking     |0.00353318            |
 |A7 sprint + blocking      |0.01531045            |
 
-+ Note: blocking is NOT blocking with shield. See numbers section.\
++ Note: blocking is NOT blocking with shield. See numbers section.
 
 Air taps aren't included because of no inertia, giving different result some of the times. So use A7 taps instead.
 
