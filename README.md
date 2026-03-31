@@ -54,9 +54,11 @@ Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 
 #### Sensitivity formula
 Recent update changed something but im haven't looked into it yet.
-+ Mouse: `DeltaYaw = PixelTurned * (0.25 + 0.051149105 * Sens ^ 0.6125) ^ 3 * 1920 / WindowWidth`<br>
++ Mouse:\
+$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \left(0.25 + 0.051149105 \cdot \text{Sensitivity} ^ {0.6125}\right) ^ 3 \cdot \frac{1920}{\text{WindowWidth}}$$\
 /!\ NEEDS VERIFICATION /!\
-+ Touch: `DeltaYaw = 32/93275 * (1.6 + 712/2175 * Sens ^ 0.6125) ^ 3.6`<br>
++ Touch:\
+$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \cdot \left(1.6 + \frac{712}{2175} \cdot \text{Sensitivity} ^ {0.6125} \right) ^ {3.6}$$\
 /!\ WIP, Approximation, for my device type (2340 * 1080) /!\
 + Joystick: //todo
 + Button press: //todo
@@ -224,7 +226,7 @@ Note that it can be a bit off because floating point error.
 + Hitbox manipulation (very effective because bedrock use floats, around 500 million times better).
 
 ### Patched Glitches
-+ 11 strafe or 10 strafe. Patched in v`1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than java's 45 strafe.
++ 11 strafe or 10 strafe. Patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than java's 45 strafe.
 + Backwards sprinting.//todo
 
 ### Non-Advantagious Glitches
@@ -374,7 +376,7 @@ Enchants that have a level beyond normally possible may have mistakes.
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
 
 #### Soul speed
-`1.3 + Level * 0.105`times acceleration. Only works on soul sand and soul soil as ground.
+$\displaystyle 1.3 + \text{Level} \cdot 0.105$ x acceleration. Only works on soul sand and soul soil as ground.
 
 #### Depth strider
 `+133.33%` acceleration per level of depth strider.(for walking, for sprinting it is complicated //todo)
@@ -401,7 +403,7 @@ Did not test ingame. I mothballed these, so don't trust them 100%.
 |A7 shifted + blocking     |0.00353318            |
 |A7 sprint + blocking      |0.01531045            |
 
-+ Note: blocking is NOT blocking with shield. See numbers section.<br>
++ Note: blocking is NOT blocking with shield. See numbers section.\
 
 Air taps aren't included because of no inertia, giving different result some of the times. So use A7 taps instead.
 
