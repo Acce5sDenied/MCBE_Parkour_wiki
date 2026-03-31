@@ -66,7 +66,7 @@ $$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \
 ---
 
 ## Block Collisions
-List of collision box for all blocks. For effect box for blocks like cobweb, please see the [block mechanics](#block-mechanics) section.\
+List of collision box for all blocks. For effect box for blocks like cobweb, please see the [Block Mechanics](#block-mechanics) section.\
 `/!\ OUTDATED, SOMETHING MAY HAVE CHANGED /!\`
 
 #### Clarification
@@ -249,7 +249,7 @@ Note that it can be a bit off because floating point error.
 
 ---
 
-## Numbers
+## Constants
 got these through experimenting/reverse engineering.
 
 ### Base values
@@ -403,7 +403,7 @@ Did not test ingame. I mothballed these, so don't trust them 100%.
 |A7 shifted + blocking     |0.00353318            |
 |A7 sprint + blocking      |0.01531045            |
 
-+ Note: blocking is NOT blocking with shield. See numbers section.
++ Note: blocking is NOT blocking with shield. See [Blocking](#blocking) section.
 
 Air taps aren't included because of no inertia, giving different result some of the times. So use A7 taps instead.
 
