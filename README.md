@@ -314,14 +314,17 @@ Effects on movement include:
 #### Soulsand
 Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
 Entity will receive effect when their coordinates is in this region.\
-Properties: todo(definitely not the same as java)
+Properties: //todo(definitely not the same as java)
 
 #### Honey block
 there are like 5 different effect boxes help helppppp//todo\
-Properties: key details: Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
+Properties: //todo key details: 
++ Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
++ Sliding down the side have a speed cap of `-0.12`
 
 #### Slime block
-//todo
+Properties: //todo key details:
++ bounce
 
 #### Ices
 + Blue ice slipperiness factor `0.989`
@@ -332,13 +335,15 @@ Properties: key details: Jumping gives `0.252` vertical acceleration, reaching `
 #### Catch/Climb type blocks
 Effect box: `1×1×1`\
 Entity will receive effect when their coordinates is in this region.\
-Properties://todo key details: max climb/down speed is `0.2`
+Properties: //todo key details: 
++ max climb/down speed is `0.2`
 
 #### Scaffolding
 different behavior to normal climb blocks.\
 Effect box: `1×1×1`\
 Entity will receive effect when their collision box intersects this region.\
-Properties://todo key details: max climb/down speed is `0.15`
+Properties: //todo key details: 
++ max climb/down speed is `0.15`
 
 #### Water
 //todo
@@ -349,17 +354,25 @@ Properties://todo key details: max climb/down speed is `0.15`
 #### Cobweb
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
-Properties: Horizontal acceleration is divided by `4` and Vertical acceleration is divided by `20`. All velocity is reset on every tick.
+Properties: 
++ Horizontal acceleration is divided by `4`.
++ Vertical acceleration is divided by `20`.
++ All velocity is reset on every tick.
 
 #### Powdered Snow
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
-Properties://todo key details: All velocity is reset on every tick, the longer inside the slower you are.
+Properties://todo key details: 
++ All velocity is reset on every tick.
++ The longer inside the slower you are.
 
 #### Sweet Berry Bush
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
-Properties: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
+Properties: 
++ Horizontal acceleration is divided by `1.25`.
++ Vertical acceleration is **multiplied** by `0.735`.
++ All velocity is reset on every tick.
 
 ---
 
