@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics. As of game version `26.10`
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.10`.
 
 uhmm
 
@@ -53,13 +53,14 @@ All direction movement controls.\
 Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 
 #### Sensitivity formula
-Recent update changed something but im haven't looked into it yet.
+Recent update changed something but im haven't looked into it yet.\
+Let $\displaystyle v_{value} = 0.051149105 \cdot \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
 + Mouse:\
-$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \left(0.25 + 0.051149105 \cdot \text{Sensitivity} ^ {0.6125}\right) ^ 3 \cdot \frac{1920}{\text{WindowWidth}}$$\
+$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \left(0.25 + v_{value} \right) ^ 3 \cdot \frac{1920}{\text{WindowWidth}}$$\
 `/!\ NEEDS VERIFICATION /!\`
 + Touch:\
-$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \cdot \left(1.6 + \frac{712}{2175} \cdot \text{Sensitivity} ^ {0.6125} \right) ^ {3.6}$$\
-`/!\ WIP, Approximation, for my device type (2340 * 1080) /!\`
+$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \cdot \left(1.6 + 6.4 \cdot v_{value}\right) ^ {3.6}$$\
+`/!\ WIP, for my device type (2340 * 1080) /!\`
 + Joystick: //todo
 + Button press: //todo
 
@@ -409,8 +410,8 @@ Air taps aren't included because of no inertia, giving different result some of 
 
 ---
 
-
-
+# Bedrock Parkour Lore
+coming soon!
 
 
 
