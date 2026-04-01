@@ -450,7 +450,36 @@ Air taps aren't included because of no inertia, giving different result some of 
 ---
 
 # Bedrock Parkour Lore
-coming soon!
+more coming soon!
 
+## Bedrock Parkour Servers
 
+#### Galaxite
+Galaxite Parkour Builders
+
+#### DPK Network
+HPK-like realm
+
+#### Rathian Realm
+
+#### LetUS Server
+
+#### WagL Network
+
+#### Li9 Realm / Lithium Parkour
+A parkour realm consisting of 250 levels.
+
+#### MuttiServer
+
+#### Mineplex
+Mineplex Housing
+
+#### Tanaris Athletic
+
+#### Others
++ Manacube parkour (have bedrock support)
++ Asure
++ Lemonsour Athletic
+
+---
 
