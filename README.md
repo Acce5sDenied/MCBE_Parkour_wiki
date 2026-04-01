@@ -2,7 +2,8 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.10`.
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.10`.\
+This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.
 
 uhmm
 
@@ -12,6 +13,7 @@ uhmm
   
 + [ ] hopper collision
 + [ ] Chorus plant collision
++ [ ] historic collision boxes
 + [ ] movement
 + [ ] camera
 + [ ] sensitivity
@@ -33,7 +35,22 @@ uhmm
 
 ## Resources
 + Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
-+ Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK.
++ Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK, Cyv.
+
+---
+
+## Bedrock Differences
+Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standard for parkour).
++ Strafing don't give the 2% boost in acceleration, unlike Java Edition. Same goes for strafe shifting.
++ No presence of inertia AKA momentum threshold.
++ Position and many more values is stored in floats (32-bit). This explains many goofy glitches on bedrock.
++ No presence of bursting or shift glitch.
++ Shifting would only goes to minimum of 0.025 away from edge.
++ No 1 tick of air sprint delay. (match Java 1.19.4 and above)
++ Sprint would cancel after touching a wall BUT only if you're acceleration into the wall is past a certain value.
++ Have all-direction joystick controls.
++ You have 16 b/t absolute speed cap.
++ Many block mechanics/properties is different.
 
 ---
 
@@ -206,13 +223,22 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 
 </details>
 
+### Historic collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
+Collision boxes that have been changed throughout many updates.//todo
+
+</details>
 ---
 
 ## Movement mechanics
 //todo
 + Y -> X -> Z collision order
-+ Stepping stuff, same as Java 1.8.\
++ Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.\
 `/!\ NEEDS VERIFICATION /!\`
++ Shifting makes player go only the minimum of `0.025` away from edge.
 + 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 #### player's collision box
@@ -224,29 +250,17 @@ Note that it can be a bit off because floating point error.
 ---
 
 ## Glitches
-+ Hitbox manipulation (very effective because bedrock use floats, around 500 million times better).
++ Hitbox manipulation is a precision related glitch. Since bedrock uses 32-bit aritmetic, this is millions of times more effective than Java's.
++ Block clipping is another precision related glitch. Happens at coodinates of high number. And powers of 2.
 
 ### Patched Glitches
-+ 11 strafe or 10 strafe. Patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than java's 45 strafe.
++ 11 strafe or 10 strafe. Patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than Java's 45 strafe.
 + Backwards sprinting.//todo
 
 ### Non-Advantagious Glitches
 + Player actually never stopping in place, coords flickering while standing still.
-+ Mega rubberbanding.
++ Catastrophic rubberbanding.
 + Many desync issues.
-
----
-
-## Bedrock differences
-+ Strafing don't give the 2% boost in acceleration. (ofc) same goes for strafe shifting.
-+ No presence of inertia AKA momentum threshold.
-+ Position and many more values is stored in floats (32-bit). This explains many goofy glitches on bedrock.
-+ No presence of bursting or shift glitch.
-+ Shifting would only goes to 0.025 off edge. This means rankupping in bedrock sucks!!
-+ No air sprint delay. (= java 1.19.4 and +)
-+ Sprint would cancel after touching a wall BUT only if you're acceleration into the wall is past a certain value.
-+ Have all-direction joystick controls.
-+ You have 16 b/t absolute speed cap.
 
 ---
 
