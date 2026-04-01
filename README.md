@@ -310,7 +310,7 @@ Entity will receive effect when their coordinates is in this region.\
 Effect on movement: todo(def not the same as java)
 
 #### Honey block
-there are like 5 different effect boxes//todo\
+there are like 5 different effect boxes help helppppp//todo\
 Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 
 #### Slime block
@@ -325,10 +325,15 @@ Entity will receive effect when their coordinates is in this region.
 + Frosted ice slipperiness factor `0.98`
 
 #### Catch/Climb type blocks
-//todo
+Effect box: `1×1×1`\
+Entity will receive effect when their coordinates is in this region.\
+Effect on movement://todo key details: max climb/down speed is `0.2`
 
 #### Scaffolding
-different behavior to normal climb blocks.//todo
+different behavior to normal climb blocks.\
+Effect box: `1×1×1`\
+Entity will receive effect when their collision box intersects this region.\
+Effect on movement://todo key details: max climb/down speed is `0.15`
 
 #### Water
 //todo
@@ -344,7 +349,7 @@ Effect on movement: Horizontal acceleration is divided by `4` and Vertical accel
 #### Powdered Snow
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
-Effect on movement: todo
+Effect on movement://todo key details: All velocity is reset on every tick, the longer inside the slower you are.
 
 #### Sweet Berry Bush
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
