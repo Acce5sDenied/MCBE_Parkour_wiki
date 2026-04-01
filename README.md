@@ -304,21 +304,26 @@ Different behavior to normal blocking, No effect on movement
 
 ## Block Mechanics
 
+### Slipperiness Properties
+All blocks have slipperiness factor (noted as $s$) of it's own. A normal block have $s$ of `0.6`\
+The game checks `0.1` blocks below entity's position for slipperiness. When airborne, slipperiness properties is ignored.\
+Effects on movement include:
++ Amount of drag on ground is $0.91 \cdot s$.
++ Acceleration on ground is multiplied by $\displaystyle \left(\frac{0.6}{s}\right) ^ 3$
+
 #### Soulsand
 Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
 Entity will receive effect when their coordinates is in this region.\
-Effect on movement: todo(def not the same as java)
+Properties: todo(definitely not the same as java)
 
 #### Honey block
 there are like 5 different effect boxes help helppppp//todo\
-Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
+Properties: key details: Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 
 #### Slime block
 //todo
 
 #### Ices
-Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
-Entity will receive effect when their coordinates is in this region.
 + Blue ice slipperiness factor `0.989`
 + Packed ice slipperiness factor `0.98`
 + Ice slipperiness factor `0.98`
@@ -327,13 +332,13 @@ Entity will receive effect when their coordinates is in this region.
 #### Catch/Climb type blocks
 Effect box: `1×1×1`\
 Entity will receive effect when their coordinates is in this region.\
-Effect on movement://todo key details: max climb/down speed is `0.2`
+Properties://todo key details: max climb/down speed is `0.2`
 
 #### Scaffolding
 different behavior to normal climb blocks.\
 Effect box: `1×1×1`\
 Entity will receive effect when their collision box intersects this region.\
-Effect on movement://todo key details: max climb/down speed is `0.15`
+Properties://todo key details: max climb/down speed is `0.15`
 
 #### Water
 //todo
@@ -344,17 +349,17 @@ Effect on movement://todo key details: max climb/down speed is `0.15`
 #### Cobweb
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
-Effect on movement: Horizontal acceleration is divided by `4` and Vertical acceleration is divided by `20`. All velocity is reset on every tick.
+Properties: Horizontal acceleration is divided by `4` and Vertical acceleration is divided by `20`. All velocity is reset on every tick.
 
 #### Powdered Snow
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
-Effect on movement://todo key details: All velocity is reset on every tick, the longer inside the slower you are.
+Properties://todo key details: All velocity is reset on every tick, the longer inside the slower you are.
 
 #### Sweet Berry Bush
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
 Entity will receive effect when their collision box intersects this region.\
-Effect on movement: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
+Properties: Horizontal acceleration is divided by `1.25` and Vertical acceleration is **multiplied** by `0.735`. All velocity is reset on every tick.
 
 ---
 
