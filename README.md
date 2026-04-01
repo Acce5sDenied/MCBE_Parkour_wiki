@@ -34,7 +34,7 @@ uhmm
 ---
 
 ## Resources
-+ Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for java parkour documentation.
++ Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java parkour documentation.
 + Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK, Cyv.
 
 ---
@@ -71,6 +71,7 @@ Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 
 #### Sensitivity formula
 Recent update changed something but im haven't looked into it yet.\
+Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
 Let $\displaystyle v_{value} = 0.051149105 \cdot \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
 + Mouse:\
 $$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \left(0.25 + v_{value} \right) ^ 3 \cdot \frac{1920}{\text{WindowWidth}}$$\
@@ -231,6 +232,7 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 Collision boxes that have been changed throughout many updates.//todo
 
 </details>
+
 ---
 
 ## Movement mechanics
