@@ -252,7 +252,7 @@ Note that it can be a bit off because floating point error.
 ---
 
 ## Glitches
-+ Hitbox manipulation is a precision related glitch. Since bedrock uses 32-bit aritmetic, this is millions of times more effective than Java's.
++ Hitbox manipulation is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's.
 + Block clipping is another precision related glitch. Happens at coodinates of high number. And powers of 2.
 
 ### Patched Glitches
@@ -275,8 +275,7 @@ the formulas should be the same as Java's
 + walk acceleration: `0.98`
 + sprint acceleration: `1.274`
 + sprint jump acceleration towards facing: `0.2`
-+ ground slipperiness: `0.6`
-+ airborne slipperiness: `0.0`
++ normal ground slipperiness: `0.6`
 + velocity conserved to next tick: `0.91`
 + jump vertical acceleration: `0.42`
 + vertical drag: `0.98`
@@ -299,7 +298,7 @@ the formulas should be the same as Java's
 + sprint acceleration: `0.02548`
 
 #### Flying
-Flying ignores most block mechanics, reaching top speed of 0.544b/t while walk flying, 1.088b/t while sprinting.
+Flying ignores most block mechanics, reaching top speed of `0.544b/t` while walk flying, `1.088b/t` while sprinting.
 + horizontal drag while accelerating: `0.91`
 + horizontal drag while not accelerating: `~0.34125`.
 + shifted accerelation: `[incompatible]`
