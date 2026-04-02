@@ -320,7 +320,7 @@ Different behavior to normal blocking, No effect on movement
 ## Block Mechanics
 
 ### Slipperiness Properties
-All blocks have slipperiness factor (noted as $s$) of it's own. A normal block have $s$ of `0.6`\
+All blocks have slipperiness factor (noted as $s$) of it's own. Every block have $s$ of `0.6` unless other value is stated\
 The game checks `0.1` blocks below entity's position for slipperiness. When airborne, slipperiness properties is ignored.\
 Effects on movement include:
 + Amount of drag on ground is $0.91 \cdot s$.
@@ -333,11 +333,13 @@ Properties: //todo(definitely not the same as java)
 
 #### Honey block
 there are like 5 different effect boxes help helppppp//todo\
+Slipperiness factor is `0.8`\
 Properties: //todo key details: 
 + Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 + Sliding down the side have a speed cap of `-0.12`
 
 #### Slime block
+Slipperiness factor is `0.8`\
 Properties: //todo key details:
 + bounce
 
