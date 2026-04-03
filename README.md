@@ -329,10 +329,10 @@ Effects on movement include:
 #### Soulsand
 Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
 Entity will receive effect when their coordinates is in this region.\
-Properties: //todo(definitely not the same as java)
+Properties: Unlike Java, that soulsand would drag an entity down, Bedrock does not do that.
++ Grants `54.4%` acceleration.
 
 #### Honey block
-there are like 5 different effect boxes help helppppp//todo\
 Slipperiness factor is `0.8`\
 Properties: //todo key details: 
 + Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
