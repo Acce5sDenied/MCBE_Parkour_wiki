@@ -353,14 +353,14 @@ Properties: //todo key details:
 Effect box: `1×1×1`\
 Entity will receive effect when their coordinates is in this region.\
 Properties: //todo key details: 
-+ max climb/down speed is `0.2`
++ max climb up/down speed is `0.2`
 
 #### Scaffolding
 different behavior to normal climb blocks.\
 Effect box: `1×1×1`\
-Entity will receive effect when their collision box intersects this region.\
+Entity will receive effect when their base (`0.3` margin around player's position) intersects this region.\
 Properties: //todo key details: 
-+ max climb/down speed is `0.15`
++ max climb up/down speed is `0.15`
 
 #### Water
 //todo
