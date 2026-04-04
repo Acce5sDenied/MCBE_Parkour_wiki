@@ -26,7 +26,7 @@ uhmm
 + [ ] scaffolding
 + [ ] water/lava (never)
 + [ ] levitation
-+ [ ] depth strider
++ [ ] movement formulas (for handling cases that many effects stack together)
 + [ ] migrate some to wiki page once im done
 
 </details>
@@ -395,7 +395,7 @@ Properties:
 
 ## Status effects & Enchants
 Status effects and enchants that can directly effect movement.\
-Enchants that have a level beyond normally possible may have mistakes.
+Enchants that have a level beyond normally achievable may have mistakes.
 
 #### Speed
 `+20%` acceleration per level of speed. Does not apply when airborne. In the case where speed is on with slowness, speed always get applied first.
@@ -420,7 +420,9 @@ Activating sprint is not possible while effect is active. You can still keep spr
 $\displaystyle 1.3 + \text{Level} \cdot 0.105$ x acceleration. Only works on soul sand and soul soil as ground.
 
 #### Depth strider
-`+133.33%` acceleration per level of depth strider.(for walking, for sprinting it is complicated //todo)
+For walking, `+133.33%` acceleration per level of depth strider.\
+For sprinting, `+183.33%` acceleration per level of depth strider.\
+`/!\ NEEDS VERIFICATION /!\`
 
 #### Swift sneak
 `+50%` acceleration per level of swift sneak. Only works while crouching or crawling.
@@ -454,6 +456,7 @@ Air taps aren't included because of no inertia, giving different result some of 
 more coming soon!
 
 ## Bedrock Parkour Servers
+A list of publicly known Bedrock Edition parkour servers.
 
 #### Galaxite
 Galaxite Parkour Builders
