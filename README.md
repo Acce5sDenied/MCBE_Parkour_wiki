@@ -18,7 +18,6 @@ uhmm
 + [ ] camera
 + [ ] sensitivity
 + [ ] joystick
-+ [ ] soulsand
 + [ ] honey
 + [ ] slime
 + [ ] powdered snow
@@ -27,6 +26,7 @@ uhmm
 + [ ] water/lava (never)
 + [ ] levitation
 + [ ] movement formulas (for handling cases that many effects stack together)
++ [ ] understanding what caused 11 strafe
 + [ ] migrate some to wiki page once im done
 
 </details>
@@ -85,7 +85,7 @@ $$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \
 ---
 
 ## Block Collisions
-List of collision box for all blocks. For effect box for blocks like cobweb, please see the [Block Mechanics](#block-mechanics) section.\
+List of unique collision boxes of all blocks. For effect box for blocks like cobweb, please see the [Block Mechanics](#block-mechanics) section.\
 `/!\ OUTDATED, SOMETHING MAY HAVE CHANGED /!\`
 
 #### Clarification
@@ -230,13 +230,16 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 
 \
 Collision boxes that have been changed throughout many updates.//todo
+|Blocks                   |Widths                          |Heights                  |Versions                |Comments                                        |
+|-------------------------|--------------------------------|-------------------------|------------------------|------------------------------------------------|
+|Trial spawner
+|Lilypad
 
 </details>
 
 ---
 
-## Movement mechanics
-//todo
+## Movement mechanic
 + Y -> X -> Z collision order
 + Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.\
 `/!\ NEEDS VERIFICATION /!\`
@@ -252,11 +255,12 @@ Note that it can be a bit off because floating point error.
 ---
 
 ## Glitches
+Movement related glitches.
 + Hitbox manipulation is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's.
 + Block clipping is another precision related glitch. Happens at coodinates of high number. And powers of 2.
 
 ### Patched Glitches
-+ 11 strafe or 10 strafe. Patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than Java's 45 strafe.
++ 11 strafe or 10 strafe. Patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°` and `33.52°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than Java's 45 strafe.
 + Backwards sprinting.//todo
 
 ### Non-Advantagious Glitches
@@ -267,7 +271,6 @@ Note that it can be a bit off because floating point error.
 ---
 
 ## Constants
-got these through experimenting/reverse engineering.
 
 ### Base values
 the formulas should be the same as Java's
@@ -318,6 +321,7 @@ Different behavior to normal blocking, No effect on movement
 ---
 
 ## Block Mechanics
+Blocks that have special properties effecting movement.
 
 ### Slipperiness Properties
 All blocks have slipperiness factor (noted as $s$) of it's own. Every block have $s$ of `0.6` unless other value is stated\
@@ -430,8 +434,8 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 ---
 
 ## Taps setups
-Did not test ingame. I mothballed these, so don't trust them 100%.
-|tap names                 |distance given        |
+`/!\ NEEDS VERIFICATION /!\`
+|Tap names                 |Distance given        |
 |--------------------------|----------------------|
 |walk                      |0.21585904            |
 |shifted                   |0.06475772            |
@@ -459,29 +463,39 @@ more coming soon!
 A list of publicly known Bedrock Edition parkour servers.
 
 #### Galaxite
-Galaxite Parkour Builders
+Gamemode "Parkour Builders" on featured server Galaxite.
++ Status: Active
 
 #### DPK Network
 HPK-like realm
++ Status: Active
 
 #### Rathian Realm
+Hosts many rankup and segmented parkour maps.
++ Status: Active
 
 #### LetUS Server
+Hosts many timed parkours, often called "athletic"
++ Status: Active
 
 #### WagL Network
+idk about this one
++ Status: probably Active
 
 #### Li9 Realm / Lithium Parkour
 A parkour realm consisting of 250 levels.
++ Status: Down
 
 #### MuttiServer
++ Status: Down
 
 #### Mineplex
-Mineplex Housing
-
-#### Tanaris Athletic
+Mineplex Housing.
++ Status: Down
 
 #### Others
 + Manacube parkour (have bedrock support)
++ Tanaris Athletic
 + Asure
 + Lemonsour Athletic
 
