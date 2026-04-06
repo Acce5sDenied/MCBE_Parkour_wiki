@@ -434,11 +434,11 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 ---
 
 ## Movement formulas
-//todo
+//todo //latex in gfm is aids
 
 ### Vertical
 Jump Acceleration:\
-$$\displaystyle A_t = 0.42 + 0.1 \times \text{JumpBoostLevel}$$\
+$$\displaystyle A_t = \left(0.42 + 0.1 \times \text{Level}_{\text{jumpBoost}}\right) \times \begin{cases}0.6, & \text{if Honey} \\ 1, & \text{otherwise}\end{cases}$$\
 Gravity:\
 $$\displaystyle G_t = \begin{cases} 0.01, & \text{if SlowFalling} \\ 0.08, & \text{otherwise}\end{cases}$$\
 The complete formula:\
