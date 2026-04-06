@@ -72,12 +72,12 @@ Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 #### Sensitivity formula
 Recent update changed something but im haven't looked into it yet.\
 Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
-Let $\displaystyle v_{value} = 0.051149105 \cdot \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
+Let $\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
 + Mouse:\
-$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \left(0.25 + v_{value} \right) ^ 3 \cdot \frac{1920}{\text{WindowWidth}}$$\
+$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \times \left(0.25 + v_{value} \right) ^ 3 \times \frac{1920}{\text{WindowWidth}}$$\
 `/!\ NEEDS VERIFICATION /!\`
 + Touch:\
-$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \cdot \frac{32}{93275} \cdot \left(1.6 + 6.4 \cdot v_{value}\right) ^ {3.6}$$\
+$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$\
 `/!\ WIP, for my device type (2340 * 1080) /!\`
 + Joystick: //todo
 + Button press: //todo
@@ -327,7 +327,7 @@ Blocks that have special properties effecting movement.
 All blocks have slipperiness factor (noted as $s$) of it's own. Every block have $s$ of `0.6` unless other value is stated\
 The game checks `0.1` blocks below entity's position for slipperiness. When airborne, slipperiness properties is ignored.\
 Effects on movement include:
-+ Amount of drag on ground is $0.91 \cdot s$.
++ Amount of drag on ground is $0.91 \times s$.
 + Acceleration on ground is multiplied by $\displaystyle \left(\frac{0.6}{s}\right) ^ 3$
 
 #### Soulsand
@@ -421,7 +421,7 @@ Enchants that have a level beyond normally achievable may have mistakes.
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
 
 #### Soul speed
-$\displaystyle 1.3 + \text{Level} \cdot 0.105$ x acceleration. Only works on soul sand and soul soil as ground.
+$\displaystyle 1.3 + \text{Level} \times 0.105$ times acceleration. Only works on soul sand and soul soil as ground.
 
 #### Depth strider
 For walking, `+133.33%` acceleration per level of depth strider.\
@@ -430,6 +430,21 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 
 #### Swift sneak
 `+50%` acceleration per level of swift sneak. Only works while crouching or crawling.
+
+---
+
+## Movement formulas
+//todo
+
+### Vertical
+Jump Acceleration:\
+$$\displaystyle A_t = 0.42 + 0.1 \times \text{JumpBoostLevel}$$\
+Gravity:\
+$$\displaystyle G_t = \begin{cases} 0.01, & \text{if SlowFalling} \\ 0.08, & \text{otherwise}\end{cases}$$\
+The complete formula:\
+$$\displaystyle V_{y,t} = \left(V_{y,t-1} - G_{t-1}\right) \times 0.98$$
+
+### Horizontal
 
 ---
 
