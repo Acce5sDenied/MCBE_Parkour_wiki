@@ -324,11 +324,11 @@ Different behavior to normal blocking, No effect on movement
 Blocks that have special properties effecting movement.
 
 ### Slipperiness Properties
-All blocks have slipperiness factor (noted as $s$) of it's own. Every block have $s$ of `0.6` unless other value is stated\
+All blocks have slipperiness factor (noted as $S$) of it's own. Every block have $S$ of `0.6` unless other value is stated\
 The game checks `0.1` blocks below entity's position for slipperiness. When airborne, slipperiness properties is ignored.\
 Effects on movement include:
-+ Amount of drag on ground is $0.91 \times s$.
-+ Acceleration on ground is multiplied by $\displaystyle \left(\frac{0.6}{s}\right) ^ 3$
++ Amount of drag on ground is $0.91 \times S$.
++ Acceleration on ground is multiplied by $\displaystyle \left(\frac{0.6}{S}\right) ^ 3$
 
 #### Soulsand
 Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
@@ -439,16 +439,21 @@ $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}
 
 ### Vertical
 Jump Acceleration:\
-$$\displaystyle A_t = \left(0.42 + 0.1 \times \text{JumpBoostLevel}_t\right) \times \begin{Bmatrix}0.6 & \text{if Honey} \\ 1 & \text{otherwise}\end{Bmatrix}$$\
+$$\displaystyle A_t = \left(0.42 + 0.1 \times JumpBoostLevel_t\right) \times \begin{Bmatrix}0.6 & \text{if Honey} \\ 1 & \text{otherwise}\end{Bmatrix}$$\
 Gravity:\
 $$\displaystyle G_t = \begin{Bmatrix}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{Bmatrix}$$\
 Velocity Formula:\
-$$\displaystyle VY_t = \underset{\text{Momentum}}{\underbrace{\left(VY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if HitGround}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jump}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$\
+$$\displaystyle VY_t = \underset{\text{Momentum}}{\underbrace{\left(VY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jumping}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$\
 Position Formula:\
-$$\displaystyle PY_t = PY_{t-1} + VY_t + \text{some hitting ground stuff}$$
+$$\displaystyle PY_t = PY_{t-1} + VY_t + \text{some collision stuff}$$
 
 ### Horizontal
 Acceleration:\
+$$\displaystyle A_t = \begin{Bmatrix}1.274 & \text{if Sprinting}_t \\ 0.98 & \text{if Walking}_t \\ 0.294 & \text{if Sneaking}_t \\ 0.0 & \text{if Stopping}_t\end{Bmatrix} \times \begin{Bmatrix}0.02 & \text{if Airborne}_t \\ \displaystyle\frac{3}{245} & \text{if Blocking}_t \\ \displaystyle\frac{3}{12250} & \text{if Airborne}_t & \text{and Blocking}_t \\ 0.1 & \text{otherwise}\end{Bmatrix}$$\
+Effects:\
+$$\displaystyle E_t = (1 + 0.2 \times SpeedLevel_t) \times (1 - 0.15 \times SlownessLevel_t)$$\
+Slipperiness:\
+$$\displaystyle S_t = \begin{Bmatrix}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t & \text{and Packed Ice}_t & \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{Bmatrix}$$
 
 ---
 
