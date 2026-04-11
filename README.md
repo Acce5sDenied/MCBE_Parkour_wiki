@@ -24,7 +24,6 @@ uhmm
 + [ ] climb blocks
 + [ ] scaffolding
 + [ ] water/lava (never)
-+ [ ] levitation
 + [ ] movement formulas (for handling cases that many effects stack together)
 + [ ] understanding what caused 11 strafe
 + [ ] migrate some to wiki page once im done
@@ -416,13 +415,14 @@ Enchants that have a level beyond normally achievable may have mistakes.
 (i think it only applies 1 tick after exiting ground)
 
 #### Levitation
-//todo
+$$\displaystyle VelY_t = VelY_{t-1} \times 0.784 + 0.0098 \times Level$$\
+Basically floats up with acceleration of `0.0098` multiplied by levitation level. And with drag of `0.784`.
 
 #### Blindness
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
 
 #### Soul speed
-$\displaystyle 1.3 + \text{Level} \times 0.105$ times acceleration. Only works on soul sand and soul soil as ground.
+$\displaystyle 1.3 + Level \times 0.105$ times acceleration. Only works on soul sand and soul soil as ground.
 
 #### Depth strider
 For walking, `+133.33%` acceleration per level of depth strider.\
@@ -439,29 +439,48 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
 
 ### Vertical
+
 **Jump Acceleration:**\
-$$\displaystyle A_t = \left(0.42 + 0.1 \times JumpBoostLevel_t\right) \times \begin{Bmatrix}0.6 & \text{if Honey} \\ 1 & \text{otherwise}\end{Bmatrix}$$\
+$$\displaystyle A_t = \left(0.42 + 0.1 \times JumpBoostLevel_t\right) \times \begin{Bmatrix}0.6 & \text{if Honey} \\ 1 & \text{otherwise}\end{Bmatrix}$$
+
 **Gravity:**\
-$$\displaystyle G_t = \begin{Bmatrix}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{Bmatrix}$$\
+$$\displaystyle G_t = \begin{Bmatrix}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{Bmatrix}$$
+
 **Velocity Formula:**\
-$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jumping}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$\
+$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jumping}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$
+
 **Position Formula:**\
 $$\displaystyle PosY_t = PosY_{t-1} + VelY_t + \text{some collision stuff}$$
 
 ### Horizontal
+
 **Acceleration:**\
-$$\displaystyle A_t = \begin{Bmatrix}1.274 & \text{if Sprinting}_t \\ 0.98 & \text{if Walking}_t \\ 0.294 & \text{if Sneaking}_t \\ 0.0 & \text{if Stopping}_t\end{Bmatrix} \times \begin{Bmatrix}0.02 & \text{if Airborne}_t \\ \displaystyle\frac{3}{245} & \text{if Blocking}_t \\ \displaystyle\frac{3}{12250} & \text{if Airborne}_t & \text{and Blocking}_t \\ 0.1 & \text{otherwise}\end{Bmatrix}$$\
-**Effects:**\
-$$\displaystyle E_t = (1 + 0.2 \times SpeedLevel_t) \times (1 - 0.15 \times SlownessLevel_t)$$\
+$$\displaystyle A_t = \begin{Bmatrix}1.274 & \text{if Sprinting}_t \\ 0.98 & \text{if Walking}_t \\ 0.294 & \text{if Sneaking}_t \\ 0.0 & \text{if Stopping}_t\end{Bmatrix} \times \begin{Bmatrix}0.02 & \text{if Airborne}_t \\ \displaystyle\frac{3}{245} & \text{if Blocking}_t \\ \displaystyle\frac{3}{12250} & \text{if Airborne}_t & \text{and Blocking}_t \\ 0.1 & \text{otherwise}\end{Bmatrix}$$
+
+**Effects & Enchants:**\
+$$\displaystyle E_t = (1 + 0.2 \times SpeedLevel_t) \times (1 - 0.15 \times SlownessLevel_t)$$
+
+**Block Mechanics:**\
+$$\displaystyle B_t = $$
+
 **Slipperiness:**\
-$$\displaystyle S_t = \begin{Bmatrix}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t & \text{and Packed Ice}_t & \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{Bmatrix}$$\
+$$\displaystyle S_t = \begin{Bmatrix}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t & \text{and Packed Ice}_t & \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{Bmatrix}$$
+
 **Ground Velocity Formula:**\
+$$\displaystyle VelX_t = $$\
+$$\displaystyle VelZ_t = $$
+
 **Airborne Velocity Formula:**\
-**Fluids Velocity Formula:**\
-🗿\
+$$\displaystyle VelX_t = $$\
+$$\displaystyle VelZ_t = $$
+
 **Position Formula:**\
 $$\displaystyle PosX_t = PosX_{t-1} + VelX_t + \text{some collision stuff}$$\
 $$\displaystyle PosZ_t = PosZ_{t-1} + VelZ_t + \text{some collision stuff}$$
+
+### Other
+**Fluids Velocity Formula:**\
+🗿\
 
 ---
 
