@@ -44,10 +44,11 @@ Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standar
 + Strafing don't give the 2% boost in acceleration, unlike Java Edition. Same goes for strafe shifting.
 + No presence of inertia AKA momentum threshold.
 + Position and many more values is stored in floats (32-bit). This explains many goofy glitches on bedrock.
++ Trigonometry directly uses $sin()$ and $cos()$, so there is no such "significant angles" and "half angles" in Bedrock.
 + No presence of bursting or shift glitch.
 + Shifting would only goes to minimum of 0.025 away from edge.
-+ No 1 tick of air sprint delay. (match Java 1.19.4 and above)
-+ Sprint would cancel after touching a wall BUT only if you're acceleration into the wall is past a certain value.
++ No 1 tick of air sprint delay. (matches Java 1.19.4 and above)
++ Sprint would cancel after touching a wall BUT only if your motion vector and speed vector differ more than a certain value. (probably matches modern Java)
 + Have all-direction joystick controls.
 + You have 16 b/t absolute speed cap.
 + Many block mechanics/properties is different.
@@ -438,22 +439,29 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
 
 ### Vertical
-Jump Acceleration:\
+**Jump Acceleration:**\
 $$\displaystyle A_t = \left(0.42 + 0.1 \times JumpBoostLevel_t\right) \times \begin{Bmatrix}0.6 & \text{if Honey} \\ 1 & \text{otherwise}\end{Bmatrix}$$\
-Gravity:\
+**Gravity:**\
 $$\displaystyle G_t = \begin{Bmatrix}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{Bmatrix}$$\
-Velocity Formula:\
-$$\displaystyle VY_t = \underset{\text{Momentum}}{\underbrace{\left(VY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jumping}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$\
-Position Formula:\
-$$\displaystyle PY_t = PY_{t-1} + VY_t + \text{some collision stuff}$$
+**Velocity Formula:**\
+$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jumping}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$\
+**Position Formula:**\
+$$\displaystyle PosY_t = PosY_{t-1} + VelY_t + \text{some collision stuff}$$
 
 ### Horizontal
-Acceleration:\
+**Acceleration:**\
 $$\displaystyle A_t = \begin{Bmatrix}1.274 & \text{if Sprinting}_t \\ 0.98 & \text{if Walking}_t \\ 0.294 & \text{if Sneaking}_t \\ 0.0 & \text{if Stopping}_t\end{Bmatrix} \times \begin{Bmatrix}0.02 & \text{if Airborne}_t \\ \displaystyle\frac{3}{245} & \text{if Blocking}_t \\ \displaystyle\frac{3}{12250} & \text{if Airborne}_t & \text{and Blocking}_t \\ 0.1 & \text{otherwise}\end{Bmatrix}$$\
-Effects:\
+**Effects:**\
 $$\displaystyle E_t = (1 + 0.2 \times SpeedLevel_t) \times (1 - 0.15 \times SlownessLevel_t)$$\
-Slipperiness:\
-$$\displaystyle S_t = \begin{Bmatrix}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t & \text{and Packed Ice}_t & \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{Bmatrix}$$
+**Slipperiness:**\
+$$\displaystyle S_t = \begin{Bmatrix}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t & \text{and Packed Ice}_t & \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{Bmatrix}$$\
+**Ground Velocity Formula:**\
+**Airborne Velocity Formula:**\
+**Fluids Velocity Formula:**\
+🗿\
+**Position Formula:**\
+$$\displaystyle PosX_t = PosX_{t-1} + VelX_t + \text{some collision stuff}$$\
+$$\displaystyle PosZ_t = PosZ_{t-1} + VelZ_t + \text{some collision stuff}$$
 
 ---
 
