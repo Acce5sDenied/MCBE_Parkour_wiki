@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.10`.\
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.1x`.\
 This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.
 
 uhmm
@@ -509,34 +509,47 @@ more coming soon!
 A list of publicly known Bedrock Edition parkour servers.
 
 **Galaxite**\
-Gamemode "Parkour Builders" on featured server Galaxite.
+Gamemode "Parkour Builders" on featured server Galaxite. Hosts player-made maps.
 + Status: Active
++ To access: it is there on servers tab.
 
 **DPK Network**\
-HPK-like realm
+HPK-like realm. Host onejumps, segmented and rankup parkour.
 + Status: Active
++ To access: https://realms.gg/E9QjVQgLu4Y or enter below into realm code.
+```
+E9QjVQgLu4Y
+```
 
 **Rathian Realm**\
-Hosts many rankup and segmented parkour maps.
+Hosts many rankup and segmented parkour maps and some onejump maps. With the main rankup ranks called "LooNey" and segmented ranks called "Shizuku".
 + Status: Active
++ To access: https://realms.gg/haw-NSqdtRc or enter below into realm code.
+```
+haw-NSqdtRc
+```
 
 **LetUS Server**\
-Hosts many timed parkours, often called "athletic"
+Mainly hosts many timed parkours, often called "athletic". As well as segmented and rankup.
 + Status: Active
++ To access: https://realms.gg/rt_rzojusX3bUv8 or enter below into realm code.
+```
+rt_rzojusX3bUv8
+```
 
 **WagL Network**\
 idk about this one
 + Status: probably Active
 
 **Li9 Realm / Lithium Parkour**\
-A parkour realm consisting of 250 levels.
+A parkour realm consisting of progressively harder 250 levels. More well known to Bedrock PvPers.
 + Status: Down
 
 **MuttiServer**\
 + Status: Down
 
 **Mineplex**\
-Mineplex Housing.
+Mineplex Housing. The first ever housing parkour server on Bedrock, before it shutdown and most of the builders moved on to Galaxite instead.
 + Status: Down
 
 **Others**
