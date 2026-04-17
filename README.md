@@ -35,6 +35,7 @@ uhmm
 ## Resources
 + Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java parkour documentation.
 + Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK, Cyv.
++ Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) for central hub about Bedrock Edition Parkour.
 
 ---
 
@@ -200,7 +201,7 @@ Alphabetical order.
 |Hopper//todo              |                                |                           |                                               |
 |Panes & Bars(4-sided)     |Sides:0.125×0.5                 |1                          |                                               |
 |Panes & Bars(3-sided)     |Sides:0.125×0.5                 |1                          |Orientable.(4 varients)                        |
-|Panes & Bars(2-adjacent)  |Sided:0.125×0.5                 |1                          |Orientable.(4 varients) Missing 1px in the outer corner.|
+|Panes & Bars(2-adjacent)  |Sides:0.125×0.5                 |1                          |Orientable.(4 varients) Missing 1px in the outer corner.|
 |Piston Head               |Head:1×1 Arm:0.375×0.375        |Head:.25 Arm:1             |Orientable, inversible.(6 varients)            |
 |Stairs(normal)            |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
 |Stairs(outer)             |Base:1×1 Top:0.5×0.5            |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
@@ -435,7 +436,7 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 ---
 
 ## Movement formulas
-//todo, latex in gfm is aids `/!\ DRAFT, DO NOT TRUST ANY OF THESE /!\`\
+//todo `/!\ DRAFT, DO NOT TRUST ANY OF THESE /!\`\
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
 
 ### Vertical
@@ -448,9 +449,6 @@ $$\displaystyle G_t = \begin{Bmatrix}0.01 & \text{if SlowFalling}_t \\ 0.08 & \t
 
 **Velocity Formula:**\
 $$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jumping}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$
-
-**Position Formula:**\
-$$\displaystyle PosY_t = PosY_{t-1} + VelY_t + \text{some collision stuff}$$
 
 ### Horizontal
 
@@ -474,13 +472,10 @@ $$\displaystyle VelZ_t = $$
 $$\displaystyle VelX_t = $$\
 $$\displaystyle VelZ_t = $$
 
-**Position Formula:**\
-$$\displaystyle PosX_t = PosX_{t-1} + VelX_t + \text{some collision stuff}$$\
-$$\displaystyle PosZ_t = PosZ_{t-1} + VelZ_t + \text{some collision stuff}$$
-
 ### Other
+
 **Fluids Velocity Formula:**\
-🗿\
+🗿
 
 ---
 
@@ -507,48 +502,49 @@ Air taps aren't included because of no inertia, giving different result some of 
 
 ---
 
-# Bedrock Parkour Lore
+## Community
 more coming soon!
 
-## Bedrock Parkour Servers
+### Parkour Servers
 A list of publicly known Bedrock Edition parkour servers.
 
-#### Galaxite
+**Galaxite**\
 Gamemode "Parkour Builders" on featured server Galaxite.
 + Status: Active
 
-#### DPK Network
+**DPK Network**\
 HPK-like realm
 + Status: Active
 
-#### Rathian Realm
+**Rathian Realm**\
 Hosts many rankup and segmented parkour maps.
 + Status: Active
 
-#### LetUS Server
+**LetUS Server**\
 Hosts many timed parkours, often called "athletic"
 + Status: Active
 
-#### WagL Network
+**WagL Network**\
 idk about this one
 + Status: probably Active
 
-#### Li9 Realm / Lithium Parkour
+**Li9 Realm / Lithium Parkour**\
 A parkour realm consisting of 250 levels.
 + Status: Down
 
-#### MuttiServer
+**MuttiServer**\
 + Status: Down
 
-#### Mineplex
+**Mineplex**\
 Mineplex Housing.
 + Status: Down
 
-#### Others
-+ Manacube parkour (have bedrock support)
+**Others**
++ Manacube parkour (have Bedrock support)
 + Tanaris Athletic
 + Asure
 + Lemonsour Athletic
++ Grow
 
 ---
 
