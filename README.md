@@ -33,9 +33,12 @@ uhmm
 ---
 
 ## Resources
-+ Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java parkour documentation.
-+ Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK, Cyv.
-+ Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) for central hub about Bedrock Edition Parkour.
+
+Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java parkour documentation.
+
+Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK, Cyv.
+
+Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) for central hub about Bedrock Edition Parkour.
 
 ---
 
@@ -74,14 +77,18 @@ Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 Recent update changed something but im haven't looked into it yet.\
 Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
 Let $\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
-+ Mouse:\
-$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \times \left(0.25 + v_{value} \right) ^ 3 \times \frac{1920}{\text{WindowWidth}}$$\
+
+**Mouse**\
+$$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \left(0.25 + v_{value} \right) ^ 3 \times \frac{1920}{\text{WindowWidth}}$$\
 `/!\ NEEDS VERIFICATION /!\`
-+ Touch:\
-$$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$\
+
+**Touch**\
+$$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$\
 `/!\ WIP, for my device type (2340 * 1080) /!\`
-+ Joystick: //todo
-+ Button press: //todo
+
+**Joystick** //todo
+
+**Button press** //todo
 
 ---
 
@@ -89,11 +96,12 @@ $$\displaystyle \Delta \text{yaw} = \text{PixelsTurned} \times \frac{32}{93275} 
 List of unique collision boxes of all blocks. For effect box for blocks like cobweb, please see the [Block Mechanics](#block-mechanics) section.\
 `/!\ OUTDATED, SOMETHING MAY HAVE CHANGED /!\`
 
-#### Clarification
-+ **Model** is a how a block looks. It is purely visual.
-+ **Hitbox** is an interaction volume of a block.
-+ **Selection box** shows up when you hover over a block. This can describe the collision box of some blocks. (it is in selection box accurate column)
-+ Finally, **Collision box** is a solid volume of space that is not meant to pass through.
+<ins>**Clarification**</ins>
+
+**Model** is a how a block looks. It is purely visual.\
+**Hitbox** is an interaction volume of a block.\
+**Selection box** shows up when you hover over a block. This can accurately describe the collision box of some blocks.\
+Finally, **Collision box** is a solid volume of space that is not meant to pass through.
 
 ### Simple collision boxes
 <details>
@@ -240,29 +248,39 @@ Collision boxes that have been changed throughout many updates.//todo
 
 ---
 
-## Movement mechanic
-+ Y -> X -> Z collision order
-+ Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.\
-`/!\ NEEDS VERIFICATION /!\`
-+ Shifting makes player go only the minimum of `0.025` away from edge.
-+ 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
+## Movement mechanics
+Wayyyy more to elaborate further, it's like this for now.
 
-#### player's collision box
-Note that it can be a bit off because floating point error.
-+ Normally is `0.6×0.6` horizontally and `1.8` vertically.
-+ While crouched is `0.6×0.6` horizontally and `1.49` vertically.
-+ While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
+#### Collision
+Y -> X -> Z collision order
+Normally is `0.6×0.6` horizontally and `1.8` vertically.
+While crouched is `0.6×0.6` horizontally and `1.49` vertically.
+While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
+
+#### Stepping
+Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.\
+`/!\ NEEDS VERIFICATION /!\`
+
+#### Shifting
+Shifting makes player go only the minimum of `0.025` away from edge.
+
+#### 16b/t speed limit
+16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 ---
 
 ## Glitches
 Movement related glitches.
-+ Hitbox manipulation is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's.
-+ Block clipping is another precision related glitch. Happens at coodinates of high number. And powers of 2.
+
+**Hitbox manipulation** is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's.
+
+**Block clipping** is another precision related glitch. Happens at coodinates of high number. And powers of 2.
 
 ### Patched Glitches
-+ 11 strafe or 10 strafe. Patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°` and `33.52°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than Java's 45 strafe.
-+ Backwards sprinting.//todo
+
+**11 strafe or 10 strafe** was patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°` and `33.52°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than Java's 45 strafe.
+
+**Backwards sprinting** //todo
 
 ### Non-Advantagious Glitches
 + Player actually never stopping in place, coords flickering while standing still.
@@ -317,7 +335,7 @@ This includes eating or drinking, charging weapons, using goat horn or spyglass.
 + sprint acceleration: `0.0156`
 
 #### Shield Blocking
-Different behavior to normal blocking, No effect on movement
+No effect on movement, unlike in Java where it does.
 
 ---
 
@@ -346,7 +364,7 @@ Properties: //todo key details:
 #### Slime block
 Slipperiness factor is `0.8`\
 Properties: //todo key details:
-+ bounce
++ bouncy yippee
 
 #### Ices
 + Blue ice slipperiness factor `0.989`
@@ -355,6 +373,7 @@ Properties: //todo key details:
 + Frosted ice slipperiness factor `0.98`
 
 #### Catch/Climb type blocks
+These group of blocks include ladders, vines, cave vines and twisted vines.\
 Effect box: `1×1×1`\
 Entity will receive effect when their coordinates is in this region.\
 Properties: //todo key details: 
@@ -402,35 +421,35 @@ Properties:
 Status effects and enchants that can directly effect movement.\
 Enchants that have a level beyond normally achievable may have mistakes.
 
-#### Speed
+**Speed**\
 `+20%` acceleration per level of speed. Does not apply when airborne. In the case where speed is on with slowness, speed always get applied first.
 
-#### Slowness
+**Slowness**\
 `-15%` acceleration per level of slowness. Does not apply when airborne.
 
-#### Jump boost
+**Jump boost**\
 `+0.1` jump acceleration per level of jump boost.
 
-#### Slow falling
+**Slow falling**\
 `0.01` Gravity acceleration for all levels of slow falling. Reaching terminal velocity of `0.49`.\
 (i think it only applies 1 tick after exiting ground)
 
-#### Levitation
+**Levitation**\
 $$\displaystyle VelY_t = VelY_{t-1} \times 0.784 + 0.0098 \times Level$$\
 Basically floats up with acceleration of `0.0098` multiplied by levitation level. And with drag of `0.784`.
 
-#### Blindness
+**Blindness**\
 Activating sprint is not possible while effect is active. You can still keep sprint even when effect is received.
 
-#### Soul speed
+**Soul speed**\
 $\displaystyle 1.3 + Level \times 0.105$ times acceleration. Only works on soul sand and soul soil as ground.
 
-#### Depth strider
+**Depth strider**\
 For walking, `+133.33%` acceleration per level of depth strider.\
 For sprinting, `+183.33%` acceleration per level of depth strider.\
 `/!\ NEEDS VERIFICATION /!\`
 
-#### Swift sneak
+**Swift sneak**\
 `+50%` acceleration per level of swift sneak. Only works while crouching or crawling.
 
 ---
@@ -438,6 +457,11 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 ## Movement formulas
 //todo `/!\ DRAFT, DO NOT TRUST ANY OF THESE /!\`\
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
+
+#### Variables
+$\displaystyle Yaw_t$ is player's yaw (left-right facing).\
+$\displaystyle Pitch_t$ is player's pitch (up-down facing).\
+$\displaystyle Dir_t$ is player's direction (input and rotation).
 
 ### Vertical
 
@@ -549,7 +573,7 @@ A parkour realm consisting of progressively harder 250 levels. More well known t
 + Status: Down
 
 **MuttiServer**\
-text
+dont know this one too
 + Status: Down
 
 **Mineplex**\
