@@ -448,12 +448,15 @@ $$\displaystyle A_t = \left(0.42 + 0.1 \times JumpBoostLevel_t\right) \times \be
 $$\displaystyle G_t = \begin{Bmatrix}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{Bmatrix}$$
 
 **Velocity Formula:**\
-$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t, & \text{if Jumping}_t \\ 0, & \text{otherwise} \end{Bmatrix}}}$$
+$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t & \text{if Jumping}_t \\ 0 & \text{otherwise} \end{Bmatrix}}}$$
+
+**Levitation Velocity Formula:**\
+$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{VelY_{t-1} \times 0.784 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{0.0098 \times LevitationLevel_t}}$$
 
 ### Horizontal
 
 **Acceleration:**\
-$$\displaystyle A_t = \begin{Bmatrix}1.274 & \text{if Sprinting}_t \\ 0.98 & \text{if Walking}_t \\ 0.294 & \text{if Sneaking}_t \\ 0.0 & \text{if Stopping}_t\end{Bmatrix} \times \begin{Bmatrix}0.02 & \text{if Airborne}_t \\ \displaystyle\frac{3}{245} & \text{if Blocking}_t \\ \displaystyle\frac{3}{12250} & \text{if Airborne}_t & \text{and Blocking}_t \\ 0.1 & \text{otherwise}\end{Bmatrix}$$
+$$\displaystyle A_t = \begin{Bmatrix}1.274 & \text{if Sprinting}_t \\ 0.98 & \text{if Walking}_t \\ 0.294 & \text{if Sneaking}_t \\ 0.0 & \text{if Stopping}_t\end{Bmatrix} \times \begin{Bmatrix}0.02 & \text{if Airborne}_t \\ 3/245 & \text{if Blocking}_t \\ 3/12250 & \text{if Airborne}_t & \text{and Blocking}_t \\ 0.1 & \text{otherwise}\end{Bmatrix}$$
 
 **Effects & Enchants:**\
 $$\displaystyle E_t = (1 + 0.2 \times SpeedLevel_t) \times (1 - 0.15 \times SlownessLevel_t)$$
@@ -546,6 +549,7 @@ A parkour realm consisting of progressively harder 250 levels. More well known t
 + Status: Down
 
 **MuttiServer**\
+text
 + Status: Down
 
 **Mineplex**\
