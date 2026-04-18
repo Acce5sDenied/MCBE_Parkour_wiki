@@ -3,7 +3,7 @@
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
 A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.1x`.\
-This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.\
+This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.
 
 uhmm
 
@@ -253,11 +253,11 @@ Collision boxes that have been changed throughout many updates.//todo
 ## Movement mechanics
 
 #### Collision
-Y -> X -> Z collision order\
+Y -> X -> Z collision check order.\
 **Player's collision box**\
 Normally is `0.6×0.6` horizontally and `1.8` vertically.\
 While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
-While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.\
+While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
 #### Stepping
 Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.\
@@ -505,6 +505,12 @@ $$\displaystyle VelX_t = $$\
 $$\displaystyle VelZ_t = $$
 
 ### Other
+**Absolute Velocity Formula:**\
+$$\displaystyle AbsVel_t = \sqrt{VelX_t^2+VelY_t^2+VelZ_t^2}$$
+
+**Positions Formula:**\
+$$\displaystyle PosX_t = \begin{cases}PosX_{t-1} + VelX_t & \text{if AbsVel}_t \leq 16 \\ PosX_{t-1} + VelX_t \times \displaystyle \frac{16}{AbsVel_t} & \text{if AbsVel}_t > 16\end{cases}$$\
+$\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way as above.
 
 **Fluids Velocity Formula:**\
 🗿
