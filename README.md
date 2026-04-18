@@ -3,7 +3,7 @@
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
 A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.1x`.\
-This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.
+This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.\
 
 uhmm
 
@@ -18,12 +18,14 @@ uhmm
 + [ ] camera
 + [ ] sensitivity
 + [ ] joystick
++ [ ] sneaking
++ [ ] crawling
 + [ ] honey
 + [ ] slime
 + [ ] powdered snow
 + [ ] climb blocks
 + [ ] scaffolding
-+ [ ] water/lava (never)
++ [ ] water/lava
 + [ ] movement formulas (for handling cases that many effects stack together)
 + [ ] understanding what caused 11 strafe
 + [ ] migrate some to wiki page once im done
@@ -249,23 +251,26 @@ Collision boxes that have been changed throughout many updates.//todo
 ---
 
 ## Movement mechanics
-Wayyyy more to elaborate further, it's like this for now.
 
 #### Collision
-Y -> X -> Z collision order
-Normally is `0.6×0.6` horizontally and `1.8` vertically.
-While crouched is `0.6×0.6` horizontally and `1.49` vertically.
-While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
+Y -> X -> Z collision order\
+**Player's collision box**\
+Normally is `0.6×0.6` horizontally and `1.8` vertically.\
+While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
+While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.\
 
 #### Stepping
 Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.\
 `/!\ NEEDS VERIFICATION /!\`
 
-#### Shifting
-Shifting makes player go only the minimum of `0.025` away from edge.
+#### Sneaking
+There exists a `0.025` margin around any edge that a player can't sneak to. Past this point, movement from sneaking is cancelled entirely.//todo
+
+#### Crawling
+//todo
 
 #### 16b/t speed limit
-16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
+A player have 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 ---
 
@@ -588,4 +593,10 @@ Mineplex Housing. The first ever housing parkour server on Bedrock, before it sh
 + Grow
 
 ---
+
+This wiki is a hobby project to showcase the technical parkour infos of Minecraft Bedrock Edition.\
+This is an extension of MCPK wiki.\
+Not affiliated or associated with Mojang or Microsoft.
+
+
 
