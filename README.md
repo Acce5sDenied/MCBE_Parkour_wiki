@@ -474,13 +474,13 @@ $\displaystyle Dir_t$ is player's direction (input and rotation).
 $$\displaystyle A_t = \left(0.42 + 0.1 \times JumpBoostLevel_t\right) \times \begin{Bmatrix}0.6 & \text{if Honey} \\ 1 & \text{otherwise}\end{Bmatrix}$$
 
 **Gravity:**\
-$$\displaystyle G_t = \begin{Bmatrix}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{Bmatrix}$$
+$$\displaystyle G_t = \begin{cases}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{cases}$$
 
 **Velocity Formula:**\
 $$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t & \text{if Jumping}_t \\ 0 & \text{otherwise} \end{Bmatrix}}}$$
 
 **Levitation Velocity Formula:**\
-$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{VelY_{t-1} \times 0.784 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{0.0098 \times LevitationLevel_t}}$$
+$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{VelY_{t-1} \times 0.8 \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{0.0098 \times LevitationLevel_t}}$$
 
 ### Horizontal
 
@@ -494,7 +494,7 @@ $$\displaystyle E_t = (1 + 0.2 \times SpeedLevel_t) \times (1 - 0.15 \times Slow
 $$\displaystyle B_t = $$
 
 **Slipperiness:**\
-$$\displaystyle S_t = \begin{Bmatrix}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t & \text{and Packed Ice}_t & \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{Bmatrix}$$
+$$\displaystyle S_t = \begin{cases}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t \; \text{and Packed Ice}_t \; \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{cases}$$
 
 **Ground Velocity Formula:**\
 $$\displaystyle VelX_t = $$\
