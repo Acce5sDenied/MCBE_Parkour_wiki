@@ -277,15 +277,21 @@ A player have 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your
 ## Glitches
 Movement related glitches.
 
-**Hitbox manipulation** is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's.
++ **Triple component strafe** is a glitch that allows to strafe with 3 input component. Normal strafe is made by 2 components (e.g. W + D). But with this glitch, you can do for example, W + W + D. The angle is `~26°` off the 4 main directions by this calculation,\
+$$\displaystyle \text{atan2}(\underset{\text{1st component}}{\underbrace{2}},\overset{\text{2nd component}}{\overbrace{1}}) = \text{arctan}\left(\frac{1}{2}\right) \approx 26.565^{\circ}$$\
+This glitch does not give a speed/acceleration boost, but can be used for easier jump strategies (e.g. easier jump angle, noturn, chained triple neos,...). Can be activated by using D-pad touch control, pressing in the region connecting W/S button and strafe button. Or use multiple input devices to combine inputs.
 
-**Block clipping** is another precision related glitch. Happens at coodinates of high number. And powers of 2.
++ **Hitbox manipulation** is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's. By crossing a coordinates of multiple of 2, hitbox of that axis shrinks/grows by an insignificant amount. But they stack up over time.(Can be reset by relog, switching dimensions, crouching,...) Can be abused to do various things.
+
++ **Block clipping** is another precision related glitch. Happens at coodinates of high number. And powers of 2.
 
 ### Patched Glitches
 
-**11 strafe or 10 strafe** was patched in `1.21.20`. Caused by joystick, optimal angle is `11.48°` and `33.52°`. Boost in acceleration is `1/0.98` (rumors says it is a very tiny bit more than this). Surprisingly, this works on jump tick `4.51°` is optimal (Variable when ground is ice, etc...). Given this, 11 strafe is generally better than Java's 45 strafe.
++ **11 strafe or 10 strafe** was patched in `1.21.20`. Caused by joystick, optimal angle is &pm;`11.48°` from a multiple of 45. Boost in acceleration is `1/0.98` + some floating point error making it a tiny bit more. This works on jump tick, `4.51°` is optimal (Variable when ground is ice, etc...). Calculation:\
+$$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$\
+Given this, 11 strafe is generally better, and easier perform than Java's 45 strafe. But the exact reason why 11 strafe works is still unknown.
 
-**Backwards sprinting** //todo
++ **Backwards sprinting** //todo
 
 ### Non-Advantagious Glitches
 + Player actually never stopping in place, coords flickering while standing still.
