@@ -243,8 +243,8 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
 Collision boxes that have been changed throughout many updates.//todo
 |Blocks                   |Widths                          |Heights                  |Versions                |Comments                                        |
 |-------------------------|--------------------------------|-------------------------|------------------------|------------------------------------------------|
-|Trial spawner
-|Lilypad
+|Trial spawner            |0.9998×0.9998                   |0.9998                   |Early 1.21 versions     |-0.0001 on each side. Used to effectively chain blips long ago.|
+|Lilypad                  |1×1                             |0.015625                 |Pre 1.21.70             |1/4 of a pixel tall, like Java 1.8.             |
 
 </details>
 
