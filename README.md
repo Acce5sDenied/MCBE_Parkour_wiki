@@ -20,6 +20,7 @@ uhmm
 + [ ] joystick
 + [ ] sneaking
 + [ ] crawling
++ [ ] lots of glitches
 + [ ] honey
 + [ ] slime
 + [ ] powdered snow
@@ -91,8 +92,8 @@ $$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} 
 
 #### Spyglass
 Spyglass damping is a setting in range `0 - 100`. This affects camera movement speed while using a spyglass. 0 being no effect, 100 being full effect.\
-<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" width="100%">\
-Values in range `0 - 5` have no effect.
+<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" width="90%">\
+Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 100.
 
 ---
 
@@ -289,11 +290,16 @@ This glitch does not give a speed/acceleration boost, but can be used for easier
 
 ### Patched Glitches
 
-+ **11 strafe or 10 strafe** was patched in `1.21.20`. Caused by joystick, optimal angle is &pm;`11.48°` from a multiple of 45. Boost in acceleration is `1/0.98` + some floating point error making it a tiny bit more. This works on jump tick, `4.51°` is optimal (Variable when ground is ice, etc...). Calculation:\
++ **11 strafe or 10 strafe** was patched in `1.21.20`. Caused by joystick, optimal angle is &pm;`11.48°` from multiples of 45. Boost in acceleration is `1/0.98` + some floating point error making it a tiny bit more. This works on jump tick, `4.51°` is optimal (Variable when ground is ice, etc...). Calculation:\
 $$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$\
-Given this, 11 strafe is generally better, and easier perform than Java's 45 strafe. But the exact reason why 11 strafe works is still unknown.
+Given this, 11 strafe is generally better, and easier perform than Java's 45 strafe. But the exact reason why 11 strafe works is still unknown.\
+`/!\ Differs from version to version, im skeptical if its correct or not/!\`
 
 + **Backwards sprinting** //todo
+
++ **Ground sprint delay** //todo
+
++ **Subtle wall clipping** i think when movement speed is so small. collision check is ignored. //todo
 
 ### Non-Advantagious Glitches
 + Player actually never stopping in place, coords flickering while standing still.
