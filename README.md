@@ -71,12 +71,11 @@ WASD button controls.\
 All direction movement controls.\
 //todo
 
-### Mouse movement
+### Camera movement
 //todo\
 Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 
-#### Sensitivity formula
-Recent update changed something but im haven't looked into it yet.\
+#### Sensitivity formulas
 Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
 Let $\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
 
@@ -90,7 +89,10 @@ $$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} 
 
 **Joystick** //todo
 
-**Button press** //todo
+#### Spyglass
+Spyglass damping is a setting in range `0 - 100`. This affects camera movement speed while using a spyglass. 0 being no effect, 100 being full effect.\
+<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" width="100%">\
+Values in range `0 - 5` have no effect.
 
 ---
 
