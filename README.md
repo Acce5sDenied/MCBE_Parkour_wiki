@@ -13,11 +13,11 @@ uhmm
   
 + [ ] hopper collision
 + [ ] Chorus plant collision
-+ [ ] historic collision boxes
++ [X] historic collision boxes
 + [ ] movement
-+ [ ] camera
-+ [ ] sensitivity
-+ [ ] joystick
++ [X] camera
++ [X] sensitivity
++ [X] joystick
 + [ ] sneaking
 + [ ] crawling
 + [ ] lots of glitches
@@ -28,7 +28,7 @@ uhmm
 + [ ] scaffolding
 + [ ] water/lava
 + [ ] movement formulas (for handling cases that many effects stack together)
-+ [ ] understanding what caused 11 strafe
++ [X] understanding what caused 11 strafe
 + [ ] migrate some to wiki page once im done
 
 </details>
@@ -50,7 +50,7 @@ Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standar
 + Strafing don't give the 2% boost in acceleration, unlike Java Edition. Same goes for strafe shifting.
 + No presence of inertia AKA momentum threshold.
 + Position and many more values is stored in floats (32-bit). This explains many goofy glitches on bedrock.
-+ Trigonometry directly uses $sin()$ and $cos()$, so there is no such "significant angles" and "half angles" in Bedrock.
++ Trigonometry directly uses $\sin()$ and $\cos()$, so there is no such "significant angles" and "half angles" in Bedrock.
 + No presence of bursting or shift glitch.
 + Shifting would only goes to minimum of 0.025 away from edge.
 + No 1 tick of air sprint delay. (matches Java 1.19.4 and above)
@@ -207,7 +207,7 @@ Alphabetical order.
 |--------------------------|--------------------------------|---------------------------|-----------------------------------------------|
 |Brewing Stand             |Base:1×1 Rod:0.125×0.125        |Base:.125 Rod:.875         |Centered.                                      |
 |Caudron                   |Base:1×1 Walls:0.125 thick      |Base:.3125 Walls:1         |                                               |
-|Composter                 |Base:1×1 Walls:0.125 thick      |Base:.125 Walls:1          |                                               |
+|Composter                 |Base:1×1 Walls:0.125 thick      |Base:.125 Walls:1          |Compost heights: `0.0625 + 0.125 * n`          |
 |Fences(4-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |                                               |
 |Fences(3-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
 |Fences(2-adjacent)        |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
@@ -280,26 +280,35 @@ A player have 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your
 ## Glitches
 Movement related glitches.
 
-+ **Triple component strafe** is a glitch that allows to strafe with 3 input component. Normal strafe is made by 2 components (e.g. W + D). But with this glitch, you can do for example, W + W + D. The angle is `~26°` off the 4 main directions by this calculation,\
+**Triple component strafe**\
+Is a glitch that allows to strafe with 3 input component. Normal strafe is made by 2 components (e.g. W + D). But with this glitch, you can do for example, W + W + D. The angle is `~26°` off the 4 main directions by this calculation,\
 $$\displaystyle \text{atan2}(\underset{\text{1st component}}{\underbrace{2}},\overset{\text{2nd component}}{\overbrace{1}}) = \text{arctan}\left(\frac{1}{2}\right) \approx 26.565^{\circ}$$\
 This glitch does not give a speed/acceleration boost, but can be used for easier jump strategies (e.g. easier jump angle, noturn, chained triple neos,...). Can be activated by using D-pad touch control, pressing in the region connecting W/S button and strafe button. Or use multiple input devices to combine inputs.
 
-+ **Hitbox manipulation** is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's. By crossing a coordinates of multiple of 2, hitbox of that axis shrinks/grows by an insignificant amount. But they stack up over time.(Can be reset by relog, switching dimensions, crouching,...) Can be abused to do various things.
+**Hitbox manipulation**\
+Is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's. By crossing a coordinates of multiple of 2, hitbox of that axis shrinks/grows by an insignificant amount. But they stack up over time.(Can be reset by relog, switching dimensions, crouching,...) Can be abused to do various things.
 
-+ **Block clipping** is another precision related glitch. Happens at coodinates of high number. And powers of 2.
+**Block clipping & Inaccurate collision & Jittering at large coordinates**\
+Is another precision related glitches. Again, Bedrock stores position in 32-bit. And as a nature of floating point arithmetic, they represents real numbers but with limited precision. This precision worsens at every power of 2. At sufficiently large values you can notice discrete jump between values. Explaining the jitteriness at large coordinates.\
+Intuitively you can think of a grid and your position can only snap to the grid. Not only your position though, block collsion box also snaps to this grid aswell. Explaining the inaccuracy in collision. (You can see your coordinates not quite lining up with actual block collision box)\
+And at extreme conditions where everything line up in your favor, you can clip through a solid block.
 
 ### Patched Glitches
 
-+ **11 strafe or 10 strafe** was patched in `1.21.20`. Caused by joystick, optimal angle is &pm;`11.48°` from multiples of 45. Boost in acceleration is `1/0.98` + some floating point error making it a tiny bit more. This works on jump tick, `4.51°` is optimal (Variable when ground is ice, etc...). Calculation:\
+**11 strafe or 10 strafe**\
+Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. [controller joystick too?] Here is all the known
+infomations about it :)\
+//coming very soon\
 $$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$\
-Given this, 11 strafe is generally better, and easier perform than Java's 45 strafe. But the exact reason why 11 strafe works is still unknown.\
-`/!\ Differs from version to version, im skeptical if its correct or not/!\`
 
-+ **Backwards sprinting** //todo
+**Backwards sprinting**\
+//todo
 
-+ **Ground sprint delay** //todo
+**Ground sprint delay**\
+//todo
 
-+ **Subtle wall clipping** i think when movement speed is so small. collision check is ignored. //todo
+**Subtle wall clipping**\
+i think when movement speed is so small. collision check is ignored. //todo
 
 ### Non-Advantagious Glitches
 + Player actually never stopping in place, coords flickering while standing still.
@@ -576,7 +585,7 @@ Gamemode "Parkour Builders" on featured server Galaxite. Hosts player-made maps.
 
 **DPK Network**\
 HPK-like realm. Host onejumps, segmented and rankup parkour.
-+ Status: Active
++ Status: Down by 29th April 2026.
 + To access: https://realms.gg/E9QjVQgLu4Y or enter below into realm code.
 ```
 E9QjVQgLu4Y
@@ -604,7 +613,7 @@ idk about this one
 
 **Li9 Realm / Lithium Parkour**\
 A parkour realm consisting of progressively harder 250 levels. More well known to Bedrock PvPers.
-+ Status: Down
++ Status: Down by early 2026.
 
 **MuttiServer**\
 dont know this one too
@@ -620,6 +629,7 @@ Mineplex Housing. The first ever housing parkour server on Bedrock, before it sh
 + Asure
 + Lemonsour Athletic
 + Grow
++ Tornadoo
 
 ---
 
