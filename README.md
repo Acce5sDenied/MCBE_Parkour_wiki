@@ -295,16 +295,19 @@ And at extreme conditions where everything line up in your favor, you can clip t
 
 ### Patched Glitches
 
-**11 strafe or 10 strafe**\
+**11 Strafe or 10 Strafe & Glitches regarding old joystick**\
 Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. [controller joystick too?] Here is all the known
 infomations about it :)\
-<ins>Implimentation</ins>
+
+<details>
+  <summary><ins>Implimentation</ins></summary>
+
 + *Step 1 :*\
   Game takes joystick center position and touch position. Calculate signed difference between them. ($dx$ and $dy$)
 + *Step 2 :*\
   $dx$ and $dy$ is later normalized to be in range [`-1, 1`]. With 1 being joystick's radius. Creating $x$, $y$ and untransformed vector $\mathbf{v}$.\
   $x = dx \times ScalingFactor$ same process goes for $y$.\
-  Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
+  - Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
   > Case $$0.3 \leq \left|\left|\mathbf{v}\right|\right| \leq 1$$ then $$\mathbf{v} = (x,y)$$\
   > Case $$\left|\left|\mathbf{v}\right|\right| > 1$$ then $$\displaystyle \mathbf{v} = \left(\frac{x}{\left|\left|\mathbf{v}\right|\right|},\frac{y}{\left|\left|\mathbf{v}\right|\right|}\right)$$\
   > Case $$\left|\left|\mathbf{v}\right|\right| < 0.3$$ then player's stopping condition is applied.
@@ -328,9 +331,28 @@ infomations about it :)\
 
   Variable initial ring size. (Full transformation) No sprint (left) & Sprint (right) :
 
-  <img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nospint magnitude gif" height="300px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="300px">
+  <img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nosprint magnitude gif" height="300px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="300px">
 
-$$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$
+</details>
+
+<details>
+  <summary><ins>Glitches</ins></summary>
+
++ *Glitch 1: Inaccurate angles*
++ *Glitch 2: Speed boost*
+  
+  <img src="/Images/11strafe_nosprint.png" alt="nosprint" height="300px"> <img src="/Images/11strafe_sprint.png" alt="sprint" height="300px">
+  
+  $$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$
+
+- Note: I'm using the convention that 0 degrees start from top-middle and goes on clockwise.
+
+</details>
+
+<details>
+  <summary><ins>History & Discovery</ins></summary>
+//todo
+</details>
 
 **Backwards sprinting**\
 //todo
