@@ -300,25 +300,35 @@ Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joyst
 infomations about it :)\
 <ins>Implimentation</ins>
 + *Step 1 :*\
-Game takes joystick center position and touch position. Calculate signed difference between them. ($dx$ and $dy$)
+  Game takes joystick center position and touch position. Calculate signed difference between them. ($dx$ and $dy$)
 + *Step 2 :*\
-$dx$ and $dy$ is later normalized to be in range [`-1, 1`]. With 1 being joystick's radius. Creating $x$, $y$ and untransformed vector $\mathbf{v}$.\
-$x = dx \times ScalingFactor$ same process goes for $y$.\
-Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
-> Case $$0.3 \leq \left|\left|\mathbf{v}\right|\right| \leq 1$$ then $$\mathbf{v} = (x,y)$$\
-> Case $$\left|\left|\mathbf{v}\right|\right| > 1$$ then $$\displaystyle \mathbf{v} = \left(\frac{x}{\left|\left|\mathbf{v}\right|\right|},\frac{y}{\left|\left|\mathbf{v}\right|\right|}\right)$$\
-> Case $$\left|\left|\mathbf{v}\right|\right| < 0.3$$ then player's stopping condition is applied.
+  $dx$ and $dy$ is later normalized to be in range [`-1, 1`]. With 1 being joystick's radius. Creating $x$, $y$ and untransformed vector $\mathbf{v}$.\
+  $x = dx \times ScalingFactor$ same process goes for $y$.\
+  Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
+  > Case $$0.3 \leq \left|\left|\mathbf{v}\right|\right| \leq 1$$ then $$\mathbf{v} = (x,y)$$\
+  > Case $$\left|\left|\mathbf{v}\right|\right| > 1$$ then $$\displaystyle \mathbf{v} = \left(\frac{x}{\left|\left|\mathbf{v}\right|\right|},\frac{y}{\left|\left|\mathbf{v}\right|\right|}\right)$$\
+  > Case $$\left|\left|\mathbf{v}\right|\right| < 0.3$$ then player's stopping condition is applied.
 + *Step 3 :*\
-A transformation is applied to $\mathbf{v}$\
-\
-$$\mathbf{v'} = \left(x+\frac{0.3x\cdot(1-|x|)}{\sqrt{x^2+y^2}} , y+\frac{0.3y\cdot(1-|y|)}{\sqrt{x^2+y^2}}\right)$$\
-\
-If player is holding sprint, Y component of $\mathbf{v}$ is overridden to be $\text{sign}(y')$.\
-And if $\left|\left|\mathbf{v'}\right|\right| > 1$ then $$\displaystyle \mathbf{v'}_{\text{final}} = \frac{\mathbf{v'}}{\left|\left|\mathbf{v'}\right|\right|}$$. (Cap it at magnitude 1.)\
-\
-Key details of this transformation:
-  - Angles are not preserved.
-  - It bulges out around multiple of 45 degrees.
+  A transformation is applied to $\mathbf{v}$. (inherit $x$ and $y$ from $\mathbf{v}$ of previous calculation.)
+
+  $$\mathbf{v'} = 0.98 \times \left(x+\frac{0.3x\cdot(1-|x|)}{\sqrt{x^2+y^2}} , y+\frac{0.3y\cdot(1-|y|)}{\sqrt{x^2+y^2}}\right)$$
+
+  If player is holding sprint, Y component of $\mathbf{v}$ is overridden to be $\text{sign}(y')$.\
+  And if $\left|\left|\mathbf{v'}\right|\right| > 1$ then $$\displaystyle \mathbf{v'}_{\text{final}} = \frac{\mathbf{v'}}{\left|\left|\mathbf{v'}\right|\right|}$$. (Cap it at magnitude 1.)
+
+  Key details of this transformation:
+  - Non-linear and angles are not preserved.
+  - For no-sprint, it bulges out around multiples of 45 degrees.
+  - For sprint, it makes 2 cones and maximum sideways angle is 45 degrees. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either 1 or -1. //What happens at 0? It is technically possible.
+
+  [Replication on Desmos.](https://www.desmos.com/calculator/a9rhnjx5iw)\
+  Transformation visualizations. No sprint (left) & Sprint (right) :
+  
+  <img src="/Images/11strafe_nosprint_transform.gif" alt="nospint transformation gif" height="300px"> <img src="/Images/11strafe_sprint_transform.gif" alt="sprint transformation gif" height="300px">
+
+  Variable initial ring size. (Full transformation) No sprint (left) & Sprint (right) :
+
+  <img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nospint magnitude gif" height="300px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="300px">
 
 $$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$
 
@@ -378,7 +388,7 @@ Flying ignores most block mechanics, reaching top speed of `0.544b/t` while walk
 
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
-`81 + 2/3` less acceleration or `~0.0122449x` acceleration.
+`81 + 2/3` times less acceleration or `~0.0122449x` acceleration.
 + shifted accerelation: `0.0036`
 + walk acceleration: `0.012`
 + sprint acceleration: `0.0156`
