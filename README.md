@@ -92,7 +92,7 @@ $$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} 
 
 #### Spyglass
 Spyglass damping is a setting in range `0 - 100`. This affects camera movement speed while using a spyglass. 0 being no effect, 100 being full effect.\
-<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" width="90%">\
+<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">\
 Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 100.
 
 ---
@@ -298,8 +298,29 @@ And at extreme conditions where everything line up in your favor, you can clip t
 **11 strafe or 10 strafe**\
 Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. [controller joystick too?] Here is all the known
 infomations about it :)\
-//coming very soon\
-$$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$\
+<ins>Implimentation</ins>
++ *Step 1 :*\
+Game takes joystick center position and touch position. Calculate signed difference between them. ($dx$ and $dy$)
++ *Step 2 :*\
+$dx$ and $dy$ is later normalized to be in range [`-1, 1`]. With 1 being joystick's radius. Creating $x$, $y$ and untransformed vector $\mathbf{v}$.\
+$x = dx \times ScalingFactor$ same process goes for $y$.\
+Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
+> Case $$0.3 \leq \left|\left|\mathbf{v}\right|\right| \leq 1$$ then $$\mathbf{v} = (x,y)$$\
+> Case $$\left|\left|\mathbf{v}\right|\right| > 1$$ then $$\displaystyle \mathbf{v} = \left(\frac{x}{\left|\left|\mathbf{v}\right|\right|},\frac{y}{\left|\left|\mathbf{v}\right|\right|}\right)$$\
+> Case $$\left|\left|\mathbf{v}\right|\right| < 0.3$$ then player's stopping condition is applied.
++ *Step 3 :*\
+A transformation is applied to $\mathbf{v}$\
+\
+$$\mathbf{v'} = \left(x+\frac{0.3x\cdot(1-|x|)}{\sqrt{x^2+y^2}} , y+\frac{0.3y\cdot(1-|y|)}{\sqrt{x^2+y^2}}\right)$$\
+\
+If player is holding sprint, Y component of $\mathbf{v}$ is overridden to be $\text{sign}(y')$.\
+And if $\left|\left|\mathbf{v'}\right|\right| > 1$ then $$\displaystyle \mathbf{v'}_{\text{final}} = \frac{\mathbf{v'}}{\left|\left|\mathbf{v'}\right|\right|}$$. (Cap it at magnitude 1.)\
+\
+Key details of this transformation:
+  - Angles are not preserved.
+  - It bulges out around multiple of 45 degrees.
+
+$$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$
 
 **Backwards sprinting**\
 //todo
