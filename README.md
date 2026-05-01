@@ -297,7 +297,7 @@ And at extreme conditions where everything line up in your favor, you can clip t
 
 **11 Strafe or 10 Strafe & Glitches regarding old joystick**\
 Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. [controller joystick too?] Here is all the known
-infomations about it :)\
+infomations about it :)
 
 <details>
   <summary><ins>Implimentation</ins></summary>
@@ -322,7 +322,7 @@ infomations about it :)\
   Key details of this transformation:
   - Non-linear and angles are not preserved.
   - For no-sprint, it bulges out around multiples of 45 degrees.
-  - For sprint, it makes 2 cones and maximum sideways angle is 45 degrees. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either 1 or -1. //What happens at 0? It is technically possible.
+  - For sprint, it makes 2 cones and maximum sideways angle is 45 degrees. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. //What happens at 0? It is technically possible.
 
   [Replication on Desmos.](https://www.desmos.com/calculator/a9rhnjx5iw)\
   Transformation visualizations. No sprint (left) & Sprint (right) :
@@ -338,10 +338,18 @@ infomations about it :)\
 <details>
   <summary><ins>Glitches</ins></summary>
 
-+ *Glitch 1: Inaccurate angles*
++ *Glitch 1: Inaccurate angles*\
+  No sprint (left) & Sprint (right). X axis is angle of your touch point relative to joystick center.(input angle) Y axis is signed difference between input angle and outputted angle.(Inaccuracy) All at max magnitude
+  
+  <img src="/Images/11strafe_nosprint_anglediff.png" alt="nosprint angle difference plot" width="45%"> <img src="/Images/11strafe_sprint_anglediff.png" alt="sprint angle difference plot" width="45%">
+  
 + *Glitch 2: Speed boost*
   
-  <img src="/Images/11strafe_nosprint.png" alt="nosprint" height="300px"> <img src="/Images/11strafe_sprint.png" alt="sprint" height="300px">
+  <img src="/Images/11strafe_nosprint.png" alt="nosprint magnitude" height="300px"> <img src="/Images/11strafe_sprint.png" alt="sprint magnitude" height="300px">
+
+  For no sprint, angle `0, 90, 180, 270` have magnitude of `0.98` (normal). And magnitude = 1 at angle 90n &pm; `15.83` degrees. [1]\
+  And for sprint, angle `0, 180` have magnitude of `0.98` (normal). And magnitude = 1 at angle 180n &pm; `11.48` degrees. [2]\
+  At these angles or any angles between them have a $1/0.98 \approx 2.04$% acceleration boost, similar to Java's 45 strafe. You also can gain advantage through them the same way as Java's 45 strafe, push joystick at angle with the boost and move camera in the opposite direction to counteract the sideways movement from joystick.\
   
   $$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$
 
