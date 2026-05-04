@@ -321,37 +321,44 @@ infomations about it :)
 
   Key details of this transformation:
   - Non-linear and angles are not preserved.
-  - For no-sprint, it bulges out around multiples of 45 degrees.
-  - For sprint, it makes 2 cones and maximum sideways angle is 45 degrees. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. //What happens at 0? It is technically possible.
+  - For no-sprint, it bulges out around multiples of 45°.
+  - For sprint, it makes 2 cones and maximum sideways angle is 45°. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. //What happens at 0? It is technically possible.
 
   [Replication on Desmos.](https://www.desmos.com/calculator/a9rhnjx5iw)\
   Transformation visualizations. No sprint (left) & Sprint (right) :
   
-  <img src="/Images/11strafe_nosprint_transform.gif" alt="nospint transformation gif" height="300px"> <img src="/Images/11strafe_sprint_transform.gif" alt="sprint transformation gif" height="300px">
+  <img src="/Images/11strafe_nosprint_transform.gif" alt="nospint transformation gif" height="240px"> <img src="/Images/11strafe_sprint_transform.gif" alt="sprint transformation gif" height="240px">
 
   Variable initial ring size. (Full transformation) No sprint (left) & Sprint (right) :
 
-  <img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nosprint magnitude gif" height="300px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="300px">
+  <img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nosprint magnitude gif" height="240px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="240px">
 
 </details>
 
 <details>
   <summary><ins>Glitches</ins></summary>
 
-+ *Glitch 1: Inaccurate angles*\
-  No sprint (left) & Sprint (right). X axis is angle of your touch point relative to joystick center.(input angle) Y axis is signed difference between input angle and outputted angle.(Inaccuracy) All at max magnitude
++ *Glitch 1: Unintended angle inaccuracy*\
+  No sprint (left) & Sprint (right).\
+  X axis is intended input angle. (Angle of your touch point relative to joystick center.)\
+  Y axis is inaccuracy. (Signed difference between input angle and outputted angle.)\
+  Lightest line is magnitude 0.3 and most vibrant is magnitude 1. (With 0.05 step between them.)
   
-  <img src="/Images/11strafe_nosprint_anglediff.png" alt="nosprint angle difference plot" width="45%"> <img src="/Images/11strafe_sprint_anglediff.png" alt="sprint angle difference plot" width="45%">
+  <img src="/Images/11strafe_nosprint_angleinacc.png" alt="nosprint angle difference plot" height="240px"> <img src="/Images/11strafe_sprint_angleinacc.png" alt="sprint angle difference plot" height="240px">
+
+  **Particular values:** For no sprint, at input angle `20.273°` hit the peak inaccuracy of `-3.175°`. And for sprint, at input angle `15.206°` hit the extremum inaccuracy of `-2.556°` before peaking inaccuracy at the most sideways angle `90°` of `45°`. All said is at magnitude 1, but at magnitude 0.3 with sprint on, angling your thumb at the most sideways angle, you hit the most inaccuracy of `60.409°` from intended angle.
   
 + *Glitch 2: Speed boost*
   
-  <img src="/Images/11strafe_nosprint.png" alt="nosprint magnitude" height="300px"> <img src="/Images/11strafe_sprint.png" alt="sprint magnitude" height="300px">
+  <img src="/Images/11strafe_nosprint.png" alt="nosprint magnitude" height="240px"> <img src="/Images/11strafe_sprint.png" alt="sprint magnitude" height="240px">
 
-  For no sprint, angle `0, 90, 180, 270` have magnitude of `0.98` (normal). And magnitude = 1 at angle 90n &pm; `15.83` degrees. [1]\
-  And for sprint, angle `0, 180` have magnitude of `0.98` (normal). And magnitude = 1 at angle 180n &pm; `11.48` degrees. [2]\
+  For no sprint, angle `0, 90, 180, 270` have magnitude of `0.98` (normal). And magnitude = 1 at angle 90n &pm; `15.83°` (`13.06°` input angle).\
+  And for sprint, angle `0, 180` have magnitude of `0.98` (normal). And magnitude = 1 at angle 180n &pm; `11.48°` (`9.36°` input angle).\
   At these angles or any angles between them have a $1/0.98 \approx 2.04$% acceleration boost, similar to Java's 45 strafe. You also can gain advantage through them the same way as Java's 45 strafe, push joystick at angle with the boost and move camera in the opposite direction to counteract the sideways movement from joystick.\
-  
-  $$\text{atan2}(0.13 \times \cos(11.48^{\circ}), 0.13 \times \sin(11.48^{\circ}) + \underset{\text{Sprint jump boost}}{\underbrace{0.2}}) \approx 4.51^{\circ}$$
+  When performing 45 strafe while sprint jumping, you cannot let camera stay at 45° on jump tick. Because the boost from jumping will throw you off sideways, losing speed. So you have to turn to 0° and stop holding strafe button on these specific ticks.\
+  But on Bedrock when performing 11 strafe, you do not need to turn to 0°. Since the 11° angle is close to 0°, you can let the joystick stay at 11.48° and don't lose as much speed. And adjust your camera to `4.52°` in the opposite direction to counteract the sideways movement. This is `0.3117%` better than just turning to 0° and joystick 0°.
+
+  > To effectively perform 11 strafe on flat ground, let your thumb stay at 9.36° on the joystick. On air, turn your camera to -11.48°. And on jump tick, turn your camera to -4.52°.
 
 - Note: I'm using the convention that 0 degrees start from top-middle and goes on clockwise.
 
