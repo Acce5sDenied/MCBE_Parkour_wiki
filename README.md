@@ -65,30 +65,28 @@ Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standar
 There are 2 major ways the player can move.
 
 #### Button controls
-WASD button controls.\
-//todo
+WASD button controls.<sup>[Todo]</sup>
 
 #### Joystick controls
-All direction movement controls.\
-//todo
+All direction movement controls.<sup>[Todo]</sup>
 
 ### Camera movement
-//todo\
+<sup>[Todo]</sup>\
 Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 
 #### Sensitivity formulas
 Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
 Let $\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
 
-**Mouse**\
+**Mouse:**\
 $$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \left(0.25 + v_{value} \right) ^ 3 \times \frac{1920}{\text{WindowWidth}}$$\
 `/!\ NEEDS VERIFICATION /!\`
 
-**Touch**\
+**Touch:**\
 $$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$\
 `/!\ WIP, for my device type (2340 * 1080) /!\`
 
-**Joystick** //todo
+**Joystick:** <sup>[Todo]</sup>
 
 #### Spyglass
 Spyglass damping is a setting in range `0 - 100`. This affects camera movement speed while using a spyglass. 0 being no effect, 100 being full effect.\
@@ -98,8 +96,7 @@ Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 10
 ---
 
 ## Block Collisions
-List of unique collision boxes of all blocks. For effect box for blocks like cobweb, please see the [Block Mechanics](#block-mechanics) section.\
-`/!\ OUTDATED, SOMETHING MAY HAVE CHANGED /!\`
+List of unique collision boxes of all blocks. For effect box for blocks like cobweb, please see the [Block Mechanics](#block-mechanics) section.<sup>[Outdated, something may have changed.]</sup>
 
 <ins>**Clarification**</ins>
 
@@ -211,7 +208,7 @@ Alphabetical order.
 |Fences(4-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |                                               |
 |Fences(3-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
 |Fences(2-adjacent)        |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
-|Hopper//todo              |                                |                           |                                               |
+|Hopper<sup>[Todo]</sup>   |                                |                           |                                               |
 |Panes & Bars(4-sided)     |Sides:0.125×0.5                 |1                          |                                               |
 |Panes & Bars(3-sided)     |Sides:0.125×0.5                 |1                          |Orientable.(4 varients)                        |
 |Panes & Bars(2-adjacent)  |Sides:0.125×0.5                 |1                          |Orientable.(4 varients) Missing 1px in the outer corner.|
@@ -243,7 +240,7 @@ Stuff that have a collision box that does not quite belong in the 2 above catago
   <summary><ins>Click here to view table.</ins></summary>
 
 \
-Collision boxes that have been changed throughout many updates.//todo
+Collision boxes that have been changed throughout many updates.<sup>[Todo]</sup>
 |Blocks                   |Widths                          |Heights                  |Versions                |Comments                                        |
 |-------------------------|--------------------------------|-------------------------|------------------------|------------------------------------------------|
 |Trial spawner            |0.9998×0.9998                   |0.9998                   |Early 1.21 versions     |-0.0001 on each side. Used to effectively chain blips long ago.|
@@ -256,21 +253,20 @@ Collision boxes that have been changed throughout many updates.//todo
 ## Movement mechanics
 
 #### Collision
-Y -> X -> Z collision check order.\
+Y &rightarrow; X &rightarrow; Z collision check order.\
 **Player's collision box**\
 Normally is `0.6×0.6` horizontally and `1.8` vertically.\
 While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
 While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
 #### Stepping
-Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.\
-`/!\ NEEDS VERIFICATION /!\`
+Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.<sup>[Needs verification.]</sup>
 
 #### Sneaking
-There exists a `0.025` margin around any edge that a player can't sneak to. Past this point, movement from sneaking is cancelled entirely.//todo
+There exists a `0.025` margin around any edge that a player can't sneak to. Past this point, movement from sneaking is cancelled entirely.<sup>[Todo]</sup>
 
 #### Crawling
-//todo
+<sup>[Todo]</sup>
 
 #### 16b/t speed limit
 A player have 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
@@ -296,7 +292,7 @@ And at extreme conditions where everything line up in your favor, you can clip t
 ### Patched Glitches
 
 **11 Strafe or 10 Strafe & Glitches regarding old joystick**\
-Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. [controller joystick too?] Here is all the known
+Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. <sup>Controller joystick too?</sup> Here is all the known
 infomations about it :)
 
 <details>
@@ -322,7 +318,7 @@ infomations about it :)
   Key details of this transformation:
   - Non-linear and angles are not preserved.
   - For no-sprint, it bulges out around multiples of 45°.
-  - For sprint, it makes 2 cones and maximum sideways angle is 45°. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. //What happens at 0? It is technically possible.
+  - For sprint, it makes 2 cones and maximum sideways angle is 45°. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. <sup>What happens at 0? It is technically possible.</sup>
 
   [Replication on Desmos.](https://www.desmos.com/calculator/a9rhnjx5iw)\
   Transformation visualizations. No sprint (left) & Sprint (right) :
@@ -366,17 +362,17 @@ infomations about it :)
 
 <details>
   <summary><ins>History & Discovery</ins></summary>
-//todo
+<sup>[Todo]</sup>
 </details>
 
 **Backwards sprinting**\
-//todo
+<sup>[Todo]</sup>
 
 **Ground sprint delay**\
-//todo
+<sup>[Todo]</sup>
 
 **Subtle wall clipping**\
-i think when movement speed is so small. collision check is ignored. //todo
+i think when movement speed is so small. collision check is ignored. <sup>[Todo]</sup>
 
 ### Non-Advantagious Glitches
 + Player actually never stopping in place, coords flickering while standing still.
@@ -388,7 +384,7 @@ i think when movement speed is so small. collision check is ignored. //todo
 ## Constants
 
 ### Base values
-the formulas should be the same as Java's
+The movement formula is similar to Java's. <sup>[WIP]</sup>
 + shifted acceleration: `0.294`
 + walk acceleration: `0.98`
 + sprint acceleration: `1.274`
@@ -446,20 +442,19 @@ Effects on movement include:
 + Acceleration on ground is multiplied by $\displaystyle \left(\frac{0.6}{S}\right) ^ 3$
 
 #### Soulsand
-Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside)\
-Entity will receive effect when their coordinates is in this region.\
+Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside) Entity will receive effect when their coordinates is in this region.\
 Properties: Unlike Java, that soulsand would drag an entity down, Bedrock does not do that.
 + Grants `54.4%` acceleration.
 
 #### Honey block
 Slipperiness factor is `0.8`\
-Properties: //todo key details: 
+Properties: <sup>[Todo]</sup> key details: 
 + Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 + Sliding down the side have a speed cap of `-0.12`
 
 #### Slime block
 Slipperiness factor is `0.8`\
-Properties: //todo key details:
+Properties: <sup>[Todo]</sup> key details:
 + bouncy yippee
 
 #### Ices
@@ -470,42 +465,37 @@ Properties: //todo key details:
 
 #### Catch/Climb type blocks
 These group of blocks include ladders, vines, cave vines and twisted vines.\
-Effect box: `1×1×1`\
-Entity will receive effect when their coordinates is in this region.\
-Properties: //todo key details: 
+Effect box: `1×1×1`. Entity will receive effect when their coordinates is in this region.\
+Properties: <sup>[Todo]</sup> key details: 
 + max climb up/down speed is `0.2`
 
 #### Scaffolding
 different behavior to normal climb blocks.\
-Effect box: `1×1×1`\
-Entity will receive effect when their base (`0.3` margin around player's position) intersects this region.\
-Properties: //todo key details: 
+Effect box: `1×1×1`. Entity will receive effect when their base (`0.3` margin around player's position) intersects this region.\
+Properties: <sup>[Todo]</sup> key details: 
 + max climb up/down speed is `0.15`
 
 #### Water
-//todo
+<sup>[Todo]</sup>
 
 #### Lava
-//todo
+<sup>[Todo]</sup>
 
 #### Cobweb
-Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
-Entity will receive effect when their collision box intersects this region.\
+Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
 Properties: 
 + Horizontal acceleration is divided by `4`.
 + Vertical acceleration is divided by `20`.
 + All velocity is reset on every tick.
 
 #### Powdered Snow
-Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
-Entity will receive effect when their collision box intersects this region.\
-Properties://todo key details: 
+Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
+Properties: <sup>[Todo]</sup> key details: 
 + All velocity is reset on every tick.
 + The longer inside the slower you are.
 
 #### Sweet Berry Bush
-Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.)\
-Entity will receive effect when their collision box intersects this region.\
+Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
 Properties: 
 + Horizontal acceleration is divided by `1.25`.
 + Vertical acceleration is **multiplied** by `0.735`.
@@ -515,7 +505,7 @@ Properties:
 
 ## Status effects & Enchants
 Status effects and enchants that can directly effect movement.\
-Enchants that have a level beyond normally achievable may have mistakes.
+(Only valid for achievable level of enchant. Levels beyond that is not guaranteed to be correct.)
 
 **Speed**\
 `+20%` acceleration per level of speed. Does not apply when airborne. In the case where speed is on with slowness, speed always get applied first.
@@ -528,7 +518,7 @@ Enchants that have a level beyond normally achievable may have mistakes.
 
 **Slow falling**\
 `0.01` Gravity acceleration for all levels of slow falling. Reaching terminal velocity of `0.49`.\
-(i think it only applies 1 tick after exiting ground)
+This is not true all the time. For when this applies is still under investigation.<sup>[Todo]</sup>
 
 **Levitation**\
 $$\displaystyle VelY_t = VelY_{t-1} \times 0.784 + 0.0098 \times Level$$\
@@ -543,7 +533,7 @@ $\displaystyle 1.3 + Level \times 0.105$ times acceleration. Only works on soul 
 **Depth strider**\
 For walking, `+133.33%` acceleration per level of depth strider.\
 For sprinting, `+183.33%` acceleration per level of depth strider.\
-`/!\ NEEDS VERIFICATION /!\`
+Not true in certain conditions.<sup>[Todo]</sup>
 
 **Swift sneak**\
 `+50%` acceleration per level of swift sneak. Only works while crouching or crawling.
@@ -551,7 +541,9 @@ For sprinting, `+183.33%` acceleration per level of depth strider.\
 ---
 
 ## Movement formulas
-//todo `/!\ DRAFT, DO NOT TRUST ANY OF THESE /!\`\
+> [!NOTE]
+> Draft, Do not trust any of these.<sup>[Todo]</sup>
+
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
 
 #### Variables
@@ -611,7 +603,7 @@ $\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way 
 ## Strategies
 
 ### Tap setups
-`/!\ NEEDS VERIFICATION /!\`
+<sup>[Needs verification.]</sup>
 |Tap names                 |Distance given        |
 |--------------------------|----------------------|
 |walk                      |0.21585904            |
@@ -644,7 +636,7 @@ Uncatagorized stuff.
 more coming soon!
 
 ### Parkour Servers
-A list of publicly known Bedrock Edition parkour servers.
+A list of publicly known Bedrock Edition parkour servers.<sup>[Todo]</sup>
 
 **Galaxite**\
 Gamemode "Parkour Builders" on featured server Galaxite. Hosts player-made maps.
