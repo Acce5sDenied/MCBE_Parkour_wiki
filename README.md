@@ -78,19 +78,21 @@ Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
 Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
 Let $\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
 
-**Mouse:**\
-$$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \left(0.25 + v_{value} \right) ^ 3 \times \frac{1920}{\text{WindowWidth}}$$\
-`/!\ NEEDS VERIFICATION /!\`
+**Mouse:** <sup>[Needs Verification.]</sup>
 
-**Touch:**\
-$$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$\
-`/!\ WIP, for my device type (2340 * 1080) /!\`
+$$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \left(0.25 + v_{value} \right) ^ 3 \times \frac{1920}{\text{WindowWidth}}$$
+
+**Touch:** <sup>[WIP, for my device type (2340 * 1080)]</sup>
+
+$$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$
 
 **Joystick:** <sup>[Todo]</sup>
 
 #### Spyglass
-Spyglass damping is a setting in range `0 - 100`. This affects camera movement speed while using a spyglass. 0 being no effect, 100 being full effect.\
-<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">\
+Spyglass damping is a setting in range `0 - 100`. This affects camera movement speed while using a spyglass. 0 being no effect, 100 being full effect.
+
+<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">
+
 Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 100.
 
 ---
@@ -277,8 +279,10 @@ A player have 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your
 Movement related glitches.
 
 **Triple component strafe**\
-Is a glitch that allows to strafe with 3 input component. Normal strafe is made by 2 components (e.g. W + D). But with this glitch, you can do for example, W + W + D. The angle is `~26°` off the 4 main directions by this calculation,\
-$$\displaystyle \text{atan2}(\underset{\text{1st component}}{\underbrace{2}},\overset{\text{2nd component}}{\overbrace{1}}) = \text{arctan}\left(\frac{1}{2}\right) \approx 26.565^{\circ}$$\
+Is a glitch that allows to strafe with 3 input component. Normal strafe is made by 2 components (e.g. W + D). But with this glitch, you can do for example, W + W + D. The angle is `~26°` off the 4 main directions by this calculation,
+
+$$\displaystyle \text{atan2}(\underset{\text{1st component}}{\underbrace{2}},\overset{\text{2nd component}}{\overbrace{1}}) = \text{arctan}\left(\frac{1}{2}\right) \approx 26.565^{\circ}$$
+
 This glitch does not give a speed/acceleration boost, but can be used for easier jump strategies (e.g. easier jump angle, noturn, chained triple neos,...). Can be activated by using D-pad touch control, pressing in the region connecting W/S button and strafe button. Or use multiple input devices to combine inputs.
 
 **Hitbox manipulation**\
@@ -302,16 +306,18 @@ infomations about it :)
   Game takes joystick center position and touch position. Calculate signed difference between them. ($dx$ and $dy$)
 + *Step 2 :*\
   $dx$ and $dy$ is later normalized to be in range [`-1, 1`]. With 1 being joystick's radius. Creating $x$, $y$ and untransformed vector $\mathbf{v}$.\
-  $x = dx \times ScalingFactor$ same process goes for $y$.\
-  - Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
+  $x = dx \times ScalingFactor$ and same process goes for $y$.
+  
   > Case $$0.3 \leq \left|\left|\mathbf{v}\right|\right| \leq 1$$ then $$\mathbf{v} = (x,y)$$\
   > Case $$\left|\left|\mathbf{v}\right|\right| > 1$$ then $$\displaystyle \mathbf{v} = \left(\frac{x}{\left|\left|\mathbf{v}\right|\right|},\frac{y}{\left|\left|\mathbf{v}\right|\right|}\right)$$\
   > Case $$\left|\left|\mathbf{v}\right|\right| < 0.3$$ then player's stopping condition is applied.
+
+  - Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
 + *Step 3 :*\
   A transformation is applied to $\mathbf{v}$. (inherit $x$ and $y$ from $\mathbf{v}$ of previous calculation.)
-
+  
   $$\mathbf{v'} = 0.98 \times \left(x+\frac{0.3x\cdot(1-|x|)}{\sqrt{x^2+y^2}} , y+\frac{0.3y\cdot(1-|y|)}{\sqrt{x^2+y^2}}\right)$$
-
+  
   If player is holding sprint, Y component of $\mathbf{v}$ is overridden to be $\text{sign}(y')$.\
   And if $\left|\left|\mathbf{v'}\right|\right| > 1$ then $$\displaystyle \mathbf{v'}_{\text{final}} = \frac{\mathbf{v'}}{\left|\left|\mathbf{v'}\right|\right|}$$. (Cap it at magnitude 1.)
 
@@ -342,19 +348,27 @@ infomations about it :)
   
   <img src="/Images/11strafe_nosprint_angleinacc.png" alt="nosprint angle difference plot" height="240px"> <img src="/Images/11strafe_sprint_angleinacc.png" alt="sprint angle difference plot" height="240px">
 
-  **Particular values:** For no sprint, at input angle `20.273°` hit the peak inaccuracy of `-3.175°`. And for sprint, at input angle `15.206°` hit the extremum inaccuracy of `-2.556°` before peaking inaccuracy at the most sideways angle `90°` of `45°`. All said is at magnitude 1, but at magnitude 0.3 with sprint on, angling your thumb at the most sideways angle, you hit the most inaccuracy of `60.409°` from intended angle.
+  **Particular values:** For no sprint, at input angle `20.273°` hit the peak inaccuracy of `-3.175°`.\
+  And for sprint, at input angle `15.206°` hit the maximum negative inaccuracy of `-2.556°` before peaking inaccuracy at the most sideways angle 90° of `45°`. All said is at magnitude 1, but at magnitude 0.3 with sprint on, angling your thumb at the most sideways angle, you hit the most inaccuracy of `60.409°` from intended angle.
   
 + *Glitch 2: Speed boost*
   
   <img src="/Images/11strafe_nosprint.png" alt="nosprint magnitude" height="240px"> <img src="/Images/11strafe_sprint.png" alt="sprint magnitude" height="240px">
 
-  For no sprint, angle `0, 90, 180, 270` have magnitude of `0.98` (normal). And magnitude = 1 at angle 90n &pm; `15.83°` (`13.06°` input angle).\
-  And for sprint, angle `0, 180` have magnitude of `0.98` (normal). And magnitude = 1 at angle 180n &pm; `11.48°` (`9.36°` input angle).\
+  For no sprint, angle `0, 90, 180, 270` have magnitude of `0.98` (normal). And magnitude = 1 at angle 90n &pm; `15.83°`<sup>[1]</sup> (`13.06°`<sup>[2]</sup> input angle).\
+  And for sprint, angle `0, 180` have magnitude of `0.98` (normal). And magnitude = 1 at angle 180n &pm; `11.48°`<sup>[3]</sup> (`9.36°`<sup>[4]</sup> input angle).\
   At these angles or any angles between them have a $1/0.98 \approx 2.04$% acceleration boost, similar to Java's 45 strafe. You also can gain advantage through them the same way as Java's 45 strafe, push joystick at angle with the boost and move camera in the opposite direction to counteract the sideways movement from joystick.\
   When performing 45 strafe while sprint jumping, you cannot let camera stay at 45° on jump tick. Because the boost from jumping will throw you off sideways, losing speed. So you have to turn to 0° and stop holding strafe button on these specific ticks.\
-  But on Bedrock when performing 11 strafe, you do not need to turn to 0°. Since the 11° angle is close to 0°, you can let the joystick stay at 11.48° and don't lose as much speed. And adjust your camera to `4.52°` in the opposite direction to counteract the sideways movement. This is `0.3117%` better than just turning to 0° and joystick 0°.
+  But on Bedrock when performing 11 strafe, you do not need to turn to 0°. Since the 11° angle is close to 0°, you can let the joystick stay at 11.48° and don't lose as much speed. And adjust your camera to `4.52°`<sup>[5]</sup> in the opposite direction to counteract the sideways movement. This is `0.3117%`<sup>[6]</sup> better than just turning to 0° and joystick 0°.
 
   > To effectively perform 11 strafe on flat ground, let your thumb stay at 9.36° on the joystick. On air, turn your camera to -11.48°. And on jump tick, turn your camera to -4.52°.
+
+  [1] = \
+  [2] = \
+  [3] = $$\displaystyle \arccos(0.98) \approx 11.478341$$\
+  [4] = \
+  [5] = \
+  [6] = 
 
 - Note: I'm using the convention that 0 degrees start from top-middle and goes on clockwise.
 
@@ -441,60 +455,60 @@ Effects on movement include:
 + Amount of drag on ground is $0.91 \times S$.
 + Acceleration on ground is multiplied by $\displaystyle \left(\frac{0.6}{S}\right) ^ 3$
 
-#### Soulsand
+**Soulsand**\
 Effect box: `1×1×1` lifted up by `0.1`. (0.1 up from block's surface and 0.1 up from bottom if you're somehow inside) Entity will receive effect when their coordinates is in this region.\
 Properties: Unlike Java, that soulsand would drag an entity down, Bedrock does not do that.
 + Grants `54.4%` acceleration.
 
-#### Honey block
+**Honey block**\
 Slipperiness factor is `0.8`\
 Properties: <sup>[Todo]</sup> key details: 
 + Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 + Sliding down the side have a speed cap of `-0.12`
 
-#### Slime block
+**Slime block**\
 Slipperiness factor is `0.8`\
 Properties: <sup>[Todo]</sup> key details:
 + bouncy yippee
 
-#### Ices
+**Ices**
 + Blue ice slipperiness factor `0.989`
 + Packed ice slipperiness factor `0.98`
 + Ice slipperiness factor `0.98`
 + Frosted ice slipperiness factor `0.98`
 
-#### Catch/Climb type blocks
+**Catch/Climb type blocks**\
 These group of blocks include ladders, vines, cave vines and twisted vines.\
 Effect box: `1×1×1`. Entity will receive effect when their coordinates is in this region.\
 Properties: <sup>[Todo]</sup> key details: 
 + max climb up/down speed is `0.2`
 
-#### Scaffolding
+**Scaffolding**\
 different behavior to normal climb blocks.\
 Effect box: `1×1×1`. Entity will receive effect when their base (`0.3` margin around player's position) intersects this region.\
 Properties: <sup>[Todo]</sup> key details: 
 + max climb up/down speed is `0.15`
 
-#### Water
+**Water**\
 <sup>[Todo]</sup>
 
-#### Lava
+**Lava**\
 <sup>[Todo]</sup>
 
-#### Cobweb
+**Cobweb**\
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
 Properties: 
 + Horizontal acceleration is divided by `4`.
 + Vertical acceleration is divided by `20`.
 + All velocity is reset on every tick.
 
-#### Powdered Snow
+**Powdered Snow**\
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
 Properties: <sup>[Todo]</sup> key details: 
 + All velocity is reset on every tick.
 + The longer inside the slower you are.
 
-#### Sweet Berry Bush
+**Sweet Berry Bush**\
 Effect box: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
 Properties: 
 + Horizontal acceleration is divided by `1.25`.
@@ -542,7 +556,7 @@ Not true in certain conditions.<sup>[Todo]</sup>
 
 ## Movement formulas
 > [!NOTE]
-> Draft, Do not trust any of these.<sup>[Todo]</sup>
+> This whole section is a draft, Do not trust any of these.<sup>[Todo]</sup>
 
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
 
@@ -597,6 +611,9 @@ $\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way 
 
 **Fluids Velocity Formula:**\
 🗿
+
+**Elytra Velocity Formula:**\
+🦧
 
 ---
 
