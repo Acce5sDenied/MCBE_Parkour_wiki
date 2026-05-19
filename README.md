@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.1x`.\
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.2x`.\
 This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.
 
 uhmm
@@ -72,7 +72,7 @@ All direction movement controls.<sup>[Todo]</sup>
 
 ### Camera movement
 <sup>[Todo]</sup>\
-Cool fact: Pitch is locked in range [`-89.9°` to `89.9°`]
+Cool fact: Pitch is locked in range [`-89.9°`, `89.9°`]
 
 #### Sensitivity formulas
 Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
@@ -297,7 +297,7 @@ And at extreme conditions where everything line up in your favor, you can clip t
 
 **11 Strafe or 10 Strafe & Glitches regarding old joystick**\
 Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. <sup>Controller joystick too?</sup> Here is all the known
-infomations about it :)
+infomations about it :)<sup>[Todo]</sup>
 
 <details>
   <summary><ins>Implimentation</ins></summary>
@@ -685,15 +685,19 @@ rt_rzojusX3bUv8
 ```
 
 **WagL Network**\
-idk about this one
-+ Status: probably Active
+Athletic realm
++ Status: Active
++ To access: https://realms.gg/LbJYwZJrkYLfRFA or enter below into realm code.
+```
+LbJYwZJrkYLfRFA
+```
 
 **Li9 Realm / Lithium Parkour**\
 A parkour realm consisting of progressively harder 250 levels. More well known to Bedrock PvPers.
 + Status: Down by early 2026.
 
 **MuttiServer**\
-dont know this one too
+dont know about this one
 + Status: Down
 
 **Mineplex**\
@@ -707,6 +711,7 @@ Mineplex Housing. The first ever housing parkour server on Bedrock, before it sh
 + Lemonsour Athletic
 + Grow
 + Tornadoo
++ Parrium
 
 ---
 
