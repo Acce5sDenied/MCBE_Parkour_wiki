@@ -709,14 +709,20 @@ Mineplex Housing. The first ever housing parkour server on Bedrock, before it sh
 + Tanaris Athletic
 + Asure
 + Lemonsour Athletic
-+ Grow
++ ChaomanaGrow
 + Tornadoo
 + Parrium
 
 ---
 
+#### Credits & Special thanks
++ **accessdenied0** (Author, maintainer)
++ **elchut** (Community, 11 strafe details)
++ **xiaozi0475** ([11 strafe inner workings](https://b23.tv/yGraXUX))
++ **zetaser2** (Help on glitches)
+
 This wiki is a hobby project to showcase the technical parkour infos of Minecraft Bedrock Edition.\
-This is an extension of MCPK wiki.\
+This is an extension of MCPK wiki. But not affiliated (for now).\
 Not affiliated or associated with Mojang or Microsoft.
 
 
