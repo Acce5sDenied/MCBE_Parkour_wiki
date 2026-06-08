@@ -37,11 +37,11 @@ uhmm
 
 ## Resources
 
-Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java parkour documentation.
+Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java Edition parkour documentation.
 
-Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for parkour addon. Like MPK, Cyv.
+Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for a parkour addon. Or [**dmf-mpk**](https://github.com/mihiro13/dmf-mpk) repo for an actual parkour mod. Similar to MPK Cyv mod from Java.
 
-Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) for central hub about Bedrock Edition Parkour.
+Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Star Jump**](https://discord.gg/EdfWtFwa2s) for central hubs about Bedrock Edition Parkour.
 
 ---
 
@@ -72,26 +72,31 @@ All direction movement controls.<sup>[Todo]</sup>
 
 ### Camera movement
 <sup>[Todo]</sup>\
-Cool fact: Pitch is locked in range [`-89.9°`, `89.9°`]
+Cool fact: Pitch is locked in range `[-89.9°, 89.9°]`
 
 #### Sensitivity formulas
-Bedrock uses sensitivity in range `0 - 100%` unlike Java's `0 - 200%`\
+Bedrock uses sensitivity in range `0 - 100%` unlike Java's `0 - 200%` And Let
+
+$$\displaystyle v_{value} = 0.81\times(1.1 \times \text{Sensitivity})^{0.6125} \ \text{For Sensitivity in} \ [0, 1].$$
+
 The formulas go as follows:
 
 **Mouse:**
 
-$$\displaystyle v_{value} = 0.81\times(1.1 \times \text{Sensitivity})^{0.6125}$$
 $$\displaystyle \Delta \text{Yaw} = \frac{\text{PixelsTurned}}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
 
 **Touch:** <sup>[WIP, for my device type (2340 * 1080)]</sup>
 
-$$\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$$
 $$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$
 
 **Joystick:** <sup>[Todo]</sup>
 
+$$\displaystyle \cdots$$
+
 #### Spyglass
 Spyglass damping is a setting in range `0 - 100`. This affects camera movement speed while using a spyglass. 0 being no effect, 100 being full effect.
+
+$$\displaystyle \text{For SpyglassDamping in} \ [0, 100]$$
 
 <img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">
 
@@ -273,7 +278,7 @@ There exists a `0.025` margin around any edge that a player can't sneak to. Past
 <sup>[Todo]</sup>
 
 #### 16b/t speed limit
-A player have 16 b/t absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
+A player have `16 b/t` absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
 
 ---
 
@@ -294,6 +299,9 @@ Is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is mil
 Is another precision related glitches. Again, Bedrock stores position in 32-bit. And as a nature of floating point arithmetic, they represents real numbers but with limited precision. This precision worsens at every power of 2. At sufficiently large values you can notice discrete jump between values. Explaining the jitteriness at large coordinates.\
 Intuitively you can think of a grid and your position can only snap to the grid. Not only your position though, block collsion box also snaps to this grid aswell. Explaining the inaccuracy in collision. (You can see your coordinates not quite lining up with actual block collision box)\
 And at extreme conditions where everything line up in your favor, you can clip through a solid block.
+
+**Spyglass speed boost**\
+Super mysterious.<sup>[Todo]</sup>
 
 ### Patched Glitches
 
@@ -647,7 +655,7 @@ Air taps aren't included because of no inertia, giving different result some of 
 ## Miscellanious
 Uncatagorized stuff.
 + **Coordinates system** is inverted on X axis, going left being positive and right being negative. Similar to Java edition.
-+ **Block push acceleration**. When you're inside a block, it'll attempt to push you out with acceleration of `0.1`.
++ **Block push acceleration**. When you're inside a block, it'll attempt to push you out with acceleration of `0.1` towards the nearest unblocked direction.
 
 ---
 
@@ -668,6 +676,14 @@ HPK-like realm. Host onejumps, segmented and rankup parkour.
 + To access: https://realms.gg/E9QjVQgLu4Y or enter below into realm code.
 ```
 E9QjVQgLu4Y
+```
+
+**Star Jump**\
+A successor of DPK network.
++ Status: Active
++ To access: use IP.
+```
+sarajuku.f5.si
 ```
 
 **Rathian Realm**\
