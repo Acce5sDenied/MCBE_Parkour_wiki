@@ -75,15 +75,17 @@ All direction movement controls.<sup>[Todo]</sup>
 Cool fact: Pitch is locked in range [`-89.9°`, `89.9°`]
 
 #### Sensitivity formulas
-Bedrock uses sensitivity in range `0 - 100` unlike Java's `0 - 200`\
-Let $\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$ and the formulas go as follow:
+Bedrock uses sensitivity in range `0 - 100%` unlike Java's `0 - 200%`\
+The formulas go as follows:
 
-**Mouse:** <sup>[Needs Verification.]</sup>
+**Mouse:**
 
-$$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \left(0.25 + v_{value} \right) ^ 3 \times \frac{1920}{\text{WindowWidth}}$$
+$$\displaystyle v_{value} = 0.81\times(1.1 \times \text{Sensitivity})^{0.6125}$$
+$$\displaystyle \Delta \text{Yaw} = \frac{\text{PixelsTurned}}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
 
 **Touch:** <sup>[WIP, for my device type (2340 * 1080)]</sup>
 
+$$\displaystyle v_{value} = 0.051149105 \times \text{Sensitivity} ^ {0.6125}$$
 $$\displaystyle \Delta \text{Yaw} = \text{PixelsTurned} \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$
 
 **Joystick:** <sup>[Todo]</sup>
