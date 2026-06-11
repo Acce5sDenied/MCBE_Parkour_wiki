@@ -328,7 +328,7 @@ infomations about it :)<sup>[Todo]</sup>
   
   $$\mathbf{v'} = 0.98 \times \left(x+\frac{0.3x\cdot(1-|x|)}{\sqrt{x^2+y^2}} , y+\frac{0.3y\cdot(1-|y|)}{\sqrt{x^2+y^2}}\right)$$
   
-  If player is holding sprint, Y component of $\mathbf{v}$ is overridden to be $\text{sign}(y')$.\
+  If player is **holding sprint**, Y component of $\mathbf{v}$ is overridden to be $\text{sign}(y')$.\
   And if $\left|\left|\mathbf{v'}\right|\right| > 1$ then $$\displaystyle \mathbf{v'}_{\text{final}} = \frac{\mathbf{v'}}{\left|\left|\mathbf{v'}\right|\right|}$$. (Cap it at magnitude 1.)
 
   Key details of this transformation:
@@ -736,7 +736,7 @@ Mineplex Housing. The first ever housing parkour server on Bedrock, before it sh
 #### Credits & Special thanks
 + **accessdenied0** (Author, maintainer)
 + **elchut** (Community, 11 strafe details)
-+ **xiaozi0475** ([11 strafe inner workings](https://b23.tv/yGraXUX))
++ **xiaozi0475** ([11 strafe inner workings](https://b23.tv/yGraXUX), maintainer)
 + **zetaser2** (Help on glitches)
 
 This wiki is a hobby project to showcase the technical parkour infos of Minecraft Bedrock Edition.\
