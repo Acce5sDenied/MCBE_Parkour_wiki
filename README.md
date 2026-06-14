@@ -88,6 +88,7 @@ $$\displaystyle v_{value} = 0.81\times(1.1 \times \text{Sensitivity})^{0.6125} \
 The formulas go as follows:
 
 **Mouse:**
+
 $$\displaystyle \Delta \text{Pitch} = \frac{dy}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
 $$\displaystyle \Delta \text{Yaw} = \frac{dx}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
 
