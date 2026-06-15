@@ -108,7 +108,7 @@ $$\displaystyle \text{For SpyglassDamping in} \ [0, 100]$$
 
 <img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">
 
-The same also goes for $\Delta Pitch$.\
+The same also goes for $\Delta \text{Pitch}$.\
 Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 100.
 
 ---
