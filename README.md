@@ -690,7 +690,7 @@ HPK-like realm. Host onejumps, segmented and rankup parkour.
 E9QjVQgLu4Y
 ```
 
-**Any Jump**\
+**Starany**\
 A successor of DPK network.
 + Status: :green_circle: Active
 + To access: use IP.
