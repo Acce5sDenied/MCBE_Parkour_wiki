@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.2x`.\
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.3x`.\
 This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.
 
 uhmm
@@ -41,7 +41,7 @@ Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java Edition par
 
 Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for a parkour addon. Or [**dmf-mpk**](https://github.com/mihiro13/dmf-mpk) repo for an actual parkour mod. Similar to MPK Cyv mod from Java.
 
-Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Any Jump**](https://discord.gg/EdfWtFwa2s) for central hubs about Bedrock Edition Parkour.
+Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Starany**](https://discord.gg/EdfWtFwa2s) for central hubs about Bedrock Edition Parkour.
 
 ---
 
@@ -49,7 +49,7 @@ Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Any Jump**](
 Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standard for parkour).
 + Strafing don't give the 2% boost in acceleration, unlike Java Edition. Same goes for strafe shifting.
 + No presence of inertia AKA momentum threshold.
-+ Position and many more values is stored in floats (32-bit). This explains many goofy glitches on bedrock.
++ Position and many more values is stored as single precision floats (32-bit). This explains many goofy glitches on Bedrock.
 + Trigonometry directly uses $\sin()$ and $\cos()$, so there is no such "significant angles" and "half angles" in Bedrock.
 + No presence of bursting or shift glitch.
 + Shifting would only goes to minimum of 0.025 away from edge.
@@ -78,8 +78,8 @@ Cool fact: Pitch is locked in range `[-89.9°, 89.9°]`
 Bedrock uses sensitivity in the range `0 - 100%` unlike Java's `0 - 200%`.
 
 Let:
-* $(dx, dy)$ be the instantaneous cursor displacement on the screen (in pixels),
-* $(\Delta \text{Pitch}, \Delta \text{Yaw})$ be the instantaneous camera rotation (in degrees).
++ $(dx, dy)$ be the instantaneous cursor displacement on the screen (in pixels),
++ $(\Delta \text{Pitch}, \Delta \text{Yaw})$ be the instantaneous camera rotation (in degrees).
 
 and we define  $v_{\text{value}}$ as:
 
@@ -91,7 +91,6 @@ The formulas go as follows:
 
 $$\displaystyle \Delta \text{Pitch} = \frac{dy}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
 $$\displaystyle \Delta \text{Yaw} = \frac{dx}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
-
 
 **Touch:** <sup>[WIP, for my device type (2340 * 1080)]</sup>
 
@@ -106,7 +105,9 @@ Spyglass damping is a setting in range `0 - 100`. This affects camera movement s
 
 $$\displaystyle \text{For SpyglassDamping in} \ [0, 100]$$
 
-<img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">
+<center>
+  <img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">
+</center>
 
 The same also goes for $\Delta \text{Pitch}$.\
 Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 100.
@@ -114,14 +115,14 @@ Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 10
 ---
 
 ## Block Collisions
-List of unique collision boxes of all blocks. For effect box for blocks like cobweb, please see the [Block Mechanics](#block-mechanics) section.<sup>[Outdated, something may have changed.]</sup>
+List of unique collision boxes for almost all blocks. For special effect box like cobweb, please see the [Block Mechanics](#block-mechanics) section.<sup>[Outdated, something may have changed.]</sup>
 
 <ins>**Clarification**</ins>
 
 **Model** is a how a block looks. It is purely visual.\
 **Hitbox** is an interaction volume of a block.\
 **Selection box** shows up when you hover over a block. This can accurately describe the collision box of some blocks.\
-Finally, **Collision box** is a solid volume of space that is not meant to pass through.
+And the matter, **Collision box** is a solid volume of space that is not meant to be passed through.
 
 ### Simple collision boxes
 <details>
@@ -131,7 +132,7 @@ Finally, **Collision box** is a solid volume of space that is not meant to pass 
 Ordered by widths then height.
 |Blocks                                 |Widths              |Height     |Comments                                                          |Selection box accurate?|
 |---------------------------------------|--------------------|-----------|------------------------------------------------------------------|-----------------------|
-|Walls(4-sided)                         |1×1                 |1.5        |                                                                  |No
+|Walls(4-sided)                         |1×1                 |1.5        |                                                                  |Yes\*
 |Full Blocks                            |1×1                 |1          |                                                                  |Yes
 |Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |Yes
 |Lectern                                |1×1                 |0.9        |                                                                  |Yes
@@ -157,14 +158,14 @@ Ordered by widths then height.
 |Cake                                   |0.875×0.875         |0.5        |Centered. Adding candle on top does not change anything.          |Yes
 |Eaten Cake                             |0.875×0.875         |0.5        |-0.125 on -X direction per 1 eat. Can be eaten 7 times.           |Yes
 |Lilypad                                |0.875×0.875         |0.09375    |Centered.                                                         |Yes
-|Walls(3-sided)                         |0.75×1              |1.5        |Orientable.(4 varients)                                           |No
+|Walls(3-sided)                         |0.75×1              |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |Yes
 |Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis.                              |Yes
-|Walls(2-adjacent)                      |0.75×0.75           |1.5        |Orientable.(4 varients)                                           |No
+|Walls(2-adjacent)                      |0.75×0.75           |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Grindstone                             |0.75×0.75           |1          |Centered. Orientable on all sides.                                |Yes
-|Pointed Dripstone(`base`)              |0.75×0.75           |1          |Collision box have random offset from center.                     |Yes
+|Pointed Dripstone & Sulfur Spike(`base`)|0.75×0.75          |1          |Collision box have random offset from center.                     |Yes
 |Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
-|Pointed Dripstone(`medium`)            |0.625×0.625         |1          |Collision box have random offset from center.                     |Yes
+|Pointed Dripstone & Sulfur Spike(`medium`)|0.625×0.625      |1          |Collision box have random offset from center.                     |Yes
 |Copper Golem Statues                   |0.625×0.625         |0.875      |Centered.                                                         |Yes
 |Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
 |Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
@@ -172,22 +173,22 @@ Ordered by widths then height.
 |Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |Yes
 |Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |Yes
 |Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
-|Walls(2-opposite)                      |0.5×1               |1.5        |Orientable.(4 varients) Needs another wall on top.                |No
+|Walls(2-opposite)                      |0.5×1               |1.5        |Orientable.(4 varients) Needs another wall on top.                |Yes\*
 |Bell(`standing`)                       |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
 |Bell(opposite connection or `multiple`)|0.5×1               |0.75       |Orientable on horizontal.(2 varients) Top:1.0 Bottom:.25          |Yes
 |Bell(1-sided or `side`)                |0.5×0.8125          |0.6875     |Orientable.(4 varients) Top:.9375 Bottom:.25                      |Yes
-|Walls(1-sided)                         |0.5×0.75            |1.5        |Orientable.(4 varients)                                           |No
-|Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |No
-|Pointed Dripstone(`frustum`)           |0.5×0.5             |1          |Collision box have random offset from center.                     |Yes
+|Walls(1-sided)                         |0.5×0.75            |1.5        |Orientable.(4 varients)                                           |Yes\*
+|Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |Yes\*
+|Pointed Dripstone & Sulfur Spike(`frustum`)|0.5×0.5         |1          |Collision box have random offset from center.                     |Yes
 |Bell(`hanging`)                        |0.5×0.5             |0.75       |Centered. Top:1.0 Bottom:.0.25                                    |Yes
 |Cocoa(big)                             |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
 |Conduit & Heavy Core & Heads (ground)  |0.5×0.5             |0.5        |Centered.                                                         |Yes
 |Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |Yes
 |Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
 |Panes & Bars (1-sided)                 |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
-|Thin wall(2-opposite)                  |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |No
-|Pointed Dripstone(`merge`)             |0.375×0.375         |1          |Collision box have random offset from center.                     |Yes
-|Pointed Dripstone(`tip`)               |0.375×0.375         |0.6875     |Collision box have random offset from center. Inversible.         |Yes
+|Thin wall(2-opposite)                  |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
+|Pointed Dripstone & Sulfur Spike(`merge`)|0.375×0.375       |1          |Collision box have random offset from center.                     |Yes
+|Pointed Dripstone & Sulfur Spike(`tip`)|0.375×0.375         |0.6875     |Collision box have random offset from center. Inversible.         |Yes
 |Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125                                              |Yes
 |Cocoa(medium)                          |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
@@ -195,11 +196,11 @@ Ordered by widths then height.
 |Pitcher Pod(small)                     |0.375×0.375         |0.25       |Top:.1875 Bottom:-.0625 Centered. Have 1px downwards collision extension of the block it is occupying.|Yes
 |4 Candles                              |0.3125×0.375        |0.375      |+Z side match fence, the rest match a flower pot.                 |Yes
 |3 Candles                              |0.3125×0.3125       |0.375      |+Z and -X side match a flower pot, -Z and -X match a fence.       |Yes
-|Fence Gates                            |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |No
-|Fences(2-opposite)                     |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |No
+|Fence Gates                            |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
+|Fences(2-opposite)                     |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
 |Hanging Signs(`"hanging"=false`)       |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients)    |No
-|Fences(1-sided)                        |0.25×0.625          |1.5        |Orientable.(4 varients)                                           |No
-|Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |No
+|Fences(1-sided)                        |0.25×0.625          |1.5        |Orientable.(4 varients)                                           |Yes\*
+|Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |Yes\*
 |End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |Yes
 |Cocoa(small)                           |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
 |2 Candles                              |0.1875×0.375        |0.375      |+Z side match a fence, -Z side match a pane, +X and -X match a flower pot.|Yes
@@ -209,6 +210,8 @@ Ordered by widths then height.
 |Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
 |Bamboo(`thin`)                         |0.125×0.125         |1          |Collision box have random offset from center.                     |Yes
 |Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |Yes
+
++ **Note**: Yes\* in last column means the block has an accurate selection box to it's collision box except height. Walls and fences have this property.
 
 </details>
 
@@ -245,11 +248,11 @@ Alphabetical order.
 Stuff that have a collision box that does not quite belong in the 2 above catagories.
 |Thing                  |Widths                    |Heights                              |Comment                                    |
 |-----------------------|--------------------------|-------------------------------------|-------------------------------------------|
-|Boat                   |1.4×1.4                   |0.455                                |Fun fact: you can make a perfect squeeze with boat + block.|
-|Border Block           |1×1                       |1.5 *or* infinitely high up and below|Bedrock exclusive block. [**Minecraft wiki article**](https://minecraft.wiki/w/Border)|
-|Happy Ghasts           |4×4                       |?                                    |Solidifies when a player is close to it. Collision is not aligned to grid.|
-|Shulker Box            |1×1                       |1 *or* 1.5                           |1.5 high when opened, Orientable, inversible.(6 varients)|
-|Shulker Mob            |0.9998×0.9998             |0.98                                 |Not orientable. Centered. Base touch the ground. When opened, that side extends out `~0.2060919`|
+|Boat                   |1.4×1.4                   |0.455                                |Fun fact: you can make a perfect squeeze with boat + block.
+|Border Block           |1×1                       |1.5 *or* infinitely high up and below|Bedrock exclusive block. [**Minecraft wiki article**](https://minecraft.wiki/w/Border)
+|Happy Ghasts           |4×4                       |?<sup>[Todo]</sup>                   |Solidifies when a player is close to it. Collision is not aligned to grid.
+|Shulker Box            |1×1                       |1 *or* 1.5                           |1.5 high when opened, Orientable, inversible.(6 varients)
+|Shulker Mob            |0.9998×0.9998             |0.98                                 |Not orientable. Centered. Base touch the ground. When opened, that side extends out `~0.2060919`
 
 </details>
 
@@ -271,7 +274,7 @@ Collision boxes that have been changed throughout many updates.<sup>[Todo]</sup>
 ## Movement mechanics
 
 #### Collision
-Y &rightarrow; X &rightarrow; Z collision check order.\
+Y &rightarrow; X &rightarrow; Z collision check order. Same as Java 1.8.\
 **Player's collision box**\
 Normally is `0.6×0.6` horizontally and `1.8` vertically.\
 While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
@@ -287,7 +290,8 @@ There exists a `0.025` margin around any edge that a player can't sneak to. Past
 <sup>[Todo]</sup>
 
 #### 16b/t speed limit
-A player have `16 b/t` absolute speed cap (pythagoras of 3 axes). If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity = 16.
+A player have `16 b/t` absolute speed cap (pythagoras of 3 axes).
+> If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity will equal 16.
 
 ---
 
@@ -389,7 +393,7 @@ infomations about it :)<sup>[Todo]</sup>
   [5] = \
   [6] = 
 
-- Note: I'm using the convention that 0 degrees start from top-middle and goes on clockwise.
+- **Note**: I'm using the convention that 0 degrees start from top-middle and goes on clockwise.
 
 </details>
 
@@ -655,7 +659,7 @@ $\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way 
 |A7 shifted + blocking     |0.00353318            |
 |A7 sprint + blocking      |0.01531045            |
 
-+ Note: blocking is NOT blocking with shield. See [Blocking](#blocking) section.
++ **Note**: blocking is NOT blocking with shield. See [Blocking](#blocking) section.
 
 Air taps aren't included because of no inertia, giving different result some of the times. So use A7 taps instead.
 
