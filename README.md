@@ -675,6 +675,10 @@ Uncatagorized stuff.
 ## Community
 more coming soon!
 
+### Videos
+Elchut has kindly provided a Youtube playlist for research/digging into the history and whereabouts of Bedrock Edition parkour.\
+https://youtube.com/playlist?list=PL1ZgYIGWUWGgwpp67OgWSB-rLEW4h5IxX&si=W7FeMAaKTJou8FiY
+
 ### Parkour Servers
 A list of publicly known Bedrock Edition parkour servers.<sup>[Todo]</sup>
 
