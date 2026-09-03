@@ -2,52 +2,28 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.3x`.\
-This wiki is assuming you have decent knowledge of the game and have read MCPK wiki before.
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.4x`.\
+This wiki is assuming you have a decent beforehand knowledge of the game and have went through MCPK wiki before. As this is an extension of it.
 
 uhmm
-
-<details>
-  <summary>Todo List</summary>
-    <br>
-  
-+ [ ] hopper collision
-+ [ ] Chorus plant collision
-+ [X] historic collision boxes
-+ [ ] movement
-+ [X] camera
-+ [X] sensitivity
-+ [X] joystick
-+ [ ] sneaking
-+ [ ] crawling
-+ [ ] lots of glitches
-+ [ ] honey
-+ [ ] slime
-+ [ ] powdered snow
-+ [ ] climb blocks
-+ [ ] scaffolding
-+ [ ] water/lava
-+ [ ] movement formulas (for handling cases that many effects stack together)
-+ [X] understanding what caused 11 strafe
-+ [ ] migrate some to wiki page once im done
-
-</details>
 
 ---
 
 ## Resources
 
-Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for Java Edition parkour documentation.
+Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for the original Java Edition parkour wiki & documentation.
 
-Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repo for a parkour addon. Or [**dmf-mpk**](https://github.com/mihiro13/dmf-mpk) repo for an actual parkour mod. Similar to MPK Cyv mod from Java.
+Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repository for a parkouring addon. Or [**dmf-mpk**](https://github.com/mihiro13/dmf-mpk) for an actual parkouring utilities mod. Similar to MPK or Cyv mod for Java.
 
-Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Starany**](https://discord.gg/EdfWtFwa2s) for central hubs about Bedrock Edition Parkour.
+Visit [**BPKMod**](https://github.com/xiaozi233/BPKMod) repository for a Java edition mod replicating Bedrock edition's movement physics.
+
+Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Starany**](https://discord.gg/EdfWtFwa2s) for central hubs to discuss about Bedrock Edition Parkour.
 
 ---
 
 ## Bedrock Differences
 Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standard for parkour).
-+ Strafing don't give the 2% boost in acceleration, unlike Java Edition. Same goes for strafe shifting.
++ Strafing doesn't give the 2% boost in acceleration, unlike Java Edition. Same goes for strafe shifting not giving the massive 41% boost.
 + No presence of inertia AKA momentum threshold.
 + Position and many more values is stored as single precision floats (32-bit). This explains many goofy glitches on Bedrock.
 + Trigonometry directly uses $\sin()$ and $\cos()$, so there is no such "significant angles" and "half angles" in Bedrock.
@@ -62,16 +38,16 @@ Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standar
 ---
 
 ## Player control
-There are 2 major ways the player can move.
+There are 2 major control schemes the player can move. Bedrock also supports multiple input devices.
 
 #### Button controls
-WASD button controls.<sup>[Todo]</sup>
+Classic WASD button controls. Player can press 2 buttons at the same time to "strafe". This type of control is called "D-pad" for touchscreens.
 
 #### Joystick controls
 All direction movement controls.<sup>[Todo]</sup>
 
 ### Camera movement
-<sup>[Todo]</sup>\
+Player can either use mouse, drag on a touchscreen or use a stick on a controller. And then camera movement is calculated from the displacement in pixels from that action.
 Cool fact: Pitch is locked in range `[-89.9°, 89.9°]`
 
 #### Sensitivity formulas
@@ -281,7 +257,8 @@ While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
 While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
 #### Stepping
-Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.<sup>[Needs verification.]</sup>
+Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.<sup>[Needs verification.]</sup>\
+[**MCPK wiki article**](https://www.mcpk.wiki/wiki/Stepping)
 
 #### Sneaking
 When the player is in the sneaking state, the game prevents the player from falling off the edges of blocks. The full mechanism works as follows:
