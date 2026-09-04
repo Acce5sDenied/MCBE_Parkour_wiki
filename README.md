@@ -257,7 +257,7 @@ While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
 While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
 #### Stepping
-Stepping stuff, blips, grinds, jump cancel. Same as Java 1.8.<sup>[Needs verification.]</sup>\
+Stepping stuff, blips, grinds and jump cancel mechanics. Same as Java 1.8.<sup>[Needs verification.]</sup>\
 [**MCPK wiki article**](https://www.mcpk.wiki/wiki/Stepping)
 
 #### Sneaking
@@ -317,7 +317,7 @@ Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joyst
 infomations about it :)<sup>[Todo]</sup>
 
 <details>
-  <summary><ins>Implimentation</ins></summary>
+  <summary><ins>Implementation</ins></summary>
 
 + *Step 1 :*\
   Game takes joystick center position and touch position. Calculate signed difference between them. ($dx$ and $dy$)
@@ -466,7 +466,7 @@ No effect on movement, unlike in Java where it does.
 Blocks that have special properties effecting movement.
 
 ### Slipperiness Properties
-All blocks have slipperiness factor (noted as $S$) of it's own. Every block have $S$ of `0.6` unless other value is stated\
+All blocks have slipperiness factor (noted as $S$) of it's own. Every block have $S$ of `0.6` unless other value is stated.\
 The game checks `0.1` blocks below entity's position for slipperiness. When airborne, slipperiness properties is ignored.\
 Effects on movement include:
 + Amount of drag on ground is $0.91 \times S$.
