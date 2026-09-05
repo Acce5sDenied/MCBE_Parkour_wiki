@@ -263,22 +263,29 @@ Stepping stuff, blips, grinds and jump cancel mechanics. Same as Java 1.8.<sup>[
 #### Sneaking
 When the player is in the sneaking state, the game prevents the player from falling off the edges of blocks. The full mechanism works as follows:
 
-The player's collision box is shrunk inward by `0.025` blocks along the horizontal axes (X/Z axes).\
+The player's collision box is shrunk inward by `0.025` blocks along the horizontal axes (X/Z axes).
+
 For the player's default hitbox, this means it contracts from `[0.6, 1.6, 0.6]` to `[0.55, 1.6, 0.55]`.
 
 After that, the game performs independent safety checks on the X-axis and Z-axis respectively:
 
-- **X-axis check**: If the player's intended velocity on the X-axis is non-zero, the system simulates movement at that velocity.\
-After the simulated movement, if there are no blocks within the range offset downward by `StepHeight × 1.01` (`StepHeight` defaults to `0.6`) below the player's feet (i.e., the player is determined to be airborne), **deceleration correction** is activated: the X-axis velocity is decremented toward `zero` in steps of `0.05`; if the velocity falls below `0.05`, it is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
-- **Z-axis check**: Following exactly the same logic as the X-axis check, it independently performs airborne determination and deceleration correction on the Z-axis velocity.
+- **X-axis check**: If the player's **intended movement amount** on the X-axis is non-zero, the system simulates movement by that amount.
 
-Finally, a final combined dual-axis check is executed:
+  After the simulated movement, if there are no blocks within the range offset downward by `StepHeight × 1.01` (`StepHeight` defaults to `0.6`) below the player's feet (i.e., the player is determined to be airborne), **deceleration correction** is activated: the X-axis **movement amount** is decremented toward `zero` in steps of `0.05`; if the amount falls below `0.05`, it is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
 
-- If both the X-axis and Z-axis velocities of the player are non-zero at this point, and the player remains airborne within the `StepHeight × 1.01` range underfoot after moving at this resultant horizontal velocity, both the X-axis and Z-axis velocities are decremented toward `zero` in steps of `0.05`; any velocity below `0.05` is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
+- **Z-axis check**: Following exactly the same logic as the X-axis check, it independently performs airborne determination and deceleration correction on the Z-axis **movement amount**.
 
-Therefore, there exists a 0.025 margin around any edge that a player can't sneak to. Past this point, movement from sneaking is cancelled entirely, except that the player may move inward to exit this boundary.
+Finally, a combined dual-axis check is executed:
 
-Burst hh/jam no longer grants player extra speed.<sup>[Todo]</sup>
+- If both the X-axis and Z-axis **movement amounts** of the player are non-zero at this point, and the player remains airborne within the `StepHeight × 1.01` range underfoot after moving by this resultant horizontal **displacement**, both the X-axis and Z-axis **movement amounts** are decremented toward `zero` in steps of `0.05`; any amount below `0.05` is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
+
+Therefore, there exists a `0.025` margin around any edge that a player can't sneak to. Past this point, movement from sneaking is cancelled entirely, except that the player may move inward to exit this boundary.
+
+At the end, if **the final X/Z movement amount equals 0**, the player's **X/Z speed** is set to `0`.
+
+Thus, Burst hh/jam no longer grants the player extra speed.
+
+<sup>[Todo]<sup>
 
 #### Crawling
 <sup>[Todo]</sup>
