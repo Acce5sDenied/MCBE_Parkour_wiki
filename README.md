@@ -579,9 +579,8 @@ Not true in certain conditions.<sup>[Todo]</sup>
 ---
 
 ## Movement formulas
-> [!NOTE]
-> This whole section is a draft, Do not trust any of these.<sup>[Todo]</sup>
-
+<sup>[Todo]</sup>
+<!--
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
 
 #### Variables
@@ -670,6 +669,7 @@ Air taps aren't included because of no inertia, giving different result some of 
 Uncatagorized stuff.
 + **Coordinates system** is inverted on X axis, going left being positive and right being negative. Similar to Java edition.
 + **Block push acceleration**. When you're inside a block, it'll attempt to push you out with acceleration of `0.1` towards the nearest unblocked direction.
+-->
 
 ---
 
