@@ -637,6 +637,7 @@ $\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way 
 
 **Elytra Velocity Formula:**\
 :orangutan:
+-->
 
 ---
 
@@ -669,7 +670,6 @@ Air taps aren't included because of no inertia, giving different result some of 
 Uncatagorized stuff.
 + **Coordinates system** is inverted on X axis, going left being positive and right being negative. Similar to Java edition.
 + **Block push acceleration**. When you're inside a block, it'll attempt to push you out with acceleration of `0.1` towards the nearest unblocked direction.
--->
 
 ---
 
