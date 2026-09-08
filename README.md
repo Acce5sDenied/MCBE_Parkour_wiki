@@ -588,9 +588,8 @@ Not true in certain conditions.<sup>[Todo]</sup>
 ---
 
 ## Movement formulas
-> [!NOTE]
-> This whole section is a draft, Do not trust any of these.<sup>[Todo]</sup>
-
+<sup>[Todo]</sup>
+<!--
 $\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
 
 #### Variables
@@ -647,6 +646,7 @@ $\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way 
 
 **Elytra Velocity Formula:**\
 :orangutan:
+-->
 
 ---
 
