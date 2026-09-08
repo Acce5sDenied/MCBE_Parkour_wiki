@@ -256,6 +256,15 @@ Normally is `0.6×0.6` horizontally and `1.8` vertically.\
 While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
 While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
+#### Sprint Cancellation
+
+A player's sprint is canceled upon collision if either of the following conditions are met<sup>[Needs verification]</sup>:
+
+- The **previous** (last tick) `Z-motion` was strictly greater than the *previous* `X-motion`, and the **current** `deltaZ` is `< 5e-5`.
+- The **previous** (last tick) `X-motion` was strictly greater than the *previous* `Z-motion`, and the **current** `deltaX` is `< 5e-5`.
+
+> **Note:** This logic can cause unusual side effects. For example, when running at certain angles (like f65) and sliding against a wall, the player's sprint state may rapidly toggle on and off.
+
 #### Stepping
 Stepping stuff, blips, grinds and jump cancel mechanics. Same as Java 1.8.<sup>[Needs verification.]</sup>\
 [**MCPK wiki article**](https://www.mcpk.wiki/wiki/Stepping)
