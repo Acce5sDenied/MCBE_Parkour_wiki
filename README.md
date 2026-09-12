@@ -531,8 +531,40 @@ Effects on movement include:
 
 **Slime block**\
 *Slipperiness* factor is `0.8`\
-*Properties*: <sup>[Todo]</sup> key details:
-+ bouncy yippee
+*Properties*<sup>[Todo]</sup>:
+
+**bounce**:
+A player is only bounced by a slime block if they land on it with a downward vertical velocity of $V_y < 0$ and a magnitude of $\vert V_y\vert \ge 0.08$. If the velocity is below this threshold, no bounce occurs; the player simply comes to rest on the top surface.
+
+The bouncing mechanism spans across **two adjacent ticks**:
+
+**Step 1: The Impact Tick** When the player's downward displacement crosses the slime block's top surface, their position is clamped exactly to that surface. During this tick, the game records the **actual distance fallen**, denoted as $\Delta Y$. This value is negative, and its absolute value is equal to the distance from the player's position at the start of the tick to the block's top surface. The player's velocity remains unchanged throughout this specific tick.
+
+**Step 2: The Subsequent Tick** This tick handles the reflection and gravity compensation in three sequential phases:
+
+- **Velocity Reflection:** Because the slime block has a bounce factor of $1$, the velocity is simply inverted:
+
+  $$V_y = -V_y$$
+
+- **Gravity Compensation:** Let $g = -0.08$ represent the gravity increment per tick . The game calculates compensation via three sub-steps:
+
+  1. **Velocity at the exact moment of impact:** Because the direction is still downward at the moment of impact, the negative root is taken:
+
+     $$V_{end} = -\sqrt{V_y^2 + 2g\,\Delta Y}$$
+
+  2. **Time elapsed before impact:** This calculates the time taken from the start of the tick to the exact moment of impact, expressed as a fraction of a single tick:
+
+     $$t = \left\vert \frac{V_y - V_{end}}{g}\right\vert$$
+
+  3. **Applying fractional gravity:** Because the bounce occurs mid-tick, the upward movement only occupies the remaining $1-t$ portion of the tick. Gravity is therefore only applied during this fractional remaining time:
+
+     $$V_y = V_y + g\,(1-t)$$
+
+- **Air Drag:** Finally, the standard drag multiplier is applied:
+
+  $$V_y = 0.98\,V_y$$
+
+**Important Note:** The game **does not apply standard gravity** during this second tick. The normal tick behavior of $V_y = V_y + g$ is completely replaced by the $g(1-t)$ term. These two calculations cannot stack; otherwise, an extra full tick of gravity would be incorrectly deducted from the player's velocity.
 
 **Ices**
 + **Blue ice** slipperiness factor `0.989`
