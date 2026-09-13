@@ -245,9 +245,7 @@ Collision boxes that have been changed throughout many update cycles.<sup>[Todo]
 
 </details>
 
----
-
-## Block offset
+### Block offset
 Certain blocks do not have centered collision boxes; instead, their positions are offset in a pseudorandom manner. A block's specific offset is determined entirely by its X and Z coordinates.
 
 For a full list of blocks subject to offset, refer to the [Minecraft Wiki](https://minecraft.wiki/w/Block_offset#List_of_blocks_subject_to_offset).
@@ -266,7 +264,7 @@ For a full list of blocks subject to offset, refer to the [Minecraft Wiki](https
 
 The complete algorithm implementation can be found in this [Google Colab Notebook](https://colab.research.google.com/drive/1Ke98s-X3d1bmrWAVAdjeGCrOcyRPSIZa#scrollTo=92yh9WgRgnBW).
 
-*Note: The algorithm only covers Pointed Dripstone, Sulfur Spikes, and Bamboo, as other offset blocks do not possess collision boxes.*
+**Note:** The algorithm only covers Pointed Dripstone, Sulfur Spikes, and Bamboo, as other offset blocks do not possess collision boxes.
 
 ---
 
@@ -280,11 +278,12 @@ While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
 While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
 
 #### Sprint Cancellation
-
 A player's sprint is canceled upon collision if either of the following conditions are met<sup>[Needs verification.]</sup>:
 
-- The **previous** (last tick) `Z-motion` was strictly greater than the *previous* `X-motion`, and the **current** `deltaZ` is `< 5e-5`.
-- The **previous** (last tick) `X-motion` was strictly greater than the *previous* `Z-motion`, and the **current** `deltaX` is `< 5e-5`.
+With "motion" refering to velocity, acceleration excluded.
+
+- The **previous tick** `Z-motion` was strictly greater than the **previous tick** `X-motion`, and `abs(Z-velocity) < 5e-5`.
+- The **previous tick** `X-motion` was strictly greater than the **previous tick** `Z-motion`, and `abs(X-velocity) < 5e-5`.
 
 > **Note:** This logic can cause unusual side effects. For example, when running at certain angles (like f65) and sliding against a wall, the player's sprint state may rapidly toggle on and off.
 
@@ -530,41 +529,44 @@ Effects on movement include:
 + Sliding down the side have a speed cap of `-0.12`
 
 **Slime block**\
-*Slipperiness* factor is `0.8`\
-*Properties*<sup>[Todo]</sup>:
+*Slipperiness* factor is `0.8`
 
-**bounce**:
-A player is only bounced by a slime block if they land on it with a downward vertical velocity of $V_y < 0$ and a magnitude of $\vert V_y\vert \ge 0.08$. If the velocity is below this threshold, no bounce occurs; the player simply comes to rest on the top surface.
+<details>
+  <summary><ins>Expand Properties</ins></summary>
 
+**Bouncing Property**:\
+A player is only bounced by a slime block if they land on it with a downward vertical velocity of $V_y < 0$ and a magnitude of $\vert V_y\vert \ge 0.08$. If the velocity is below this threshold, no bounce occurs; the player simply comes to rest on the top surface.\
 The bouncing mechanism spans across **two adjacent ticks**:
 
-**Step 1: The Impact Tick** When the player's downward displacement crosses the slime block's top surface, their position is clamped exactly to that surface. During this tick, the game records the **actual distance fallen**, denoted as $\Delta Y$. This value is negative, and its absolute value is equal to the distance from the player's position at the start of the tick to the block's top surface. The player's velocity remains unchanged throughout this specific tick.
+**1. Impact Tick** When the player's downward displacement crosses the slime block's top surface, their position is clamped exactly to that surface. During this tick, the game records the **actual distance fallen**, denoted as $\Delta Y$. This value is negative, and its absolute value is equal to the distance from the player's position at the start of the tick to the block's top surface. The player's velocity remains unchanged throughout this specific tick.
 
-**Step 2: The Subsequent Tick** This tick handles the reflection and gravity compensation in three sequential phases:
-
-- **Velocity Reflection:** Because the slime block has a bounce factor of $1$, the velocity is simply inverted:
+**2. Subsequent Tick** This tick handles the reflection and gravity compensation in three sequential phases:
+- *Velocity Reflection:* Because the slime block has a bounce factor of $1$, the velocity is simply inverted:
 
   $$V_y = -V_y$$
 
-- **Gravity Compensation:** Let $g = -0.08$ represent the gravity increment per tick . The game calculates compensation via three sub-steps:
+- *Gravity Compensation:* Let $g = -0.08$ represent the gravity increment per tick . The game calculates compensation via three sub-steps:\
+  1. *Velocity at the exact moment of impact:* Because the direction is still downward at the moment of impact, the negative root is taken:
 
-  1. **Velocity at the exact moment of impact:** Because the direction is still downward at the moment of impact, the negative root is taken:
+    $$V_{end} = -\sqrt{V_y^2 + 2g\,\Delta Y}$$
 
-     $$V_{end} = -\sqrt{V_y^2 + 2g\,\Delta Y}$$
+  2. *Time elapsed before impact:* This calculates the time taken from the start of the tick to the exact moment of impact, expressed as a fraction of a single tick:
 
-  2. **Time elapsed before impact:** This calculates the time taken from the start of the tick to the exact moment of impact, expressed as a fraction of a single tick:
+    $$t = \left\vert \frac{V_y - V_{end}}{g}\right\vert$$
 
-     $$t = \left\vert \frac{V_y - V_{end}}{g}\right\vert$$
+  3. *Applying fractional gravity:* Because the bounce occurs mid-tick, the upward movement only occupies the remaining $1-t$ portion of the tick. Gravity is therefore only applied during this fractional remaining time:
 
-  3. **Applying fractional gravity:** Because the bounce occurs mid-tick, the upward movement only occupies the remaining $1-t$ portion of the tick. Gravity is therefore only applied during this fractional remaining time:
+    $$V_y = V_y + g\,(1-t)$$
 
-     $$V_y = V_y + g\,(1-t)$$
-
-- **Air Drag:** Finally, the standard drag multiplier is applied:
+- *Air Drag:* Finally, the standard drag multiplier is applied:
 
   $$V_y = 0.98\,V_y$$
 
 **Important Note:** The game **does not apply standard gravity** during this second tick. The normal tick behavior of $V_y = V_y + g$ is completely replaced by the $g(1-t)$ term. These two calculations cannot stack; otherwise, an extra full tick of gravity would be incorrectly deducted from the player's velocity.
+
+**Other Properties**<sup>[Todo]</sup>
+
+</details>
 
 **Ices**
 + **Blue ice** slipperiness factor `0.989`
