@@ -285,7 +285,7 @@ With "motion" refering to velocity, acceleration excluded.
 - The **previous tick** `Z-motion` was strictly greater than the **previous tick** `X-motion`, and `abs(Z-velocity) < 5e-5`.
 - The **previous tick** `X-motion` was strictly greater than the **previous tick** `Z-motion`, and `abs(X-velocity) < 5e-5`.
 
-> **Note:** This logic can cause unusual side effects. For example, when running at certain angles (like f65) and sliding against a wall, the player's sprint state may rapidly toggle on and off.
+> **Note:** This logic can cause unusual side effects. For example, when running at certain angles (like `f65`) and sliding against a wall, the player's sprint state may rapidly toggle on and off.
 
 #### Stepping
 Stepping stuff, blips, grinds and jump cancel mechanics. Same as Java 1.8.<sup>[Needs verification.]</sup>\
@@ -338,10 +338,10 @@ $$\displaystyle \text{atan2}(\underset{\text{1st component}}{\underbrace{2}},\ov
 This glitch does not give a speed/acceleration boost, but can be used for easier jump strategies (e.g. easier jump angle, noturn, chained triple neos,...). Can be activated by using D-pad touch control, pressing in the region connecting W/S button and strafe button. Or use multiple input devices to combine inputs.
 
 **Hitbox manipulation**\
-Is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's. By crossing a coordinates of multiple of 2, hitbox of that axis shrinks/grows by an insignificant amount. But they stack up over time.(Can be reset by relog, switching dimensions, crouching,...) Can be abused to do various things.
+Is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's. By crossing a coordinates of multiple of 2, hitbox of that axis shrinks/grows by an insignificant amount. But they stack up over time. Can be reset upon relog, switching dimensions, crouching,... This glitch can be abused to do various things. Notably, at some Y values repeatedly jumping can either shrink or expand your verticle collision box.
 
 **Block clipping & Inaccurate collision & Jittering at large coordinates**\
-Is another precision related glitches. Again, Bedrock stores position in 32-bit. And as a nature of floating point arithmetic, they represents real numbers but with limited precision. This precision worsens at every power of 2. At sufficiently large values you can notice discrete jump between values. Explaining the jitteriness at large coordinates.\
+Are another precision related glitches. Again, Bedrock stores position in 32-bit. And as a nature of floating point arithmetic, they represents real numbers but with limited precision. This precision worsens at every power of 2. At sufficiently large values you can notice discrete jump between values. Explaining the jitteriness at large coordinates.\
 Intuitively you can think of a grid and your position can only snap to the grid. Not only your position though, block collsion box also snaps to this grid aswell. Explaining the inaccuracy in collision. (You can see your coordinates not quite lining up with actual block collision box)\
 And at extreme conditions where everything line up in your favor, you can clip through a solid block.
 
@@ -351,7 +351,7 @@ Super mysterious.<sup>[Todo]</sup>
 ### Patched Glitches
 
 **11 Strafe or 10 Strafe & Glitches regarding old joystick**\
-Was introduced in `1.19.3` and patched in `1.21.20`. Caused by touchscreen joystick. <sup>Controller joystick too?</sup> Here is all the known
+Was introduced in `1.19.30` and patched in `1.21.21`. Caused by touchscreen joystick. <sup>Controller joystick too?</sup> Here is all the known
 infomations about it :)<sup>[Todo]</sup>
 
 <details>
@@ -380,20 +380,20 @@ infomations about it :)<sup>[Todo]</sup>
   
   **And if** $\left|\left|\mathbf{v'}\right|\right| > 1$ **then** $$\displaystyle \mathbf{v'}_{\text{final}} = \frac{\mathbf{v'}}{\left|\left|\mathbf{v'}\right|\right|}$$. (Cap it at magnitude 1.)
 
-  Key details of this transformation:
-  - Non-linear and angles are not preserved.
-  - For no-sprint, it bulges out around multiples of 45°.
-  - For sprint, it makes 2 cones and maximum sideways angle is 45°. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. <sup>What happens at 0? It is technically possible.</sup>
+Key details of this transformation:
+- Non-linear and angles are not preserved.
+- For no-sprint, it bulges out around multiples of 45°.
+- For sprint, it makes 2 cones and maximum sideways angle is 45°. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. <sup>What happens at 0? It is technically possible.</sup>
 
-  [Replication on Desmos.](https://www.desmos.com/calculator/a9rhnjx5iw)
+[**Replication on Desmos**](https://www.desmos.com/calculator/a9rhnjx5iw)
   
-  Transformation visualizations. No sprint (left) & Sprint (right) :
+Transformation visualizations. No sprint (left) & Sprint (right) :
   
-  <img src="/Images/11strafe_nosprint_transform.gif" alt="nospint transformation gif" height="240px"> <img src="/Images/11strafe_sprint_transform.gif" alt="sprint transformation gif" height="240px">
+<img src="/Images/11strafe_nosprint_transform.gif" alt="nospint transformation gif" height="240px"> <img src="/Images/11strafe_sprint_transform.gif" alt="sprint transformation gif" height="240px">
 
-  Variable initial ring size. (Full transformation) No sprint (left) & Sprint (right) :
+Variable initial ring size. (Full transformation) No sprint (left) & Sprint (right) :
 
-  <img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nosprint magnitude gif" height="240px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="240px">
+<img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nosprint magnitude gif" height="240px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="240px">
 
 </details>
 
@@ -438,7 +438,17 @@ infomations about it :)<sup>[Todo]</sup>
 
 <details>
   <summary><ins>History & Discovery</ins></summary>
-<sup>[Todo]</sup>
+
+[Reddit Post](https://www.reddit.com/r/CompetitiveMinecraft/comments/idyqeg/a_45_strafe_performed_on_116_with_an_xbox_one/) - Possibly the first public sight of something that resembles 11 Strafe. Performed on a controller, version 1.16. (2020)
+
+[Youtube Video](https://youtu.be/_3-pYZpaimI) - Proof of 11 Strafe working on mobile. Following the new addition of joystick controls in `1.19.30`. (2023)
+
+Following that, knowledge of this certain bug has circled in a somewhat closed community. At this peroid, you'll see some Bedrock onejump videos utillizing 11 Strafe. But no one really had a clue how it works. (2024)
+
+*14th August 2024* `1.21.21` - 11 Strafe was silently patched. No records were found in fixes ([Minecraft wiki 1.21.21](https://minecraft.wiki/w/Bedrock_Edition_1.21.21)). Players collectively mentioned it no longer works in 1.21.21. However some players were still downgrading versions to onejump with this.
+
+This whole section is sourced from a [Bilibili Article](https://b23.tv/yGraXUX). Posted by xiaozi0475. The article includes a full mechanism, analysis and a code snippet. The inner workings of 11 Strafe are finally understood. (2025)
+
 </details>
 
 **Backwards sprinting**\
@@ -751,7 +761,7 @@ more coming soon!
 
 ### Videos
 Elchut has kindly provided a Youtube playlist for research/digging into the history and whereabouts of Bedrock Edition parkour.\
-https://youtube.com/playlist?list=PL1ZgYIGWUWGgwpp67OgWSB-rLEW4h5IxX&si=W7FeMAaKTJou8FiY
+https://youtube.com/playlist?list=PL1ZgYIGWUWGgwpp67OgWSB-rLEW4h5IxX
 
 ### Parkour Servers
 A list of publicly known Bedrock Edition parkour servers.<sup>[Todo]</sup>
@@ -837,7 +847,7 @@ Mineplex Housing. The first ever housing parkour server on Bedrock, before it sh
 #### Credits & Special thanks
 + **accessdenied0** (Author, maintainer)
 + **elchut** (Community, 11 strafe details)
-+ **xiaozi0475** ([11 strafe inner workings](https://b23.tv/yGraXUX), maintainer)
++ **xiaozi0475** ([11 Strafe inner workings](https://b23.tv/yGraXUX), maintainer)
 + **zetaser2** (Help on glitches)
 
 This wiki is a hobby project to showcase the technical parkour infos of Minecraft Bedrock Edition.\
