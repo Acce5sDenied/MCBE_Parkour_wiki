@@ -439,6 +439,7 @@ Variable initial ring size. (Full transformation) No sprint (left) & Sprint (rig
 <details>
   <summary><ins>History & Discovery</ins></summary>
 
+\
 [Reddit Post](https://www.reddit.com/r/CompetitiveMinecraft/comments/idyqeg/a_45_strafe_performed_on_116_with_an_xbox_one/) - Possibly the first public sight of something that resembles 11 Strafe. Performed on a controller, version 1.16. (2020)
 
 [Youtube Video](https://youtu.be/_3-pYZpaimI) - Proof of 11 Strafe working on mobile. Following the new addition of joystick controls in `1.19.30`. (2023)
@@ -540,10 +541,10 @@ Effects on movement include:
 
 **Slime block**\
 *Slipperiness* factor is `0.8`
-
 <details>
   <summary><ins>Expand Properties</ins></summary>
 
+\
 **Bouncing Property**:\
 A player is only bounced by a slime block if they land on it with a downward vertical velocity of $V_y < 0$ and a magnitude of $\vert V_y\vert \ge 0.08$. If the velocity is below this threshold, no bounce occurs; the player simply comes to rest on the top surface.\
 The bouncing mechanism spans across **two adjacent ticks**:
@@ -558,15 +559,15 @@ The bouncing mechanism spans across **two adjacent ticks**:
 - *Gravity Compensation:* Let $g = -0.08$ represent the gravity increment per tick . The game calculates compensation via three sub-steps:\
   1. *Velocity at the exact moment of impact:* Because the direction is still downward at the moment of impact, the negative root is taken:
 
-    $$V_{end} = -\sqrt{V_y^2 + 2g\,\Delta Y}$$
+     $$V_{end} = -\sqrt{V_y^2 + 2g\,\Delta Y}$$
 
   2. *Time elapsed before impact:* This calculates the time taken from the start of the tick to the exact moment of impact, expressed as a fraction of a single tick:
 
-    $$t = \left\vert \frac{V_y - V_{end}}{g}\right\vert$$
+     $$t = \left\vert \frac{V_y - V_{end}}{g}\right\vert$$
 
   3. *Applying fractional gravity:* Because the bounce occurs mid-tick, the upward movement only occupies the remaining $1-t$ portion of the tick. Gravity is therefore only applied during this fractional remaining time:
 
-    $$V_y = V_y + g\,(1-t)$$
+     $$V_y = V_y + g\,(1-t)$$
 
 - *Air Drag:* Finally, the standard drag multiplier is applied:
 
