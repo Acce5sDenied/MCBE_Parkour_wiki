@@ -573,6 +573,8 @@ The bouncing mechanism spans across **two adjacent ticks**:
 
   $$V_y = 0.98\,V_y$$
 
+Additionally, if the player jumps, the final velocity will be the maximum between the player's jump velocity and the bounce velocity.
+
 **Important Note:** The game **does not apply standard gravity** during this second tick. The normal tick behavior of $V_y = V_y + g$ is completely replaced by the $g(1-t)$ term. These two calculations cannot stack; otherwise, an extra full tick of gravity would be incorrectly deducted from the player's velocity.
 
 **Other Properties**<sup>[Todo]</sup>
