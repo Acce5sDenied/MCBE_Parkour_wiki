@@ -531,7 +531,7 @@ Effects on movement include:
 **Soulsand**\
 *Effect box*: `1×1×1` lifted up by `0.1`.  Entity will receive effect when their coordinates is in this region.\
 *Properties*: Unlike Java, that soulsand would drag an entity down, Bedrock does not do that.
-+ Grants `54.4%` acceleration.
++ Grants `54.4%` acceleration to players without soul speed.
 
 **Slime block**\
 *Slipperiness* factor is `0.8`
