@@ -577,6 +577,17 @@ Additionally, if the player jumps, the final velocity will be the maximum betwee
 
 **Important Note:** The game **does not apply standard gravity** during this second tick. The normal tick behavior of $V_y = V_y + g$ is completely replaced by the $g(1-t)$ term. These two calculations cannot stack; otherwise, an extra full tick of gravity would be incorrectly deducted from the player's velocity.
 
+**Slowdown Property**:\
+Slime will use a unique way to slowdown player who walking on it. Before further explanation, we need to quote a knowledge:
+
+At the begin of every tick, if player standing on block, player's Y motion $V_y$ will be set to `0`. Then, gravity will give player a down speed  $V_y=0.98 \cdot (V_y+g)$, `g` default as `-0.08`.
+
+After this, slime will slowdown player:
+
+If player standing on slime, not sneaking, and $|V_y|<0.1$, player's horizontal motion will me multiply $f = 0.4 + 0.2|V_u|$.
+
+Default, $f = 0.4 + 0.2 \times |0.98\times (-0.08)| = 0.41568$.
+
 **Other Properties**<sup>[Todo]</sup>
 
 </details>
