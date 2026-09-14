@@ -139,9 +139,9 @@ Ordered by widths then height.
 |Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis ways.                         |Yes
 |Walls(2-adjacent)                      |0.75×0.75           |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Grindstone                             |0.75×0.75           |1          |Centered. Can be placed on all sides.                             |Yes
-|`base` Pointed Dripstone & Sulfur Spike|0.75×0.75           |1          |Collision box have random offset from center.                     |Yes
+|`base` Pointed Dripstone & Sulfur Spike|0.75×0.75           |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
 |Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
-|`medium` Pointed Dripstone & Sulfur Spike|0.625×0.625       |1          |Collision box have random offset from center.                     |Yes
+|`medium` Pointed Dripstone & Sulfur Spike|0.625×0.625       |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
 |Copper Golem Statues                   |0.625×0.625         |0.875      |Centered. Changing poses doesnt change collision.                 |Yes
 |Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
 |Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
@@ -155,7 +155,7 @@ Ordered by widths then height.
 |`side` Bell                            |0.5×0.8125          |0.6875     |Orientable.(4 varients) Top:.9375 Bottom:.25                      |Yes
 |Walls(1-sided)                         |0.5×0.75            |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |Yes\*
-|`frustum` Pointed Dripstone & Sulfur Spike|0.5×0.5          |1          |Collision box have random offset from center.                     |Yes
+|`frustum` Pointed Dripstone & Sulfur Spike|0.5×0.5          |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
 |`hanging` Bell                         |0.5×0.5             |0.75       |Centered. Top:1.0 Bottom:.0.25                                    |Yes
 |Cocoa(big)                             |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
 |Conduit & Heavy Core & Heads (ground)  |0.5×0.5             |0.5        |Centered.                                                         |Yes
@@ -163,8 +163,8 @@ Ordered by widths then height.
 |Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
 |Panes & Bars (1-sided)                 |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
 |Thin wall(2-opposite)                  |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
-|`merge` Pointed Dripstone & Sulfur Spike|0.375×0.375        |1          |Collision box have random offset from center.                     |Yes
-|`tip` Pointed Dripstone & Sulfur Spike |0.375×0.375         |0.6875     |Collision box have random offset from center. Inversible.         |Yes
+|`merge` Pointed Dripstone & Sulfur Spike|0.375×0.375        |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
+|`tip` Pointed Dripstone & Sulfur Spike |0.375×0.375         |0.6875     |Collision box have [random offset](#Block-offset) from center. Inversible.         |Yes
 |Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125 Centered.                                    |Yes
 |Cocoa(medium)                          |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
@@ -181,10 +181,10 @@ Ordered by widths then height.
 |Cocoa(small)                           |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
 |2 Candles                              |0.1875×0.375        |0.375      |+Z side matches fence, -Z side matches a pane, +X and -X match a flower pot.|Yes
 |Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
-|`thick` Bamboo                         |0.1875×0.1875       |1          |Collision box have random offset from center.                     |Yes
+|`thick` Bamboo                         |0.1875×0.1875       |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
 |Panes & Bars (2-opposite)              |0.125×1             |1          |Centered. Orientable.(2 varients)                                 |Yes
 |Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
-|`thin` Bamboo                          |0.125×0.125         |1          |Collision box have random offset from center.                     |Yes
+|`thin` Bamboo                          |0.125×0.125         |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
 |Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |Yes
 
 + **Note**: Yes\* in last column denotes the block has an accurate selection box to it's collision box except height. Mostly walls and fences have this property.
