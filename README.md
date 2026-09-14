@@ -533,12 +533,6 @@ Effects on movement include:
 *Properties*: Unlike Java, that soulsand would drag an entity down, Bedrock does not do that.
 + Grants `54.4%` acceleration.
 
-**Honey block**\
-*Slipperiness* factor is `0.8`\
-*Properties*: <sup>[Todo]</sup> key details: 
-+ Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
-+ Sliding down the side have a speed cap of `-0.12`
-
 **Slime block**\
 *Slipperiness* factor is `0.8`
 <details>
@@ -591,6 +585,13 @@ Default, $f = 0.4 + 0.2 \times |0.98\times (-0.08)| = 0.41568$.
 **Other Properties**<sup>[Todo]</sup>
 
 </details>
+
+**Honey block**\
+*Slipperiness* factor is `0.8`\
+*Properties*: <sup>[Todo]</sup> key details:
++ Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
++ Sliding down the side have a speed cap of `-0.12`
++ Slowdown players walking on them, exactly same as slime.
 
 **Ices**
 + **Blue ice** slipperiness factor `0.989`
