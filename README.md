@@ -589,7 +589,7 @@ Default, $f = 0.4 + 0.2 \times |0.98\times (-0.08)| = 0.41568$.
 **Honey block**\
 *Slipperiness* factor is `0.8`\
 *Properties*: <sup>[Todo]</sup> key details:
-+ Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
++ The player's jump velocity (which defaults to `0.42`) is multiplied by `0.6`. Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
 + Sliding down the side have a speed cap of `-0.12`
 + Slowdown players walking on them, exactly same as slime.
 
