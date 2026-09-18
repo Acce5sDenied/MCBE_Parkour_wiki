@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.4x`.\
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.5x`.\
 This wiki is assuming you have a decent beforehand knowledge of the game and have went through MCPK wiki before. As this is an extension of it.
 
 uhmm
@@ -91,7 +91,7 @@ Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 10
 ---
 
 ## Block Collisions
-List of unique collision boxes for almost all blocks. For special effect box like cobweb, please see the [Block Mechanics](#block-mechanics) section.<sup>[Outdated, something may have changed.]</sup>
+List of unique collision boxes for almost all blocks. For special effect box like cobweb, please see the [Block Mechanics](#block-mechanics) section.
 
 <ins>**Clarification**</ins>
 
@@ -99,6 +99,8 @@ List of unique collision boxes for almost all blocks. For special effect box lik
 **Hitbox** is an interaction volume of a block.\
 **Selection box** shows up when you hover over a block. This can accurately describe the collision box of some blocks.\
 And the matter, **Collision box** is a solid volume of space that is not meant to be passed through.
+
+> Some of these are outdated and not regulary checked, something may have changed through updates unnoticed.
 
 ### Simple collision boxes
 <details>
@@ -115,10 +117,11 @@ Ordered by widths then height.
 |Soulsand & Mud                         |1×1                 |0.875      |                                                                  |No
 |End Portal Frame                       |1×1                 |0.8125     |Adding eye does not change collision box.                         |Yes
 |Enchanting Table                       |1×1                 |0.75       |                                                                  |Yes
-|Stonecutter & Beds                     |1×1                 |0.5625     |                                                                  |Yes
+|Stonecutter & Beds(half)               |1×1                 |0.5625     |                                                                  |Yes
 |Slabs                                  |1×1                 |0.5        |Inversible.                                                       |Yes
 |Campfires                              |1×1                 |0.4375     |                                                                  |Yes
 |Daylight Detector                      |1×1                 |0.375      |                                                                  |Yes
+|Straw bed(half)                        |1×1                 |0.25       |                                                                  |Yes
 |`unstable` Big Dripleaf                |1×1                 |0.25       |Top:.9375 Bottom:.6875 Switches to `partial_tilt` when stood on.  |No
 |Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |Yes
 |Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |Yes
@@ -127,27 +130,29 @@ Ordered by widths then height.
 |Snow Layers                            |1×1                 |0.125(n-1) |1 layer: intangible 2:.125 3:.25 4:.375 5:.5 6:.625 7:.75 8:.875  |No
 |Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
 |Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
-|Doors                                  |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
+|Doors(half)                            |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
 |Chests(1-side connected)               |0.95×0.975          |0.95       |-0.25 on sides that is not connected to an another chest.         |Yes
 |Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |Yes
 |Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |Yes
 |Cake                                   |0.875×0.875         |0.5        |Centered. Adding candle on top does not change anything.          |Yes
 |Eaten Cake                             |0.875×0.875         |0.5        |-0.125 on -X direction per consumption. Can be eaten 7 times.     |Yes
 |Lilypad                                |0.875×0.875         |0.09375    |Centered. Half a pixel taller than carpet.                        |Yes
+|Shelf Mushroom(big)                    |0.875×0.625         |0.4375     |Top:.6875 Bottom:.25 Orientable.(4 varients)                      |Yes\*
 |Walls(3-sided)                         |0.75×1              |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |Yes
 |Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis ways.                         |Yes
 |Walls(2-adjacent)                      |0.75×0.75           |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Grindstone                             |0.75×0.75           |1          |Centered. Can be placed on all sides.                             |Yes
-|`base` Pointed Dripstone & Sulfur Spike|0.75×0.75           |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
+|`base` Pointed Dripstone & Sulfur Spike|0.75×0.75           |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
 |Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
-|`medium` Pointed Dripstone & Sulfur Spike|0.625×0.625       |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
+|`medium` Pointed Dripstone & Sulfur Spike|0.625×0.625       |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
 |Copper Golem Statues                   |0.625×0.625         |0.875      |Centered. Changing poses doesnt change collision.                 |Yes
 |Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
 |Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
 |Pitcher Pod(big)                       |0.625×0.625         |0.375      |Top:.3125 Bottom:-.0625 Centered. Have 1px downwards collision extending from the block it is occupying.|No
 |Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |Yes
 |Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |Yes
+|Shelf Mushroom(small)                  |0.625×0.4375        |0.4375     |Top:.6875 Bottom:.25 Orientable.(4 varients)                      |Yes\*
 |Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
 |Walls(2-opposite)                      |0.5×1               |1.5        |Orientable.(4 varients) Needs another wall on top.                |Yes\*
 |`standing` Bell                        |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
@@ -155,7 +160,7 @@ Ordered by widths then height.
 |`side` Bell                            |0.5×0.8125          |0.6875     |Orientable.(4 varients) Top:.9375 Bottom:.25                      |Yes
 |Walls(1-sided)                         |0.5×0.75            |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |Yes\*
-|`frustum` Pointed Dripstone & Sulfur Spike|0.5×0.5          |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
+|`frustum` Pointed Dripstone & Sulfur Spike|0.5×0.5          |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
 |`hanging` Bell                         |0.5×0.5             |0.75       |Centered. Top:1.0 Bottom:.0.25                                    |Yes
 |Cocoa(big)                             |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
 |Conduit & Heavy Core & Heads (ground)  |0.5×0.5             |0.5        |Centered.                                                         |Yes
@@ -163,8 +168,8 @@ Ordered by widths then height.
 |Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
 |Panes & Bars (1-sided)                 |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
 |Thin wall(2-opposite)                  |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
-|`merge` Pointed Dripstone & Sulfur Spike|0.375×0.375        |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
-|`tip` Pointed Dripstone & Sulfur Spike |0.375×0.375         |0.6875     |Collision box have [random offset](#Block-offset) from center. Inversible.         |Yes
+|`merge` Pointed Dripstone & Sulfur Spike|0.375×0.375        |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
+|`tip` Pointed Dripstone & Sulfur Spike |0.375×0.375         |0.6875     |Collision box have [random offset](#Block-offset) from center. Inversible.|Yes
 |Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
 |Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125 Centered.                                    |Yes
 |Cocoa(medium)                          |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
@@ -181,10 +186,10 @@ Ordered by widths then height.
 |Cocoa(small)                           |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
 |2 Candles                              |0.1875×0.375        |0.375      |+Z side matches fence, -Z side matches a pane, +X and -X match a flower pot.|Yes
 |Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
-|`thick` Bamboo                         |0.1875×0.1875       |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
+|`thick` Bamboo                         |0.1875×0.1875       |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
 |Panes & Bars (2-opposite)              |0.125×1             |1          |Centered. Orientable.(2 varients)                                 |Yes
 |Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
-|`thin` Bamboo                          |0.125×0.125         |1          |Collision box have [random offset](#Block-offset) from center.                     |Yes
+|`thin` Bamboo                          |0.125×0.125         |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
 |Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |Yes
 
 + **Note**: Yes\* in last column denotes the block has an accurate selection box to it's collision box except height. Mostly walls and fences have this property.
