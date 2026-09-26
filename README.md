@@ -643,7 +643,7 @@ Behavior differs from normal climb blocks.\
 *Effect box*: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
 *Properties*: 
 + Horizontal acceleration is divided by `1.25`.
-+ Vertical acceleration is **multiplied** by `0.735`.
++ Vertical acceleration is **multiplied** by `0.75`.
 + All velocity components is reset to `zero` on every tick.
 
 ---
