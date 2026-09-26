@@ -662,8 +662,7 @@ Status effects and enchants that can directly effect movement.\
 `+0.1` base jump acceleration per level of jump boost.
 
 **Slow falling**\
-`0.01` gravity acceleration for all levels of slow falling. Reaching terminal velocity of `0.49`.\
-This is not true all the time. For when this applies is still under investigation.<sup>[Todo]</sup>
+When the player's Y velocity is below `0`, a `0.01` gravity acceleration is applied across all levels of slow falling. Reaching terminal velocity of 0.49.
 
 **Levitation**\
 $$\displaystyle VelY_t = VelY_{t-1} \times 0.784 + 0.0098 \times Level$$\
