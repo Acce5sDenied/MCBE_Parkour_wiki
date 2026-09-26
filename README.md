@@ -591,6 +591,9 @@ Default, $f = 0.4 + 0.2 \times |0.98\times (-0.08)| = 0.41568$.
 
 </details>
 
+**Bed**\
+*Bouncing Property*: Same as slime block, but with a bounce factor of `0.75`.
+
 **Honey block**\
 *Slipperiness* factor is `0.8`\
 *Properties*: <sup>[Todo]</sup> key details:
