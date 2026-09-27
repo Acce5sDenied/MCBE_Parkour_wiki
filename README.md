@@ -294,7 +294,7 @@ With "motion" refering to velocity, acceleration excluded.
 
 #### Stepping
 Stepping stuff, blips, grinds and jump cancel mechanics. Basically same as Java 1.8.<sup>[Needs verification.]</sup>. Here it's the different:
- + Max step height is `0.5625`, unlike java's '0.6'.
+ + Max step height is `0.5625`, unlike java's `0.6`.
 
 [**MCPK wiki article**](https://www.mcpk.wiki/wiki/Stepping)
 
