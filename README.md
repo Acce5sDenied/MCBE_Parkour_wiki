@@ -293,7 +293,9 @@ With "motion" refering to velocity, acceleration excluded.
 > **Note:** This logic can cause unusual side effects. For example, when running at certain angles (like `f65`) and sliding against a wall, the player's sprint state may rapidly toggle on and off.
 
 #### Stepping
-Stepping stuff, blips, grinds and jump cancel mechanics. Same as Java 1.8.<sup>[Needs verification.]</sup>\
+Stepping stuff, blips, grinds and jump cancel mechanics. Basically same as Java 1.8.<sup>[Needs verification.]</sup>. Here it's the different:
+ + Max step height is `0.5625`, unlike java's '0.6'.
+
 [**MCPK wiki article**](https://www.mcpk.wiki/wiki/Stepping)
 
 #### Sneaking
@@ -307,7 +309,7 @@ After that, the game performs independent safety checks on the X-axis and Z-axis
 
 - **X-axis check**: If the player's **intended movement amount** on the X-axis is non-zero, the system simulates movement by that amount.
 
-  After the simulated movement, if there are no blocks within the range offset downward by `StepHeight × 1.01` (`StepHeight` defaults to `0.6`) below the player's feet (i.e., the player is determined to be airborne), **deceleration correction** is activated: the X-axis **movement amount** is decremented toward `zero` in steps of `0.05`; if the amount falls below `0.05`, it is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
+  After the simulated movement, if there are no blocks within the range offset downward by `StepHeight × 1.01` (`StepHeight` defaults to `0.5625`) below the player's feet (i.e., the player is determined to be airborne), **deceleration correction** is activated: the X-axis **movement amount** is decremented toward `zero` in steps of `0.05`; if the amount falls below `0.05`, it is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
 
 - **Z-axis check**: Following exactly the same logic as the X-axis check, it independently performs airborne determination and deceleration correction on the Z-axis **movement amount**.
 
@@ -761,7 +763,7 @@ $\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way 
 |shifted                   |0.06475772            |
 |sprint                    |0.28061674            |
 |walk + blocking           |0.04317181            |
-|shifted + blocking        |0.01295154            |
+|shifted + blocking  st      |0.01295154            |
 |sprint + blocking         |0.05612335            |
 |A7 walk                   |0.05888635            |
 |A7 shifted                |0.01766591            |
