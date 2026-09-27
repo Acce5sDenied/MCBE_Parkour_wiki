@@ -635,10 +635,13 @@ Behavior differs from normal climb blocks.\
 
 **Powdered Snow**\
 *Effect box*: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
-*Properties*: <sup>[Todo]</sup> key details: 
+*Properties*: <sup>[Todo]</sup>
 + All velocity components is reset to `zero` on every tick.
 + Vertical acceleration is multiplied by `1.5`.
-+ The longer inside the slower you are.
++ Horizontal acceleration is multiplied by `0.9`.
++ Additionally, freezing progress also slows down the player:
+  + Freezing progress `p` (bounded between `0` and `1`) increases by `1/140` per tick while the player is in the powder snow, and decreases by `2/140` per tick when they are outside.
+  + The player's horizontal acceleration is then multiplied by `1 - 0.5*p`.
 
 **Sweet Berry Bush**\
 *Effect box*: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
