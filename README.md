@@ -513,7 +513,7 @@ Flying ignores most block mechanics, reaching top speed of `0.544b/t` while walk
 
 #### Blocking
 This includes eating or drinking, charging weapons, using goat horn or spyglass.
-`81 + 2/3` times less acceleration or `~0.0122449x` acceleration.
+`81 + 2/3` times less acceleration or `0.35^2 = 0.1225` acceleration.
 + Shifted accerelation: `0.0036`
 + Walk acceleration: `0.012`
 + Sprint acceleration: `0.0156`
