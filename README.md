@@ -393,9 +393,9 @@ Key details of this transformation:
 - For sprint, it makes 2 cones and maximum sideways angle is 45°. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. <sup>What happens at 0? It is technically possible.</sup>
 
 [**Replication on Desmos**](https://www.desmos.com/calculator/a9rhnjx5iw)
-  
+
 Transformation visualizations. No sprint (left) & Sprint (right) :
-  
+
 <img src="/Images/11strafe_nosprint_transform.gif" alt="nospint transformation gif" height="240px"> <img src="/Images/11strafe_sprint_transform.gif" alt="sprint transformation gif" height="240px">
 
 Variable initial ring size. (Full transformation) No sprint (left) & Sprint (right) :
@@ -545,49 +545,52 @@ Effects on movement include:
 <details>
   <summary><ins>Expand Properties</ins></summary>
 
-\
-**Bouncing Property**:\
-A player is only bounced by a slime block if they land on it with a downward vertical velocity of $V_y < 0$ and a magnitude of $\vert V_y\vert \ge 0.08$. If the velocity is below this threshold, no bounce occurs; the player simply comes to rest on the top surface.\
-The bouncing mechanism spans across **two adjacent ticks**:
 
-**1. Impact Tick** When the player's downward displacement crosses the slime block's top surface, their position is clamped exactly to that surface. During this tick, the game records the **actual distance fallen**, denoted as $\Delta Y$. This value is negative, and its absolute value is equal to the distance from the player's position at the start of the tick to the block's top surface. The player's velocity remains unchanged throughout this specific tick.
+**Bouncing Property**
 
-**2. Subsequent Tick** This tick handles the reflection and gravity compensation in three sequential phases:
-- *Velocity Reflection:* Because the slime block has a bounce factor of $1$, the velocity is simply inverted:
+A slime block only bounces the player if they land on its top surface while moving downward, with vertical velocity $V_y \le -0.08$. Landing any slower results in the player simply coming to rest on the surface.
 
-  $$V_y = -V_y$$
+In Java Edition 1.8.9, the game simply reverses the player's vertical velocity upon landing ($V_y = -V_y$). As a result, players jumping from **different heights** will bounce to the **exact same height** as long as they happen to land within the same tick.
 
-- *Gravity Compensation:* Let $g = -0.08$ represent the gravity increment per tick . The game calculates compensation via three sub-steps:\
-  1. *Velocity at the exact moment of impact:* Because the direction is still downward at the moment of impact, the negative root is taken:
+To solve this issue, Bedrock Edition records the player's **actual fall distance $|\Delta Y|$** before contact. With bounce factor $b = 1$ (for slime) and gravity $g = -0.08$, the bounce is calculated through the following steps:
 
-     $$V_{end} = -\sqrt{V_y^2 + 2g\,\Delta Y}$$
+- **Phase 1: Landing**  
+  Based on the actual fall distance $|\Delta Y|$, the downward speed at impact $|V_{\text{hit}}|$ and the time elapsed $t$ within this tick before landing are:
+  $$
+  \begin{align}
+  |V_{\text{hit}}| &= \sqrt{V_y^2 + 2\lvert g\rvert\lvert\Delta Y\rvert}\\
+  t &= \frac{|V_{\text{hit}}| - |V_y|}{|g|} \qquad (0 \le t < 1)
+  \end{align}
+  $$
 
-  2. *Time elapsed before impact:* This calculates the time taken from the start of the tick to the exact moment of impact, expressed as a fraction of a single tick:
+- **Phase 2: Bounce**  
+  The landing speed is reflected upward. Because landing consumed $t$ of the tick, the player travels upward under gravity for the remaining $1 - t$ duration:
 
-     $$t = \left\vert \frac{V_y - V_{end}}{g}\right\vert$$
+  $$V_y = b \cdot |V_{\text{hit}}| + g(1 - t)$$
 
-  3. *Applying fractional gravity:* Because the bounce occurs mid-tick, the upward movement only occupies the remaining $1-t$ portion of the tick. Gravity is therefore only applied during this fractional remaining time:
-
-     $$V_y = V_y + g\,(1-t)$$
-
-- *Air Drag:* Finally, the standard drag multiplier is applied:
+- **Phase 3: Air Drag**  
+  Air drag is applied at the end of the tick as usual:
 
   $$V_y = 0.98\,V_y$$
 
-Additionally, if the player jumps, the final velocity will be the maximum between the player's jump velocity and the bounce velocity.
+- **Phase 4: Jump Check**  
+  If the player jumped within the same tick, the final velocity takes the larger of the jump speed and the bounce speed:
 
-**Important Note:** The game **does not apply standard gravity** during this second tick. The normal tick behavior of $V_y = V_y + g$ is completely replaced by the $g(1-t)$ term. These two calculations cannot stack; otherwise, an extra full tick of gravity would be incorrectly deducted from the player's velocity.
+  $$V_y = \max(V_{\text{jump}},\, V_y)$$
+
+**Note:**  
+In the tick where a bounce is triggered, the standard discrete gravity step $V_y = 0.98(V_y + g)$ is completely replaced by the process above.
 
 **Slowdown Property**:\
-Slime will use a unique way to slowdown player who walking on it. Before further explanation, we need to quote a knowledge:
+Slime also slows down players walking on it, in a way that no other block does. To see where that slowdown comes from, recall how a normal grounded tick begins:
 
-At the begin of every tick, if player standing on block, player's Y motion $V_y$ will be set to `0`. Then, gravity will give player a down speed  $V_y=0.98 \cdot (V_y+g)$, `g` default as `-0.08`.
+At the beginning of every tick, a player standing on a block has their vertical motion reset to $V_y = 0$. Gravity then gives them a downward speed of $V_y=0.98 \cdot (V_y+g)$, with `g` defaulting to `-0.08`.
 
-After this, slime will slowdown player:
+Slime applies its slowdown on top of that:
 
-If player standing on slime, not sneaking, and $|V_y|<0.1$, player's horizontal motion will me multiply $f = 0.4 + 0.2|V_u|$.
+If the player is standing on slime, is not sneaking, and $|V_y|<0.1$, their horizontal motion is multiplied by $f = 0.4 + 0.2|V_u|$.
 
-Default, $f = 0.4 + 0.2 \times |0.98\times (-0.08)| = 0.41568$.
+By default, $f = 0.4 + 0.2 \times |0.98\times (-0.08)| = 0.41568$.
 
 **Other Properties**<sup>[Todo]</sup>
 
