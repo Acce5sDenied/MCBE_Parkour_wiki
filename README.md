@@ -556,12 +556,10 @@ To solve this issue, Bedrock Edition records the player's **actual fall distance
 
 - **Phase 1: Landing**  
   Based on the actual fall distance $|\Delta Y|$, the downward speed at impact $|V_{\text{hit}}|$ and the time elapsed $t$ within this tick before landing are:
-  $$
-  \begin{align}
-  |V_{\text{hit}}| &= \sqrt{V_y^2 + 2\lvert g\rvert\lvert\Delta Y\rvert}\\
-  t &= \frac{|V_{\text{hit}}| - |V_y|}{|g|} \qquad (0 \le t < 1)
-  \end{align}
-  $$
+
+  $\displaystyle |V_{\text{hit}}| = \sqrt{V_y^2 + 2\lvert g\rvert\lvert\Delta Y\rvert}$
+
+  $\displaystyle t = \frac{|V_{\text{hit}}| - |V_y|}{|g|} \qquad (0 \le t < 1)$
 
 - **Phase 2: Bounce**  
   The landing speed is reflected upward. Because landing consumed $t$ of the tick, the player travels upward under gravity for the remaining $1 - t$ duration:
