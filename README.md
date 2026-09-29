@@ -552,7 +552,7 @@ A slime block only bounces the player if they land on its top surface while movi
 
 In Java Edition 1.8.9, the game simply reverses the player's vertical velocity upon landing ($V_y = -V_y$). As a result, players jumping from **different heights** will bounce to the **exact same height** as long as they happen to land within the same tick.
 
-To solve this issue, Bedrock Edition records the player's **actual fall distance $|\Delta Y|$** before contact. With bounce factor $b = 1$ (for slime) and gravity $g = -0.08$, the bounce is calculated through the following steps:
+To solve this issue, Bedrock Edition records the player's **actual fall distance $|\Delta Y|$** before contact and uses it to calculate the true impact speed. With bounce factor $b = 1$ (for slime) and gravity $g = -0.08$, the bounce is calculated through the following steps:
 
 - **Phase 1: Landing**  
   Based on the actual fall distance $|\Delta Y|$, the downward speed at impact $|V_{\text{hit}}|$ and the time elapsed $t$ within this tick before landing are:
