@@ -1,0 +1,888 @@
+# MCBE_Parkour_wiki
+
+![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
+
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.5x`.\
+This wiki is assuming you have a decent beforehand knowledge of the game and have went through MCPK wiki before. As this is an extension of it.
+
+uhmm
+
+---
+
+## Resources
+
+Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for the original Java Edition parkour wiki & documentation.
+
+Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repository for a parkouring addon. Or [**dmf-mpk**](https://github.com/mihiro13/dmf-mpk) for an actual parkouring utilities mod. Similar to MPK or Cyv mod for Java.
+
+Visit [**BPKMod**](https://github.com/xiaozi233/BPKMod) repository for a Java edition mod replicating Bedrock edition's movement physics.
+
+Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Starany**](https://discord.gg/EdfWtFwa2s) for central hubs to discuss about Bedrock Edition Parkour.
+
+---
+
+## Bedrock Differences
+Comparing movement related stuff of Bedrock Edition to Java Edition 1.8 (standard for parkour).
++ Strafing doesn't give the 2% boost in acceleration, unlike Java Edition. Same goes for strafe shifting not giving the massive 41% boost.
++ No presence of inertia AKA momentum threshold.
++ Position and many more values is stored as single precision floats (32-bit). This explains many goofy glitches on Bedrock.
++ Trigonometry directly uses $\sin()$ and $\cos()$, so there is no such "significant angles" and "half angles" in Bedrock.
++ No presence of bursting or shift glitch.
++ Shifting would only goes to a minimum of `0.025` blocks away from an edge.
++ No 1 tick of air sprint delay. (matches Java 1.19.4 and above)
++ Sprint would cancel after colliding a wall (Conditions differ from Java 1.8, see [Sprint Cancellation](#sprint-cancellation))
++ Have all-direction joystick controls.
++ A player have 16 b/t absolute speed cap.
++ Many block mechanics/properties is different.
+
+---
+
+## Player control
+There are 2 major control schemes the player can move. Bedrock also supports multiple input devices.
+
+#### Button controls
+Classic WASD button controls. Player can press 2 buttons at the same time to "strafe". This type of control is called "D-pad" for touchscreens.
+
+#### Joystick controls
+All direction movement controls.<sup>[Todo]</sup>
+
+### Camera movement
+Player can either use mouse, drag on a touchscreen or use a stick on a controller. And then camera movement is calculated from the displacement in pixels from that action.
+Cool fact: Pitch is locked in range `[-89.9°, 89.9°]`
+
+#### Sensitivity formulas
+Bedrock uses sensitivity in the range `0 - 100%` unlike Java's `0 - 200%`.
+
+Let:
++ $(dx, dy)$ be the instantaneous cursor displacement on the screen (in pixels),
++ $(\Delta \text{Pitch}, \Delta \text{Yaw})$ be the instantaneous camera rotation (in degrees).
+
+and we define  $v_{\text{value}}$ as:
+
+$$\displaystyle v_{value} = 0.81\times(1.1 \times \text{Sensitivity})^{0.6125} \ \text{For Sensitivity in} \ [0, 1].$$
+
+The formulas go as follows:
+
+**Mouse:**
+
+$$\displaystyle \Delta \text{Pitch} = \frac{dy}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
+$$\displaystyle \Delta \text{Yaw} = \frac{dx}{\text{WindowWidth}} \times \left(0.15 + 0.6 \times v_{value} \right) ^ 3 \times 9600 \times 0.3$$
+
+**Touch:** <sup>[WIP, for my device type (2340 * 1080)]</sup>
+
+$$\displaystyle \Delta \text{Yaw} = dx \times \frac{32}{93275} \times \left(1.6 + 6.4 \times v_{value}\right) ^ {3.6}$$
+
+**Joystick:** <sup>[Todo]</sup>
+
+$$\displaystyle \cdots$$
+
+#### Spyglass
+Spyglass damping is a setting option in range `0 - 100`. This affects camera panning speed while using a spyglass. With 0 being no effect, 100 being full effect.
+
+$$\displaystyle \text{For SpyglassDamping in} \ [0, 100]$$
+
+<center>
+  <img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">
+</center>
+
+The same also goes for $\Delta \text{Pitch}$.\
+Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 100.
+
+---
+
+## Block Collisions
+List of unique collision boxes for almost all blocks. For special effect box like cobweb, please see the [Block Mechanics](#block-mechanics) section.
+
+<ins>**Clarification**</ins>
+
+**Model** is a how a block looks. It is purely visual.\
+**Hitbox** is an interaction volume of a block.\
+**Selection box** shows up when you hover over a block. This can accurately describe the collision box of some blocks.\
+And the matter, **Collision box** is a solid volume of space that is not meant to be passed through.
+
+> Some of these are outdated and not regulary checked, something may have changed through updates unnoticed.
+
+### Simple collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
+Ordered by widths then height.
+|Blocks                                 |Widths              |Heights    |Comments                                                          |Selection box accurate?|
+|---------------------------------------|--------------------|-----------|------------------------------------------------------------------|-----------------------|
+|Walls(4-sided)                         |1×1                 |1.5        |                                                                  |Yes\*
+|Full Blocks                            |1×1                 |1          |                                                                  |Yes
+|Farmland & Dirt Path                   |1×1                 |0.9375     |                                                                  |Yes
+|Lectern                                |1×1                 |0.9        |                                                                  |Yes
+|Soulsand & Mud                         |1×1                 |0.875      |                                                                  |No
+|End Portal Frame                       |1×1                 |0.8125     |Adding eye does not change collision box.                         |Yes
+|Enchanting Table                       |1×1                 |0.75       |                                                                  |Yes
+|Stonecutter & Beds(half)               |1×1                 |0.5625     |                                                                  |Yes
+|Slabs                                  |1×1                 |0.5        |Inversible.                                                       |Yes
+|Campfires                              |1×1                 |0.4375     |                                                                  |Yes
+|Daylight Detector                      |1×1                 |0.375      |                                                                  |Yes
+|Straw bed(half)                        |1×1                 |0.25       |                                                                  |Yes
+|`unstable` Big Dripleaf                |1×1                 |0.25       |Top:.9375 Bottom:.6875 Switches to `partial_tilt` when stood on.  |No
+|Trapdoors                              |1×1                 |0.1825     |Orientable on all sides. Inversible.                              |Yes
+|Redstone Repeater & Comparator         |1×1                 |0.125      |                                                                  |Yes
+|`partial_tilt` Big Dripleaf            |1×1                 |0.125      |Top:.8125 Bottom:.6875 Transition state between `unstable` and `full_tilt` state which is intangible.|No
+|Carpets                                |1×1                 |0.0625     |                                                                  |Yes
+|Snow Layers                            |1×1                 |0.125(n-1) |1 layer: intangible 2:.125 3:.25 4:.375 5:.5 6:.625 7:.75 8:.875  |No
+|Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
+|Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
+|Doors(half)                            |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
+|Chests(1-side connected)               |0.95×0.975          |0.95       |-0.25 on sides that is not connected to an another chest.         |Yes
+|Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |Yes
+|Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |Yes
+|Cake                                   |0.875×0.875         |0.5        |Centered. Adding candle on top does not change anything.          |Yes
+|Eaten Cake                             |0.875×0.875         |0.5        |-0.125 on -X direction per consumption. Can be eaten 7 times.     |Yes
+|Lilypad                                |0.875×0.875         |0.09375    |Centered. Half a pixel taller than carpet.                        |Yes
+|Shelf Mushroom(big)                    |0.875×0.625         |0.4375     |Top:.6875 Bottom:.25 Orientable.(4 varients)                      |Yes\*
+|Walls(3-sided)                         |0.75×1              |1.5        |Orientable.(4 varients)                                           |Yes\*
+|Anvil                                  |0.75×1              |1          |Orientable on horizontal.(2 varients)                             |Yes
+|Sniffer Egg                            |0.75×0.875          |1          |Longer side always extend on X axis ways.                         |Yes
+|Walls(2-adjacent)                      |0.75×0.75           |1.5        |Orientable.(4 varients)                                           |Yes\*
+|Grindstone                             |0.75×0.75           |1          |Centered. Can be placed on all sides.                             |Yes
+|`base` Pointed Dripstone & Sulfur Spike|0.75×0.75           |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
+|Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
+|`medium` Pointed Dripstone & Sulfur Spike|0.625×0.625       |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
+|Copper Golem Statues                   |0.625×0.625         |0.875      |Centered. Changing poses doesnt change collision.                 |Yes
+|Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
+|Amethyst Cluster                       |0.625×0.625         |0.4375     |Centered. Can be placed on all sides.                             |Yes
+|Pitcher Pod(big)                       |0.625×0.625         |0.375      |Top:.3125 Bottom:-.0625 Centered. Have 1px downwards collision extending from the block it is occupying.|No
+|Large Amethyst Bud                     |0.625×0.625         |0.3125     |Centered. Can be placed on all sides.                             |Yes
+|Medium Amethyst Bud                    |0.625×0.625         |0.25       |Centered. Can be placed on all sides.                             |Yes
+|Shelf Mushroom(small)                  |0.625×0.4375        |0.4375     |Top:.6875 Bottom:.25 Orientable.(4 varients)                      |Yes\*
+|Turtle Eggs                            |0.6×0.6             |0.45       |Centered. Adding more eggs won't change the collision.            |Yes
+|Walls(2-opposite)                      |0.5×1               |1.5        |Orientable.(4 varients) Needs another wall on top.                |Yes\*
+|`standing` Bell                        |0.5×1               |0.8125     |Orientable on horizontal.(2 varients)                             |Yes
+|`multiple` Bell(2 opposite connections)|0.5×1               |0.75       |Orientable on horizontal.(2 varients) Top:1.0 Bottom:.25          |Yes
+|`side` Bell                            |0.5×0.8125          |0.6875     |Orientable.(4 varients) Top:.9375 Bottom:.25                      |Yes
+|Walls(1-sided)                         |0.5×0.75            |1.5        |Orientable.(4 varients)                                           |Yes\*
+|Walls                                  |0.5×0.5             |1.5        |Centered.                                                         |Yes\*
+|`frustum` Pointed Dripstone & Sulfur Spike|0.5×0.5          |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
+|`hanging` Bell                         |0.5×0.5             |0.75       |Centered. Top:1.0 Bottom:.0.25                                    |Yes
+|Cocoa(big)                             |0.5×0.5             |0.5625     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.1875  |Yes
+|Conduit & Heavy Core & Heads (ground)  |0.5×0.5             |0.5        |Centered.                                                         |Yes
+|Heads(wall)                            |0.5×0.5             |0.5        |Centered. Orientable.(4 varients)                                 |Yes
+|Small Amethyst Bud                     |0.5×0.5             |0.1875     |Centered. Can be placed on all sides.                             |Yes
+|Panes & Bars (1-sided)                 |0.5×0.125           |1          |Orientable.(4 varients)                                           |No
+|Thin wall(2-opposite)                  |0.375×1             |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
+|`merge` Pointed Dripstone & Sulfur Spike|0.375×0.375        |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
+|`tip` Pointed Dripstone & Sulfur Spike |0.375×0.375         |0.6875     |Collision box have [random offset](#Block-offset) from center. Inversible.|Yes
+|Lanterns(ground)                       |0.375×0.375         |0.5        |Centered.                                                         |Yes
+|Lanterns(hanging)                      |0.375×0.375         |0.5        |Top:.625 Bottom:.125 Centered.                                    |Yes
+|Cocoa(medium)                          |0.375×0.375         |0.4375     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.3125  |Yes
+|Flower Pot                             |0.375×0.375         |0.375      |Centered.                                                         |Yes
+|Pitcher Pod(small)                     |0.375×0.375         |0.25       |Top:.1875 Bottom:-.0625 Centered. Have 1px downwards collision extending from the block it is occupying.|Yes
+|4 Candles                              |0.3125×0.375        |0.375      |+Z side matches fence, the rest match a flower pot.               |Yes
+|3 Candles                              |0.3125×0.3125       |0.375      |+Z and -X side match a flower pot, -Z and -X match a fence.       |Yes
+|Fence Gates                            |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
+|Fences(2-opposite)                     |0.25×1              |1.5        |Orientable on horizontal.(2 varients)                             |Yes\*
+|`"hanging"=false` Hanging Signs        |0.25×1              |0.125      |Only the handle(?) part has collision. Orientable.(2 varients) `"Hanging"=true` varient is intangible.|No
+|Fences(1-sided)                        |0.25×0.625          |1.5        |Orientable.(4 varients)                                           |Yes\*
+|Fences                                 |0.25×0.25           |1.5        |Centered.                                                         |Yes\*
+|End Rod & Lightning Rods               |0.25×0.25           |1          |Centered. Can be placed on all sides.                             |Yes
+|Cocoa(small)                           |0.25×0.25           |0.3125     |Orientable.(4 varients) 1px away from wall. Top:.75 Bottom:.4375  |Yes
+|2 Candles                              |0.1875×0.375        |0.375      |+Z side matches fence, -Z side matches a pane, +X and -X match a flower pot.|Yes
+|Chains                                 |0.1875×0.1875       |1          |Centered. Can be placed on all sides.                             |Yes
+|`thick` Bamboo                         |0.1875×0.1875       |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
+|Panes & Bars (2-opposite)              |0.125×1             |1          |Centered. Orientable.(2 varients)                                 |Yes
+|Panes & Bars                           |0.125×0.125         |1          |Centered.                                                         |Yes
+|`thin` Bamboo                          |0.125×0.125         |1          |Collision box have [random offset](#Block-offset) from center.    |Yes
+|Singular Candle                        |0.125×0.125         |0.375      |Centered.                                                         |Yes
+
++ **Note**: Yes\* in last column denotes the block has an accurate selection box to it's collision box except height. Mostly walls and fences have this property.
+
+</details>
+
+### Composite collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
+Alphabetical order.
+|Blocks                    |Widths                          |Heights                    |Comment                                        |
+|--------------------------|--------------------------------|---------------------------|-----------------------------------------------|
+|Brewing Stand             |Base:1×1 Rod:0.125×0.125        |Base:.125 Rod:.875         |Centered.                                      |
+|Caudron                   |Base:1×1 Walls:0.125 thick      |Base:.3125 Walls:1         |                                               |
+|Composter                 |Base:1×1 Walls:0.125 thick      |Base:.125 Walls:1          |Compost heights: `0.0625 + 0.125 * n`          |
+|Fences(4-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |                                               |
+|Fences(3-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
+|Fences(2-adjacent)        |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
+|Hopper<sup>[Todo]</sup>   |                                |                           |                                               |
+|Panes & Bars(4-sided)     |Sides:0.125×0.5                 |1                          |                                               |
+|Panes & Bars(3-sided)     |Sides:0.125×0.5                 |1                          |Orientable.(4 varients)                        |
+|Panes & Bars(2-adjacent)  |Sides:0.125×0.5                 |1                          |Orientable.(4 varients) Missing 1px on the outer corner like Java 1.8.|
+|Piston Head               |Head:1×1 Arm:0.375×0.375        |Head:.25 Arm:1             |Orientable, inversible.(6 varients)            |
+|Stairs(normal)            |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
+|Stairs(outer)             |Base:1×1 Top:0.5×0.5            |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
+|Stairs(inner)             |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |This have exactly the same collision as a normal stair. When an adjacent stair is placed (to convert into this varient), only the visual model changes. Leaving a 0.5×0.5×0.5 intangible zone.|
+
+</details>
+
+### Other collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
+Stuff that have a collision box that does not quite belong in the 2 above catagories.
+|Thing                  |Widths                    |Heights                              |Comment                                    |
+|-----------------------|--------------------------|-------------------------------------|-------------------------------------------|
+|Boats                  |1.4×1.4                   |0.455                                |Fun fact: you can make a perfect squeeze with boat + block.
+|Border Block           |1×1                       |1.5 *or* infinitely high up and below|Bedrock exclusive mapmaking block. [**Minecraft wiki article**](https://minecraft.wiki/w/Border)
+|Happy Ghasts           |4×4                       |?<sup>[Todo]</sup>                   |Solidifies when a player is close to it. Collision is not aligned to pixel grid.
+|Shulker Box            |1×1                       |1 *or* 1.5                           |1.5 high when opened, Orientable, inversible.(6 varients)
+|Shulker Mob            |0.9998×0.9998             |0.98                                 |Not orientable. Centered. Base touch the ground. When opened, that side extends out `~0.2060919`
+
+</details>
+
+### Historic collision boxes
+<details>
+  <summary><ins>Click here to view table.</ins></summary>
+
+\
+Collision boxes that have been changed throughout many update cycles.<sup>[Todo]</sup>
+|Blocks                   |Widths                          |Heights                  |Versions                |Comments                                        |
+|-------------------------|--------------------------------|-------------------------|------------------------|------------------------------------------------|
+|Trial spawner            |0.9998×0.9998                   |0.9998                   |Early 1.21 versions     |-0.0001 on each side. Used to effectively chain blips long ago.|
+|Lilypad                  |1×1                             |0.015625                 |Pre 1.21.70             |1/4 of a pixel tall, like Java 1.8.             |
+
+</details>
+
+### Block offset
+Certain blocks do not have centered collision boxes; instead, their positions are offset in a pseudorandom manner. A block's specific offset is determined entirely by its X and Z coordinates.
+
+For a full list of blocks subject to offset, refer to the [Minecraft Wiki](https://minecraft.wiki/w/Block_offset#List_of_blocks_subject_to_offset).
+
+**Simplified Algorithm:**
+
+1. **Calculate Pseudorandom Offset:** Compute the initial X and Z offsets based on the block's position (`BlockPos`).
+2. **Clamp Values:**
+  - For **Pointed Dripstone** and **Sulfur Spikes**, clamp the X/Z offsets to the range `[-0.125, 0.125]`.
+  - For all other offset blocks, clamp the offsets to `[-0.25, 0.25]`.
+3. **Determine Final Center:** `Block Center = BlockPos + 0.5 + Offset + Constant`
+  - For **Pointed Dripstone** and **Sulfur Spikes**, the constant is `0`.
+  - For **Bamboo**, the constant is `Thickness / 2`.
+
+**Full Algorithm:**
+
+The complete algorithm implementation can be found in this [Google Colab Notebook](https://colab.research.google.com/drive/1Ke98s-X3d1bmrWAVAdjeGCrOcyRPSIZa#scrollTo=92yh9WgRgnBW).
+
+**Note:** The algorithm only covers Pointed Dripstone, Sulfur Spikes, and Bamboo, as other offset blocks do not possess collision boxes.
+
+---
+
+## Movement mechanics
+
+#### Collision
+Y &rightarrow; X &rightarrow; Z collision check order. Same as Java 1.8.\
+**Player's collision box**\
+Normally is `0.6×0.6` horizontally and `1.8` vertically.\
+While crouched is `0.6×0.6` horizontally and `1.49` vertically.\
+While crawling, swimming or flying with elytra is `0.6×0.6` horizontally and `0.6` vertically.
+
+#### Sprint Cancellation
+A player's sprint is canceled upon collision if either of the following conditions are met<sup>[Needs verification.]</sup>:
+
+With "motion" refering to velocity, acceleration excluded.
+
+- The **previous tick** `Z-motion` was strictly greater than the **previous tick** `X-motion`, and `abs(Z-velocity) < 5e-5`.
+- The **previous tick** `X-motion` was strictly greater than the **previous tick** `Z-motion`, and `abs(X-velocity) < 5e-5`.
+
+> **Note:** This logic can cause unusual side effects. For example, when running at certain angles (like `f65`) and sliding against a wall, the player's sprint state may rapidly toggle on and off.
+
+#### Stepping
+Stepping stuff, blips, grinds and jump cancel mechanics. Basically same as Java 1.8.<sup>[Needs verification.]</sup>. Here it's the different:
+ + Max step height is `0.5625`, unlike java's `0.6`.
+
+[**MCPK wiki article**](https://www.mcpk.wiki/wiki/Stepping)
+
+#### Sneaking
+When the player is in the sneaking state, the game prevents the player from falling off the edges of blocks. The full mechanism works as follows:
+
+The player's collision box is shrunk inward by `0.025` blocks along the horizontal axes (X/Z axes).
+
+For the player's default hitbox, this means it contracts from `[0.6, 1.6, 0.6]` to `[0.55, 1.6, 0.55]`.
+
+After that, the game performs independent safety checks on the X-axis and Z-axis respectively:
+
+- **X-axis check**: If the player's **intended movement amount** on the X-axis is non-zero, the system simulates movement by that amount.
+
+  After the simulated movement, if there are no blocks within the range offset downward by `StepHeight × 1.01` (`StepHeight` defaults to `0.5625`) below the player's feet (i.e., the player is determined to be airborne), **deceleration correction** is activated: the X-axis **movement amount** is decremented toward `zero` in steps of `0.05`; if the amount falls below `0.05`, it is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
+
+- **Z-axis check**: Following exactly the same logic as the X-axis check, it independently performs airborne determination and deceleration correction on the Z-axis **movement amount**.
+
+Finally, a combined dual-axis check is executed:
+
+- If both the X-axis and Z-axis **movement amounts** of the player are non-zero at this point, and the player remains airborne within the `StepHeight × 1.01` range underfoot after moving by this resultant horizontal **displacement**, both the X-axis and Z-axis **movement amounts** are decremented toward `zero` in steps of `0.05`; any amount below `0.05` is reset to `zero`. This check repeats until the player is no longer airborne underfoot.
+
+Therefore, there exists a `0.025` margin around any edge that a player can't sneak to. Past this point, movement from sneaking is cancelled entirely, except that the player may move inward to exit this boundary.
+
+At the end, if **the final X/Z movement amount equals 0**, the player's **X/Z speed** is set to `0`.
+
+Thus, Burst hh/jam no longer grants the player extra speed.
+
+<sup>[Todo]<sup>
+
+#### Crawling
+<sup>[Todo]</sup>
+
+#### 16b/t speed limit
+A player have `16 b/t` absolute speed cap (pythagoras of 3 axes).
+> If over 16, your velocity on 3 axes will be scaled down with equal proportion so that absolute velocity will equal 16.
+
+---
+
+## Glitches
+Movement related glitches.
+
+**Triple component strafe**\
+Is a glitch that allows to strafe with 3 input component. Normal strafe is made by 2 components (e.g. W + D). But with this glitch, you can do for example, W + W + D. The angle is `~26°` off the 4 main directions by this calculation,
+
+$$\displaystyle \text{atan2}(\underset{\text{1st component}}{\underbrace{2}},\overset{\text{2nd component}}{\overbrace{1}}) = \text{arctan}\left(\frac{1}{2}\right) \approx 26.565^{\circ}$$
+
+This glitch does not give a speed/acceleration boost, but can be used for easier jump strategies (e.g. easier jump angle, noturn, chained triple neos,...). Can be activated by using D-pad touch control, pressing in the region connecting W/S button and strafe button. Or use multiple input devices to combine inputs.
+
+**Hitbox manipulation**\
+Is a precision related glitch. Since bedrock uses 32-bit arithmetic, this is millions of times more effective than Java's. By crossing a coordinates of multiple of 2, hitbox of that axis shrinks/grows by an insignificant amount. But they stack up over time. Can be reset upon relog, switching dimensions, crouching,... This glitch can be abused to do various things. Notably, at some Y values repeatedly jumping can either shrink or expand your verticle collision box.
+
+**Block clipping & Inaccurate collision & Jittering at large coordinates**\
+Are another precision related glitches. Again, Bedrock stores position in 32-bit. And as a nature of floating point arithmetic, they represents real numbers but with limited precision. This precision worsens at every power of 2. At sufficiently large values you can notice discrete jump between values. Explaining the jitteriness at large coordinates.\
+Intuitively you can think of a grid and your position can only snap to the grid. Not only your position though, block collsion box also snaps to this grid aswell. Explaining the inaccuracy in collision. (You can see your coordinates not quite lining up with actual block collision box)\
+And at extreme conditions where everything line up in your favor, you can clip through a solid block.
+
+**Spyglass speed boost**\
+Super mysterious.<sup>[Todo]</sup>
+
+### Patched Glitches
+
+**11 Strafe or 10 Strafe & Glitches regarding old joystick**\
+Was introduced in `1.19.30` and patched in `1.21.21`. Caused by touchscreen joystick. <sup>Controller joystick too?</sup> Here is all the known
+infomations about it :)<sup>[Todo]</sup>
+
+<details>
+  <summary><ins>Implementation</ins></summary>
+
++ *Step 1 :*\
+  Game takes joystick center position and touch position. Calculate signed difference between them. ($dx$ and $dy$)
++ *Step 2 :*\
+  $dx$ and $dy$ is later normalized to be in range [`-1, 1`]. With 1 being joystick's radius. Creating $x$, $y$ and untransformed vector $\mathbf{v}$.
+  
+  $x = dx \times ScalingFactor$ and same process goes for $y$.
+  
+  > **Case** $$0.3 \leq \left|\left|\mathbf{v}\right|\right| \leq 1$$ **then** $$\mathbf{v} = (x,y)$$
+  >
+  > **Case** $$\left|\left|\mathbf{v}\right|\right| > 1$$ **then** $$\displaystyle \mathbf{v} = \left(\frac{x}{\left|\left|\mathbf{v}\right|\right|},\frac{y}{\left|\left|\mathbf{v}\right|\right|}\right)$$
+  >
+  > **Case** $$\left|\left|\mathbf{v}\right|\right| < 0.3$$ **then** player's stopping condition is applied.
+
+  - Note: $\left|\left|\mathbf{v}\right|\right|$ is $\sqrt{x^2+y^2}$.
++ *Step 3 :*\
+  A transformation is applied to $\mathbf{v}$. (inherit $x$ and $y$ from $\mathbf{v}$ of previous calculation.)
+  
+  $$\mathbf{v'} = 0.98 \times \left(x+\frac{0.3x\cdot(1-|x|)}{\sqrt{x^2+y^2}} , y+\frac{0.3y\cdot(1-|y|)}{\sqrt{x^2+y^2}}\right)$$
+  
+  **If** player is **holding sprint** **then** Y component of $\mathbf{v}$ is overridden to be $\text{sign}(y')$.
+  
+  **And if** $\left|\left|\mathbf{v'}\right|\right| > 1$ **then** $$\displaystyle \mathbf{v'}_{\text{final}} = \frac{\mathbf{v'}}{\left|\left|\mathbf{v'}\right|\right|}$$. (Cap it at magnitude 1.)
+
+Key details of this transformation:
+- Non-linear and angles are not preserved.
+- For no-sprint, it bulges out around multiples of 45°.
+- For sprint, it makes 2 cones and maximum sideways angle is 45°. It also makes a flat area at top and bottom. All because Y component (forwards & backwards) is forced to be either `1 or -1`. <sup>What happens at 0? It is technically possible.</sup>
+
+[**Replication on Desmos**](https://www.desmos.com/calculator/a9rhnjx5iw)
+
+Transformation visualizations. No sprint (left) & Sprint (right) :
+
+<img src="/Images/11strafe_nosprint_transform.gif" alt="nospint transformation gif" height="240px"> <img src="/Images/11strafe_sprint_transform.gif" alt="sprint transformation gif" height="240px">
+
+Variable initial ring size. (Full transformation) No sprint (left) & Sprint (right) :
+
+<img src="/Images/11strafe_nosprint_magnitudering.gif" alt="nosprint magnitude gif" height="240px"> <img src="/Images/11strafe_sprint_magnitudering.gif" alt="sprint magnitude gif" height="240px">
+
+</details>
+
+<details>
+  <summary><ins>Glitches</ins></summary>
+
++ *Glitch 1: Unintended angle inaccuracy*\
+  No sprint (left) & Sprint (right).\
+  **X axis** is *intended input angle*. (Angle of your touch point relative to joystick center.)\
+  **Y axis** is *inaccuracy in degrees*. (Signed difference between input angle and outputted angle.)\
+  Lightest line is magnitude 0.3 and most vibrant is magnitude 1. (With 0.05 step between them.)
+  
+  <img src="/Images/11strafe_nosprint_angleinacc.png" alt="nosprint angle difference plot" height="240px"> <img src="/Images/11strafe_sprint_angleinacc.png" alt="sprint angle difference plot" height="240px">
+
+  **Particular values:** *For no sprint*, at input angle `20.273°` hit the peak inaccuracy of `-3.175°`.\
+  *And for sprint*, at input angle `15.206°` hit the maximum negative inaccuracy of `-2.556°` before peaking inaccuracy at the most sideways angle 90° of `45°`.\
+  All said is at magnitude 1, but at magnitude 0.3 with sprint on, angling your thumb at the most sideways angle, you hit the most inaccuracy of `60.409°` from intended angle.
+  
++ *Glitch 2: Speed boost*
+  
+  <img src="/Images/11strafe_nosprint.png" alt="nosprint magnitude" height="240px"> <img src="/Images/11strafe_sprint.png" alt="sprint magnitude" height="240px">
+
+  *For no sprint*, angle `0, 90, 180, 270` have magnitude of `0.98` (normal). And magnitude = 1 at angle 90n &pm; `15.83°`<sup>[1]</sup> (`13.06°`<sup>[2]</sup> input angle).\
+  *And for sprint*, angle `0, 180` have magnitude of `0.98` (normal). And magnitude = 1 at angle 180n &pm; `11.48°`<sup>[3]</sup> (`9.36°`<sup>[4]</sup> input angle).
+  
+  At these angles or any angles between them have a $1/0.98 \approx 2.04$% acceleration boost, similar to Java's 45 strafe. You also can gain advantage through them the same way as Java's 45 strafe, push joystick at angle with the boost and move camera in the opposite direction to counteract the sideways movement from joystick.\
+  When performing 45 strafe while sprint jumping, you cannot let camera stay at 45° on jump tick. Because the boost from jumping will throw you off sideways, losing speed. So you have to turn to 0° and stop holding strafe button on these specific ticks.\
+  But on Bedrock when performing 11 strafe, you do not need to turn to 0°. Since the 11° angle is close to 0°, you can let the joystick stay at 11.48° and don't lose as much speed. And adjust your camera to `4.52°`<sup>[5]</sup> in the opposite direction to counteract the sideways movement. This is `0.3117%`<sup>[6]</sup> better than just turning to 0° and joystick 0°.
+
+  > To effectively perform 11 strafe on flat ground, let your thumb stay at 9.36° on the joystick. On air, turn your camera to -11.48°. And on jump tick, turn your camera to -4.52°.
+
+  [1] $$\displaystyle = todo$$\
+  [2] $$\displaystyle = todo$$\
+  [3] $$\displaystyle = \arccos(0.98) \approx 11.478341$$\
+  [4] $$\displaystyle = todo$$\
+  [5] $$\displaystyle = todo$$\
+  [6] $$\displaystyle = todo$$
+
+- **Note**: I'm using the convention that 0 degrees start from top-middle and goes on clockwise for ease of understanding.
+
+</details>
+
+<details>
+  <summary><ins>History & Discovery</ins></summary>
+
+\
+[Reddit Post](https://www.reddit.com/r/CompetitiveMinecraft/comments/idyqeg/a_45_strafe_performed_on_116_with_an_xbox_one/) - Possibly the first public sight of something that resembles 11 Strafe. Performed on a controller, version 1.16. (2020)
+
+[Youtube Video](https://youtu.be/_3-pYZpaimI) - Proof of 11 Strafe working on mobile. Following the new addition of joystick controls in `1.19.30`. (2023)
+
+Following that, knowledge of this certain bug has circled in a somewhat closed community. At this peroid, you'll see some Bedrock onejump videos utillizing 11 Strafe. But no one really had a clue how it works. (2024)
+
+*14th August 2024* `1.21.21` - 11 Strafe was silently patched. No records were found in fixes ([Minecraft wiki 1.21.21](https://minecraft.wiki/w/Bedrock_Edition_1.21.21)). Players collectively mentioned it no longer works in 1.21.21. However some players were still downgrading versions to onejump with this.
+
+This whole section is sourced from a [Bilibili Article](https://b23.tv/yGraXUX). Posted by xiaozi0475. The article includes a full mechanism, analysis and a code snippet. The inner workings of 11 Strafe are finally understood. (2025)
+
+</details>
+
+**Backwards sprinting**\
+<sup>[Todo]</sup>
+
+**Ground sprint delay**\
+<sup>[Todo]</sup>
+
+**Subtle wall clipping**\
+<sup>[Todo]</sup>
+
+### Non-Advantagious Glitches
++ Player actually never stopping in place, coordinates flickering while standing still.
++ Catastrophic rubberbanding.
++ Many desync issues.
+
+---
+
+## Constants
+
+### Base values
+The movement formula is similar to Java's. <sup>[WIP]</sup>
++ Shifted acceleration: `0.294`
++ Walk acceleration: `0.98`
++ Sprint acceleration: `1.274`
++ Sprint jump acceleration towards facing: `0.2`
++ Normal ground slipperiness: `0.6`
++ Velocity conserved to next tick: `0.91`
++ Jump vertical acceleration: `0.42`
++ Vertical drag: `0.98`
++ Gravity acceleration: `0.08`
+
+### Pre-calculated values
+
+#### Grounded
+`0.1x` acceleration.
++ Horizontal drag: `0.546`
++ Shifted acceleration: `0.0294`
++ Walk acceleration: `0.098`
++ Sprint acceleration: `0.1274`
+
+#### Airborne
+`0.02x` acceleration.
++ Horizontal drag: `0.91`
++ Shifted accerelation: `0.00588`
++ Walk acceleration: `0.0196`
++ Sprint acceleration: `0.02548`
+
+#### Flying
+Flying ignores most block mechanics, reaching top speed of `0.544b/t` while walk flying, `1.088b/t` with sprint activated.
++ Horizontal drag while accelerating: `0.91`
++ Horizontal drag while not accelerating: `~0.34125`.
++ Shifted accerelation: `[incompatible]`
++ Walk acceleration: `0.049`
++ Sprint acceleration: `0.098`
+
+#### Blocking
+This includes eating or drinking, charging weapons, using goat horn or spyglass.
+`81 + 2/3` times less acceleration or `0.35^2 = 0.1225` acceleration.
++ Shifted accerelation: `0.0036`
++ Walk acceleration: `0.012`
++ Sprint acceleration: `0.0156`
+
+#### Shield Blocking
+No effect on movement, unlike in Java where it does. (Shield in Bedrock is activated by crouching instead.)
+
+---
+
+## Block Mechanics
+Blocks that have special properties effecting movement.
+
+### Slipperiness Properties
+All blocks have slipperiness factor (noted as $S$) of it's own. Every block have $S$ of `0.6` unless other value is stated.\
+The game checks `0.1` blocks below entity's position for slipperiness. When airborne, slipperiness properties is ignored.\
+Effects on movement include:
++ Amount of drag on ground is $0.91 \times S$.
++ Acceleration on ground is multiplied by $\displaystyle \left(\frac{0.6}{S}\right) ^ 3$
+
+**Soulsand**\
+*Effect box*: `1×1×1` lifted up by `0.1`.  Entity will receive effect when their coordinates is in this region.\
+*Properties*: Unlike Java, that soulsand would drag an entity down, Bedrock does not do that.
++ Grants `54.4%` acceleration to players without soul speed.
+
+**Slime block**\
+*Slipperiness* factor is `0.8`
+<details>
+  <summary><ins>Expand Properties</ins></summary>
+
+
+**Bouncing Property**
+
+A slime block only bounces the player if they land on its top surface while moving downward, with vertical velocity $V_y \le -0.08$. Landing any slower results in the player simply coming to rest on the surface.
+
+In Java Edition 1.8.9, the game simply reverses the player's vertical velocity upon landing ($V_y = -V_y$). As a result, players jumping from **different heights** will bounce to the **exact same height** as long as they happen to land within the same tick.
+
+To solve this issue, Bedrock Edition records the player's **actual fall distance $|\Delta Y|$** within the landing tick before contact, and uses it to calculate the true impact speed. With bounce factor $b = 1$ (for slime) and gravity $g = -0.08$, the bounce is calculated through the following steps:
+
+- **Phase 1: Landing**  
+  Based on the actual fall distance $|\Delta Y|$, the downward speed at impact $|V_{\text{hit}}|$ and the time elapsed $t$ within this tick before landing are:
+
+  $\displaystyle |V_{\text{hit}}| = \sqrt{V_y^2 + 2\lvert g\rvert\lvert\Delta Y\rvert}$
+
+  $\displaystyle t = \frac{|V_{\text{hit}}| - |V_y|}{|g|} \qquad (0 \le t < 1)$
+
+- **Phase 2: Bounce**  
+  The landing speed is reflected upward. Because landing consumed $t$ of the tick, the player travels upward under gravity for the remaining $1 - t$ duration:
+
+  $$V_y = b \cdot |V_{\text{hit}}| + g(1 - t)$$
+
+- **Phase 3: Air Drag**  
+  Air drag is applied at the end of the tick as usual:
+
+  $$V_y = 0.98\,V_y$$
+
+- **Phase 4: Jump Check**  
+  If the player jumped within the same tick, the final velocity takes the larger of the jump speed and the bounce speed:
+
+  $$V_y = \max(V_{\text{jump}},\, V_y)$$
+
+**Note:**  
+In the tick where a bounce is triggered, the standard discrete gravity step $V_y = 0.98(V_y + g)$ is completely replaced by the process above.
+
+**Slowdown Property**:\
+Slime also slows down players walking on it, in a way that no other block does. To see where that slowdown comes from, recall how a normal grounded tick begins:
+
+At the beginning of every tick, a player standing on a block has their vertical motion reset to $V_y = 0$. Gravity then gives them a downward speed of $V_y=0.98 \cdot (V_y+g)$, with `g` defaulting to `-0.08`.
+
+Slime applies its slowdown on top of that:
+
+If the player is standing on slime, is not sneaking, and $|V_y|<0.1$, their horizontal motion is multiplied by $f = 0.4 + 0.2|V_u|$.
+
+By default, $f = 0.4 + 0.2 \times |0.98\times (-0.08)| = 0.41568$.
+
+**Other Properties**<sup>[Todo]</sup>
+
+</details>
+
+**Bed**\
+*Bouncing Property*: Same as slime block, but with a bounce factor of `0.75`.
+
+**Honey block**\
+*Slipperiness* factor is `0.8`\
+*Properties*: <sup>[Todo]</sup> key details:
++ The player's jump velocity (which defaults to `0.42`) is multiplied by `0.6`. Jumping gives `0.252` vertical acceleration, reaching `0.514` in height, with 8 ticks of airtime on flat ground.
++ Sliding down the side have a speed cap of `-0.12`.
++ Sliding multiplies the player's horizontal motion by `0.4`, and it's stackable.
++ Slowdown players walking on them, exactly same as slime.
+
+**Ices**
++ **Blue ice** slipperiness factor `0.989`
++ **Packed ice** slipperiness factor `0.98`
++ **Ice** slipperiness factor `0.98`
++ **Frosted ice** slipperiness factor `0.98`
+
+**Catch/Climb type blocks**\
+These group of blocks include ladders, vines, cave vines and twisted vines.\
+*Effect box*: `1×1×1`. Entity will receive effect when their coordinates is in this region.\
+*Properties*: <sup>[Todo]</sup> key details: 
++ max climb up/down speed is `0.2`
+
+**Scaffolding**\
+Behavior differs from normal climb blocks.\
+*Effect box*: `1×1×1`. Entity will receive effect when their base (`0.3` margin around player's position) intersects this region.\
+*Properties*: <sup>[Todo]</sup> key details: 
++ max climb up/down speed is `0.15`
+
+**Water**\
+<sup>[Todo]</sup>
+
+**Lava**\
+<sup>[Todo]</sup>
+
+**Cobweb**\
+*Effect box*: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
+*Properties*: 
++ Horizontal acceleration is divided by `4`.
++ Vertical acceleration is divided by `20`.
++ All velocity components is reset to `zero` on every tick.
+
+**Powdered Snow**\
+*Effect box*: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
+*Properties*: <sup>[Todo]</sup>
++ All velocity components is reset to `zero` on every tick.
++ Vertical acceleration is multiplied by `1.5`.
++ Horizontal acceleration is multiplied by `0.9`.
++ Additionally, freezing progress also slows down the player:
+  + Freezing progress `p` (bounded between `0` and `1`) increases by `1/140` per tick while the player is in the powder snow, and decreases by `2/140` per tick when they are outside.
+  + The player's horizontal acceleration is then multiplied by `1 - 0.5*p`.
+
+**Sweet Berry Bush**\
+*Effect box*: `0.998×0.998×0.998` (`1×1×1` retracted `0.001` inwards on each side.) Entity will receive effect when their collision box intersects this region.\
+*Properties*: 
++ Horizontal acceleration is divided by `1.25`.
++ Vertical acceleration is **multiplied** by `0.75`.
++ All velocity components is reset to `zero` on every tick.
+
+---
+
+## Status effects & Enchants
+Status effects and enchants that can directly effect movement.\
+(Only valid for achievable level of enchant. Levels beyond that is not guaranteed to be correct here.)
+
+**Speed**\
+`+20%` base acceleration per level of speed. Does not apply when airborne. In the case where speed is on with slowness, speed always get applied first.
+
+**Slowness**\
+`-15%` base acceleration per level of slowness. Does not apply when airborne. Movement is stopped past level 6.
+
+**Jump boost**\
+`+0.1` base jump acceleration per level of jump boost.
+
+**Slow falling**\
+When the player's Y velocity is below `0`, a `0.01` gravity acceleration is applied across all levels of slow falling. Reaching terminal velocity of 0.49.
+
+**Levitation**\
+$$\displaystyle VelY_t = VelY_{t-1} \times 0.784 + 0.0098 \times Level$$\
+Basically floats up with acceleration of `0.0098` multiplied by levitation level. And with drag of `0.784`.
+
+**Blindness**\
+Activating sprint is not possible while effect is active. You can still keep sprint through when effect is recieved.
+
+**Soul speed**\
+$\displaystyle 1.3 + Level \times 0.105$ times base acceleration. Only works on soul sand and soul soil as ground.
+
+**Depth strider**\
+For walking, `+133.33%` base acceleration per level of depth strider.\
+For sprinting, `+183.33%` base acceleration per level of depth strider.\
+Not true in certain conditions.<sup>[Todo]</sup>
+
+**Swift sneak**\
+`+50%` base acceleration per level of swift sneak. Only works while crouching or crawling.
+
+---
+
+## Movement formulas
+<sup>[Todo]</sup>
+<!--
+$\displaystyle \cdots_{t}$ means of current tick and $\displaystyle \cdots_{t-1}$ means of previous tick, etc...
+
+#### Variables
+$\displaystyle Yaw_t$ is player's yaw (left-right facing).\
+$\displaystyle Pitch_t$ is player's pitch (up-down facing).\
+$\displaystyle Dir_t$ is player's direction (input and rotation).
+
+### Vertical
+
+**Jump Acceleration:**\
+$$\displaystyle A_t = \left(0.42 + 0.1 \times JumpBoostLevel_t\right) \times \begin{Bmatrix}0.6 & \text{if Honey} \\ 1 & \text{otherwise}\end{Bmatrix}$$
+
+**Gravity:**\
+$$\displaystyle G_t = \begin{cases}0.01 & \text{if SlowFalling}_t \\ 0.08 & \text{otherwise}\end{cases}$$
+
+**Velocity Formula:**\
+$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{\left(VelY_{t-1} - G_{t-1}\right) \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{\begin{Bmatrix} A_t & \text{if Jumping}_t \\ 0 & \text{otherwise} \end{Bmatrix}}}$$
+
+**Levitation Velocity Formula:**\
+$$\displaystyle VelY_t = \underset{\text{Momentum}}{\underbrace{VelY_{t-1} \times 0.8 \times 0.98 \times \begin{Bmatrix}0 & \text{if collided on Y}_t \\ 1 & \text{otherwise}\end{Bmatrix}}} + \underset{\text{Acceleration}}{\underbrace{0.0098 \times LevitationLevel_t}}$$
+
+### Horizontal
+
+**Acceleration:**\
+$$\displaystyle A_t = \begin{Bmatrix}1.274 & \text{if Sprinting}_t \\ 0.98 & \text{if Walking}_t \\ 0.294 & \text{if Sneaking}_t \\ 0.0 & \text{if Stopping}_t\end{Bmatrix} \times \begin{Bmatrix}0.02 & \text{if Airborne}_t \\ 3/245 & \text{if Blocking}_t \\ 3/12250 & \text{if Airborne}_t & \text{and Blocking}_t \\ 0.1 & \text{otherwise}\end{Bmatrix}$$
+
+**Effects & Enchants:**\
+$$\displaystyle E_t = (1 + 0.2 \times SpeedLevel_t) \times (1 - 0.15 \times SlownessLevel_t)$$
+
+**Block Mechanics:**\
+$$\displaystyle B_t = $$
+
+**Slipperiness:**\
+$$\displaystyle S_t = \begin{cases}0.8 & \text{if Slime}_t \\ 0.98 & \text{if Ice}_t \; \text{and Packed Ice}_t \; \text{and Frosted Ice}_t \\ 0.989 & \text{if Blue Ice}_t \\ 0.6 & \text{otherwise}\end{cases}$$
+
+**Ground Velocity Formula:**\
+$$\displaystyle VelX_t = $$\
+$$\displaystyle VelZ_t = $$
+
+**Airborne Velocity Formula:**\
+$$\displaystyle VelX_t = $$\
+$$\displaystyle VelZ_t = $$
+
+### Other
+**Absolute Velocity Formula:**\
+$$\displaystyle AbsVel_t = \sqrt{VelX_t^2+VelY_t^2+VelZ_t^2}$$
+
+**Positions Formula:**\
+$$\displaystyle PosX_t = \begin{cases}PosX_{t-1} + VelX_t & \text{if AbsVel}_t \leq 16 \\ PosX_{t-1} + VelX_t \times \displaystyle \frac{16}{AbsVel_t} & \text{if AbsVel}_t > 16\end{cases}$$\
+$\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way as above.
+
+**Fluids Velocity Formula:**\
+:moyai:
+
+**Elytra Velocity Formula:**\
+:orangutan:
+-->
+
+---
+
+## Strategies
+
+### Tap setups
+<sup>[Needs verification.]</sup>
+|Tap names                 |Distance given        |
+|--------------------------|----------------------|
+|walk                      |0.21585904            |
+|shifted                   |0.06475772            |
+|sprint                    |0.28061674            |
+|walk + blocking           |0.04317181            |
+|shifted + blocking  st      |0.01295154            |
+|sprint + blocking         |0.05612335            |
+|A7 walk                   |0.05888635            |
+|A7 shifted                |0.01766591            |
+|A7 sprint                 |0.07655225            |
+|A7 walk + blocking        |0.01177727            |
+|A7 shifted + blocking     |0.00353318            |
+|A7 sprint + blocking      |0.01531045            |
+
++ **Note**: blocking is NOT blocking with shield. See [Blocking](#blocking) section.
+
+Air taps aren't included because of no inertia, giving different result some of the times. So resort to using A7 taps instead.
+
+---
+
+## Miscellanious
+Uncatagorized stuff.
++ **Coordinates system** is inverted on X axis, going left being positive and right being negative. Similar to Java edition.
++ **Block push acceleration**. When you're inside a block, it'll attempt to push you out with acceleration of `0.1` towards the nearest unblocked direction.
+
+---
+
+## Community
+more coming soon!
+
+### Videos
+Elchut has kindly provided a Youtube playlist for research/digging into the history and whereabouts of Bedrock Edition parkour.\
+https://youtube.com/playlist?list=PL1ZgYIGWUWGgwpp67OgWSB-rLEW4h5IxX
+
+### Parkour Servers
+A list of publicly known Bedrock Edition parkour servers.<sup>[Todo]</sup>
+
+**Galaxite**\
+Gamemode "Parkour Builders" on the featured server Galaxite. Hosts player-made maps.
++ *Status*: :green_circle: Active
++ [*Discord*](https://discord.gg/galaxite)
++ *Joining*: It is there on servers tab. Or use IP.
+```
+play.galaxite.net
+```
+
+**DPK Network**\
+HPK-like realm. Host onejumps, segmented and rankup parkour.
++ *Status*: :red_circle: Down by 29th April 2026.
++ [*Discord*](https://discord.gg/AENkWECXh8)
++ *Joining*: [Realm link](https://realms.gg/E9QjVQgLu4Y) or enter below into realm code.
+```
+E9QjVQgLu4Y
+```
+
+**Starany**\
+A successor of DPK network. Only hosts onejumps at the moment.
++ *Status*: :green_circle: Active
++ [*Discord*](https://discord.gg/EdfWtFwa2s)
++ *Joining*: Use IP.
+```
+sarajuku.f5.si
+```
+
+**Rathian Realm**\
+Hosts many rankup and segmented parkour maps and some onejump maps. With the main rankup ranks called "LooNey" and segmented ranks called "Shizuku".
++ *Status*: :green_circle: Active
++ [*Discord*](https://discord.gg/4vXFY2JQy)<sup>[Not a permanent link]</sup>
++ *Joining*: [Realm link](https://realms.gg/haw-NSqdtRc) or enter below into realm code.
+```
+haw-NSqdtRc
+```
+
+**LetUS Server**\
+Mainly hosts many timed parkours, often called "athletic". As well as segmented and rankup.
++ *Status*: :green_circle: Active
++ [*Discord*](https://discord.gg/8qnyq3NSf)<sup>[Not a permanent link]</sup>
++ *Joining*: [Realm link](https://realms.gg/rt_rzojusX3bUv8) or enter below into realm code.
+```
+rt_rzojusX3bUv8
+```
+
+**WagL Network**\
+Athletic realm. Also includes rankup and segmented.
++ *Status*: :green_circle: Active
++ [*Discord*](https://discord.gg/3dnqW3QWf)<sup>[Not a permanent link]</sup>
++ *Joining*: [Realm link](https://realms.gg/LbJYwZJrkYLfRFA) or enter below into realm code.
+```
+LbJYwZJrkYLfRFA
+```
+
+**Li9 Realm / Lithium Parkour**\
+A parkour realm consisting of progressively harder 250 levels. More well known to Bedrock PvPers.
++ *Status*: :red_circle: Down by early 2026.
+
+**MuttiServer**\
+An athletic rankup and segmented server.
++ *Status*: :red_circle: Down
+
+**Mineplex**\
+Mineplex Housing. The first ever housing parkour server on Bedrock, before it shutdown and most of the builders moved on to Galaxite instead.
++ *Status*: :red_circle: Down
+
+**Others**
++ Manacube parkour (they have Bedrock support)
++ Tanaris Athletic
++ Asure
++ Lemonsour Athletic
++ ChaomanaGrow
++ Tornadoo
++ Parrium
++ The Rage Craft Room
+
+---
+
+#### Credits & Special thanks
++ **accessdenied0** (Author, maintainer)
++ **elchut** (Community, 11 strafe details)
++ **xiaozi0475** ([11 Strafe inner workings](https://b23.tv/yGraXUX), maintainer)
++ **zetaser2** (Help on glitches)
+
+This wiki is a hobby project to showcase the technical parkour infos of Minecraft Bedrock Edition.\
+This is an extension of MCPK wiki. But not affiliated (for now).\
+Not affiliated or associated with Mojang or Microsoft.
+
+
+
