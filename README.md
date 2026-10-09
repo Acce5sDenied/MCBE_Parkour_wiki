@@ -9,10 +9,8 @@ This wiki is assuming you have a decent beforehand knowledges of the game and ad
 
 ## Highlights
 
-<details>
-  <summary><ins>Resources</ins></summary>
+### Resources
 
-\
 Visit [**MCPK wiki**](https://www.mcpk.wiki/wiki/Main_Page) for the original Java Edition parkour wiki & documentation.
 
 Visit [**ZPK 2**](https://github.com/mihiro13/ZPK_2) repository for a parkouring addon. Or [**dmf-mpk**](https://github.com/mihiro13/dmf-mpk) for an actual parkouring utilities mod. Similar to MPK or Cyv mod for Java.
@@ -21,12 +19,8 @@ Visit [**BPKMod**](https://github.com/xiaozi233/BPKMod) repository for a Java ed
 
 Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Starany**](https://discord.gg/EdfWtFwa2s) for central hubs to discuss about Bedrock Edition Parkour.
 
-</details>
+### Movement Differences
 
-<details>
-  <summary><ins>Movement Differences</ins></summary>
-
-\
 Differences of Bedrock Edition  Java Edition 1.8 (standard for parkour).
 + **Strafing** does not grant the 2% boost in acceleration, unlike Java Edition. Same goes for strafe crouching not giving the massive 41% boost.
 + No presence of **inertia** AKA momentum threshold.
@@ -40,11 +34,47 @@ Differences of Bedrock Edition  Java Edition 1.8 (standard for parkour).
 + A player have `16 b/t` absolute **speed cap**.
 + Many block mechanics/properties is different.
 
-</details>
-
 ---
 
+## Player Controls
++ [Player Movement]()
++ [Camera Movement]()
++ [Status Effects & Enchants]()
 
+## Blocks
++ [Blocks Collision]()
++ [Block Offsets]()
++ [Slipperiness]()
++ [Slime & Bouncy Blocks]()
++ [Honey Block]()
++ [Cobweb & Slowing Blocks]()
++ [Climb Blocks]()
++ [Fluids]()
+
+## Movement Mechanics
++ [General Movement]()
++ [Collisions]()
++ [Sprint Cancellation]()
++ [Stepping]()
++ [Sneaking & Crawling]()
++ [Speed Limit]()
+
+## Glitches
++ [Triple Component Strafe]()
++ [Hitbox Manipulation & Precision Glitches]()
++ [Spyglass Glitch]()
++ [11 Strafe & Glitches regarding old joystick]()
++ [More Patched Glitches]()
+
+## Strategies & Technicals
++ [Tapping]()
++ [Strategies]()
++ [Movement Formulas]()
++ [Constants]()
+
+## Community
++ [Communities]()
++ [Servers]()
 
 ---
 

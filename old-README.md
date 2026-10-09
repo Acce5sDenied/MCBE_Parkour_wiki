@@ -764,7 +764,7 @@ $\displaystyle PosY_t$ and $\displaystyle PosZ_t$ is also obtained the same way 
 |shifted                   |0.06475772            |
 |sprint                    |0.28061674            |
 |walk + blocking           |0.04317181            |
-|shifted + blocking  st      |0.01295154            |
+|shifted + blocking        |0.01295154            |
 |sprint + blocking         |0.05612335            |
 |A7 walk                   |0.05888635            |
 |A7 shifted                |0.01766591            |
