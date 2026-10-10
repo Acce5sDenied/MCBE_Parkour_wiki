@@ -1,4 +1,4 @@
-# Welcome to MCBE Warkour Wiki
+# MCBE Parkour Wiki
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
@@ -21,7 +21,7 @@ Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Starany**](h
 
 ### Movement Differences
 
-Differences of Bedrock Edition  Java Edition 1.8 (standard for parkour).
+Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 + **Strafing** does not grant the 2% boost in acceleration, unlike Java Edition. Same goes for strafe crouching not giving the massive 41% boost.
 + No presence of **inertia** AKA momentum threshold.
 + Position and many more values is stored as **single precision** floats (32-bit). This is the cause of many goofy glitches on Bedrock.
@@ -30,18 +30,18 @@ Differences of Bedrock Edition  Java Edition 1.8 (standard for parkour).
 + **Shifting** would only goes to a minimum of `0.025` blocks away from an edge.
 + No 1 tick of air sprint delay. (matches Java 1.19.4 and above)
 + Sprint would cancel after colliding a wall (Conditions differ from Java 1.8, see [Sprint Cancellation](#sprint-cancellation))
-+ Exists an all-direction joystick control mode.
++ Exists an all-direction **joystick** control mode.
 + A player have `16 b/t` absolute **speed cap**.
 + Many block mechanics/properties is different.
 
 ---
 
-## Player Controls
+### Player Controls
 + [Player Movement]()
 + [Camera Movement]()
 + [Status Effects & Enchants]()
 
-## Blocks
+### Blocks
 + [Blocks Collision]()
 + [Block Offsets]()
 + [Slipperiness]()
@@ -51,7 +51,7 @@ Differences of Bedrock Edition  Java Edition 1.8 (standard for parkour).
 + [Climb Blocks]()
 + [Fluids]()
 
-## Movement Mechanics
+### Movement Mechanics
 + [General Movement]()
 + [Collisions]()
 + [Sprint Cancellation]()
@@ -59,20 +59,20 @@ Differences of Bedrock Edition  Java Edition 1.8 (standard for parkour).
 + [Sneaking & Crawling]()
 + [Speed Limit]()
 
-## Glitches
+### Glitches
 + [Triple Component Strafe]()
 + [Hitbox Manipulation & Precision Glitches]()
 + [Spyglass Glitch]()
 + [11 Strafe & Glitches regarding old joystick]()
 + [More Patched Glitches]()
 
-## Strategies & Technicals
+### Strategies & Technicals
 + [Tapping]()
 + [Strategies]()
 + [Movement Formulas]()
 + [Constants]()
 
-## Community
+### Community
 + [Communities]()
 + [Servers]()
 
@@ -81,7 +81,7 @@ Differences of Bedrock Edition  Java Edition 1.8 (standard for parkour).
 #### Credits & Special thanks by Discord username
 + `accessdenied0` - Author & maintainer
 + `elchut` - Community & 11 Strafe details
-+ `xiaozi0475` - [11 Strafe inner workings](https://b23.tv/yGraXUX) & maintainer
++ `xiaozi0475` - [**11 Strafe inner workings**](https://b23.tv/yGraXUX) & maintainer
 + `zetaser2` - Help on glitches
 + `ring_marry` - Made ZPK 2
 
