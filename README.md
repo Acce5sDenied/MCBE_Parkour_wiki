@@ -21,7 +21,7 @@ Join [**DPK Central Discord**](https://discord.gg/AENkWECXh8) or [**Starany**](h
 ### Movement Differences
 
 Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
-- **Strafing** does not grant the 2% boost in acceleration, unlike Java Edition. Same goes for strafe crouching not giving the massive 41% boost.
+- **Strafing** does not grant the `2%` boost in acceleration, unlike Java Edition. Same goes for strafe crouching not giving the massive `41%` boost.
 - No presence of **inertia** AKA momentum threshold.
 - Position and many more values is stored as **single precision** floats (32-bit). This is the cause of many goofy glitches on Bedrock.
 - Trigonometry directly uses $\sin()$ and $\cos()$, so there is no such "significant angles" and "half angles" in Bedrock.
@@ -37,6 +37,7 @@ Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 
 ### Player Controls
 - [Player Movement](/Pages/player_movement.md)
+- [Joystick](/Pages/joystick.md)
 - [Camera Movement](/Pages/camera_movement.md)
 - [Status Effects & Enchants](/Pages/status_effects_enchants.md)
 
