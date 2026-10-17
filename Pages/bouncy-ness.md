@@ -1,8 +1,8 @@
 # Bouncy-ness
 
-> This article go into the bouncy-ness properties and calculation, not mainly about slime block.
+There are currently 3 blocks subject to the bouncy-ness property, **slime block, bed** and the newly added **shelf mushroom**.
 
-A slime block only bounces the player if they land on its top surface while moving downward, with vertical velocity $V_y \le -0.08$. Landing any slower results in the player simply coming to rest on the surface.
+These blocks only bounce the player if they land on its top surface while moving downward, with vertical velocity $V_y \le -0.08$. Landing any slower results in the player simply coming to rest on the surface.
 
 In Java Edition 1.8.9, the game simply reverses the player's vertical velocity upon landing ($V_y = -V_y$). As a result, players jumping from **different heights** will bounce to the **exact same height** as long as they happen to land within the same tick.
 
@@ -32,6 +32,8 @@ To solve this issue, Bedrock Edition records the player's **actual fall distance
 
 **Note:**  
 In the tick where a bounce is triggered, the standard discrete gravity step $V_y = 0.98(V_y + g)$ is completely replaced by the process above.
+
+*Todo note: bouncing through a block, like carpet is still unaccounted for.*
 
 ---
 

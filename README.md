@@ -42,7 +42,7 @@ Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 - [Status Effects & Enchants](/Pages/status_effects_enchants.md)
 
 ### Blocks
-- [Blocks Collision](/Pages/blocks_collision.md)
+- [Blocks Collisions](/Pages/blocks_collisions.md)
 - [Block Offsets](/Pages/block_offsets.md)
 - [Slipperiness](/Pages/slipperiness.md)
 - [Bouncy-ness](/Pages/bouncy-ness.md)

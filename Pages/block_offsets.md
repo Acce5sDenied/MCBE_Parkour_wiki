@@ -1,8 +1,8 @@
-# Block offsets
+# Block Offsets
 
 Certain blocks do not have centered collision boxes; instead, their positions are offset in a pseudorandom manner. A block's specific offset is determined entirely by its X and Z coordinates.
 
-For a full list of blocks subject to offset, refer to the [Minecraft Wiki](https://minecraft.wiki/w/Block_offset#List_of_blocks_subject_to_offset).
+For a full list of blocks subject to offset, refer to the [**Minecraft Wiki**](https://minecraft.wiki/w/Block_offset#List_of_blocks_subject_to_offset).
 
 **Simplified Algorithm:**
 
