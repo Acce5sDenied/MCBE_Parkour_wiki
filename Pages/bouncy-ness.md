@@ -50,7 +50,7 @@ Upon landing, the game does not directly read the bounce factor of the block imm
 
 **1. Collecting Candidate Blocks Beneath the Player**
 
-Let the player's bounding box in the tick **before** landing be $\text{AABB} = \{\text{minX}, \text{minY}, \text{minZ}, \text{maxX}, \text{maxY}, \text{maxZ}\}$. The game expands its vertical bounds to construct a detection volume—extending the bottom face downward:
+Let the player's bounding box in the tick **before** landing be $\text{AABB} = \lbrace\text{minX}, \text{minY}, \text{minZ}, \text{maxX}, \text{maxY}, \text{maxZ}\rbrace$. The game expands its vertical bounds to construct a detection volume—extending the bottom face downward:
 
 $$\text{AABB.minY} = \text{AABB.minY} - \max(\text{stepHeight} \times 1.01,\; \vert V_y\vert + 0.2)$$
 
@@ -83,7 +83,7 @@ From the process above, we can draw several corollaries:
 In certain situations, setups where it seems impossible to step on the slime block can still bounce the player. The image below shows a working setup:
 
 <div style="text-align: center;">
-  <img src="./Images/bouncy-ness_glitch_setup.png"
+  <img src="../Images/bouncy-ness_glitch_setup.png"
        alt="bouncy-ness_glitch_setup"
        style="width:33%;" />
 </div>
