@@ -23,12 +23,12 @@ To solve this issue, Bedrock Edition records the player's **actual fall distance
 - **Phase 3: Air Drag**  
   Air drag is applied at the end of the tick as usual:
 
-  $$V_y = 0.98\,V_y$$
+  $$V_y = 0.98\hspace{0.17em}V_y$$
 
 - **Phase 4: Jump Check**  
   If the player jumped within the same tick, the final velocity takes the larger of the jump speed and the bounce speed:
 
-  $$V_y = \max(V_{\text{jump}},\, V_y)$$
+  $$V_y = \max(V_{\text{jump}},\hspace{0.17em}V_y)$$
 
 **Note:**  
 In the tick where a bounce is triggered, the standard discrete gravity step $V_y = 0.98(V_y + g)$ is completely replaced by the process above.
@@ -52,11 +52,11 @@ Upon landing, the game does not directly read the bounce factor of the block imm
 
 Let the player's bounding box in the tick **before** landing be $\text{AABB} = \lbrace\text{minX}, \text{minY}, \text{minZ}, \text{maxX}, \text{maxY}, \text{maxZ}\rbrace$. The game expands its vertical bounds to construct a detection volume—extending the bottom face downward:
 
-$$\text{AABB.minY} = \text{AABB.minY} - \max(\text{stepHeight} \times 1.01,\; \vert V_y\vert + 0.2)$$
+$$\text{AABB.minY} = \text{AABB.minY} - \max(\text{stepHeight} \times 1.01,\hspace{0.28em}\vert V_y\vert + 0.2)$$
 
 and extending the top face upward:
 
-$$\text{AABB.maxY} = \text{AABB.maxY} + \max(\text{stepHeight},\; 0.08)$$
+$$\text{AABB.maxY} = \text{AABB.maxY} + \max(\text{stepHeight},\hspace{0.28em}0.08)$$
 
 Any block whose bounding box intersects with this expanded $\text{AABB}$ is added to the candidate list.
 
@@ -72,7 +72,7 @@ From the process above, we can draw several corollaries:
 
 1. **Bouncing cannot be triggered through blocks with height $h \ge 0.4$:** When landing on a covering block of height $h$, its vertical center is $\text{centerY} = Y - h/2$; the covering block is excluded only when $\text{centerY} > Y - 0.2 \iff Y - h/2 > Y - 0.2 \iff h < 0.4$, allowing the bouncy block underneath to take effect.
 
-2. **Valid coverings ($h < 0.4$) may still fail to bounce from certain fall heights:** Step 1 uses the player's bounding box from the tick **before** landing; if the fall distance within that tick plus the covering's thickness exceeds the downward expansion depth $\max(\text{stepHeight} \times 1.01,\; \vert V_y\vert + 0.2)$, the slime block underneath will not be collected into the candidate list, which is especially noticeable when covered by $0.375$-block-high snow (3 snow layers).
+2. **Valid coverings ($h < 0.4$) may still fail to bounce from certain fall heights:** Step 1 uses the player's bounding box from the tick **before** landing; if the fall distance within that tick plus the covering's thickness exceeds the downward expansion depth $\max(\text{stepHeight} \times 1.01,\hspace{0.28em}\vert V_y\vert + 0.2)$, the slime block underneath will not be collected into the candidate list, which is especially noticeable when covered by $0.375$-block-high snow (3 snow layers).
 
 3. **Placing normal blocks adjacent to a slime block shrinks its effective bounce boundary by $0.3$ blocks ($0.6$ blocks for top slabs):** The player's horizontal bounding box is $0.6$ blocks wide, normally allowing bounces even when the player's center overhangs the slime block's edge by up to $0.3$ blocks. When a full block is placed right next to it, both share **the same vertical center** of $Y - 0.5$, so once the player's center crosses the boundary between the two blocks, the full block wins by being closer horizontally, shrinking the bounce range inward by $0.3$ blocks;
 
