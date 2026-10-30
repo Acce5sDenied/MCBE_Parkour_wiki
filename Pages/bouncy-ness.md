@@ -82,11 +82,11 @@ From the process above, we can draw several corollaries:
 
 In certain situations, setups where it seems impossible to step on the slime block can still bounce the player. The image below shows a working setup:
 
-<div style="text-align: center;">
-  <img src="../Images/bouncy-ness_glitch_setup.png"
+<p align="center">
+  <img src="/Images/bouncy-ness_glitch_setup.png"
        alt="bouncy-ness_glitch_setup"
-       style="width:33%;" />
-</div>
+       width="15%" />
+</p>
 
 When the player lands on the trapdoor while pressing against the wall and **moving toward the slime block**, they will bounce as if stepping directly on the slime block; if they merely touch the wall without moving toward the slime block, no bounce occurs. The underlying mechanism is roughly as follows:
 

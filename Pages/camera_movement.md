@@ -36,9 +36,9 @@ Spyglass damping is a setting option in range `0 - 100`. This affects camera pan
 
 $$\displaystyle \text{For SpyglassDamping in} \ [0, 100]$$
 
-<center>
+<p align="center">
   <img src="/Images/controls_spyglass.svg" alt="spyglass effect formula" height="48px">
-</center>
+</p>
 
 The same also goes for $\Delta \text{Pitch}$.\
 Values in range `0 - 5` have no effect. Camera panning is 20x slower at value 100.
