@@ -299,11 +299,11 @@ Stepping stuff, blips, grinds and jump cancel mechanics. Basically same as Java 
 [**MCPK wiki article**](https://www.mcpk.wiki/wiki/Stepping)
 
 #### Sneaking
-When the player is in the sneaking state, the game prevents the player from falling off the edges of blocks. The full mechanism works as follows:
+When the player is sneaking, the player's collision height is changed from `1.8` to `1.49`, and the game prevents the player from falling off the edges of blocks. The full mechanism works as follows:
 
-The player's collision box is shrunk inward by `0.025` blocks along the horizontal axes (X/Z axes).
+To run the check, the game copies the player's collision box and shrinks that copy inward by 0.025 blocks along the horizontal axes (X/Z). Every check below uses this shrunken copy.
 
-For the player's default hitbox, this means it contracts from `[0.6, 1.6, 0.6]` to `[0.55, 1.6, 0.55]`.
+For the player's default hitbox, this means it contracts from `[0.6, 1.49, 0.6]` to `[0.55, 1.49, 0.55]`.
 
 After that, the game performs independent safety checks on the X-axis and Z-axis respectively:
 
