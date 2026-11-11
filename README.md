@@ -28,7 +28,7 @@ Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 - No presence of bursting or shift glitch.
 - **Shifting** would only goes to a minimum of `0.025` blocks away from an edge.
 - No 1 tick of air sprint delay. (matches Java 1.19.4 and above)
-- Sprint would cancel after colliding a wall (Conditions differ from Java 1.8, see [Sprint Cancellation](/Pages/sprint_cancellation.md))
+- Sprint would cancel after colliding a wall (Conditions differ from Java 1.8, see [Sprint](/Pages/sprint.md))
 - Exists an all-direction **joystick** control mode.
 - A player have `16 b/t` absolute **speed cap**.
 - Many block mechanics/properties is different.
@@ -54,7 +54,7 @@ Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 ### Movement Mechanics
 - [General Movement](/Pages/general_movement.md)
 - [Collisions](/Pages/collisions.md)
-- [Sprint Cancellation](/Pages/sprint_cancellation.md)
+- [Sprint](/Pages/sprint.md)
 - [Stepping](/Pages/stepping.md)
 - [Sneaking & Crawling](/Pages/sneaking_crawling.md)
 - [Speed Limit](/Pages/speed_limit.md)

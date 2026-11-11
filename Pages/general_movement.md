@@ -17,3 +17,12 @@ There exists a glitch, [Triple Component Strafe](/Pages/triple_component_strafe.
 
 **4. Trigonometry**\
 As far as current evidence goes, Bedrock directly uses trigonometric function for movement. Angle calculation in Bedrock is straight-forward unlike the complexity of Java's [**Angles**](https://www.mcpk.wiki/wiki/Angles).
+
+---
+
+More information on a specific can be found here:
+- [Collisions](/Pages/collisions.md)
+- [Sprint](/Pages/sprint.md)
+- [Stepping](/Pages/stepping.md)
+- [Sneaking & Crawling](/Pages/sneaking_crawling.md)
+- [Speed Limit](/Pages/speed_limit.md)
