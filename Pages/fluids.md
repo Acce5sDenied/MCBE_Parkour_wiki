@@ -124,7 +124,7 @@ Each fluid block checks its **four horizontally adjacent blocks (east, west, sou
 <p align="center">
   <img src="/Images/fluid_3x3_example.webp"
        alt="fluid_3x3_example"
-       width="15%" />
+       width="25%" />
 </p>
 
 For the central water block with a depth of 4, the adjacent blocks to its left and bottom have a depth value of 3 (1 less than 4), generating unit push vectors pointing right and up, respectively. Meanwhile, the adjacent blocks to its right and top have a depth value of 5 (1 greater than 4), which likewise generate unit push vectors pointing right and up, respectively. The resulting four component vectors are shown as purple arrows in the diagram. Defining right as the positive $X$-axis and up as the positive $Z$-axis, the summed horizontal push vector is $(2, 0, 2)$, which normalizes to the horizontal flow vector $\left(\frac{1}{\sqrt{2}}, 0, \frac{1}{\sqrt{2}}\right)$.
@@ -136,7 +136,7 @@ After normalizing the horizontal push vector above, if the current fluid block *
 <p align="center">
   <img src="/Images/fluid_waterfall.webp"
        alt="fluid_waterfall"
-       width="15%" />
+       width="25%" />
 </p>
 
 *(Note: The yellow wireframes in the diagram highlight the 8 positions checked by the central falling water block.)*
