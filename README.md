@@ -37,7 +37,7 @@ Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 
 ### Player Controls
 - [Player Movement](/Pages/player_movement.md)
-- [Joystick](/Pages/joystick.md)
+- [Joystick](/Pages/joystick.md)*
 - [Camera Movement](/Pages/camera_movement.md)
 - [Status Effects & Enchants](/Pages/status_effects_enchants.md)
 
@@ -48,32 +48,32 @@ Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 - [Bouncy-ness](/Pages/bouncy-ness.md)
 - [Slime & Honey Block](/Pages/slime_honey_block.md)
 - [Cobweb & Slowing Blocks](/Pages/cobweb_slowing_blocks.md)
-- [Climb Blocks](/Pages/climb_blocks.md)
+- [Climb Blocks](/Pages/climb_blocks.md)*
 - [Fluids](/Pages/fluids.md)
 
 ### Movement Mechanics
 - [General Movement](/Pages/general_movement.md)
-- [Collisions](/Pages/collisions.md)
-- [Sprint](/Pages/sprint.md)
-- [Stepping](/Pages/stepping.md)
-- [Sneaking & Crawling](/Pages/sneaking_crawling.md)
-- [Speed Limit](/Pages/speed_limit.md)
+- [Collisions](/Pages/collisions.md)*
+- [Sprint](/Pages/sprint.md)*
+- [Stepping](/Pages/stepping.md)*
+- [Sneaking & Crawling](/Pages/sneaking_crawling.md)*
+- [Speed Limit](/Pages/speed_limit.md)*
 
 ### Glitches
-- [Triple Component Strafe](/Pages/triple_component_strafe.md)
-- [Hitbox Manipulation & Precision Glitches](/Pages/precision_glitches.md)
-- [Spyglass Glitch](/Pages/spyglass_glitch.md)
-- [11 Strafe & Glitches regarding old joystick](/Pages/11_strafe.md)
-- [More Patched Glitches](/Pages/patched_glitches.md)
+- [Triple Component Strafe](/Pages/triple_component_strafe.md)*
+- [Hitbox Manipulation & Precision Glitches](/Pages/precision_glitches.md)*
+- [Spyglass Glitch](/Pages/spyglass_glitch.md)*
+- [11 Strafe & Glitches regarding old joystick](/Pages/11_strafe.md)*
+- [More Patched Glitches](/Pages/patched_glitches.md)*
 
 ### Strategies & Technicals
-- [Tapping](/Pages/tapping.md)
-- [Strategies](/Pages/strategies.md)
-- [Movement Formulas](/Pages/movement_formulas.md)
+- [Tapping](/Pages/tapping.md)*
+- [Strategies](/Pages/strategies.md)*
+- [Movement Formulas](/Pages/movement_formulas.md)*
 - [Constants](/Pages/constants.md)
 
 ### Community
-- [Communities](/Pages/communities.md)
+- [Communities](/Pages/communities.md)*
 - [Servers](/Pages/servers.md)
 
 ---
