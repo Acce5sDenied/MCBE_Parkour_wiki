@@ -155,4 +155,4 @@ $$\vec{V}_t=d\cdot(\vec{V}_{t-1}+\hat{u}_{t-1})+\vec{a}_t$$
 
 ## Fluid Blip<sup>[Todo]</sup>
 
-Essentially identical to Java Edition 1.8.9<sup>[Needs verification.]</sup> ([Water Blips and the Water +2 - YouTube](https://www.youtube.com/watch?v=_ZcuHIsVlq0)).   
+Essentially identical to Java Edition 1.8.9<sup>[Needs verification.]</sup> ([**Water Blips and the Water +2 - YouTube**](https://www.youtube.com/watch?v=_ZcuHIsVlq0)).   

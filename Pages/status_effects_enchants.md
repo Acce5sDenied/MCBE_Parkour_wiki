@@ -31,7 +31,7 @@ $\displaystyle 1.3 + Level \times 0.105$ times base acceleration. Applies on sou
 **Depth strider**\
 For walking, `+133.33%` base acceleration per level of depth strider.\
 For sprinting, `+183.33%` base acceleration per level of depth strider.\
-Not true in certain conditions.<sup>[Todo]</sup>
+More information is at [Fluids](/Pages/fluids.md).
 
 **Swift sneak**\
 `+50%` base acceleration per level of swift sneak. Only works while crouching or crawling.
