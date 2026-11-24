@@ -36,8 +36,8 @@ Ordered by widths then height.
 |Shelves                                |1×0.3125            |1          |Orientable. (4 varients)                                          |Yes
 |Ladder                                 |1×0.1875            |1          |Orientable. (4 varients)                                          |Yes
 |Doors(half)                            |1×0.1825            |1          |Orientable. (4 varients) Flippable.                               |Yes
-|Chests(1-side connected)               |0.95×0.975          |0.95       |-0.25 on sides that is not connected to an another chest.         |Yes
-|Chests                                 |0.95×0.95           |0.95       |-0.25 on each side, centered, base touch the ground.              |Yes
+|Chests(1-side connected)               |0.95×0.975          |0.95       |-0.025 on sides that is not connected to an another chest.         |Yes
+|Chests                                 |0.95×0.95           |0.95       |-0.025 on each side, centered, base touch the ground.              |Yes
 |Decorated Pot & Cactus & Honey Block   |0.875×0.875         |1          |Like egg on Java, centered.                                       |Yes
 |Cake                                   |0.875×0.875         |0.5        |Centered. Adding candle on top does not change anything.          |Yes
 |Eaten Cake                             |0.875×0.875         |0.5        |-0.125 on -X direction per consumption. Can be eaten 7 times.     |Yes
@@ -49,7 +49,7 @@ Ordered by widths then height.
 |Walls(2-adjacent)                      |0.75×0.75           |1.5        |Orientable.(4 varients)                                           |Yes\*
 |Grindstone                             |0.75×0.75           |1          |Centered. Can be placed on all sides.                             |Yes
 |`base` Pointed Dripstone & Sulfur Spike|0.75×0.75           |1          |Collision box have [random offset](/Pages/block_offsets.md) from center.    |Yes
-|Chorus Stem                            |0.75×0.75           |0.875      |Centered.                                                         |Yes
+|Chorus Stem                            |0.75×0.75           |0.75       |-0.125 on each side not connected to another chorus stem/flower (or end stone below), centered when unconnected (+0.125 per connected side, up to 1×1×1).|Yes
 |`medium` Pointed Dripstone & Sulfur Spike|0.625×0.625       |1          |Collision box have [random offset](/Pages/block_offsets.md) from center.    |Yes
 |Copper Golem Statues                   |0.625×0.625         |0.875      |Centered. Changing poses doesnt change collision.                 |Yes
 |Dried Ghast                            |0.625×0.625         |0.625      |Centered.                                                         |Yes
@@ -101,22 +101,23 @@ Ordered by widths then height.
 
 ### Composite collision boxes
 Alphabetical order.
-|Blocks                    |Widths                          |Heights                    |Comment                                        |
-|--------------------------|--------------------------------|---------------------------|-----------------------------------------------|
-|Brewing Stand             |Base:1×1 Rod:0.125×0.125        |Base:.125 Rod:.875         |Centered.                                      |
-|Caudron                   |Base:1×1 Walls:0.125 thick      |Base:.3125 Walls:1         |                                               |
-|Composter                 |Base:1×1 Walls:0.125 thick      |Base:.125 Walls:1          |Compost heights: `0.0625 + 0.125 * n`          |
-|Fences(4-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |                                               |
-|Fences(3-sided)           |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
-|Fences(2-adjacent)        |Post:0.25×0.25 Sides:0.25×0.375 |1.5                        |Orientable.(4 varients)                        |
-|Hopper<sup>[Todo]</sup>   |                                |                           |                                               |
-|Panes & Bars(4-sided)     |Sides:0.125×0.5                 |1                          |                                               |
-|Panes & Bars(3-sided)     |Sides:0.125×0.5                 |1                          |Orientable.(4 varients)                        |
-|Panes & Bars(2-adjacent)  |Sides:0.125×0.5                 |1                          |Orientable.(4 varients) Missing 1px on the outer corner like Java 1.8.|
-|Piston Head               |Head:1×1 Arm:0.375×0.375        |Head:.25 Arm:1             |Orientable, inversible.(6 varients)            |
-|Stairs(normal)            |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
-|Stairs(outer)             |Base:1×1 Top:0.5×0.5            |Base:.5 Top:1              |Orientable, inversible.(8 varients)            |
-|Stairs(inner)             |Base:1×1 Top:1×0.5              |Base:.5 Top:1              |This have exactly the same collision as a normal stair. When an adjacent stair is placed (to convert into this varient), only the visual model changes. Leaving a 0.5×0.5×0.5 intangible zone.|
+|Blocks                    |Widths                                                    |Heights                                      |Comment                                        |
+|--------------------------|----------------------------------------------------------|---------------------------------------------|-----------------------------------------------|
+|Brewing Stand             |Base:1×1 Rod:0.125×0.125                                  |Base:.125 Rod:.875                           |Centered.                                      |
+|Caudron                   |Base:1×1 Walls:0.125 thick                                |Base:.3125 Walls:1                           |                                               |
+|Composter                 |Base:1×1 Walls:0.125 thick                                |Base:.125 Walls:1                            |Compost heights: `0.0625 + 0.125 * n`          |
+|Fences(4-sided)           |Post:0.25×0.25 Sides:0.25×0.375                           |1.5                                          |                                               |
+|Fences(3-sided)           |Post:0.25×0.25 Sides:0.25×0.375                           |1.5                                          |Orientable.(4 varients)                        |
+|Fences(2-adjacent)        |Post:0.25×0.25 Sides:0.25×0.375                           |1.5                                          |Orientable.(4 varients)                        |
+|Hopper(down)              |Walls:0.125 thick Base:1×1 Middle:0.5×0.5 Tip:0.25×0.25   |Walls:.3125 Base:.0625 Middle:.375 Tip:.25   |Centered. Stacked from bottom to top (Tip → Middle → Base → Walls).|
+|Hopper(side)              |Walls:0.125 thick Base:1×1 Middle:0.5×0.5 Tip:0.25×0.25   |Walls:.3125 Base:.0625 Middle:.375 Tip:.25   |Orientable.(4 varients) Same as down, but Tip is on the side (Bottom:.25 Top:.5).|
+|Panes & Bars(4-sided)     |Sides:0.125×0.5                                           |1                                            |                                               |
+|Panes & Bars(3-sided)     |Sides:0.125×0.5                                           |1                                            |Orientable.(4 varients)                        |
+|Panes & Bars(2-adjacent)  |Sides:0.125×0.5                                           |1                                            |Orientable.(4 varients) Missing 1px on the outer corner like Java 1.8.|
+|Piston Head               |Head:1×1 Thin arm:0.25×0.25 Thick arm:0.375×0.375         |Head:.25 Thin arm:.5 Thick arm:.5            |Orientable, inversible.(6 varients)            |
+|Stairs(normal)            |Base:1×1 Top:1×0.5                                        |Base:.5 Top:1                                |Orientable, inversible.(8 varients)            |
+|Stairs(outer)             |Base:1×1 Top:0.5×0.5                                      |Base:.5 Top:1                                |Orientable, inversible.(8 varients)            |
+|Stairs(inner)             |Base:1×1 Top:1×0.5                                        |Base:.5 Top:1                                |This have exactly the same collision as a normal stair. When an adjacent stair is placed (to convert into this varient), only the visual model changes. Leaving a 0.5×0.5×0.5 intangible zone.|
 
 ### Other collision boxes
 Stuff that have a collision box that does not quite belong in the 2 above catagories.
