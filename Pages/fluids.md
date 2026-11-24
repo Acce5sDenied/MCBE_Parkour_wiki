@@ -98,6 +98,18 @@ $$k_t=\begin{cases} 1.3 & \text{Flying}\\ 0.085 & \sin{(-\theta)} < -0.2\\ 0.06 
 
 At the threshold condition $\sin(-\theta) = -0.2$, the corresponding downward pitch angle is $\theta \approx 11.537^\circ$.
 
+### Dolphin's Grace
+
+In Bedrock Edition, Dolphin's Grace is not a status effect, but a hidden boost that **only applies in the swimming pose**, setting the swim speed multiplier to `2.0`.
+
+A `60`-tick (`3`-second) scan timer counts down by `1` per tick only while swimming (pausing otherwise). Upon reaching zero, it immediately resets to `60` and checks the player's collision box expanded by `5` blocks in all six directions; if a dolphin is inside, it grants `60` ticks of boost duration.
+
+The boost duration always counts down by `1` per tick until it expires at zero. Exiting the swimming pose immediately suspends the boost, but re-entering before it expires resumes it.
+
+While active, horizontal motion keeps the same form ($V_{H,t} = V_{H,t-1} \times \rho'_t + a_t \times M'_t$), but skips Depth Strider's ground interpolation: drag stays at base water drag $\rho' = \rho$, and base acceleration ignores ground movement speed and on-ground/off-ground state, depending only on Depth Strider level $L$:
+
+$$a = 0.02 \times \left(0.7 + 0.3 \cdot \frac{\min(L, 3)}{3}\right) \times 2.0$$
+
 ## Flow Thrust
 
 Before calculating flow thrust, it is necessary to understand the underlying concept of **fluid depth (`fluid_depth`)**. **The depth value represents how much "empty space" exists at the top of a fluid block—the larger the value, the shallower the fluid**—following these rules:
