@@ -29,9 +29,10 @@ If the player's position is on `1×1` surface of honey (**not** to be confused w
 The player's jump acceleration (which defaults to `0.42`) is multiplied by `0.6`.\
 **Jumping gives `0.252` vertical acceleration**, reaching `0.514` in height, with `8` ticks of airtime on flat ground.
 
-**3. Side Sliding:**<sup>[Todo]</sup>\
-Sliding down the side have a Y speed cap of `-0.12`.\
-And multiplies the player's horizontal motion by `0.4`, and it's stackable from multiple blocks.
+**3. Side Sliding:**\
+Applies whenever the player's hitbox intersects a honey block's `1×1×1` cell and the player is **not** in water:\
+Caps downward speed at `-0.12` ($V_y = \max(V_y, -0.12)$), applied after gravity and air drag.\
+Multiplies horizontal motion by `0.4` per intersected honey block, stacking multiplicatively ($0.4^n$ across `n` blocks).
 
 **4. Slowdown Property:**\
 Slowdown players walking on them, exactly same as slime.
