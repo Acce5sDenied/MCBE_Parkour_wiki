@@ -6,6 +6,8 @@ Being `1×1×1` retracted `0.001` inwards on each sides.
 
 Entity will receive effect when any part of their collision box intersects this region.
 
+When intersecting multiple of these three blocks at once, their **block slowdown multipliers** take the **minimum** on each axis rather than stacking (e.g., cobweb + powder snow gives `25%` horizontal and `5%` vertical).
+
 ### Cobweb
 **Properties:**
 - Grants `25%` horizontal acceleration.
@@ -19,15 +21,15 @@ Entity will receive effect when any part of their collision box intersects this 
 - All velocity components get reset to `0` upon every tick.
 
 ### Powdered Snow
-**Properties:**<sup>[Todo]</sup>
+**Properties:**
 - Grants `90%` horizontal acceleration.
 - Grants `150%` vertical acceleration.
 - All velocity components get reset to `0` upon every tick.
-- Additionally, freezing progress also slows down the player:
-  
-  Freezing progress `p` (bounded `[0, 1]`) increases by `1/140` per tick while the player is touching powdered snow, and decreases by `2/140` per tick when they are outside.
-  
-  The player's horizontal acceleration is then multiplied by `1 - 0.5*p`.
+- Additionally, **freezing** applies a separate ground-speed penalty that **stacks multiplicatively** with block slowdown multipliers (and persists after leaving powder snow until `p` reaches `0`):
+
+  Freezing progress `p` (bounded `[0, 1]`) increases by `1/140` per tick inside powder snow (prevented by wearing any leather armor), and decreases by `2/140` per tick outside.
+
+  This multiplies ground horizontal acceleration by `1 - 0.5*p` (air acceleration is unaffected).
 
 ### Soulsand
 Soulsand however, doesn't share the same effect region as the three previous blocks.
@@ -38,6 +40,6 @@ When grounded and the player's position is within the bounding `1×1×1` volume 
 Essentially the same as how the [Slipperiness](/Pages/slipperiness.md) effect is taken.
 
 **Property:**\
-Grants `54.4%` horizontal acceleration.
+Grants `(1 / 1.225)^3 ≈ 54.4%` horizontal acceleration.
 
 This is not at all like Java 1.8.9 where it drags the player instead, effect is also not accumulative with many soulsand blocks.
