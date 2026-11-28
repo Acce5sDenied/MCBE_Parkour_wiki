@@ -79,7 +79,7 @@ An athletic rankup and segmented server.
 
 #### Mineplex
 Mineplex Housing. The first ever housing parkour server on Bedrock, before it shutdown and most of the builders moved on to Galaxite instead.
-> *Status - :red_circle: Down
+> Status - :red_circle: Down
 
 ### Other less major servers
 + Manacube parkour (they have Bedrock support)

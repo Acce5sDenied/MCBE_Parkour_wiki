@@ -20,7 +20,7 @@ As far as current evidence goes, Bedrock directly uses trigonometric function fo
 
 ---
 
-More information on a specific can be found here:
+More information on a specific mechanic can be found here:
 - [Collisions](/Pages/collisions.md)
 - [Sprint](/Pages/sprint.md)
 - [Stepping](/Pages/stepping.md)

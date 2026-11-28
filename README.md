@@ -2,7 +2,7 @@
 
 ![MCBEPK_wiki_banner](/Images/MCBEPK_wiki_banner.png)
 
-A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.5x`.
+A wiki for documenting Minecraft Bedrock Edition movement mechanics & technical knowledges. As of game version `26.6x`.
 
 This wiki is assuming you have a decent beforehand knowledges of the game and additionally went through MCPK wiki before as this relies on some context.
 
@@ -60,14 +60,14 @@ Differences of Bedrock Edition and Java Edition 1.8 (standard for parkour).
 - [Speed Limit](/Pages/speed_limit.md)*
 
 ### Glitches
-- [Triple Component Strafe](/Pages/triple_component_strafe.md)*
+- [Triple Component Strafe](/Pages/triple_component_strafe.md)
 - [Hitbox Manipulation & Precision Glitches](/Pages/precision_glitches.md)*
 - [Spyglass Glitch](/Pages/spyglass_glitch.md)*
 - [11 Strafe & Glitches regarding old joystick](/Pages/11_strafe.md)*
 - [More Patched Glitches](/Pages/patched_glitches.md)*
 
 ### Strategies & Technicals
-- [Tapping](/Pages/tapping.md)*
+- [Tapping](/Pages/tapping.md)
 - [Strategies](/Pages/strategies.md)*
 - [Movement Formulas](/Pages/movement_formulas.md)*
 - [Constants](/Pages/constants.md)
